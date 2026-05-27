@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>女人我最大賞 2026 · UNFURL · Wireframe Prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/[email protected]/iconfont/tabler-icons.min.css">
+<style>
+:root {
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F5F4EE;
+  --bg-tertiary: #FAFAF7;
+  --text-primary: #2C2C2A;
+  --text-secondary: #5F5E5A;
+  --text-tertiary: #888780;
+  --border-tertiary: rgba(44, 44, 42, 0.15);
+  --border-secondary: rgba(44, 44, 42, 0.3);
+  --font-sans: "Noto Sans TC", -apple-system, BlinkMacSystemFont, "PingFang TC", "Microsoft JhengHei", "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Cormorant Garamond", "Times New Roman", serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; font-family: var(--font-sans); color: var(--text-primary); background: var(--bg-tertiary); }
+.idx-wrap { max-width: 900px; margin: 0 auto; padding: 64px 32px; }
+.idx-eyebrow { font-size: 12px; letter-spacing: 3px; color: var(--text-secondary); margin: 0 0 12px; }
+.idx-title { font-size: 36px; font-weight: 500; margin: 0 0 6px; letter-spacing: 2px; }
+.idx-unfurl { font-family: var(--font-serif); font-style: italic; font-size: 56px; letter-spacing: 6px; margin: 12px 0 24px; }
+.idx-intro { font-size: 15px; line-height: 1.85; color: var(--text-secondary); max-width: 640px; margin: 0 0 48px; }
+.idx-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 48px; }
+.idx-card { background: var(--bg-primary); border: 0.5px solid var(--border-tertiary); border-radius: 12px; padding: 28px; text-decoration: none; color: inherit; transition: border-color 0.15s; display: block; }
+.idx-card:hover { border-color: var(--border-secondary); }
+.idx-card-label { font-size: 11px; color: var(--text-tertiary); margin: 0 0 6px; letter-spacing: 2px; }
+.idx-card-name { font-size: 18px; font-weight: 500; margin: 0 0 8px; color: var(--text-primary); }
+.idx-card-desc { font-size: 13px; line-height: 1.6; color: var(--text-secondary); margin: 0; }
+.idx-card-arrow { display: inline-block; margin-top: 14px; font-size: 13px; color: var(--text-primary); }
+.idx-card-arrow i { vertical-align: -2px; }
+.idx-meta { padding-top: 32px; border-top: 0.5px solid var(--border-tertiary); display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.idx-meta-block h3 { font-size: 13px; font-weight: 500; margin: 0 0 10px; letter-spacing: 1.5px; color: var(--text-primary); }
+.idx-meta-block ul { list-style: none; padding: 0; margin: 0; font-size: 13px; line-height: 1.85; color: var(--text-secondary); }
+.idx-meta-block li::before { content: "·"; margin-right: 8px; color: var(--text-tertiary); }
+@media (max-width: 600px) {
+  .idx-grid, .idx-meta { grid-template-columns: 1fr; }
+  .idx-title { font-size: 28px; }
+  .idx-unfurl { font-size: 44px; }
+  .idx-wrap { padding: 40px 24px; }
+}
+</style>
+</head>
+<body>
+<div class="idx-wrap">
+  <p class="idx-eyebrow">TVBS · ANNUAL BEAUTY REPORT 2026</p>
+  <h1 class="idx-title">女人我最大賞</h1>
+  <p class="idx-unfurl">UNFURL</p>
+  <p class="idx-intro">
+    這是 Consumer 主站的 wireframe prototype，包含首頁與一個代表性趨勢頁（R Ritual）。每張頁面都可切換 <strong>Phase 1（6 月底 MVP）</strong> 與 <strong>Phase 2（9 月正式發表）</strong> 兩種模式，看出階段差異。Mobile 與 Desktop 兩種 viewport 各做一張。
+  </p>
+
+  <div class="idx-grid">
+    <a class="idx-card" href="home-mobile.html">
+      <p class="idx-card-label">首頁 · MOBILE</p>
+      <p class="idx-card-name">/ Home</p>
+      <p class="idx-card-desc">Hero + 心測 CTA + 六大趨勢預覽 + 二次心測 + Footer。375px viewport。</p>
+      <span class="idx-card-arrow">開啟 <i class="ti ti-arrow-right"></i></span>
+    </a>
+    <a class="idx-card" href="home-desktop.html">
+      <p class="idx-card-label">首頁 · DESKTOP</p>
+      <p class="idx-card-name">/ Home</p>
+      <p class="idx-card-desc">Hero + 心測 CTA + 六大趨勢預覽（字母左、內容右 split）+ Footer。Desktop layout。</p>
+      <span class="idx-card-arrow">開啟 <i class="ti ti-arrow-right"></i></span>
+    </a>
+    <a class="idx-card" href="ritual-mobile.html">
+      <p class="idx-card-label">趨勢頁 · MOBILE</p>
+      <p class="idx-card-name">/ritual · 療癒儀式</p>
+      <p class="idx-card-desc">字母 hero + 趨勢長文 + 達人 quote + 影音 ×3 + 產品 + 應援 + 下一個趨勢。375px viewport。</p>
+      <span class="idx-card-arrow">開啟 <i class="ti ti-arrow-right"></i></span>
+    </a>
+    <a class="idx-card" href="ritual-desktop.html">
+      <p class="idx-card-label">趨勢頁 · DESKTOP</p>
+      <p class="idx-card-name">/ritual · 療癒儀式</p>
+      <p class="idx-card-desc">字母 hero（左右 split）+ 趨勢長文 + 影音 3 並排 + 產品 grid 2 cols + 下一個趨勢 banner。</p>
+      <span class="idx-card-arrow">開啟 <i class="ti ti-arrow-right"></i></span>
+    </a>
+  </div>
+
+  <div class="idx-meta">
+    <div class="idx-meta-block">
+      <h3>Phase 1 · 6 月底 MVP</h3>
+      <ul>
+        <li>Hero + 主視覺 + 心測入口</li>
+        <li>六大趨勢頁（趨勢長文 + 影音 placeholder）</li>
+        <li>下一個趨勢 CTA · 站內循環</li>
+        <li>主站 PV 埋點 · 不放 B2B 報名連結</li>
+      </ul>
+    </div>
+    <div class="idx-meta-block">
+      <h3>Phase 2 · 9 月正式發表</h3>
+      <ul>
+        <li>每趨勢 10 個入選產品（grid）</li>
+        <li>每產品 1 段達人 quote</li>
+        <li>愛心應援 · 累計制 · 登入未定</li>
+        <li>影音正式上線（節目／達人／品牌共製）</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</body>
+</html>

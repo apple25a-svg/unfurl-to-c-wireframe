@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>女人我最大賞 2026 · 首頁 · Mobile</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/[email protected]/iconfont/tabler-icons.min.css">
+<style>
+:root {
+  --color-background-primary: #FFFFFF;
+  --color-background-secondary: #F5F4EE;
+  --color-background-tertiary: #FAFAF7;
+  --color-text-primary: #2C2C2A;
+  --color-text-secondary: #5F5E5A;
+  --color-text-tertiary: #888780;
+  --color-border-primary: rgba(44, 44, 42, 0.4);
+  --color-border-secondary: rgba(44, 44, 42, 0.3);
+  --color-border-tertiary: rgba(44, 44, 42, 0.15);
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --font-sans: "Noto Sans TC", -apple-system, BlinkMacSystemFont, "PingFang TC", "Microsoft JhengHei", "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Cormorant Garamond", "Times New Roman", serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; font-family: var(--font-sans); color: var(--color-text-primary); background: var(--color-background-tertiary); }
+body { padding: 24px 0 60px; }
+
+.proto-nav { position: fixed; top: 12px; right: 12px; z-index: 100; display: flex; gap: 6px; background: rgba(255,255,255,0.95); border: 0.5px solid var(--color-border-tertiary); border-radius: 999px; padding: 6px 10px; font-size: 11px; backdrop-filter: blur(8px); }
+.proto-nav a { padding: 4px 8px; border-radius: 999px; color: var(--color-text-secondary); text-decoration: none; }
+.proto-nav a:hover { background: var(--color-background-secondary); }
+.proto-nav a.active { background: var(--color-text-primary); color: white; }
+.proto-nav .proto-close { padding: 2px 6px; background: transparent; border: none; cursor: pointer; color: var(--color-text-tertiary); font-size: 12px; }
+
+.h2-toggle-wrap { text-align: center; margin-bottom: 16px; }
+.h2-toggle { display: inline-flex; gap: 0; border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); overflow: hidden; }
+.h2-toggle button { padding: 10px 18px; border: none; background: transparent; cursor: pointer; font-family: inherit; font-size: 13px; color: var(--color-text-secondary); }
+.h2-toggle button.active { background: var(--color-text-primary); color: var(--color-background-primary); font-weight: 500; }
+.h2-toggle button:not(.active):hover { background: var(--color-background-secondary); }
+.h2-status { font-size: 12px; color: var(--color-text-tertiary); margin: 8px 0 0; font-style: italic; }
+
+.m2-frame { max-width: 380px; margin: 0 auto; background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); overflow: hidden; }
+.m2-header { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; border-bottom: 0.5px solid var(--color-border-tertiary); background: var(--color-background-primary); }
+.m2-nav { display: flex; gap: 1px; font-family: var(--font-serif); font-size: 14px; }
+.m2-nav a { padding: 4px 7px; color: var(--color-text-primary); text-decoration: none; font-style: italic; cursor: pointer; border-radius: 4px; }
+.m2-nav a:hover { background: #F1EFE8; }
+.m2-section { padding: 28px 20px; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.m2-letter-row { display: flex; align-items: baseline; gap: 14px; margin-bottom: 8px; }
+.m2-letter { font-family: var(--font-serif); font-style: italic; font-size: 56px; line-height: 1; color: var(--color-text-primary); font-weight: 500; }
+.m2-name-block { flex: 1; }
+.m2-zh-name { font-size: 18px; font-weight: 500; margin: 0; color: var(--color-text-primary); }
+.m2-en-sub { font-family: var(--font-serif); font-style: italic; font-size: 12px; color: var(--color-text-secondary); margin: 2px 0 0; letter-spacing: 0.4px; }
+.m2-body { font-size: 14px; line-height: 1.75; color: var(--color-text-primary); margin: 14px 0 16px; }
+.m2-cta-full { display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; padding: 14px; background: var(--color-text-primary); color: var(--color-background-primary); border: none; border-radius: var(--border-radius-md); font-size: 14px; font-weight: 500; cursor: pointer; font-family: inherit; }
+.m2-cta-full:hover { opacity: 0.85; }
+.m2-cta-line { display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px; border: 0.5px solid var(--color-text-primary); border-radius: var(--border-radius-md); font-size: 13px; color: var(--color-text-primary); background: transparent; cursor: pointer; font-family: inherit; margin-top: 4px; text-decoration: none; }
+.m2-cta-line:hover { background: var(--color-text-primary); color: var(--color-background-primary); }
+
+.p2-strong { margin: 16px 0; border-left: 4px solid #BA7517; background: #FAEEDA; border-radius: 0; }
+.p2-banner { padding: 12px 16px; background: #FAC775; color: #633806; }
+.p2-banner-tag { font-size: 10px; font-weight: 500; letter-spacing: 1.8px; margin: 0 0 3px; }
+.p2-banner-content { font-size: 13px; font-weight: 500; margin: 0; }
+.p2-strong-content { padding: 14px 16px; }
+.p2-strong-content > p { font-size: 11px; color: var(--color-text-secondary); margin: 0 0 8px; letter-spacing: 0.3px; }
+.p2-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+.p2-card { aspect-ratio: 3/4; background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 9px; color: var(--color-text-tertiary); }
+
+.p2-placeholder { margin: 16px 0; padding: 14px 16px; background: var(--color-background-secondary); border: 0.5px dashed var(--color-border-secondary); border-radius: var(--border-radius-md); text-align: center; font-size: 12px; color: var(--color-text-secondary); }
+.p2-placeholder strong { display: block; font-size: 13px; color: var(--color-text-primary); margin-bottom: 4px; font-weight: 500; letter-spacing: 0.3px; }
+
+.phase1-mode .p2-strong { display: none; }
+.phase2-mode .p2-placeholder { display: none; }
+
+.m2-unfurl-link { font-family: var(--font-serif); font-style: italic; font-size: 38px; letter-spacing: 5px; color: var(--color-text-primary); cursor: pointer; padding: 4px 8px; border-bottom: 0.5px dashed var(--color-text-secondary); display: inline-block; }
+.m2-unfurl-link:hover { background: rgba(0,0,0,0.03); }
+.m2-unfurl-expanded { display: none; margin: 18px 0; padding: 16px; background: var(--color-background-secondary); border-radius: var(--border-radius-md); text-align: left; }
+.m2-unfurl-expanded.open { display: block; }
+
+.m2-toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); display: none; padding: 12px 20px; background: var(--color-text-primary); color: var(--color-background-primary); border-radius: var(--border-radius-md); font-size: 13px; max-width: 360px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 200; }
+.m2-toast.show { display: block; }
+</style>
+</head>
+<body>
+
+<div class="proto-nav" id="proto-nav">
+  <a href="index.html">↑</a>
+  <a href="home-mobile.html" class="active">📱 首頁</a>
+  <a href="home-desktop.html">💻 首頁</a>
+  <a href="ritual-mobile.html">📱 Ritual</a>
+  <a href="ritual-desktop.html">💻 Ritual</a>
+  <button class="proto-close" onclick="document.getElementById('proto-nav').style.display='none'" title="隱藏">×</button>
+</div>
+
+<div class="h2-toggle-wrap">
+  <div class="h2-toggle">
+    <button id="h2-p1" class="active">Phase 1 模式（6 月底）</button>
+    <button id="h2-p2">Phase 2 模式（9 月）</button>
+  </div>
+  <p class="h2-status" id="h2-status">目前預覽：Phase 1（6 月底上線版本）</p>
+</div>
+
+<div class="m2-frame phase1-mode" id="m2-root">
+
+  <div class="m2-header">
+    <div style="font-size: 13px; font-weight: 500; letter-spacing: 0.5px;">女人我最大</div>
+    <nav class="m2-nav">
+      <a data-target="sec-u1">U</a><a data-target="sec-n">N</a><a data-target="sec-f">F</a><a data-target="sec-u2">U</a><a data-target="sec-r">R</a><a data-target="sec-l">L</a>
+    </nav>
+  </div>
+
+  <div style="padding: 32px 20px; background: #F1EFE8; text-align: center;">
+    <div style="aspect-ratio: 4/5; background: var(--color-background-primary); border: 1px dashed var(--color-border-secondary); border-radius: var(--border-radius-md); display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+      <div style="text-align: center;">
+        <i class="ti ti-photo" style="font-size: 24px; color: var(--color-text-tertiary);" aria-hidden="true"></i>
+        <p style="font-size: 11px; color: var(--color-text-tertiary); margin: 4px 0 0;">主視覺 KV — AI 伊甸花園</p>
+      </div>
+    </div>
+    <h1 style="font-size: 26px; font-weight: 500; margin: 0 0 12px; letter-spacing: 3px;">美，由我綻放</h1>
+    <div class="m2-unfurl-link" id="m2-unfurl-trigger">UNFURL</div>
+    <p style="font-size: 11px; color: var(--color-text-tertiary); margin: 6px 0 0; font-style: italic;">點一下，看年度關鍵字</p>
+    <div class="m2-unfurl-expanded" id="m2-unfurl-expanded">
+      <p style="font-family: var(--font-serif); font-style: italic; font-size: 13px; color: var(--color-text-secondary); margin: 0 0 8px; letter-spacing: 0.3px;">/ʌnˈfɜːrl/ v.</p>
+      <p style="font-size: 15px; font-weight: 500; margin: 0 0 12px; color: var(--color-text-primary);">展開的、舒放的、逐漸顯現的</p>
+      <p style="font-size: 13px; line-height: 1.85; color: var(--color-text-primary); margin: 0;">UNFURL 是 2026 年女人我最大賞的年度關鍵字。它不是一個品牌，是一個動詞——形容今年的美妝消費者，正以自己的節奏，重新展開對美的定義。</p>
+      <p style="font-size: 13px; line-height: 1.85; color: var(--color-text-primary); margin: 12px 0 0;">六個字母，是六種正在發生的趨勢。每一片花瓣，都是她在這個時代尋找的答案。</p>
+    </div>
+    <button class="m2-cta-full" id="m2-quiz-top" style="margin-top: 24px;">
+      <i class="ti ti-flower" style="font-size: 16px;" aria-hidden="true"></i>測測你是什麼花
+    </button>
+    <p style="font-size: 11px; color: var(--color-text-tertiary); margin: 8px 0 0;">6 題 · 約一分鐘</p>
+  </div>
+
+  <div style="padding: 24px 20px; text-align: center; background: var(--color-background-secondary);">
+    <p style="font-size: 11px; color: var(--color-text-secondary); margin: 0 0 8px; letter-spacing: 2px;">2026 年度美妝六大趨勢</p>
+    <p style="font-size: 14px; color: var(--color-text-primary); margin: 0; line-height: 1.7;">2026 年的美妝消費者，正以自己的節奏，重新展開對美的定義。</p>
+  </div>
+
+  <div class="m2-section" id="sec-u1">
+    <div class="m2-letter-row"><div class="m2-letter">U</div><div class="m2-name-block"><p class="m2-zh-name">Unfiltered · 健康保養</p><p class="m2-en-sub">Feel-good Wellness</p></div></div>
+    <p class="m2-body">美麗從「由外而內」轉向「由內而外」。膠原蛋白飲、玻尿酸飲品、美肌機能食品，成為新世代保養桌上的日常——口服保養與美妝的邊界正在消失。</p>
+    <div class="p2-placeholder"><strong>Phase 2 · 9 月補上</strong>入選產品 ×10</div>
+    <div class="p2-strong">
+      <div class="p2-banner"><p class="p2-banner-tag">PHASE 2 · 9 月正式發表</p><p class="p2-banner-content">10 個入選產品 · 達人 quote · 愛心應援</p></div>
+      <div class="p2-strong-content"><p>入選產品 ×10</p>
+        <div class="p2-grid"><div class="p2-card">1</div><div class="p2-card">2</div><div class="p2-card">3</div><div class="p2-card">4</div><div class="p2-card">5</div><div class="p2-card">6</div><div class="p2-card">7</div><div class="p2-card">8</div><div class="p2-card">9</div><div class="p2-card">10</div></div>
+      </div>
+    </div>
+    <a class="m2-cta-line trend-cta" data-trend="unfiltered" href="ritual-mobile.html">閱讀完整趨勢<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></a>
+  </div>
+
+  <div class="m2-section" id="sec-n">
+    <div class="m2-letter-row"><div class="m2-letter">N</div><div class="m2-name-block"><p class="m2-zh-name">Noble · 永續信念</p><p class="m2-en-sub">Lifestyle Shift · Climate</p></div></div>
+    <p class="m2-body">永續不再只是公關話術，而是消費者的主動選擇。她們選擇可補充包裝、關注成分來源的碳足跡——「正確消費」成為一種身份認同。</p>
+    <div class="p2-placeholder"><strong>Phase 2 · 9 月補上</strong>入選產品 ×10</div>
+    <div class="p2-strong">
+      <div class="p2-banner"><p class="p2-banner-tag">PHASE 2 · 9 月正式發表</p><p class="p2-banner-content">10 個入選產品 · 達人 quote · 愛心應援</p></div>
+      <div class="p2-strong-content"><p>入選產品 ×10</p>
+        <div class="p2-grid"><div class="p2-card">1</div><div class="p2-card">2</div><div class="p2-card">3</div><div class="p2-card">4</div><div class="p2-card">5</div><div class="p2-card">6</div><div class="p2-card">7</div><div class="p2-card">8</div><div class="p2-card">9</div><div class="p2-card">10</div></div>
+      </div>
+    </div>
+    <a class="m2-cta-line trend-cta" data-trend="noble" href="ritual-mobile.html">閱讀完整趨勢<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></a>
+  </div>
+
+  <div class="m2-section" id="sec-f">
+    <div class="m2-letter-row"><div class="m2-letter">F</div><div class="m2-name-block"><p class="m2-zh-name">Fortify · 防禦修護</p><p class="m2-en-sub">Medical-home Loop</p></div></div>
+    <p class="m2-body">診間療程與居家保養之間的循環正在形成——做完雷射回家用修復精華，術後護理成為日常保養的延伸。消費者開始自己設計「醫療＋保養」的混合療程。</p>
+    <div class="p2-placeholder"><strong>Phase 2 · 9 月補上</strong>入選產品 ×10</div>
+    <div class="p2-strong">
+      <div class="p2-banner"><p class="p2-banner-tag">PHASE 2 · 9 月正式發表</p><p class="p2-banner-content">10 個入選產品 · 達人 quote · 愛心應援</p></div>
+      <div class="p2-strong-content"><p>入選產品 ×10</p>
+        <div class="p2-grid"><div class="p2-card">1</div><div class="p2-card">2</div><div class="p2-card">3</div><div class="p2-card">4</div><div class="p2-card">5</div><div class="p2-card">6</div><div class="p2-card">7</div><div class="p2-card">8</div><div class="p2-card">9</div><div class="p2-card">10</div></div>
+      </div>
+    </div>
+    <a class="m2-cta-line trend-cta" data-trend="fortify" href="ritual-mobile.html">閱讀完整趨勢<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></a>
+  </div>
+
+  <div class="m2-section" id="sec-u2">
+    <div class="m2-letter-row"><div class="m2-letter">U</div><div class="m2-name-block"><p class="m2-zh-name">Unique · 頂級珍稀</p><p class="m2-en-sub">One Bite Luxury</p></div></div>
+    <p class="m2-body">珍稀成分為頂級美妝的新語言——諾貝爾獎研究成果的成分、瀕危植物萃取、限量海洋原料，正在重新定義「值得」的標準。</p>
+    <div class="p2-placeholder"><strong>Phase 2 · 9 月補上</strong>入選產品 ×10</div>
+    <div class="p2-strong">
+      <div class="p2-banner"><p class="p2-banner-tag">PHASE 2 · 9 月正式發表</p><p class="p2-banner-content">10 個入選產品 · 達人 quote · 愛心應援</p></div>
+      <div class="p2-strong-content"><p>入選產品 ×10</p>
+        <div class="p2-grid"><div class="p2-card">1</div><div class="p2-card">2</div><div class="p2-card">3</div><div class="p2-card">4</div><div class="p2-card">5</div><div class="p2-card">6</div><div class="p2-card">7</div><div class="p2-card">8</div><div class="p2-card">9</div><div class="p2-card">10</div></div>
+      </div>
+    </div>
+    <a class="m2-cta-line trend-cta" data-trend="unique" href="ritual-mobile.html">閱讀完整趨勢<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></a>
+  </div>
+
+  <div class="m2-section" id="sec-r">
+    <div class="m2-letter-row"><div class="m2-letter">R</div><div class="m2-name-block"><p class="m2-zh-name">Ritual · 療癒儀式</p><p class="m2-en-sub">Unwind to Win</p></div></div>
+    <p class="m2-body">睡眠、放鬆、夜間修復成為新的美容核心議題。消費者把保養儀式視為一天中難得的「給自己的時間」——香氛、質地、使用步驟的儀式感成為選品標準。</p>
+    <div class="p2-placeholder"><strong>Phase 2 · 9 月補上</strong>入選產品 ×10</div>
+    <div class="p2-strong">
+      <div class="p2-banner"><p class="p2-banner-tag">PHASE 2 · 9 月正式發表</p><p class="p2-banner-content">10 個入選產品 · 達人 quote · 愛心應援</p></div>
+      <div class="p2-strong-content"><p>入選產品 ×10</p>
+        <div class="p2-grid"><div class="p2-card">1</div><div class="p2-card">2</div><div class="p2-card">3</div><div class="p2-card">4</div><div class="p2-card">5</div><div class="p2-card">6</div><div class="p2-card">7</div><div class="p2-card">8</div><div class="p2-card">9</div><div class="p2-card">10</div></div>
+      </div>
+    </div>
+    <a class="m2-cta-line trend-cta" data-trend="ritual" href="ritual-mobile.html">閱讀完整趨勢<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></a>
+  </div>
+
+  <div class="m2-section" id="sec-l">
+    <div class="m2-letter-row"><div class="m2-letter">L</div><div class="m2-name-block"><p class="m2-zh-name">Longevity · 醫美共生</p><p class="m2-en-sub">Next-gen Beauty Concierge</p></div></div>
+    <p class="m2-body">醫美療程已經成為日常——不再是特殊場合前才做的事，而是和護膚保養一樣被納入固定行程。打肉毒、做光療、微針，成為新的美妝消費決策。</p>
+    <div class="p2-placeholder"><strong>Phase 2 · 9 月補上</strong>入選產品 ×10</div>
+    <div class="p2-strong">
+      <div class="p2-banner"><p class="p2-banner-tag">PHASE 2 · 9 月正式發表</p><p class="p2-banner-content">10 個入選產品 · 達人 quote · 愛心應援</p></div>
+      <div class="p2-strong-content"><p>入選產品 ×10</p>
+        <div class="p2-grid"><div class="p2-card">1</div><div class="p2-card">2</div><div class="p2-card">3</div><div class="p2-card">4</div><div class="p2-card">5</div><div class="p2-card">6</div><div class="p2-card">7</div><div class="p2-card">8</div><div class="p2-card">9</div><div class="p2-card">10</div></div>
+      </div>
+    </div>
+    <a class="m2-cta-line trend-cta" data-trend="longevity" href="ritual-mobile.html">閱讀完整趨勢<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></a>
+  </div>
+
+  <div style="padding: 32px 20px; text-align: center; background: #F1EFE8;">
+    <p style="font-size: 11px; color: var(--color-text-secondary); margin: 0 0 12px; letter-spacing: 2px;">還沒測？</p>
+    <p style="font-size: 15px; color: var(--color-text-primary); margin: 0 0 20px; font-weight: 500; line-height: 1.6;">六片花瓣拼在一起，<br>你會是什麼花？</p>
+    <button class="m2-cta-full" id="m2-quiz-bottom"><i class="ti ti-flower" style="font-size: 16px;" aria-hidden="true"></i>測測你是什麼花</button>
+  </div>
+
+  <div style="padding: 20px; text-align: center;">
+    <p style="font-size: 11px; color: var(--color-text-secondary); margin: 0 0 8px;">TVBS 女人我最大 · 2026</p>
+    <div style="display: flex; justify-content: center; gap: 14px; font-size: 16px; color: var(--color-text-secondary);">
+      <i class="ti ti-brand-instagram" aria-hidden="true"></i><i class="ti ti-brand-facebook" aria-hidden="true"></i><i class="ti ti-brand-youtube" aria-hidden="true"></i>
+    </div>
+  </div>
+</div>
+
+<div class="m2-toast" id="m2-toast"></div>
+
+<script>
+(function() {
+  const root = document.getElementById('m2-root');
+  const p1Btn = document.getElementById('h2-p1');
+  const p2Btn = document.getElementById('h2-p2');
+  const status = document.getElementById('h2-status');
+  p1Btn.addEventListener('click', () => {
+    root.classList.remove('phase2-mode'); root.classList.add('phase1-mode');
+    p1Btn.classList.add('active'); p2Btn.classList.remove('active');
+    status.textContent = '目前預覽：Phase 1（6 月底上線版本）';
+  });
+  p2Btn.addEventListener('click', () => {
+    root.classList.remove('phase1-mode'); root.classList.add('phase2-mode');
+    p2Btn.classList.add('active'); p1Btn.classList.remove('active');
+    status.textContent = '目前預覽：Phase 2（9 月正式發表）';
+  });
+
+  const toast = document.getElementById('m2-toast');
+  let toastTimer = null;
+  function showToast(msg) {
+    toast.textContent = msg;
+    toast.classList.add('show');
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove('show'), 2400);
+  }
+
+  document.querySelectorAll('.m2-nav a').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const targetId = link.getAttribute('data-target');
+      const target = document.getElementById(targetId);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  const unfurlTrigger = document.getElementById('m2-unfurl-trigger');
+  const unfurlExpanded = document.getElementById('m2-unfurl-expanded');
+  unfurlTrigger.addEventListener('click', () => { unfurlExpanded.classList.toggle('open'); });
+
+  document.getElementById('m2-quiz-top').addEventListener('click', () => showToast('心測頁尚未製作 · 動線會跳到 /quiz'));
+  document.getElementById('m2-quiz-bottom').addEventListener('click', () => showToast('心測頁尚未製作 · 動線會跳到 /quiz'));
+})();
+</script>
+</body>
+</html>
