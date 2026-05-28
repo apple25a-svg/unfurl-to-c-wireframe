@@ -16,7 +16,6 @@
   --color-text-primary: #2C2C2A;
   --color-text-secondary: #5F5E5A;
   --color-text-tertiary: #888780;
-  --color-border-primary: rgba(44, 44, 42, 0.4);
   --color-border-secondary: rgba(44, 44, 42, 0.3);
   --color-border-tertiary: rgba(44, 44, 42, 0.15);
   --border-radius-md: 8px;
@@ -54,23 +53,48 @@ body { padding: 24px 0 60px; }
 .d3-en-sub { font-family: var(--font-serif); font-style: italic; font-size: 18px; color: var(--color-text-secondary); margin: 0; letter-spacing: 1px; }
 .d3-hero-kv { aspect-ratio: 4/5; background: var(--color-background-primary); border: 1px dashed var(--color-border-secondary); border-radius: var(--border-radius-md); display: flex; align-items: center; justify-content: center; }
 .d3-tagline { text-align: center; font-size: 22px; font-weight: 500; line-height: 1.7; margin: 48px 0 0; color: var(--color-text-primary); font-style: italic; font-family: var(--font-serif); }
-.d3-article-wrap { padding: 80px 36px; }
+.d3-article-wrap { padding: 80px 36px 48px; }
 .d3-article { max-width: 600px; margin: 0 auto; }
 .d3-article p { font-size: 17px; line-height: 2; color: var(--color-text-primary); margin: 0 0 28px; }
 .d3-article p.lead { font-size: 21px; font-weight: 500; line-height: 1.85; }
 .d3-quote-inline { margin: 44px 0; padding: 28px 32px; border-left: 2px solid var(--color-text-primary); background: #F1EFE8; border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0; }
 .d3-quote-inline p { font-family: var(--font-serif); font-style: italic; font-size: 19px; line-height: 1.65; margin: 0 0 12px; color: var(--color-text-primary); }
 .d3-quote-author { font-size: 14px; color: var(--color-text-secondary); margin: 0; font-style: normal; }
+
+/* 內文圖片欄位（圖文混排，編輯放圖用） */
+.d3-article-img { aspect-ratio: 16/9; background: var(--color-background-secondary); border: 0.5px dashed var(--color-border-secondary); border-radius: var(--border-radius-md); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; margin: 36px 0; color: var(--color-text-tertiary); }
+.d3-article-img i { font-size: 28px; }
+.d3-article-img span { font-size: 12px; }
+
+/* Phase 2／3：本趨勢多篇文章（最多 6 篇） */
+.d3-more { max-width: 1008px; margin: 0 auto; padding: 8px 36px 24px; }
+.d3-more-head { font-size: 11px; color: var(--color-text-secondary); letter-spacing: 2px; margin: 0 0 16px; text-transform: uppercase; }
+.d3-more-list { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.d3-more-card { display: flex; gap: 14px; align-items: center; background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 12px; cursor: pointer; }
+.d3-more-card:hover { border-color: var(--color-border-secondary); }
+.d3-more-thumb { width: 88px; height: 60px; flex: 0 0 88px; background: #D3D1C7; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: var(--color-background-primary); }
+.d3-more-thumb i { font-size: 22px; }
+.d3-more-info { flex: 1; min-width: 0; }
+.d3-more-title { font-size: 14px; font-weight: 500; margin: 0 0 3px; line-height: 1.4; color: var(--color-text-primary); }
+.d3-more-meta { font-size: 11px; color: var(--color-text-tertiary); margin: 0; }
+
 .d3-section-divider { padding: 24px 36px; background: var(--color-background-secondary); display: flex; justify-content: space-between; align-items: flex-end; max-width: 1080px; margin: 0 auto; }
 .d3-section-label { font-size: 11px; color: var(--color-text-secondary); margin: 0 0 4px; letter-spacing: 2px; text-transform: uppercase; }
 .d3-section-title { font-size: 20px; font-weight: 500; margin: 0; color: var(--color-text-primary); }
 .d3-section-meta { font-size: 12px; color: var(--color-text-tertiary); margin: 0; }
+
+/* 影音：站內 inline 播放 */
 .d3-video-section { padding: 32px 36px; max-width: 1080px; margin: 0 auto; }
 .d3-video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .d3-video-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); overflow: hidden; cursor: pointer; }
 .d3-video-card:hover { border-color: var(--color-border-secondary); }
 .d3-video-thumb { aspect-ratio: 16/9; background: #D3D1C7; display: flex; align-items: center; justify-content: center; }
 .d3-video-thumb i { font-size: 36px; color: var(--color-background-primary); }
+.d3-video-player { display: none; aspect-ratio: 16/9; background: #1A1A18; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: #FFFFFF; }
+.d3-video-player i { font-size: 36px; }
+.d3-video-player span { font-size: 12px; opacity: 0.7; }
+.d3-video-card.playing .d3-video-thumb { display: none; }
+.d3-video-card.playing .d3-video-player { display: flex; }
 .d3-video-meta { padding: 12px 14px; }
 .d3-video-title { font-size: 13px; font-weight: 500; margin: 0 0 4px; color: var(--color-text-primary); line-height: 1.45; }
 .d3-video-source { font-size: 11px; color: var(--color-text-tertiary); margin: 0; }
@@ -86,6 +110,8 @@ body { padding: 24px 0 60px; }
 .d3-p2-banner-content { font-size: 16px; font-weight: 500; margin: 0; }
 .d3-p2-content { padding: 40px 60px; max-width: 1080px; margin: 0 auto; }
 .d3-products-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px; }
+
+/* 產品：10 個全露、2 欄 */
 .d3-product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .d3-product-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); overflow: hidden; }
 .d3-product-img { aspect-ratio: 1/1; background: #D3D1C7; display: flex; align-items: center; justify-content: center; }
@@ -99,14 +125,18 @@ body { padding: 24px 0 60px; }
 .d3-product-foot { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
 .d3-learn-more { display: inline-flex; align-items: center; gap: 4px; padding: 6px 12px; border: 0.5px solid var(--color-text-primary); border-radius: var(--border-radius-md); font-size: 12px; color: var(--color-text-primary); background: transparent; cursor: pointer; font-family: inherit; }
 .d3-learn-more:hover { background: var(--color-text-primary); color: var(--color-background-primary); }
-.d3-heart { display: inline-flex; align-items: center; gap: 5px; padding: 6px 12px; border: 0.5px solid var(--color-border-secondary); border-radius: 20px; background: transparent; cursor: pointer; font-family: inherit; font-size: 12px; color: var(--color-text-secondary); }
-.d3-heart i { font-size: 14px; }
-.d3-heart.liked { color: #D85A30; border-color: #D85A30; background: #FAECE7; }
-.d3-expand-row { margin-top: 20px; padding: 16px; background: var(--color-background-primary); border: 0.5px dashed var(--color-border-secondary); border-radius: var(--border-radius-md); text-align: center; font-size: 13px; color: var(--color-text-secondary); cursor: pointer; }
-.d3-expand-row:hover { background: var(--color-background-secondary); }
+
+/* 應援：三顆反應鈕（讚／大心／星星眼）加總一個數字 */
+.d3-reactions { display: flex; align-items: center; gap: 3px; }
+.d3-react { border: none; background: transparent; cursor: pointer; font-size: 16px; line-height: 1; padding: 3px; border-radius: 6px; opacity: 0.5; filter: grayscale(0.4); transition: opacity 0.12s, filter 0.12s; }
+.d3-react:hover { background: var(--color-background-secondary); }
+.d3-react.active { opacity: 1; filter: none; }
+.d3-react-count { font-size: 12px; color: var(--color-text-secondary); margin-left: 4px; }
 
 .phase1-mode .d3-p2-strong { display: none; }
-.phase2-mode .d3-p2-placeholder { display: none; }
+.phase2-mode .d3-p2-strong { display: none; }
+.phase3-mode .d3-p2-placeholder { display: none; }
+.phase1-mode .d3-more { display: none; }
 
 .d3-next-trend { padding: 80px 36px; background: #444441; color: var(--color-background-primary); text-align: center; cursor: pointer; }
 .d3-next-trend:hover { background: #5F5E5A; }
@@ -132,10 +162,11 @@ body { padding: 24px 0 60px; }
 
 <div class="h5-toggle-wrap">
   <div class="h5-toggle">
-    <button id="h5-p1" class="active">Phase 1 模式（6 月底）</button>
-    <button id="h5-p2">Phase 2 模式（9 月）</button>
+    <button id="h5-p1" class="active">Phase 1（6 月底）</button>
+    <button id="h5-p2">Phase 2（7 月底）</button>
+    <button id="h5-p3">Phase 3（9 月底）</button>
   </div>
-  <p class="h5-status" id="h5-status">目前預覽：Phase 1（6 月底上線版本）</p>
+  <p class="h5-status" id="h5-status">目前預覽：Phase 1（6 月底 MVP · 趨勢長文＋影音，無產品）</p>
 </div>
 
 <div class="d3-frame phase1-mode" id="d3-root">
@@ -171,47 +202,45 @@ body { padding: 24px 0 60px; }
     <div class="d3-article">
       <p class="lead">睡眠、放鬆、夜間修復，成為 2026 年最重要的美容核心議題。</p>
       <p>過去的保養是一場與時間的競賽——抗皺、抗老、抗下垂。但 2026 年的消費者開始換一個問句：保養可不可以不是抵抗，而是回應？</p>
+      <div class="d3-article-img">
+        <i class="ti ti-photo" aria-hidden="true"></i>
+        <span>內文圖片欄位 — 編輯放圖</span>
+      </div>
       <p>當焦慮成為日常的背景音，能讓自己慢下來的那一刻，反而成為最珍貴的。睡前的卸妝、塗抹精華、輕拍乳液——這些原本被視為「日常瑣事」的動作，正在被重新定義為儀式。</p>
       <p>儀式不在於效率，在於專注。香氛、質地、使用步驟、開瓶聲音、按壓觸感——這些「過程的細節」，比過去任何時候都重要。</p>
       <div class="d3-quote-inline">
         <p>現代女性需要的不是抗老產品，是抗焦慮的儀式。當這一刻屬於自己，肌膚自然也願意回應。</p>
         <p class="d3-quote-author">— 美容專家 柳燕</p>
       </div>
+      <div class="d3-article-img">
+        <i class="ti ti-photo" aria-hidden="true"></i>
+        <span>內文圖片欄位 — 編輯放圖</span>
+      </div>
       <p>消費者願意為一支價格稍貴、但能讓自己感覺被善待的精華買單。睡眠保養品、舒緩精華、香氛護膚、SPA 級居家療程——成為 2026 年最被消費者重視的品類。</p>
       <p>當「給自己時間」變成奢侈，能幫助她創造這段時間的產品，就成為時代的答案。</p>
     </div>
   </div>
 
-  <div class="d3-section-divider">
-    <div><p class="d3-section-label">看見趨勢</p><p class="d3-section-title">影音內容</p></div>
-    <p class="d3-section-meta">3 支橫式短片 · 8 月起陸續上線</p>
-  </div>
-
-  <div class="d3-video-section">
-    <div class="d3-video-grid">
-      <div class="d3-video-card video-cta">
-        <div class="d3-video-thumb"><i class="ti ti-player-play" aria-hidden="true"></i></div>
-        <div class="d3-video-meta"><p class="d3-video-title">睡前 5 分鐘儀式：把焦慮關在浴室外</p><p class="d3-video-source">女人我最大 · 8 月節目</p></div>
-      </div>
-      <div class="d3-video-card video-cta">
-        <div class="d3-video-thumb"><i class="ti ti-player-play" aria-hidden="true"></i></div>
-        <div class="d3-video-meta"><p class="d3-video-title">為什麼香氛是 2026 年的保養關鍵字</p><p class="d3-video-source">達人專訪 · 柳燕老師</p></div>
-      </div>
-      <div class="d3-video-card video-cta">
-        <div class="d3-video-thumb"><i class="ti ti-player-play" aria-hidden="true"></i></div>
-        <div class="d3-video-meta"><p class="d3-video-title">SPA 級居家療程：在家複製五星飯店</p><p class="d3-video-source">品牌合作 · 內容共製</p></div>
-      </div>
+  <div class="d3-more">
+    <p class="d3-more-head">本趨勢其他文章 · 連同上方主文，Phase 2 起最多 6 篇</p>
+    <div class="d3-more-list">
+      <div class="d3-more-card more-cta"><div class="d3-more-thumb"><i class="ti ti-article" aria-hidden="true"></i></div><div class="d3-more-info"><p class="d3-more-title">為什麼「睡前儀式感」比成分更重要？</p><p class="d3-more-meta">女人我最大 · 編輯觀點</p></div></div>
+      <div class="d3-more-card more-cta"><div class="d3-more-thumb"><i class="ti ti-article" aria-hidden="true"></i></div><div class="d3-more-info"><p class="d3-more-title">柳燕的夜間保養順序：六個步驟的意義</p><p class="d3-more-meta">達人專訪 · 柳燕</p></div></div>
+      <div class="d3-more-card more-cta"><div class="d3-more-thumb"><i class="ti ti-article" aria-hidden="true"></i></div><div class="d3-more-info"><p class="d3-more-title">香氛如何影響睡眠？神經科學的解釋</p><p class="d3-more-meta">深度報導</p></div></div>
+      <div class="d3-more-card more-cta"><div class="d3-more-thumb"><i class="ti ti-article" aria-hidden="true"></i></div><div class="d3-more-info"><p class="d3-more-title">從浴室到床邊：一條回家的儀式動線</p><p class="d3-more-meta">生活提案</p></div></div>
+      <div class="d3-more-card more-cta"><div class="d3-more-thumb"><i class="ti ti-article" aria-hidden="true"></i></div><div class="d3-more-info"><p class="d3-more-title">SPA 級居家療程清單：在家複製五星飯店</p><p class="d3-more-meta">品牌共製</p></div></div>
     </div>
   </div>
 
+  <!-- 產品區（在影音之上 · 商務需求）。Phase 1／2 顯示 placeholder，Phase 3 顯示 10 個產品 -->
   <div class="d3-p2-placeholder">
-    <span class="d3-p2-placeholder-tag">PHASE 2 · 9 月補上</span>
+    <span class="d3-p2-placeholder-tag">PHASE 3 · 9 月補上</span>
     <p class="d3-p2-placeholder-title">10 個被趨勢選中的產品</p>
-    <p class="d3-p2-placeholder-sub">含達人 quote · 進一步了解連結 · 愛心應援機制</p>
+    <p class="d3-p2-placeholder-sub">含達人 quote · 進一步了解連結 · 應援反應</p>
   </div>
 
   <div class="d3-p2-strong">
-    <div class="d3-p2-banner"><p class="d3-p2-banner-tag">PHASE 2 · 9 月正式發表</p><p class="d3-p2-banner-content">10 個入選產品 · 達人 quote · 愛心應援</p></div>
+    <div class="d3-p2-banner"><p class="d3-p2-banner-tag">PHASE 3 · 9 月正式發表</p><p class="d3-p2-banner-content">10 個入選產品 · 達人 quote · 應援</p></div>
     <div class="d3-p2-content">
       <div class="d3-products-head">
         <div><p style="font-size: 11px; color: var(--color-text-secondary); margin: 0 0 4px; letter-spacing: 2px;">入選產品</p><p style="font-size: 24px; font-weight: 500; margin: 0; color: var(--color-text-primary);">10 個被趨勢選中的產品</p></div>
@@ -225,8 +254,11 @@ body { padding: 24px 0 60px; }
             <p class="d3-product-brand">BRAND A</p><p class="d3-product-name">夜間修護精華 30ml</p>
             <div class="d3-product-quote"><p class="d3-product-quote-text">「質地像被擁抱的觸感——這正是儀式感的起點。」</p><p class="d3-product-quote-author">— 達人 quote · 待填</p></div>
             <div class="d3-product-foot">
+              <div class="d3-reactions" data-base="1247">
+                <button class="d3-react" title="讚" aria-label="讚">👍</button><button class="d3-react" title="大心" aria-label="大心">❤️</button><button class="d3-react" title="星星眼" aria-label="星星眼">🤩</button>
+                <span class="d3-react-count">1,247</span>
+              </div>
               <button class="d3-learn-more learn-cta">進一步了解<i class="ti ti-arrow-right" style="font-size: 12px;" aria-hidden="true"></i></button>
-              <button class="d3-heart"><i class="ti ti-heart" aria-hidden="true"></i><span class="heart-count">1,247</span></button>
             </div>
           </div>
         </div>
@@ -236,8 +268,11 @@ body { padding: 24px 0 60px; }
             <p class="d3-product-brand">BRAND B</p><p class="d3-product-name">舒緩香氛護膚油 50ml</p>
             <div class="d3-product-quote"><p class="d3-product-quote-text">「香氣本身就是療程——這是 2026 年最被重新理解的成分。」</p><p class="d3-product-quote-author">— 達人 quote · 待填</p></div>
             <div class="d3-product-foot">
+              <div class="d3-reactions" data-base="982">
+                <button class="d3-react" title="讚" aria-label="讚">👍</button><button class="d3-react" title="大心" aria-label="大心">❤️</button><button class="d3-react" title="星星眼" aria-label="星星眼">🤩</button>
+                <span class="d3-react-count">982</span>
+              </div>
               <button class="d3-learn-more learn-cta">進一步了解<i class="ti ti-arrow-right" style="font-size: 12px;" aria-hidden="true"></i></button>
-              <button class="d3-heart"><i class="ti ti-heart" aria-hidden="true"></i><span class="heart-count">982</span></button>
             </div>
           </div>
         </div>
@@ -247,8 +282,11 @@ body { padding: 24px 0 60px; }
             <p class="d3-product-brand">BRAND C</p><p class="d3-product-name">睡眠面膜 80g</p>
             <div class="d3-product-quote"><p class="d3-product-quote-text">「敷上後，今天的我終於結束了。」</p><p class="d3-product-quote-author">— 達人 quote · 待填</p></div>
             <div class="d3-product-foot">
+              <div class="d3-reactions" data-base="756">
+                <button class="d3-react" title="讚" aria-label="讚">👍</button><button class="d3-react" title="大心" aria-label="大心">❤️</button><button class="d3-react" title="星星眼" aria-label="星星眼">🤩</button>
+                <span class="d3-react-count">756</span>
+              </div>
               <button class="d3-learn-more learn-cta">進一步了解<i class="ti ti-arrow-right" style="font-size: 12px;" aria-hidden="true"></i></button>
-              <button class="d3-heart"><i class="ti ti-heart" aria-hidden="true"></i><span class="heart-count">756</span></button>
             </div>
           </div>
         </div>
@@ -258,8 +296,11 @@ body { padding: 24px 0 60px; }
             <p class="d3-product-brand">BRAND D</p><p class="d3-product-name">寧靜系列洗顏霜 120g</p>
             <div class="d3-product-quote"><p class="d3-product-quote-text">「洗去的不只是污垢，是這一天累積的雜訊。」</p><p class="d3-product-quote-author">— 達人 quote · 待填</p></div>
             <div class="d3-product-foot">
+              <div class="d3-reactions" data-base="644">
+                <button class="d3-react" title="讚" aria-label="讚">👍</button><button class="d3-react" title="大心" aria-label="大心">❤️</button><button class="d3-react" title="星星眼" aria-label="星星眼">🤩</button>
+                <span class="d3-react-count">644</span>
+              </div>
               <button class="d3-learn-more learn-cta">進一步了解<i class="ti ti-arrow-right" style="font-size: 12px;" aria-hidden="true"></i></button>
-              <button class="d3-heart"><i class="ti ti-heart" aria-hidden="true"></i><span class="heart-count">644</span></button>
             </div>
           </div>
         </div>
@@ -269,8 +310,11 @@ body { padding: 24px 0 60px; }
             <p class="d3-product-brand">BRAND E</p><p class="d3-product-name">薰衣草助眠枕霧 100ml</p>
             <div class="d3-product-quote"><p class="d3-product-quote-text">「噴一下，房間就變成了一個被允許放鬆的地方。」</p><p class="d3-product-quote-author">— 達人 quote · 待填</p></div>
             <div class="d3-product-foot">
+              <div class="d3-reactions" data-base="523">
+                <button class="d3-react" title="讚" aria-label="讚">👍</button><button class="d3-react" title="大心" aria-label="大心">❤️</button><button class="d3-react" title="星星眼" aria-label="星星眼">🤩</button>
+                <span class="d3-react-count">523</span>
+              </div>
               <button class="d3-learn-more learn-cta">進一步了解<i class="ti ti-arrow-right" style="font-size: 12px;" aria-hidden="true"></i></button>
-              <button class="d3-heart"><i class="ti ti-heart" aria-hidden="true"></i><span class="heart-count">523</span></button>
             </div>
           </div>
         </div>
@@ -280,15 +324,96 @@ body { padding: 24px 0 60px; }
             <p class="d3-product-brand">BRAND F</p><p class="d3-product-name">深層放鬆按摩精油 50ml</p>
             <div class="d3-product-quote"><p class="d3-product-quote-text">「順著掌心推開的不是油，是緊繃。」</p><p class="d3-product-quote-author">— 達人 quote · 待填</p></div>
             <div class="d3-product-foot">
+              <div class="d3-reactions" data-base="412">
+                <button class="d3-react" title="讚" aria-label="讚">👍</button><button class="d3-react" title="大心" aria-label="大心">❤️</button><button class="d3-react" title="星星眼" aria-label="星星眼">🤩</button>
+                <span class="d3-react-count">412</span>
+              </div>
               <button class="d3-learn-more learn-cta">進一步了解<i class="ti ti-arrow-right" style="font-size: 12px;" aria-hidden="true"></i></button>
-              <button class="d3-heart"><i class="ti ti-heart" aria-hidden="true"></i><span class="heart-count">412</span></button>
+            </div>
+          </div>
+        </div>
+        <div class="d3-product-card">
+          <div class="d3-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div>
+          <div class="d3-product-body">
+            <p class="d3-product-brand">BRAND G</p><p class="d3-product-name">香氛擴香精油組</p>
+            <div class="d3-product-quote"><p class="d3-product-quote-text">「（達人推薦語 · 待填）」</p><p class="d3-product-quote-author">— 達人 quote · 待填</p></div>
+            <div class="d3-product-foot">
+              <div class="d3-reactions" data-base="889">
+                <button class="d3-react" title="讚" aria-label="讚">👍</button><button class="d3-react" title="大心" aria-label="大心">❤️</button><button class="d3-react" title="星星眼" aria-label="星星眼">🤩</button>
+                <span class="d3-react-count">889</span>
+              </div>
+              <button class="d3-learn-more learn-cta">進一步了解<i class="ti ti-arrow-right" style="font-size: 12px;" aria-hidden="true"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="d3-product-card">
+          <div class="d3-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div>
+          <div class="d3-product-body">
+            <p class="d3-product-brand">BRAND H</p><p class="d3-product-name">舒壓頭皮按摩油 100ml</p>
+            <div class="d3-product-quote"><p class="d3-product-quote-text">「（達人推薦語 · 待填）」</p><p class="d3-product-quote-author">— 達人 quote · 待填</p></div>
+            <div class="d3-product-foot">
+              <div class="d3-reactions" data-base="701">
+                <button class="d3-react" title="讚" aria-label="讚">👍</button><button class="d3-react" title="大心" aria-label="大心">❤️</button><button class="d3-react" title="星星眼" aria-label="星星眼">🤩</button>
+                <span class="d3-react-count">701</span>
+              </div>
+              <button class="d3-learn-more learn-cta">進一步了解<i class="ti ti-arrow-right" style="font-size: 12px;" aria-hidden="true"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="d3-product-card">
+          <div class="d3-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div>
+          <div class="d3-product-body">
+            <p class="d3-product-brand">BRAND I</p><p class="d3-product-name">深層修護睡眠凍膜 80g</p>
+            <div class="d3-product-quote"><p class="d3-product-quote-text">「（達人推薦語 · 待填）」</p><p class="d3-product-quote-author">— 達人 quote · 待填</p></div>
+            <div class="d3-product-foot">
+              <div class="d3-reactions" data-base="350">
+                <button class="d3-react" title="讚" aria-label="讚">👍</button><button class="d3-react" title="大心" aria-label="大心">❤️</button><button class="d3-react" title="星星眼" aria-label="星星眼">🤩</button>
+                <span class="d3-react-count">350</span>
+              </div>
+              <button class="d3-learn-more learn-cta">進一步了解<i class="ti ti-arrow-right" style="font-size: 12px;" aria-hidden="true"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="d3-product-card">
+          <div class="d3-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div>
+          <div class="d3-product-body">
+            <p class="d3-product-brand">BRAND J</p><p class="d3-product-name">助眠精油滾珠 10ml</p>
+            <div class="d3-product-quote"><p class="d3-product-quote-text">「（達人推薦語 · 待填）」</p><p class="d3-product-quote-author">— 達人 quote · 待填</p></div>
+            <div class="d3-product-foot">
+              <div class="d3-reactions" data-base="274">
+                <button class="d3-react" title="讚" aria-label="讚">👍</button><button class="d3-react" title="大心" aria-label="大心">❤️</button><button class="d3-react" title="星星眼" aria-label="星星眼">🤩</button>
+                <span class="d3-react-count">274</span>
+              </div>
+              <button class="d3-learn-more learn-cta">進一步了解<i class="ti ti-arrow-right" style="font-size: 12px;" aria-hidden="true"></i></button>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
 
-      <div class="d3-expand-row" id="d3-expand">
-        <i class="ti ti-chevron-down" style="font-size: 14px; vertical-align: -2px; margin-right: 4px;" aria-hidden="true"></i>展開剩下 4 個趨勢選中的產品（07 - 10）
+  <!-- 影音：移到產品之下 · 站內 inline 播放 -->
+  <div class="d3-section-divider">
+    <div><p class="d3-section-label">看見趨勢</p><p class="d3-section-title">影音內容</p></div>
+    <p class="d3-section-meta">3 支橫式短片 · 8 月起陸續上線</p>
+  </div>
+
+  <div class="d3-video-section">
+    <div class="d3-video-grid">
+      <div class="d3-video-card">
+        <div class="d3-video-thumb"><i class="ti ti-player-play" aria-hidden="true"></i></div>
+        <div class="d3-video-player"><i class="ti ti-player-play-filled" aria-hidden="true"></i><span>站內播放（正式接 YouTube／自架影片）</span></div>
+        <div class="d3-video-meta"><p class="d3-video-title">睡前 5 分鐘儀式：把焦慮關在浴室外</p><p class="d3-video-source">女人我最大 · 8 月節目</p></div>
+      </div>
+      <div class="d3-video-card">
+        <div class="d3-video-thumb"><i class="ti ti-player-play" aria-hidden="true"></i></div>
+        <div class="d3-video-player"><i class="ti ti-player-play-filled" aria-hidden="true"></i><span>站內播放（正式接 YouTube／自架影片）</span></div>
+        <div class="d3-video-meta"><p class="d3-video-title">為什麼香氛是 2026 年的保養關鍵字</p><p class="d3-video-source">達人專訪 · 柳燕老師</p></div>
+      </div>
+      <div class="d3-video-card">
+        <div class="d3-video-thumb"><i class="ti ti-player-play" aria-hidden="true"></i></div>
+        <div class="d3-video-player"><i class="ti ti-player-play-filled" aria-hidden="true"></i><span>站內播放（正式接 YouTube／自架影片）</span></div>
+        <div class="d3-video-meta"><p class="d3-video-title">SPA 級居家療程：在家複製五星飯店</p><p class="d3-video-source">品牌合作 · 內容共製</p></div>
       </div>
     </div>
   </div>
@@ -314,18 +439,20 @@ body { padding: 24px 0 60px; }
 <script>
 (function() {
   const root = document.getElementById('d3-root');
-  const p1Btn = document.getElementById('h5-p1');
-  const p2Btn = document.getElementById('h5-p2');
   const status = document.getElementById('h5-status');
-  p1Btn.addEventListener('click', () => {
-    root.classList.remove('phase2-mode'); root.classList.add('phase1-mode');
-    p1Btn.classList.add('active'); p2Btn.classList.remove('active');
-    status.textContent = '目前預覽：Phase 1（6 月底上線版本）';
-  });
-  p2Btn.addEventListener('click', () => {
-    root.classList.remove('phase1-mode'); root.classList.add('phase2-mode');
-    p2Btn.classList.add('active'); p1Btn.classList.remove('active');
-    status.textContent = '目前預覽：Phase 2（9 月正式發表）';
+  const phaseBtns = [
+    { btn: document.getElementById('h5-p1'), mode: 'phase1-mode', label: '目前預覽：Phase 1（6 月底 MVP · 趨勢長文＋影音，無產品）' },
+    { btn: document.getElementById('h5-p2'), mode: 'phase2-mode', label: '目前預覽：Phase 2（7 月底 · 趨勢可擴為 1–6 篇，仍無產品）' },
+    { btn: document.getElementById('h5-p3'), mode: 'phase3-mode', label: '目前預覽：Phase 3（9 月底 · 10 產品全露＋應援）' }
+  ];
+  phaseBtns.forEach(item => {
+    item.btn.addEventListener('click', () => {
+      root.classList.remove('phase1-mode', 'phase2-mode', 'phase3-mode');
+      root.classList.add(item.mode);
+      phaseBtns.forEach(b => b.btn.classList.remove('active'));
+      item.btn.classList.add('active');
+      status.textContent = item.label;
+    });
   });
 
   const toast = document.getElementById('d3-toast');
@@ -345,22 +472,37 @@ body { padding: 24px 0 60px; }
       showToast('該趨勢頁 wireframe 製作中（動線會跳到 /' + trend + '）');
     });
   });
-  document.querySelectorAll('.video-cta').forEach(card => {
-    card.addEventListener('click', () => showToast('影音 Phase 2 上線後正式播放'));
+
+  // 影音：點一下站內 inline 播放（不跳頁、不開 popup）
+  document.querySelectorAll('.d3-video-card').forEach(card => {
+    card.addEventListener('click', () => card.classList.toggle('playing'));
   });
-  document.querySelectorAll('.d3-heart').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const countEl = btn.querySelector('.heart-count');
-      let count = parseInt(countEl.textContent.replace(',', ''));
-      const liked = btn.classList.toggle('liked');
-      count = liked ? count + 1 : count - 1;
-      countEl.textContent = count.toLocaleString();
+
+  // Phase 2／3：其他文章（wireframe 佔位）
+  document.querySelectorAll('.more-cta').forEach(card => {
+    card.addEventListener('click', () => showToast('文章頁 wireframe 製作中（Phase 2 起 · 每趨勢最多 6 篇）'));
+  });
+
+  // 應援：三顆反應鈕各自 toggle，計數加總成一個數字
+  document.querySelectorAll('.d3-reactions').forEach(group => {
+    const countEl = group.querySelector('.d3-react-count');
+    const base = parseInt(group.dataset.base, 10);
+    function update() {
+      const active = group.querySelectorAll('.d3-react.active').length;
+      countEl.textContent = (base + active).toLocaleString();
+    }
+    group.querySelectorAll('.d3-react').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        btn.classList.toggle('active');
+        update();
+      });
     });
   });
+
   document.querySelectorAll('.learn-cta').forEach(btn => {
     btn.addEventListener('click', () => showToast('進入品牌指定 URL（官網 / Momo / 蝦皮，由品牌方在 B2B 報名時自填）'));
   });
-  document.getElementById('d3-expand').addEventListener('click', () => showToast('展開剩下 4 個產品（Phase 2 完整版）'));
   document.getElementById('d3-next').addEventListener('click', () => showToast('Longevity 趨勢頁 wireframe 製作中'));
 })();
 </script>

@@ -36,7 +36,7 @@ html, body { margin: 0; padding: 0; font-family: var(--font-sans); color: var(--
 .idx-card-desc { font-size: 13px; line-height: 1.6; color: var(--text-secondary); margin: 0; }
 .idx-card-arrow { display: inline-block; margin-top: 14px; font-size: 13px; color: var(--text-primary); }
 .idx-card-arrow i { vertical-align: -2px; }
-.idx-meta { padding-top: 32px; border-top: 0.5px solid var(--border-tertiary); display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.idx-meta { padding-top: 32px; border-top: 0.5px solid var(--border-tertiary); display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .idx-meta-block h3 { font-size: 13px; font-weight: 500; margin: 0 0 10px; letter-spacing: 1.5px; color: var(--text-primary); }
 .idx-meta-block ul { list-style: none; padding: 0; margin: 0; font-size: 13px; line-height: 1.85; color: var(--text-secondary); }
 .idx-meta-block li::before { content: "·"; margin-right: 8px; color: var(--text-tertiary); }
@@ -54,7 +54,7 @@ html, body { margin: 0; padding: 0; font-family: var(--font-sans); color: var(--
   <h1 class="idx-title">女人我最大賞</h1>
   <p class="idx-unfurl">UNFURL</p>
   <p class="idx-intro">
-    這是 Consumer 主站的 wireframe prototype，包含首頁與一個代表性趨勢頁（R Ritual）。每張頁面都可切換 <strong>Phase 1（6 月底 MVP）</strong> 與 <strong>Phase 2（9 月正式發表）</strong> 兩種模式，看出階段差異。Mobile 與 Desktop 兩種 viewport 各做一張。
+    這是 Consumer 主站的 wireframe prototype，包含首頁與一個代表性趨勢頁（R Ritual）。每張頁面都可切換 <strong>Phase 1（6 月底 MVP）</strong>、<strong>Phase 2（7 月底）</strong>、<strong>Phase 3（9 月底）</strong> 三種模式，看出階段差異。討論期 Mobile 與 Desktop 各做一張。
   </p>
 
   <div class="idx-grid">
@@ -73,13 +73,13 @@ html, body { margin: 0; padding: 0; font-family: var(--font-sans); color: var(--
     <a class="idx-card" href="ritual-mobile.html">
       <p class="idx-card-label">趨勢頁 · MOBILE</p>
       <p class="idx-card-name">/ritual · 療癒儀式</p>
-      <p class="idx-card-desc">字母 hero + 趨勢長文 + 達人 quote + 影音 ×3 + 產品 + 應援 + 下一個趨勢。375px viewport。</p>
+      <p class="idx-card-desc">字母 hero + 趨勢長文（含圖位）+ 產品（10 · 2 欄）+ 影音 inline + 下一個趨勢。375px viewport。</p>
       <span class="idx-card-arrow">開啟 <i class="ti ti-arrow-right"></i></span>
     </a>
     <a class="idx-card" href="ritual-desktop.html">
       <p class="idx-card-label">趨勢頁 · DESKTOP</p>
       <p class="idx-card-name">/ritual · 療癒儀式</p>
-      <p class="idx-card-desc">字母 hero（左右 split）+ 趨勢長文 + 影音 3 並排 + 產品 grid 2 cols + 下一個趨勢 banner。</p>
+      <p class="idx-card-desc">字母 hero（左右 split）+ 趨勢長文（含圖位）+ 產品 grid 2 cols + 影音 3 並排 inline + 下一個趨勢。</p>
       <span class="idx-card-arrow">開啟 <i class="ti ti-arrow-right"></i></span>
     </a>
   </div>
@@ -88,19 +88,27 @@ html, body { margin: 0; padding: 0; font-family: var(--font-sans); color: var(--
     <div class="idx-meta-block">
       <h3>Phase 1 · 6 月底 MVP</h3>
       <ul>
-        <li>Hero + 主視覺 + 心測入口</li>
-        <li>六大趨勢頁（趨勢長文 + 影音 placeholder）</li>
+        <li>六趨勢各一篇長文（含內文圖位）</li>
+        <li>影音 placeholder · 站內 inline 播放</li>
         <li>下一個趨勢 CTA · 站內循環</li>
-        <li>主站 PV 埋點 · 不放 B2B 報名連結</li>
+        <li>無產品 · 無應援 · 不放 B2B 連結</li>
       </ul>
     </div>
     <div class="idx-meta-block">
-      <h3>Phase 2 · 9 月正式發表</h3>
+      <h3>Phase 2 · 7 月底</h3>
       <ul>
-        <li>每趨勢 10 個入選產品（grid）</li>
+        <li>每趨勢擴為 1–6 篇文章</li>
+        <li>仍無產品 · 無應援</li>
+        <li>影音持續補上</li>
+      </ul>
+    </div>
+    <div class="idx-meta-block">
+      <h3>Phase 3 · 9 月底</h3>
+      <ul>
+        <li>每趨勢收斂 6 篇 + 10 產品全露（2 欄）</li>
         <li>每產品 1 段達人 quote</li>
-        <li>愛心應援 · 累計制 · 登入未定</li>
-        <li>影音正式上線（節目／達人／品牌共製）</li>
+        <li>應援反應（讚＋大心＋星星眼 · 加總）</li>
+        <li>影音正式上線</li>
       </ul>
     </div>
   </div>

@@ -71,7 +71,8 @@ body { padding: 24px 0 60px; }
 .p2-placeholder strong { display: block; font-size: 13px; color: var(--color-text-primary); margin-bottom: 4px; font-weight: 500; letter-spacing: 0.3px; }
 
 .phase1-mode .p2-strong { display: none; }
-.phase2-mode .p2-placeholder { display: none; }
+.phase2-mode .p2-strong { display: none; }
+.phase3-mode .p2-placeholder { display: none; }
 
 .m2-unfurl-link { font-family: var(--font-serif); font-style: italic; font-size: 38px; letter-spacing: 5px; color: var(--color-text-primary); cursor: pointer; padding: 4px 8px; border-bottom: 0.5px dashed var(--color-text-secondary); display: inline-block; }
 .m2-unfurl-link:hover { background: rgba(0,0,0,0.03); }
@@ -95,10 +96,11 @@ body { padding: 24px 0 60px; }
 
 <div class="h2-toggle-wrap">
   <div class="h2-toggle">
-    <button id="h2-p1" class="active">Phase 1 模式（6 月底）</button>
-    <button id="h2-p2">Phase 2 模式（9 月）</button>
+    <button id="h2-p1" class="active">Phase 1（6 月底）</button>
+    <button id="h2-p2">Phase 2（7 月底）</button>
+    <button id="h2-p3">Phase 3（9 月底）</button>
   </div>
-  <p class="h2-status" id="h2-status">目前預覽：Phase 1（6 月底上線版本）</p>
+  <p class="h2-status" id="h2-status">目前預覽：Phase 1（6 月底 MVP）</p>
 </div>
 
 <div class="m2-frame phase1-mode" id="m2-root">
@@ -132,6 +134,11 @@ body { padding: 24px 0 60px; }
     <p style="font-size: 11px; color: var(--color-text-tertiary); margin: 8px 0 0;">6 題 · 約一分鐘</p>
   </div>
 
+  <div style="padding: 28px 24px; text-align: center; background: var(--color-background-primary); border-bottom: 0.5px solid var(--color-border-tertiary);">
+    <p style="font-size: 11px; color: var(--color-text-tertiary); margin: 0 0 10px; letter-spacing: 2px;">關於女人我最大賞</p>
+    <p style="font-size: 14px; line-height: 1.9; color: var(--color-text-primary); margin: 0 auto; max-width: 320px;">女人我最大賞，是我們每年對美妝市場的一次完整閱讀。不排名，而是用六大趨勢，說清楚今年的美，正在往哪裡走。</p>
+  </div>
+
   <div style="padding: 24px 20px; text-align: center; background: var(--color-background-secondary);">
     <p style="font-size: 11px; color: var(--color-text-secondary); margin: 0 0 8px; letter-spacing: 2px;">2026 年度美妝六大趨勢</p>
     <p style="font-size: 14px; color: var(--color-text-primary); margin: 0; line-height: 1.7;">2026 年的美妝消費者，正以自己的節奏，重新展開對美的定義。</p>
@@ -140,9 +147,9 @@ body { padding: 24px 0 60px; }
   <div class="m2-section" id="sec-u1">
     <div class="m2-letter-row"><div class="m2-letter">U</div><div class="m2-name-block"><p class="m2-zh-name">Unfiltered · 健康保養</p><p class="m2-en-sub">Feel-good Wellness</p></div></div>
     <p class="m2-body">美麗從「由外而內」轉向「由內而外」。膠原蛋白飲、玻尿酸飲品、美肌機能食品，成為新世代保養桌上的日常——口服保養與美妝的邊界正在消失。</p>
-    <div class="p2-placeholder"><strong>Phase 2 · 9 月補上</strong>入選產品 ×10</div>
+    <div class="p2-placeholder"><strong>Phase 3 · 9 月補上</strong>入選產品 ×10</div>
     <div class="p2-strong">
-      <div class="p2-banner"><p class="p2-banner-tag">PHASE 2 · 9 月正式發表</p><p class="p2-banner-content">10 個入選產品 · 達人 quote · 愛心應援</p></div>
+      <div class="p2-banner"><p class="p2-banner-tag">PHASE 3 · 9 月正式發表</p><p class="p2-banner-content">10 個入選產品 · 達人 quote · 愛心應援</p></div>
       <div class="p2-strong-content"><p>入選產品 ×10</p>
         <div class="p2-grid"><div class="p2-card">1</div><div class="p2-card">2</div><div class="p2-card">3</div><div class="p2-card">4</div><div class="p2-card">5</div><div class="p2-card">6</div><div class="p2-card">7</div><div class="p2-card">8</div><div class="p2-card">9</div><div class="p2-card">10</div></div>
       </div>
@@ -153,9 +160,9 @@ body { padding: 24px 0 60px; }
   <div class="m2-section" id="sec-n">
     <div class="m2-letter-row"><div class="m2-letter">N</div><div class="m2-name-block"><p class="m2-zh-name">Noble · 永續信念</p><p class="m2-en-sub">Lifestyle Shift · Climate</p></div></div>
     <p class="m2-body">永續不再只是公關話術，而是消費者的主動選擇。她們選擇可補充包裝、關注成分來源的碳足跡——「正確消費」成為一種身份認同。</p>
-    <div class="p2-placeholder"><strong>Phase 2 · 9 月補上</strong>入選產品 ×10</div>
+    <div class="p2-placeholder"><strong>Phase 3 · 9 月補上</strong>入選產品 ×10</div>
     <div class="p2-strong">
-      <div class="p2-banner"><p class="p2-banner-tag">PHASE 2 · 9 月正式發表</p><p class="p2-banner-content">10 個入選產品 · 達人 quote · 愛心應援</p></div>
+      <div class="p2-banner"><p class="p2-banner-tag">PHASE 3 · 9 月正式發表</p><p class="p2-banner-content">10 個入選產品 · 達人 quote · 愛心應援</p></div>
       <div class="p2-strong-content"><p>入選產品 ×10</p>
         <div class="p2-grid"><div class="p2-card">1</div><div class="p2-card">2</div><div class="p2-card">3</div><div class="p2-card">4</div><div class="p2-card">5</div><div class="p2-card">6</div><div class="p2-card">7</div><div class="p2-card">8</div><div class="p2-card">9</div><div class="p2-card">10</div></div>
       </div>
@@ -166,9 +173,9 @@ body { padding: 24px 0 60px; }
   <div class="m2-section" id="sec-f">
     <div class="m2-letter-row"><div class="m2-letter">F</div><div class="m2-name-block"><p class="m2-zh-name">Fortify · 防禦修護</p><p class="m2-en-sub">Medical-home Loop</p></div></div>
     <p class="m2-body">診間療程與居家保養之間的循環正在形成——做完雷射回家用修復精華，術後護理成為日常保養的延伸。消費者開始自己設計「醫療＋保養」的混合療程。</p>
-    <div class="p2-placeholder"><strong>Phase 2 · 9 月補上</strong>入選產品 ×10</div>
+    <div class="p2-placeholder"><strong>Phase 3 · 9 月補上</strong>入選產品 ×10</div>
     <div class="p2-strong">
-      <div class="p2-banner"><p class="p2-banner-tag">PHASE 2 · 9 月正式發表</p><p class="p2-banner-content">10 個入選產品 · 達人 quote · 愛心應援</p></div>
+      <div class="p2-banner"><p class="p2-banner-tag">PHASE 3 · 9 月正式發表</p><p class="p2-banner-content">10 個入選產品 · 達人 quote · 愛心應援</p></div>
       <div class="p2-strong-content"><p>入選產品 ×10</p>
         <div class="p2-grid"><div class="p2-card">1</div><div class="p2-card">2</div><div class="p2-card">3</div><div class="p2-card">4</div><div class="p2-card">5</div><div class="p2-card">6</div><div class="p2-card">7</div><div class="p2-card">8</div><div class="p2-card">9</div><div class="p2-card">10</div></div>
       </div>
@@ -179,9 +186,9 @@ body { padding: 24px 0 60px; }
   <div class="m2-section" id="sec-u2">
     <div class="m2-letter-row"><div class="m2-letter">U</div><div class="m2-name-block"><p class="m2-zh-name">Unique · 頂級珍稀</p><p class="m2-en-sub">One Bite Luxury</p></div></div>
     <p class="m2-body">珍稀成分為頂級美妝的新語言——諾貝爾獎研究成果的成分、瀕危植物萃取、限量海洋原料，正在重新定義「值得」的標準。</p>
-    <div class="p2-placeholder"><strong>Phase 2 · 9 月補上</strong>入選產品 ×10</div>
+    <div class="p2-placeholder"><strong>Phase 3 · 9 月補上</strong>入選產品 ×10</div>
     <div class="p2-strong">
-      <div class="p2-banner"><p class="p2-banner-tag">PHASE 2 · 9 月正式發表</p><p class="p2-banner-content">10 個入選產品 · 達人 quote · 愛心應援</p></div>
+      <div class="p2-banner"><p class="p2-banner-tag">PHASE 3 · 9 月正式發表</p><p class="p2-banner-content">10 個入選產品 · 達人 quote · 愛心應援</p></div>
       <div class="p2-strong-content"><p>入選產品 ×10</p>
         <div class="p2-grid"><div class="p2-card">1</div><div class="p2-card">2</div><div class="p2-card">3</div><div class="p2-card">4</div><div class="p2-card">5</div><div class="p2-card">6</div><div class="p2-card">7</div><div class="p2-card">8</div><div class="p2-card">9</div><div class="p2-card">10</div></div>
       </div>
@@ -192,9 +199,9 @@ body { padding: 24px 0 60px; }
   <div class="m2-section" id="sec-r">
     <div class="m2-letter-row"><div class="m2-letter">R</div><div class="m2-name-block"><p class="m2-zh-name">Ritual · 療癒儀式</p><p class="m2-en-sub">Unwind to Win</p></div></div>
     <p class="m2-body">睡眠、放鬆、夜間修復成為新的美容核心議題。消費者把保養儀式視為一天中難得的「給自己的時間」——香氛、質地、使用步驟的儀式感成為選品標準。</p>
-    <div class="p2-placeholder"><strong>Phase 2 · 9 月補上</strong>入選產品 ×10</div>
+    <div class="p2-placeholder"><strong>Phase 3 · 9 月補上</strong>入選產品 ×10</div>
     <div class="p2-strong">
-      <div class="p2-banner"><p class="p2-banner-tag">PHASE 2 · 9 月正式發表</p><p class="p2-banner-content">10 個入選產品 · 達人 quote · 愛心應援</p></div>
+      <div class="p2-banner"><p class="p2-banner-tag">PHASE 3 · 9 月正式發表</p><p class="p2-banner-content">10 個入選產品 · 達人 quote · 愛心應援</p></div>
       <div class="p2-strong-content"><p>入選產品 ×10</p>
         <div class="p2-grid"><div class="p2-card">1</div><div class="p2-card">2</div><div class="p2-card">3</div><div class="p2-card">4</div><div class="p2-card">5</div><div class="p2-card">6</div><div class="p2-card">7</div><div class="p2-card">8</div><div class="p2-card">9</div><div class="p2-card">10</div></div>
       </div>
@@ -205,9 +212,9 @@ body { padding: 24px 0 60px; }
   <div class="m2-section" id="sec-l">
     <div class="m2-letter-row"><div class="m2-letter">L</div><div class="m2-name-block"><p class="m2-zh-name">Longevity · 醫美共生</p><p class="m2-en-sub">Next-gen Beauty Concierge</p></div></div>
     <p class="m2-body">醫美療程已經成為日常——不再是特殊場合前才做的事，而是和護膚保養一樣被納入固定行程。打肉毒、做光療、微針，成為新的美妝消費決策。</p>
-    <div class="p2-placeholder"><strong>Phase 2 · 9 月補上</strong>入選產品 ×10</div>
+    <div class="p2-placeholder"><strong>Phase 3 · 9 月補上</strong>入選產品 ×10</div>
     <div class="p2-strong">
-      <div class="p2-banner"><p class="p2-banner-tag">PHASE 2 · 9 月正式發表</p><p class="p2-banner-content">10 個入選產品 · 達人 quote · 愛心應援</p></div>
+      <div class="p2-banner"><p class="p2-banner-tag">PHASE 3 · 9 月正式發表</p><p class="p2-banner-content">10 個入選產品 · 達人 quote · 愛心應援</p></div>
       <div class="p2-strong-content"><p>入選產品 ×10</p>
         <div class="p2-grid"><div class="p2-card">1</div><div class="p2-card">2</div><div class="p2-card">3</div><div class="p2-card">4</div><div class="p2-card">5</div><div class="p2-card">6</div><div class="p2-card">7</div><div class="p2-card">8</div><div class="p2-card">9</div><div class="p2-card">10</div></div>
       </div>
@@ -234,18 +241,20 @@ body { padding: 24px 0 60px; }
 <script>
 (function() {
   const root = document.getElementById('m2-root');
-  const p1Btn = document.getElementById('h2-p1');
-  const p2Btn = document.getElementById('h2-p2');
   const status = document.getElementById('h2-status');
-  p1Btn.addEventListener('click', () => {
-    root.classList.remove('phase2-mode'); root.classList.add('phase1-mode');
-    p1Btn.classList.add('active'); p2Btn.classList.remove('active');
-    status.textContent = '目前預覽：Phase 1（6 月底上線版本）';
-  });
-  p2Btn.addEventListener('click', () => {
-    root.classList.remove('phase1-mode'); root.classList.add('phase2-mode');
-    p2Btn.classList.add('active'); p1Btn.classList.remove('active');
-    status.textContent = '目前預覽：Phase 2（9 月正式發表）';
+  const phaseBtns = [
+    { btn: document.getElementById('h2-p1'), mode: 'phase1-mode', label: '目前預覽：Phase 1（6 月底 MVP）' },
+    { btn: document.getElementById('h2-p2'), mode: 'phase2-mode', label: '目前預覽：Phase 2（7 月底 · 趨勢可擴為 1–6 篇）' },
+    { btn: document.getElementById('h2-p3'), mode: 'phase3-mode', label: '目前預覽：Phase 3（9 月底 · 產品全露＋應援）' }
+  ];
+  phaseBtns.forEach(item => {
+    item.btn.addEventListener('click', () => {
+      root.classList.remove('phase1-mode', 'phase2-mode', 'phase3-mode');
+      root.classList.add(item.mode);
+      phaseBtns.forEach(b => b.btn.classList.remove('active'));
+      item.btn.classList.add('active');
+      status.textContent = item.label;
+    });
   });
 
   const toast = document.getElementById('m2-toast');
