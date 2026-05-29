@@ -70,14 +70,32 @@ body { padding: 24px 0 60px; }
 .p2-placeholder { margin: 16px 0; padding: 14px 16px; background: var(--color-background-secondary); border: 0.5px dashed var(--color-border-secondary); border-radius: var(--border-radius-md); text-align: center; font-size: 12px; color: var(--color-text-secondary); }
 .p2-placeholder strong { display: block; font-size: 13px; color: var(--color-text-primary); margin-bottom: 4px; font-weight: 500; letter-spacing: 0.3px; }
 
-.phase1-mode .p2-strong { display: none; }
-.phase2-mode .p2-strong { display: none; }
-.phase3-mode .p2-placeholder { display: none; }
+/* Phase 2：每個趨勢下 3 個入選商品（僅產品名＋說明） */
+.m2-trend-products { display: flex; flex-direction: column; gap: 8px; margin: 16px 0 4px; }
+.m2-trend-product { background: var(--color-background-secondary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 12px; }
+.m2-trend-product-img { aspect-ratio: 16/9; background: #D3D1C7; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: var(--color-background-primary); margin-bottom: 10px; }
+.m2-trend-product-img i { font-size: 22px; }
+.m2-trend-product-name { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin: 0 0 4px; }
+.m2-trend-product-desc { font-size: 12px; line-height: 1.6; color: var(--color-text-secondary); margin: 0; }
+.phase1-mode .m2-trend-products { display: none; }
 
 .m2-unfurl-link { font-family: var(--font-serif); font-style: italic; font-size: 38px; letter-spacing: 5px; color: var(--color-text-primary); cursor: pointer; padding: 4px 8px; border-bottom: 0.5px dashed var(--color-text-secondary); display: inline-block; }
 .m2-unfurl-link:hover { background: rgba(0,0,0,0.03); }
 .m2-unfurl-expanded { display: none; margin: 18px 0; padding: 16px; background: var(--color-background-secondary); border-radius: var(--border-radius-md); text-align: left; }
 .m2-unfurl-expanded.open { display: block; }
+
+.m2-jury { padding: 40px 0 44px; border-top: 0.5px solid var(--color-border-tertiary); }
+.m2-jury-inner { margin: 0 0 24px; padding: 0 20px; text-align: center; }
+.m2-jury-label { font-size: 11px; color: var(--color-text-tertiary); letter-spacing: 2px; margin: 0 0 10px; }
+.m2-jury-title { font-size: 19px; font-weight: 500; margin: 0 0 14px; color: var(--color-text-primary); }
+.m2-jury-desc { font-size: 13px; line-height: 1.9; color: var(--color-text-primary); margin: 0; text-align: left; }
+.m2-jury-scroll { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding: 4px 20px 16px; }
+.m2-jury-scroll::-webkit-scrollbar { display: none; }
+.m2-jury-card { flex: 0 0 auto; width: 104px; text-align: center; scroll-snap-align: start; }
+.m2-jury-avatar { width: 84px; height: 84px; border-radius: 50%; background: var(--color-background-secondary); border: 0.5px solid var(--color-border-secondary); display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; }
+.m2-jury-cat { display: inline-block; font-size: 10px; color: var(--color-text-secondary); letter-spacing: 1px; margin: 0 0 5px; }
+.m2-jury-name { font-size: 13px; font-weight: 500; margin: 0 0 3px; color: var(--color-text-primary); }
+.m2-jury-role { font-size: 11px; line-height: 1.45; color: var(--color-text-secondary); margin: 0; }
 
 .m2-toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); display: none; padding: 12px 20px; background: var(--color-text-primary); color: var(--color-background-primary); border-radius: var(--border-radius-md); font-size: 13px; max-width: 360px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 200; }
 .m2-toast.show { display: block; }
@@ -97,8 +115,7 @@ body { padding: 24px 0 60px; }
 <div class="h2-toggle-wrap">
   <div class="h2-toggle">
     <button id="h2-p1" class="active">Phase 1（6 月底）</button>
-    <button id="h2-p2">Phase 2（7 月底）</button>
-    <button id="h2-p3">Phase 3（9 月底）</button>
+    <button id="h2-p3">Phase 2（9 月底）</button>
   </div>
   <p class="h2-status" id="h2-status">目前預覽：Phase 1（6 月底 MVP）</p>
 </div>
@@ -128,31 +145,23 @@ body { padding: 24px 0 60px; }
       <p style="font-size: 13px; line-height: 1.85; color: var(--color-text-primary); margin: 0;">UNFURL 是 2026 年女人我最大賞的年度關鍵字。它不是一個品牌，是一個動詞——形容今年的美妝消費者，正以自己的節奏，重新展開對美的定義。</p>
       <p style="font-size: 13px; line-height: 1.85; color: var(--color-text-primary); margin: 12px 0 0;">六個字母，是六種正在發生的趨勢。每一片花瓣，都是她在這個時代尋找的答案。</p>
     </div>
+    <div style="margin-top: 28px; padding-top: 22px; border-top: 0.5px solid var(--color-border-tertiary); text-align: center;">
+      <p style="font-size: 14px; line-height: 1.9; color: var(--color-text-primary); margin: 0 auto; max-width: 320px;">女人我最大賞，是我們每年對美妝市場的一次完整閱讀。不排名，而是用趨勢說清楚今年的美，正在往哪裡走。</p>
+      <p style="font-size: 14px; line-height: 1.9; color: var(--color-text-primary); margin: 14px auto 0; max-width: 320px;">今年，我們以 UNFURL 作為年度關鍵字。編輯部、達人與醫師不再只是評審與試用者，而是市場的觀察者與詮釋者；產品也從被評選的對象，變成趨勢的佐證——每一件入選，都標記著市場正在發生的轉變。</p>
+    </div>
     <button class="m2-cta-full" id="m2-quiz-top" style="margin-top: 24px;">
       <i class="ti ti-flower" style="font-size: 16px;" aria-hidden="true"></i>測測你是什麼花
     </button>
     <p style="font-size: 11px; color: var(--color-text-tertiary); margin: 8px 0 0;">6 題 · 約一分鐘</p>
   </div>
 
-  <div style="padding: 28px 24px; text-align: center; background: var(--color-background-primary); border-bottom: 0.5px solid var(--color-border-tertiary);">
-    <p style="font-size: 11px; color: var(--color-text-tertiary); margin: 0 0 10px; letter-spacing: 2px;">關於女人我最大賞</p>
-    <p style="font-size: 14px; line-height: 1.9; color: var(--color-text-primary); margin: 0 auto; max-width: 320px;">女人我最大賞，是我們每年對美妝市場的一次完整閱讀。不排名，而是用六大趨勢，說清楚今年的美，正在往哪裡走。</p>
-  </div>
-
-  <div style="padding: 24px 20px; text-align: center; background: var(--color-background-secondary);">
-    <p style="font-size: 11px; color: var(--color-text-secondary); margin: 0 0 8px; letter-spacing: 2px;">2026 年度美妝六大趨勢</p>
-    <p style="font-size: 14px; color: var(--color-text-primary); margin: 0; line-height: 1.7;">2026 年的美妝消費者，正以自己的節奏，重新展開對美的定義。</p>
-  </div>
-
   <div class="m2-section" id="sec-u1">
     <div class="m2-letter-row"><div class="m2-letter">U</div><div class="m2-name-block"><p class="m2-zh-name">Unfiltered · 健康保養</p><p class="m2-en-sub">Feel-good Wellness</p></div></div>
     <p class="m2-body">美麗從「由外而內」轉向「由內而外」。膠原蛋白飲、玻尿酸飲品、美肌機能食品，成為新世代保養桌上的日常——口服保養與美妝的邊界正在消失。</p>
-    <div class="p2-placeholder"><strong>Phase 3 · 9 月補上</strong>入選產品 ×10</div>
-    <div class="p2-strong">
-      <div class="p2-banner"><p class="p2-banner-tag">PHASE 3 · 9 月正式發表</p><p class="p2-banner-content">10 個入選產品 · 達人 quote · 愛心應援</p></div>
-      <div class="p2-strong-content"><p>入選產品 ×10</p>
-        <div class="p2-grid"><div class="p2-card">1</div><div class="p2-card">2</div><div class="p2-card">3</div><div class="p2-card">4</div><div class="p2-card">5</div><div class="p2-card">6</div><div class="p2-card">7</div><div class="p2-card">8</div><div class="p2-card">9</div><div class="p2-card">10</div></div>
-      </div>
+    <div class="m2-trend-products">
+      <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">膠原蛋白胜肽飲</p><p class="m2-trend-product-desc">小分子高吸收配方，由內補回流失的彈潤。</p></div>
+      <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">玻尿酸保濕飲</p><p class="m2-trend-product-desc">從體內鎖水，肌膚整天不緊繃。</p></div>
+      <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">美肌機能軟糖</p><p class="m2-trend-product-desc">把保養變成每天一顆的小習慣。</p></div>
     </div>
     <a class="m2-cta-line trend-cta" data-trend="unfiltered" href="ritual-mobile.html">閱讀完整趨勢<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></a>
   </div>
@@ -160,12 +169,10 @@ body { padding: 24px 0 60px; }
   <div class="m2-section" id="sec-n">
     <div class="m2-letter-row"><div class="m2-letter">N</div><div class="m2-name-block"><p class="m2-zh-name">Noble · 永續信念</p><p class="m2-en-sub">Lifestyle Shift · Climate</p></div></div>
     <p class="m2-body">永續不再只是公關話術，而是消費者的主動選擇。她們選擇可補充包裝、關注成分來源的碳足跡——「正確消費」成為一種身份認同。</p>
-    <div class="p2-placeholder"><strong>Phase 3 · 9 月補上</strong>入選產品 ×10</div>
-    <div class="p2-strong">
-      <div class="p2-banner"><p class="p2-banner-tag">PHASE 3 · 9 月正式發表</p><p class="p2-banner-content">10 個入選產品 · 達人 quote · 愛心應援</p></div>
-      <div class="p2-strong-content"><p>入選產品 ×10</p>
-        <div class="p2-grid"><div class="p2-card">1</div><div class="p2-card">2</div><div class="p2-card">3</div><div class="p2-card">4</div><div class="p2-card">5</div><div class="p2-card">6</div><div class="p2-card">7</div><div class="p2-card">8</div><div class="p2-card">9</div><div class="p2-card">10</div></div>
-      </div>
+    <div class="m2-trend-products">
+      <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">可補充包裝精華</p><p class="m2-trend-product-desc">一次購入瓶身，之後只換內芯。</p></div>
+      <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">零碳足跡保濕霜</p><p class="m2-trend-product-desc">從成分到運輸，全程碳中和。</p></div>
+      <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">海洋友善防曬</p><p class="m2-trend-product-desc">不含珊瑚礁殺手成分的物理配方。</p></div>
     </div>
     <a class="m2-cta-line trend-cta" data-trend="noble" href="ritual-mobile.html">閱讀完整趨勢<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></a>
   </div>
@@ -173,12 +180,10 @@ body { padding: 24px 0 60px; }
   <div class="m2-section" id="sec-f">
     <div class="m2-letter-row"><div class="m2-letter">F</div><div class="m2-name-block"><p class="m2-zh-name">Fortify · 防禦修護</p><p class="m2-en-sub">Medical-home Loop</p></div></div>
     <p class="m2-body">診間療程與居家保養之間的循環正在形成——做完雷射回家用修復精華，術後護理成為日常保養的延伸。消費者開始自己設計「醫療＋保養」的混合療程。</p>
-    <div class="p2-placeholder"><strong>Phase 3 · 9 月補上</strong>入選產品 ×10</div>
-    <div class="p2-strong">
-      <div class="p2-banner"><p class="p2-banner-tag">PHASE 3 · 9 月正式發表</p><p class="p2-banner-content">10 個入選產品 · 達人 quote · 愛心應援</p></div>
-      <div class="p2-strong-content"><p>入選產品 ×10</p>
-        <div class="p2-grid"><div class="p2-card">1</div><div class="p2-card">2</div><div class="p2-card">3</div><div class="p2-card">4</div><div class="p2-card">5</div><div class="p2-card">6</div><div class="p2-card">7</div><div class="p2-card">8</div><div class="p2-card">9</div><div class="p2-card">10</div></div>
-      </div>
+    <div class="m2-trend-products">
+      <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">術後修復精華</p><p class="m2-trend-product-desc">雷射、微針後的居家加強護理。</p></div>
+      <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">屏障強化乳液</p><p class="m2-trend-product-desc">重建受損肌膚的保護層。</p></div>
+      <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">醫美級舒緩面膜</p><p class="m2-trend-product-desc">鎮定泛紅、加速修復。</p></div>
     </div>
     <a class="m2-cta-line trend-cta" data-trend="fortify" href="ritual-mobile.html">閱讀完整趨勢<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></a>
   </div>
@@ -186,12 +191,10 @@ body { padding: 24px 0 60px; }
   <div class="m2-section" id="sec-u2">
     <div class="m2-letter-row"><div class="m2-letter">U</div><div class="m2-name-block"><p class="m2-zh-name">Unique · 頂級珍稀</p><p class="m2-en-sub">One Bite Luxury</p></div></div>
     <p class="m2-body">珍稀成分為頂級美妝的新語言——諾貝爾獎研究成果的成分、瀕危植物萃取、限量海洋原料，正在重新定義「值得」的標準。</p>
-    <div class="p2-placeholder"><strong>Phase 3 · 9 月補上</strong>入選產品 ×10</div>
-    <div class="p2-strong">
-      <div class="p2-banner"><p class="p2-banner-tag">PHASE 3 · 9 月正式發表</p><p class="p2-banner-content">10 個入選產品 · 達人 quote · 愛心應援</p></div>
-      <div class="p2-strong-content"><p>入選產品 ×10</p>
-        <div class="p2-grid"><div class="p2-card">1</div><div class="p2-card">2</div><div class="p2-card">3</div><div class="p2-card">4</div><div class="p2-card">5</div><div class="p2-card">6</div><div class="p2-card">7</div><div class="p2-card">8</div><div class="p2-card">9</div><div class="p2-card">10</div></div>
-      </div>
+    <div class="m2-trend-products">
+      <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">諾貝爾成分抗老精華</p><p class="m2-trend-product-desc">得獎研究轉化的賦活配方。</p></div>
+      <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">瀕危植萃緊緻霜</p><p class="m2-trend-product-desc">限量稀有植物的奢華護理。</p></div>
+      <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">深海原料修護油</p><p class="m2-trend-product-desc">微量限量的頂級海洋萃取。</p></div>
     </div>
     <a class="m2-cta-line trend-cta" data-trend="unique" href="ritual-mobile.html">閱讀完整趨勢<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></a>
   </div>
@@ -199,12 +202,10 @@ body { padding: 24px 0 60px; }
   <div class="m2-section" id="sec-r">
     <div class="m2-letter-row"><div class="m2-letter">R</div><div class="m2-name-block"><p class="m2-zh-name">Ritual · 療癒儀式</p><p class="m2-en-sub">Unwind to Win</p></div></div>
     <p class="m2-body">睡眠、放鬆、夜間修復成為新的美容核心議題。消費者把保養儀式視為一天中難得的「給自己的時間」——香氛、質地、使用步驟的儀式感成為選品標準。</p>
-    <div class="p2-placeholder"><strong>Phase 3 · 9 月補上</strong>入選產品 ×10</div>
-    <div class="p2-strong">
-      <div class="p2-banner"><p class="p2-banner-tag">PHASE 3 · 9 月正式發表</p><p class="p2-banner-content">10 個入選產品 · 達人 quote · 愛心應援</p></div>
-      <div class="p2-strong-content"><p>入選產品 ×10</p>
-        <div class="p2-grid"><div class="p2-card">1</div><div class="p2-card">2</div><div class="p2-card">3</div><div class="p2-card">4</div><div class="p2-card">5</div><div class="p2-card">6</div><div class="p2-card">7</div><div class="p2-card">8</div><div class="p2-card">9</div><div class="p2-card">10</div></div>
-      </div>
+    <div class="m2-trend-products">
+      <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">夜間修護精華</p><p class="m2-trend-product-desc">睡眠時段啟動的密集修護。</p></div>
+      <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">枕邊助眠噴霧</p><p class="m2-trend-product-desc">香氣成為入睡的開關。</p></div>
+      <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">居家 SPA 身體乳</p><p class="m2-trend-product-desc">替自己蓋上被善待的觸感。</p></div>
     </div>
     <a class="m2-cta-line trend-cta" data-trend="ritual" href="ritual-mobile.html">閱讀完整趨勢<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></a>
   </div>
@@ -212,12 +213,10 @@ body { padding: 24px 0 60px; }
   <div class="m2-section" id="sec-l">
     <div class="m2-letter-row"><div class="m2-letter">L</div><div class="m2-name-block"><p class="m2-zh-name">Longevity · 醫美共生</p><p class="m2-en-sub">Next-gen Beauty Concierge</p></div></div>
     <p class="m2-body">醫美療程已經成為日常——不再是特殊場合前才做的事，而是和護膚保養一樣被納入固定行程。打肉毒、做光療、微針，成為新的美妝消費決策。</p>
-    <div class="p2-placeholder"><strong>Phase 3 · 9 月補上</strong>入選產品 ×10</div>
-    <div class="p2-strong">
-      <div class="p2-banner"><p class="p2-banner-tag">PHASE 3 · 9 月正式發表</p><p class="p2-banner-content">10 個入選產品 · 達人 quote · 愛心應援</p></div>
-      <div class="p2-strong-content"><p>入選產品 ×10</p>
-        <div class="p2-grid"><div class="p2-card">1</div><div class="p2-card">2</div><div class="p2-card">3</div><div class="p2-card">4</div><div class="p2-card">5</div><div class="p2-card">6</div><div class="p2-card">7</div><div class="p2-card">8</div><div class="p2-card">9</div><div class="p2-card">10</div></div>
-      </div>
+    <div class="m2-trend-products">
+      <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">居家光療面膜</p><p class="m2-trend-product-desc">把診間的光療帶回家。</p></div>
+      <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">微針導入修護液</p><p class="m2-trend-product-desc">強化療程後的吸收與修復。</p></div>
+      <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">長效抗老安瓶</p><p class="m2-trend-product-desc">對接醫美療程的日常保養。</p></div>
     </div>
     <a class="m2-cta-line trend-cta" data-trend="longevity" href="ritual-mobile.html">閱讀完整趨勢<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></a>
   </div>
@@ -226,6 +225,22 @@ body { padding: 24px 0 60px; }
     <p style="font-size: 11px; color: var(--color-text-secondary); margin: 0 0 12px; letter-spacing: 2px;">還沒測？</p>
     <p style="font-size: 15px; color: var(--color-text-primary); margin: 0 0 20px; font-weight: 500; line-height: 1.6;">六片花瓣拼在一起，<br>你會是什麼花？</p>
     <button class="m2-cta-full" id="m2-quiz-bottom"><i class="ti ti-flower" style="font-size: 16px;" aria-hidden="true"></i>測測你是什麼花</button>
+  </div>
+
+  <div class="m2-jury">
+    <div class="m2-jury-inner">
+      <p class="m2-jury-label">關於評選</p>
+      <h2 class="m2-jury-title">評選方式說明</h2>
+      <p class="m2-jury-desc">不同於過往的票選排名，今年的入選由專業評審團主導。團隊由女人我最大編輯部、美妝達人與專業醫師組成，分別從內容洞察、實際試用與專業角度三方檢視。評審依 UNFURL 六大趨勢觀察整年市場動向，於每個趨勢中選出最具代表性的品項。報名品牌亦可提出自身最具特色的亮點，作為評選參考。最終名單不分名次，而是六大趨勢下、值得被看見的年度代表。</p>
+    </div>
+    <div class="m2-jury-scroll">
+      <div class="m2-jury-card"><div class="m2-jury-avatar"><i class="ti ti-user" style="font-size: 28px; color: var(--color-text-tertiary);" aria-hidden="true"></i></div><p class="m2-jury-cat">編輯部</p><p class="m2-jury-name">姓名待補</p><p class="m2-jury-role">女人我最大 · 總編輯</p></div>
+      <div class="m2-jury-card"><div class="m2-jury-avatar"><i class="ti ti-user" style="font-size: 28px; color: var(--color-text-tertiary);" aria-hidden="true"></i></div><p class="m2-jury-cat">編輯部</p><p class="m2-jury-name">姓名待補</p><p class="m2-jury-role">女人我最大 · 美妝主編</p></div>
+      <div class="m2-jury-card"><div class="m2-jury-avatar"><i class="ti ti-user" style="font-size: 28px; color: var(--color-text-tertiary);" aria-hidden="true"></i></div><p class="m2-jury-cat">美妝達人</p><p class="m2-jury-name">姓名待補</p><p class="m2-jury-role">知名彩妝師</p></div>
+      <div class="m2-jury-card"><div class="m2-jury-avatar"><i class="ti ti-user" style="font-size: 28px; color: var(--color-text-tertiary);" aria-hidden="true"></i></div><p class="m2-jury-cat">美妝達人</p><p class="m2-jury-name">姓名待補</p><p class="m2-jury-role">保養領域 KOL</p></div>
+      <div class="m2-jury-card"><div class="m2-jury-avatar"><i class="ti ti-user" style="font-size: 28px; color: var(--color-text-tertiary);" aria-hidden="true"></i></div><p class="m2-jury-cat">專業醫師</p><p class="m2-jury-name">姓名待補</p><p class="m2-jury-role">皮膚科醫師</p></div>
+      <div class="m2-jury-card"><div class="m2-jury-avatar"><i class="ti ti-user" style="font-size: 28px; color: var(--color-text-tertiary);" aria-hidden="true"></i></div><p class="m2-jury-cat">專業醫師</p><p class="m2-jury-name">姓名待補</p><p class="m2-jury-role">醫學美容醫師</p></div>
+    </div>
   </div>
 
   <div style="padding: 20px; text-align: center;">
@@ -244,12 +259,11 @@ body { padding: 24px 0 60px; }
   const status = document.getElementById('h2-status');
   const phaseBtns = [
     { btn: document.getElementById('h2-p1'), mode: 'phase1-mode', label: '目前預覽：Phase 1（6 月底 MVP）' },
-    { btn: document.getElementById('h2-p2'), mode: 'phase2-mode', label: '目前預覽：Phase 2（7 月底 · 趨勢可擴為 1–6 篇）' },
-    { btn: document.getElementById('h2-p3'), mode: 'phase3-mode', label: '目前預覽：Phase 3（9 月底 · 產品全露＋應援）' }
+    { btn: document.getElementById('h2-p3'), mode: 'phase2-mode', label: '目前預覽：Phase 2（9 月底 · 產品全露＋應援）' }
   ];
   phaseBtns.forEach(item => {
     item.btn.addEventListener('click', () => {
-      root.classList.remove('phase1-mode', 'phase2-mode', 'phase3-mode');
+      root.classList.remove('phase1-mode', 'phase2-mode');
       root.classList.add(item.mode);
       phaseBtns.forEach(b => b.btn.classList.remove('active'));
       item.btn.classList.add('active');
