@@ -46,72 +46,128 @@ html, body { margin: 0; padding: 0; font-family: var(--font-sans); color: var(--
   .idx-unfurl { font-size: 44px; }
   .idx-wrap { padding: 40px 24px; }
 }
+
+/* demo 動線版 */
+.idx-device { position: fixed; top: 12px; right: 12px; z-index: 100; display: inline-flex; border: 0.5px solid var(--border-tertiary); border-radius: 999px; overflow: hidden; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); }
+.idx-device button { padding: 8px 16px; border: none; background: transparent; cursor: pointer; font-family: inherit; font-size: 12px; color: var(--text-secondary); }
+.idx-device button.active { background: var(--text-primary); color: #fff; font-weight: 500; }
+.idx-phases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
+.idx-phase { margin-bottom: 0; }
+.idx-phase-head { display: flex; align-items: baseline; gap: 10px; margin: 0 0 6px; }
+.idx-phase-name { font-size: 18px; font-weight: 500; margin: 0; letter-spacing: 1px; color: var(--text-primary); }
+.idx-phase-when { font-size: 12px; color: var(--text-tertiary); margin: 0; }
+.idx-flow { display: flex; flex-direction: column; align-items: stretch; }
+.idx-step { flex: 1; min-width: 0; background: var(--bg-primary); border: 0.5px solid var(--border-tertiary); border-radius: 12px; padding: 18px; text-decoration: none; color: inherit; transition: border-color .15s, box-shadow .15s; display: block; }
+.idx-step:hover { border-color: var(--border-secondary); box-shadow: 0 4px 14px rgba(0,0,0,0.06); }
+.idx-step-tier { font-size: 11px; color: var(--text-tertiary); letter-spacing: 2px; margin: 0 0 6px; }
+.idx-step-num { font-family: var(--font-serif); font-style: italic; font-size: 14px; }
+.idx-step-name { font-size: 16px; font-weight: 500; margin: 0 0 4px; color: var(--text-primary); }
+.idx-step-desc { font-size: 12px; color: var(--text-secondary); margin: 0; line-height: 1.55; }
+.idx-arrow { display: flex; align-items: center; justify-content: center; padding: 8px 0; color: var(--text-tertiary); font-size: 18px; transform: rotate(90deg); }
+@media (max-width: 600px) {
+  .idx-phases { grid-template-columns: 1fr; gap: 32px; }
+}
 </style>
 </head>
 <body>
+<div class="idx-device" id="idx-device">
+  <button data-device="d" class="active" type="button">💻 桌機</button>
+  <button data-device="m" type="button">📱 手機</button>
+</div>
 <div class="idx-wrap">
   <p class="idx-eyebrow">TVBS · ANNUAL BEAUTY REPORT 2026</p>
   <h1 class="idx-title">女人我最大賞</h1>
   <p class="idx-unfurl">UNFURL</p>
   <p class="idx-intro">
-    這是 Consumer 主站的 wireframe prototype，包含首頁與一個代表性趨勢頁（R Ritual）。每張頁面都可切換 <strong>Phase 1（6 月底 MVP）</strong>、<strong>Phase 2（7 月底）</strong>、<strong>Phase 3（9 月底）</strong> 三種模式，看出階段差異。討論期 Mobile 與 Desktop 各做一張。
+    這是 Consumer 主站的 wireframe。下面依三個上線階段（Phase 1 / 1.5 / 2）各排出一條完整動線，照箭頭順序點就能走完一輪。右上角可切換手機或桌機版。目前以 R Ritual 為代表趨勢示範。
   </p>
 
-  <div class="idx-grid">
-    <a class="idx-card" href="home-mobile.html">
-      <p class="idx-card-label">首頁 · MOBILE</p>
-      <p class="idx-card-name">/ Home</p>
-      <p class="idx-card-desc">Hero + 心測 CTA + 六大趨勢預覽 + 二次心測 + Footer。375px viewport。</p>
-      <span class="idx-card-arrow">開啟 <i class="ti ti-arrow-right"></i></span>
-    </a>
-    <a class="idx-card" href="home-desktop.html">
-      <p class="idx-card-label">首頁 · DESKTOP</p>
-      <p class="idx-card-name">/ Home</p>
-      <p class="idx-card-desc">Hero + 心測 CTA + 六大趨勢預覽（字母左、內容右 split）+ Footer。Desktop layout。</p>
-      <span class="idx-card-arrow">開啟 <i class="ti ti-arrow-right"></i></span>
-    </a>
-    <a class="idx-card" href="ritual-mobile.html">
-      <p class="idx-card-label">趨勢頁 · MOBILE</p>
-      <p class="idx-card-name">/ritual · 療癒儀式</p>
-      <p class="idx-card-desc">字母 hero + 趨勢長文（含圖位）+ 產品（10 · 2 欄）+ 影音 inline + 下一個趨勢。375px viewport。</p>
-      <span class="idx-card-arrow">開啟 <i class="ti ti-arrow-right"></i></span>
-    </a>
-    <a class="idx-card" href="ritual-desktop.html">
-      <p class="idx-card-label">趨勢頁 · DESKTOP</p>
-      <p class="idx-card-name">/ritual · 療癒儀式</p>
-      <p class="idx-card-desc">字母 hero（左右 split）+ 趨勢長文（含圖位）+ 產品 grid 2 cols + 影音 3 並排 inline + 下一個趨勢。</p>
-      <span class="idx-card-arrow">開啟 <i class="ti ti-arrow-right"></i></span>
-    </a>
+  <div class="idx-phases">
+
+  <div class="idx-phase" data-phase="p1">
+    <div class="idx-phase-head">
+      <p class="idx-phase-name">Phase 1</p>
+      <p class="idx-phase-when">6 月底 MVP</p>
+    </div>
+    <div class="idx-flow">
+      <a class="idx-step" data-m="home-mobile.html#p1" data-d="home-desktop.html#p1">
+        <p class="idx-step-tier"><span class="idx-step-num">1</span> · 首頁</p>
+        <p class="idx-step-name">六大趨勢總覽</p>
+        <p class="idx-step-desc">Hero＋心測 CTA＋六趨勢預覽。</p>
+      </a>
+      <div class="idx-arrow"><i class="ti ti-arrow-right"></i></div>
+      <a class="idx-step" data-m="ritual-list-mobile.html#p1" data-d="ritual-list-desktop.html#p1">
+        <p class="idx-step-tier"><span class="idx-step-num">2</span> · 趨勢列表</p>
+        <p class="idx-step-name">R 療癒儀式</p>
+        <p class="idx-step-desc">大 R＋趨勢介紹，無延伸閱讀、無盤點卡。</p>
+      </a>
+    </div>
   </div>
 
-  <div class="idx-meta">
-    <div class="idx-meta-block">
-      <h3>Phase 1 · 6 月底 MVP</h3>
-      <ul>
-        <li>六趨勢各一篇長文（含內文圖位）</li>
-        <li>影音 placeholder · 站內 inline 播放</li>
-        <li>下一個趨勢 CTA · 站內循環</li>
-        <li>無產品 · 無應援 · 不放 B2B 連結</li>
-      </ul>
+  <div class="idx-phase" data-phase="p15">
+    <div class="idx-phase-head">
+      <p class="idx-phase-name">Phase 1.5</p>
+      <p class="idx-phase-when">過渡</p>
     </div>
-    <div class="idx-meta-block">
-      <h3>Phase 2 · 7 月底</h3>
-      <ul>
-        <li>每趨勢擴為 1–6 篇文章</li>
-        <li>仍無產品 · 無應援</li>
-        <li>影音持續補上</li>
-      </ul>
-    </div>
-    <div class="idx-meta-block">
-      <h3>Phase 3 · 9 月底</h3>
-      <ul>
-        <li>每趨勢收斂 6 篇 + 10 產品全露（2 欄）</li>
-        <li>每產品 1 段達人 quote</li>
-        <li>應援反應（讚＋大心＋星星眼 · 加總）</li>
-        <li>影音正式上線</li>
-      </ul>
+    <div class="idx-flow">
+      <a class="idx-step" data-m="home-mobile.html#p1" data-d="home-desktop.html#p1">
+        <p class="idx-step-tier"><span class="idx-step-num">1</span> · 首頁</p>
+        <p class="idx-step-name">六大趨勢總覽</p>
+        <p class="idx-step-desc">Hero＋心測 CTA＋六趨勢預覽。</p>
+      </a>
+      <div class="idx-arrow"><i class="ti ti-arrow-right"></i></div>
+      <a class="idx-step" data-m="ritual-list-mobile.html#p15" data-d="ritual-list-desktop.html#p15">
+        <p class="idx-step-tier"><span class="idx-step-num">2</span> · 趨勢列表</p>
+        <p class="idx-step-name">R 療癒儀式</p>
+        <p class="idx-step-desc">大 R＋短介紹＋延伸閱讀，無盤點卡。</p>
+      </a>
     </div>
   </div>
+
+  <div class="idx-phase" data-phase="p2">
+    <div class="idx-phase-head">
+      <p class="idx-phase-name">Phase 2</p>
+      <p class="idx-phase-when">9 月底</p>
+    </div>
+    <div class="idx-flow">
+      <a class="idx-step" data-m="home-mobile.html#p2" data-d="home-desktop.html#p2">
+        <p class="idx-step-tier"><span class="idx-step-num">1</span> · 首頁</p>
+        <p class="idx-step-name">六大趨勢總覽</p>
+        <p class="idx-step-desc">趨勢預覽帶產品 teaser。</p>
+      </a>
+      <div class="idx-arrow"><i class="ti ti-arrow-right"></i></div>
+      <a class="idx-step" data-m="ritual-list-mobile.html#p2" data-d="ritual-list-desktop.html#p2">
+        <p class="idx-step-tier"><span class="idx-step-num">2</span> · 趨勢列表</p>
+        <p class="idx-step-name">R 療癒儀式</p>
+        <p class="idx-step-desc">大 R＋短介紹＋置頂盤點文＋文章列表。</p>
+      </a>
+      <div class="idx-arrow"><i class="ti ti-arrow-right"></i></div>
+      <a class="idx-step" data-m="ritual-article-mobile.html#p2" data-d="ritual-article-desktop.html#p2">
+        <p class="idx-step-tier"><span class="idx-step-num">3</span> · 盤點文</p>
+        <p class="idx-step-name">年度 10 大品項</p>
+        <p class="idx-step-desc">小標記＋長文＋10 產品全露＋應援。</p>
+      </a>
+    </div>
+  </div>
+
+  </div>
+
 </div>
+
+<script>
+(function(){
+  const deviceSwitch = document.getElementById('idx-device');
+  const steps = document.querySelectorAll('.idx-step');
+
+  function applyDevice(d){
+    steps.forEach(s => s.setAttribute('href', s.getAttribute('data-' + d)));
+    deviceSwitch.querySelectorAll('button').forEach(b => b.classList.toggle('active', b.getAttribute('data-device') === d));
+  }
+
+  deviceSwitch.querySelectorAll('button').forEach(b => b.addEventListener('click', () => applyDevice(b.getAttribute('data-device'))));
+
+  applyDevice('d');
+})();
+</script>
 </body>
 </html>

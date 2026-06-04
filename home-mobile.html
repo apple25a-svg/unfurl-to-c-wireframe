@@ -28,17 +28,11 @@
 html, body { margin: 0; padding: 0; font-family: var(--font-sans); color: var(--color-text-primary); background: var(--color-background-tertiary); }
 body { padding: 24px 0 60px; }
 
-.proto-nav { position: fixed; top: 12px; right: 12px; z-index: 100; display: flex; gap: 6px; background: rgba(255,255,255,0.95); border: 0.5px solid var(--color-border-tertiary); border-radius: 999px; padding: 6px 10px; font-size: 11px; backdrop-filter: blur(8px); }
-.proto-nav a { padding: 4px 8px; border-radius: 999px; color: var(--color-text-secondary); text-decoration: none; }
-.proto-nav a:hover { background: var(--color-background-secondary); }
-.proto-nav a.active { background: var(--color-text-primary); color: white; }
-.proto-nav .proto-close { padding: 2px 6px; background: transparent; border: none; cursor: pointer; color: var(--color-text-tertiary); font-size: 12px; }
+.proto-nav { position: fixed; top: 12px; right: 12px; z-index: 100; display: flex; gap: 6px; align-items: center; background: rgba(255,255,255,0.95); border: 0.5px solid var(--color-border-tertiary); border-radius: 999px; padding: 6px 10px; font-size: 11px; backdrop-filter: blur(8px); }
+.proto-nav > a { padding: 4px 8px; border-radius: 999px; color: var(--color-text-secondary); text-decoration: none; }
+.proto-nav > a:hover { background: var(--color-background-secondary); }
+.proto-nav .pn-phase { padding: 4px 8px; color: var(--color-text-tertiary); letter-spacing: 1px; }
 
-.h2-toggle-wrap { text-align: center; margin-bottom: 16px; }
-.h2-toggle { display: inline-flex; gap: 0; border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); overflow: hidden; }
-.h2-toggle button { padding: 10px 18px; border: none; background: transparent; cursor: pointer; font-family: inherit; font-size: 13px; color: var(--color-text-secondary); }
-.h2-toggle button.active { background: var(--color-text-primary); color: var(--color-background-primary); font-weight: 500; }
-.h2-toggle button:not(.active):hover { background: var(--color-background-secondary); }
 .h2-status { font-size: 12px; color: var(--color-text-tertiary); margin: 8px 0 0; font-style: italic; }
 
 .m2-frame { max-width: 380px; margin: 0 auto; background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); overflow: hidden; }
@@ -104,20 +98,9 @@ body { padding: 24px 0 60px; }
 <body>
 
 <div class="proto-nav" id="proto-nav">
-  <a href="index.html">↑</a>
-  <a href="home-mobile.html" class="active">📱 首頁</a>
-  <a href="home-desktop.html">💻 首頁</a>
-  <a href="ritual-mobile.html">📱 Ritual</a>
-  <a href="ritual-desktop.html">💻 Ritual</a>
-  <button class="proto-close" onclick="document.getElementById('proto-nav').style.display='none'" title="隱藏">×</button>
-</div>
-
-<div class="h2-toggle-wrap">
-  <div class="h2-toggle">
-    <button id="h2-p1" class="active">Phase 1（6 月底）</button>
-    <button id="h2-p3">Phase 2（9 月底）</button>
-  </div>
-  <p class="h2-status" id="h2-status">目前預覽：Phase 1（6 月底 MVP）</p>
+  <a href="index.html" title="回導覽">← 導覽</a>
+  <span class="pn-phase" id="pn-phase">Phase 1</span>
+  <a class="pn-device" id="pn-device" data-target="home-desktop.html" href="home-desktop.html">💻 桌機</a>
 </div>
 
 <div class="m2-frame phase1-mode" id="m2-root">
@@ -163,7 +146,7 @@ body { padding: 24px 0 60px; }
       <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">玻尿酸保濕飲</p><p class="m2-trend-product-desc">從體內鎖水，肌膚整天不緊繃。</p></div>
       <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">美肌機能軟糖</p><p class="m2-trend-product-desc">把保養變成每天一顆的小習慣。</p></div>
     </div>
-    <a class="m2-cta-line trend-cta" data-trend="unfiltered" href="ritual-mobile.html">閱讀完整趨勢<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></a>
+    <a class="m2-cta-line trend-cta" data-trend="unfiltered" href="ritual-article-mobile.html">閱讀完整趨勢<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></a>
   </div>
 
   <div class="m2-section" id="sec-n">
@@ -174,7 +157,7 @@ body { padding: 24px 0 60px; }
       <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">零碳足跡保濕霜</p><p class="m2-trend-product-desc">從成分到運輸，全程碳中和。</p></div>
       <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">海洋友善防曬</p><p class="m2-trend-product-desc">不含珊瑚礁殺手成分的物理配方。</p></div>
     </div>
-    <a class="m2-cta-line trend-cta" data-trend="noble" href="ritual-mobile.html">閱讀完整趨勢<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></a>
+    <a class="m2-cta-line trend-cta" data-trend="noble" href="ritual-article-mobile.html">閱讀完整趨勢<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></a>
   </div>
 
   <div class="m2-section" id="sec-f">
@@ -185,7 +168,7 @@ body { padding: 24px 0 60px; }
       <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">屏障強化乳液</p><p class="m2-trend-product-desc">重建受損肌膚的保護層。</p></div>
       <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">醫美級舒緩面膜</p><p class="m2-trend-product-desc">鎮定泛紅、加速修復。</p></div>
     </div>
-    <a class="m2-cta-line trend-cta" data-trend="fortify" href="ritual-mobile.html">閱讀完整趨勢<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></a>
+    <a class="m2-cta-line trend-cta" data-trend="fortify" href="ritual-article-mobile.html">閱讀完整趨勢<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></a>
   </div>
 
   <div class="m2-section" id="sec-u2">
@@ -196,7 +179,7 @@ body { padding: 24px 0 60px; }
       <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">瀕危植萃緊緻霜</p><p class="m2-trend-product-desc">限量稀有植物的奢華護理。</p></div>
       <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">深海原料修護油</p><p class="m2-trend-product-desc">微量限量的頂級海洋萃取。</p></div>
     </div>
-    <a class="m2-cta-line trend-cta" data-trend="unique" href="ritual-mobile.html">閱讀完整趨勢<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></a>
+    <a class="m2-cta-line trend-cta" data-trend="unique" href="ritual-article-mobile.html">閱讀完整趨勢<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></a>
   </div>
 
   <div class="m2-section" id="sec-r">
@@ -207,7 +190,7 @@ body { padding: 24px 0 60px; }
       <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">枕邊助眠噴霧</p><p class="m2-trend-product-desc">香氣成為入睡的開關。</p></div>
       <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">居家 SPA 身體乳</p><p class="m2-trend-product-desc">替自己蓋上被善待的觸感。</p></div>
     </div>
-    <a class="m2-cta-line trend-cta" data-trend="ritual" href="ritual-mobile.html">閱讀完整趨勢<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></a>
+    <a class="m2-cta-line trend-cta" data-trend="ritual" href="ritual-list-mobile.html">閱讀完整趨勢<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></a>
   </div>
 
   <div class="m2-section" id="sec-l">
@@ -218,7 +201,7 @@ body { padding: 24px 0 60px; }
       <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">微針導入修護液</p><p class="m2-trend-product-desc">強化療程後的吸收與修復。</p></div>
       <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">長效抗老安瓶</p><p class="m2-trend-product-desc">對接醫美療程的日常保養。</p></div>
     </div>
-    <a class="m2-cta-line trend-cta" data-trend="longevity" href="ritual-mobile.html">閱讀完整趨勢<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></a>
+    <a class="m2-cta-line trend-cta" data-trend="longevity" href="ritual-article-mobile.html">閱讀完整趨勢<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></a>
   </div>
 
   <div style="padding: 32px 20px; text-align: center; background: #F1EFE8;">
@@ -256,19 +239,24 @@ body { padding: 24px 0 60px; }
 <script>
 (function() {
   const root = document.getElementById('m2-root');
-  const status = document.getElementById('h2-status');
-  const phaseBtns = [
-    { btn: document.getElementById('h2-p1'), mode: 'phase1-mode', label: '目前預覽：Phase 1（6 月底 MVP）' },
-    { btn: document.getElementById('h2-p3'), mode: 'phase2-mode', label: '目前預覽：Phase 2（9 月底 · 產品全露＋應援）' }
-  ];
-  phaseBtns.forEach(item => {
-    item.btn.addEventListener('click', () => {
-      root.classList.remove('phase1-mode', 'phase2-mode');
-      root.classList.add(item.mode);
-      phaseBtns.forEach(b => b.btn.classList.remove('active'));
-      item.btn.classList.add('active');
-      status.textContent = item.label;
-    });
+
+  // Phase 由網址 hash 決定（#p2 = Phase 2），nav 是唯一切換點
+  const isP2 = location.hash === '#p2';
+  root.classList.remove('phase1-mode', 'phase2-mode');
+  root.classList.add(isP2 ? 'phase2-mode' : 'phase1-mode');
+
+  // proto-nav：phase 唯讀標籤 + 裝置切換（保留當前 hash）
+  const pnPhase = document.getElementById('pn-phase');
+  if (pnPhase) pnPhase.textContent = isP2 ? 'Phase 2' : 'Phase 1';
+  const pnDevice = document.getElementById('pn-device');
+  if (pnDevice) pnDevice.setAttribute('href', pnDevice.getAttribute('data-target') + (isP2 ? '#p2' : '#p1'));
+
+  // phase 由 hash 決定，hashchange 時重新套用
+  window.addEventListener('hashchange', () => location.reload());
+
+  // 首頁趨勢 CTA 一律進趨勢列表，差在階段：P1 → #p1、P2 → #p2
+  document.querySelectorAll('.trend-cta').forEach(a => {
+    a.setAttribute('href', isP2 ? 'ritual-list-mobile.html#p2' : 'ritual-list-mobile.html#p1');
   });
 
   const toast = document.getElementById('m2-toast');

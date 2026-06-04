@@ -27,18 +27,10 @@
 html, body { margin: 0; padding: 0; font-family: var(--font-sans); color: var(--color-text-primary); background: var(--color-background-tertiary); }
 body { padding: 24px 0 60px; }
 
-.proto-nav { position: fixed; top: 12px; right: 12px; z-index: 100; display: flex; gap: 6px; background: rgba(255,255,255,0.95); border: 0.5px solid var(--color-border-tertiary); border-radius: 999px; padding: 6px 10px; font-size: 11px; backdrop-filter: blur(8px); }
-.proto-nav a { padding: 4px 8px; border-radius: 999px; color: var(--color-text-secondary); text-decoration: none; }
-.proto-nav a:hover { background: var(--color-background-secondary); }
-.proto-nav a.active { background: var(--color-text-primary); color: white; }
-.proto-nav .proto-close { padding: 2px 6px; background: transparent; border: none; cursor: pointer; color: var(--color-text-tertiary); font-size: 12px; }
-
-.h5-toggle-wrap { text-align: center; margin-bottom: 16px; }
-.h5-toggle { display: inline-flex; gap: 0; border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); overflow: hidden; }
-.h5-toggle button { padding: 10px 18px; border: none; background: transparent; cursor: pointer; font-family: inherit; font-size: 13px; color: var(--color-text-secondary); }
-.h5-toggle button.active { background: var(--color-text-primary); color: var(--color-background-primary); font-weight: 500; }
-.h5-toggle button:not(.active):hover { background: var(--color-background-secondary); }
-.h5-status { font-size: 12px; color: var(--color-text-tertiary); margin: 8px 0 0; font-style: italic; }
+.proto-nav { position: fixed; top: 12px; right: 12px; z-index: 100; display: flex; gap: 6px; align-items: center; background: rgba(255,255,255,0.95); border: 0.5px solid var(--color-border-tertiary); border-radius: 999px; padding: 6px 10px; font-size: 11px; backdrop-filter: blur(8px); }
+.proto-nav > a { padding: 4px 8px; border-radius: 999px; color: var(--color-text-secondary); text-decoration: none; }
+.proto-nav > a:hover { background: var(--color-background-secondary); }
+.proto-nav .pn-phase { padding: 4px 8px; color: var(--color-text-tertiary); letter-spacing: 1px; }
 
 .d3-frame { max-width: 1200px; margin: 0 auto; background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); overflow: hidden; }
 .d3-header { display: flex; justify-content: space-between; align-items: center; padding: 14px 28px; border-bottom: 0.5px solid var(--color-border-tertiary); background: var(--color-background-primary); }
@@ -46,14 +38,20 @@ body { padding: 24px 0 60px; }
 .d3-nav a { padding: 4px 10px; color: var(--color-text-primary); text-decoration: none; font-style: italic; cursor: pointer; border-radius: 4px; }
 .d3-nav a:hover { background: #F1EFE8; }
 .d3-nav a.active { background: var(--color-text-primary); color: var(--color-background-primary); font-weight: 500; }
-.d3-hero { padding: 64px 60px 56px; background: #F1EFE8; }
-.d3-hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; max-width: 960px; margin: 0 auto; }
-.d3-big-letter { font-family: var(--font-serif); font-style: italic; font-size: 220px; line-height: 0.9; color: var(--color-text-primary); font-weight: 400; margin: 0 0 24px; }
-.d3-zh-title { font-size: 36px; font-weight: 500; margin: 0 0 6px; letter-spacing: 4px; color: var(--color-text-primary); }
-.d3-en-sub { font-family: var(--font-serif); font-style: italic; font-size: 18px; color: var(--color-text-secondary); margin: 0; letter-spacing: 1px; }
-.d3-hero-kv { aspect-ratio: 4/5; background: var(--color-background-primary); border: 1px dashed var(--color-border-secondary); border-radius: var(--border-radius-md); display: flex; align-items: center; justify-content: center; }
-.d3-tagline { text-align: center; font-size: 22px; font-weight: 500; line-height: 1.7; margin: 48px 0 0; color: var(--color-text-primary); font-style: italic; font-family: var(--font-serif); }
-.d3-article-wrap { padding: 80px 36px 48px; }
+
+/* 文章主圖（KV，置於文章頭部與長文之間） */
+.d3-article-feature { max-width: 600px; margin: 28px auto 0; aspect-ratio: 16/9; background: var(--color-background-secondary); border: 0.5px dashed var(--color-border-secondary); border-radius: var(--border-radius-md); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: var(--color-text-tertiary); }
+.d3-article-feature i { font-size: 32px; }
+.d3-article-feature span { font-size: 12px; }
+
+/* 文章頭部：小類別標記（小 R 開頭） */
+.d3-article-head { max-width: 600px; margin: 0 auto; padding: 56px 36px 0; }
+.d3-back { display: inline-flex; align-items: center; gap: 4px; font-size: 13px; color: var(--color-text-secondary); text-decoration: none; margin-bottom: 22px; }
+.d3-back:hover { color: var(--color-text-primary); }
+.d3-cat-tag { display: inline-block; font-size: 12px; font-weight: 500; letter-spacing: 1px; color: #633806; background: #FAEEDA; padding: 4px 14px; border-radius: 999px; }
+.d3-article-title { font-size: 34px; font-weight: 500; line-height: 1.35; color: var(--color-text-primary); margin: 16px 0 12px; }
+.d3-article-byline { font-size: 13px; color: var(--color-text-tertiary); margin: 0; }
+.d3-article-wrap { padding: 36px 36px 48px; }
 .d3-article { max-width: 920px; margin: 0 auto; }
 .d3-article > p { font-size: 17px; line-height: 2; color: var(--color-text-primary); margin: 0 auto 28px; max-width: 600px; }
 .d3-article > .d3-quote-inline, .d3-article > .d3-article-img { max-width: 600px; margin-left: auto; margin-right: auto; }
@@ -91,10 +89,14 @@ body { padding: 24px 0 60px; }
 .d3-react-btn.active .d3-react-num { color: #fff; }
 .d3-ip-more { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #BA7517; text-decoration: none; cursor: pointer; }
 .d3-ip-more:hover { text-decoration: underline; }
-.phase1-mode .d3-inline-product { display: none; }
 
-/* Phase 1 起：本趨勢多篇文章（最多 6 篇） */
-.d3-more { max-width: 1008px; margin: 0 auto; padding: 8px 36px 24px; }
+.d3-section-divider { padding: 24px 36px; background: var(--color-background-secondary); display: flex; justify-content: space-between; align-items: flex-end; max-width: 1080px; margin: 0 auto; }
+.d3-section-label { font-size: 11px; color: var(--color-text-secondary); margin: 0 0 4px; letter-spacing: 2px; text-transform: uppercase; }
+.d3-section-title { font-size: 20px; font-weight: 500; margin: 0; color: var(--color-text-primary); }
+.d3-section-meta { font-size: 12px; color: var(--color-text-tertiary); margin: 0; }
+
+/* 延伸閱讀（本趨勢其他文章 · 含署名） */
+.d3-more { max-width: 1008px; margin: 0 auto; padding: 32px 36px 24px; }
 .d3-more-head { font-size: 11px; color: var(--color-text-secondary); letter-spacing: 2px; margin: 0 0 16px; text-transform: uppercase; }
 .d3-more-list { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .d3-more-card { display: flex; gap: 14px; align-items: center; background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 12px; cursor: pointer; }
@@ -104,27 +106,6 @@ body { padding: 24px 0 60px; }
 .d3-more-info { flex: 1; min-width: 0; }
 .d3-more-title { font-size: 14px; font-weight: 500; margin: 0 0 3px; line-height: 1.4; color: var(--color-text-primary); }
 .d3-more-meta { font-size: 11px; color: var(--color-text-tertiary); margin: 0; }
-
-.d3-section-divider { padding: 24px 36px; background: var(--color-background-secondary); display: flex; justify-content: space-between; align-items: flex-end; max-width: 1080px; margin: 0 auto; }
-.d3-section-label { font-size: 11px; color: var(--color-text-secondary); margin: 0 0 4px; letter-spacing: 2px; text-transform: uppercase; }
-.d3-section-title { font-size: 20px; font-weight: 500; margin: 0; color: var(--color-text-primary); }
-.d3-section-meta { font-size: 12px; color: var(--color-text-tertiary); margin: 0; }
-
-/* 影音：站內 inline 播放 */
-.d3-video-section { padding: 32px 36px; max-width: 1080px; margin: 0 auto; }
-.d3-video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-.d3-video-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); overflow: hidden; cursor: pointer; }
-.d3-video-card:hover { border-color: var(--color-border-secondary); }
-.d3-video-thumb { aspect-ratio: 16/9; background: #D3D1C7; display: flex; align-items: center; justify-content: center; }
-.d3-video-thumb i { font-size: 36px; color: var(--color-background-primary); }
-.d3-video-player { display: none; aspect-ratio: 16/9; background: #1A1A18; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: #FFFFFF; }
-.d3-video-player i { font-size: 36px; }
-.d3-video-player span { font-size: 12px; opacity: 0.7; }
-.d3-video-card.playing .d3-video-thumb { display: none; }
-.d3-video-card.playing .d3-video-player { display: flex; }
-.d3-video-meta { padding: 12px 14px; }
-.d3-video-title { font-size: 13px; font-weight: 500; margin: 0 0 4px; color: var(--color-text-primary); line-height: 1.45; }
-.d3-video-source { font-size: 11px; color: var(--color-text-tertiary); margin: 0; }
 
 .d3-p2-placeholder { margin: 40px auto; max-width: 1008px; padding: 48px 32px; background: var(--color-background-secondary); border: 0.5px dashed var(--color-border-secondary); border-radius: var(--border-radius-md); text-align: center; }
 .d3-p2-placeholder-tag { display: inline-block; padding: 3px 12px; background: #D3D1C7; color: #444441; font-size: 11px; font-weight: 500; border-radius: 4px; letter-spacing: 1px; margin-bottom: 14px; }
@@ -168,23 +149,12 @@ body { padding: 24px 0 60px; }
 <body>
 
 <div class="proto-nav" id="proto-nav">
-  <a href="index.html">↑</a>
-  <a href="home-mobile.html">📱 首頁</a>
-  <a href="home-desktop.html">💻 首頁</a>
-  <a href="ritual-mobile.html">📱 Ritual</a>
-  <a href="ritual-desktop.html" class="active">💻 Ritual</a>
-  <button class="proto-close" onclick="document.getElementById('proto-nav').style.display='none'" title="隱藏">×</button>
+  <a href="index.html" title="回導覽">← 導覽</a>
+  <span class="pn-phase">Phase 2</span>
+  <a class="pn-device" href="ritual-article-mobile.html">📱 手機</a>
 </div>
 
-<div class="h5-toggle-wrap">
-  <div class="h5-toggle">
-    <button id="h5-p1" class="active">Phase 1（6 月底）</button>
-    <button id="h5-p3">Phase 2（9 月底）</button>
-  </div>
-  <p class="h5-status" id="h5-status">目前預覽：Phase 1（6 月底 · 趨勢長文＋影音＋延伸閱讀，無產品）</p>
-</div>
-
-<div class="d3-frame phase1-mode" id="d3-root">
+<div class="d3-frame" id="d3-root">
 
   <div class="d3-header">
     <div style="display: flex; align-items: baseline; gap: 12px;">
@@ -196,21 +166,16 @@ body { padding: 24px 0 60px; }
     </nav>
   </div>
 
-  <div class="d3-hero">
-    <div class="d3-hero-grid">
-      <div>
-        <p class="d3-big-letter">R</p>
-        <p class="d3-zh-title">療癒儀式</p>
-        <p class="d3-en-sub">Ritual</p>
-      </div>
-      <div class="d3-hero-kv">
-        <div style="text-align: center;">
-          <i class="ti ti-photo" style="font-size: 32px; color: var(--color-text-tertiary);" aria-hidden="true"></i>
-          <p style="font-size: 12px; color: var(--color-text-tertiary); margin: 8px 0 0;">R 主視覺</p>
-        </div>
-      </div>
-    </div>
-    <p class="d3-tagline">「給自己時間」已經是這個時代的奢侈。</p>
+  <div class="d3-article-head">
+    <a class="d3-back" href="ritual-list-desktop.html#p2"><i class="ti ti-arrow-left" style="font-size: 14px;" aria-hidden="true"></i>R 療癒儀式</a>
+    <div><span class="d3-cat-tag">R · 療癒儀式</span></div>
+    <h1 class="d3-article-title">2026 療癒儀式：年度 10 大品項</h1>
+    <p class="d3-article-byline">何雅萍 · 2026/06/30</p>
+  </div>
+
+  <div class="d3-article-feature">
+    <i class="ti ti-photo" aria-hidden="true"></i>
+    <span>文章主圖 KV</span>
   </div>
 
   <div class="d3-article-wrap">
@@ -398,39 +363,11 @@ body { padding: 24px 0 60px; }
   </div>
 
   <div class="d3-more">
-    <p class="d3-more-head">本趨勢其他文章 · 連同上方主文，最多 6 篇</p>
+    <p class="d3-more-head">延伸閱讀 · 本趨勢最多 6 篇</p>
     <div class="d3-more-list">
       <div class="d3-more-card more-cta"><div class="d3-more-thumb"><i class="ti ti-article" aria-hidden="true"></i></div><div class="d3-more-info"><p class="d3-more-title">為什麼「睡前儀式感」比成分更重要？</p><p class="d3-more-meta">何雅萍 2026/06/30</p></div></div>
       <div class="d3-more-card more-cta"><div class="d3-more-thumb"><i class="ti ti-article" aria-hidden="true"></i></div><div class="d3-more-info"><p class="d3-more-title">柳燕的夜間保養順序：六個步驟的意義</p><p class="d3-more-meta">何雅萍 2026/06/30</p></div></div>
       <div class="d3-more-card more-cta"><div class="d3-more-thumb"><i class="ti ti-article" aria-hidden="true"></i></div><div class="d3-more-info"><p class="d3-more-title">香氛如何影響睡眠？神經科學的解釋</p><p class="d3-more-meta">何雅萍 2026/06/30</p></div></div>
-      <div class="d3-more-card more-cta"><div class="d3-more-thumb"><i class="ti ti-article" aria-hidden="true"></i></div><div class="d3-more-info"><p class="d3-more-title">從浴室到床邊：一條回家的儀式動線</p><p class="d3-more-meta">何雅萍 2026/06/30</p></div></div>
-      <div class="d3-more-card more-cta"><div class="d3-more-thumb"><i class="ti ti-article" aria-hidden="true"></i></div><div class="d3-more-info"><p class="d3-more-title">SPA 級居家療程清單：在家複製五星飯店</p><p class="d3-more-meta">何雅萍 2026/06/30</p></div></div>
-    </div>
-  </div>
-
-  <!-- 影音：移到產品之下 · 站內 inline 播放 -->
-  <div class="d3-section-divider">
-    <div><p class="d3-section-label">看見趨勢</p><p class="d3-section-title">影音內容</p></div>
-    <p class="d3-section-meta">3 支橫式短片 · 8 月起陸續上線</p>
-  </div>
-
-  <div class="d3-video-section">
-    <div class="d3-video-grid">
-      <div class="d3-video-card">
-        <div class="d3-video-thumb"><i class="ti ti-player-play" aria-hidden="true"></i></div>
-        <div class="d3-video-player"><i class="ti ti-player-play-filled" aria-hidden="true"></i><span>站內播放（正式接 YouTube／自架影片）</span></div>
-        <div class="d3-video-meta"><p class="d3-video-title">睡前 5 分鐘儀式：把焦慮關在浴室外</p></div>
-      </div>
-      <div class="d3-video-card">
-        <div class="d3-video-thumb"><i class="ti ti-player-play" aria-hidden="true"></i></div>
-        <div class="d3-video-player"><i class="ti ti-player-play-filled" aria-hidden="true"></i><span>站內播放（正式接 YouTube／自架影片）</span></div>
-        <div class="d3-video-meta"><p class="d3-video-title">為什麼香氛是 2026 年的保養關鍵字</p></div>
-      </div>
-      <div class="d3-video-card">
-        <div class="d3-video-thumb"><i class="ti ti-player-play" aria-hidden="true"></i></div>
-        <div class="d3-video-player"><i class="ti ti-player-play-filled" aria-hidden="true"></i><span>站內播放（正式接 YouTube／自架影片）</span></div>
-        <div class="d3-video-meta"><p class="d3-video-title">SPA 級居家療程：在家複製五星飯店</p></div>
-      </div>
     </div>
   </div>
 
@@ -454,21 +391,7 @@ body { padding: 24px 0 60px; }
 
 <script>
 (function() {
-  const root = document.getElementById('d3-root');
-  const status = document.getElementById('h5-status');
-  const phaseBtns = [
-    { btn: document.getElementById('h5-p1'), mode: 'phase1-mode', label: '目前預覽：Phase 1（6 月底 · 趨勢長文＋影音＋延伸閱讀，無產品）' },
-    { btn: document.getElementById('h5-p3'), mode: 'phase2-mode', label: '目前預覽：Phase 2（9 月底 · 10 產品全露＋應援）' }
-  ];
-  phaseBtns.forEach(item => {
-    item.btn.addEventListener('click', () => {
-      root.classList.remove('phase1-mode', 'phase2-mode');
-      root.classList.add(item.mode);
-      phaseBtns.forEach(b => b.btn.classList.remove('active'));
-      item.btn.classList.add('active');
-      status.textContent = item.label;
-    });
-  });
+  // 盤點文恆 Phase 2；proto-nav 僅回導覽 + 裝置切換（靜態連結）
 
   const toast = document.getElementById('d3-toast');
   let toastTimer = null;
@@ -488,12 +411,7 @@ body { padding: 24px 0 60px; }
     });
   });
 
-  // 影音：點一下站內 inline 播放（不跳頁、不開 popup）
-  document.querySelectorAll('.d3-video-card').forEach(card => {
-    card.addEventListener('click', () => card.classList.toggle('playing'));
-  });
-
-  // Phase 1 起：其他文章（wireframe 佔位）
+  // 延伸閱讀（wireframe 佔位）
   document.querySelectorAll('.more-cta').forEach(card => {
     card.addEventListener('click', () => showToast('文章頁 wireframe 製作中（每趨勢最多 6 篇）'));
   });
