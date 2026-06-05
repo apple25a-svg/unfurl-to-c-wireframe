@@ -31,7 +31,10 @@ body { padding: 0 0 60px; }
 .proto-bar .pb-tag { font-size: 10px; letter-spacing: 2px; color: rgba(255,255,255,0.5); }
 .proto-bar a { color: rgba(255,255,255,0.85); text-decoration: none; padding: 4px 8px; border-radius: 6px; }
 .proto-bar a:hover { background: rgba(255,255,255,0.12); }
-.proto-bar .pb-phase { color: #FAC775; font-weight: 500; letter-spacing: 1px; }
+.proto-bar .pb-phase { display: inline-flex; gap: 2px; }
+.proto-bar .pb-phase a { color: rgba(255,255,255,0.55); padding: 3px 9px; border-radius: 6px; letter-spacing: 0.5px; }
+.proto-bar .pb-phase a:hover { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.85); }
+.proto-bar .pb-phase a.active { color: #FAC775; font-weight: 500; background: rgba(250,199,117,0.14); }
 .proto-bar .pb-spacer { flex: 1; }
 .proto-bar .pb-device { display: inline-flex; border: 0.5px solid rgba(255,255,255,0.25); border-radius: 999px; overflow: hidden; }
 .proto-bar .pb-device > * { padding: 4px 12px; }
@@ -100,6 +103,13 @@ body { padding: 0 0 60px; }
 .phase1-mode .p2-only, .phase15-mode .p2-only { display: none; }
 .phase1-mode .p15-up { display: none; }
 
+/* 本階段新增標：只在「該區塊首次出現」的那個階段亮起 */
+.new-tag { display: none; align-items: center; gap: 4px; font-size: 11px; font-weight: 500; letter-spacing: 1px; color: #fff; background: #BA7517; padding: 3px 12px; border-radius: 999px; margin-bottom: 10px; }
+.phase15-mode .new-15 { display: inline-flex; }
+.phase2-mode .new-2 { display: inline-flex; }
+/* 新增區塊整塊套暖金（與盤點文同調），只在該區塊首次出現的階段亮 */
+.phase15-mode .d3-more { background: #FAEEDA; border: 1px solid #E7C58A; border-left: 5px solid #BA7517; border-radius: var(--border-radius-lg); }
+
 .d3-toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); display: none; padding: 12px 20px; background: var(--color-text-primary); color: var(--color-background-primary); border-radius: var(--border-radius-md); font-size: 13px; max-width: 360px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 200; }
 .d3-toast.show { display: block; }
 </style>
@@ -108,8 +118,8 @@ body { padding: 0 0 60px; }
 
 <div class="proto-bar" id="proto-nav">
   <span class="pb-tag">WIREFRAME</span>
-  <a href="index.html" title="回導覽">← 導覽</a>
-  <span class="pb-phase" id="pn-phase">Phase 1</span>
+  <a href="index.html" title="回目錄">← 目錄</a>
+  <span class="pb-phase" id="pn-phase"><a href="home-desktop.html#p1">Phase 1</a><a href="home-desktop.html#p15">Phase 1.5</a><a href="home-desktop.html#p2">Phase 2</a></span>
   <span class="pb-spacer"></span>
   <span class="pb-device">
     <span class="active">💻 桌機</span>
@@ -152,6 +162,7 @@ body { padding: 0 0 60px; }
   </div>
 
   <div class="d3l-featured-wrap p2-only">
+    <span class="new-tag new-2"><i class="ti ti-sparkles" style="font-size: 13px;" aria-hidden="true"></i>本階段新增</span>
     <p class="d3l-featured-eyebrow">年度重點 · 編輯與達人精選</p>
     <a class="d3l-featured featured-cta" href="ritual-article-desktop.html">
       <div class="d3l-featured-media"><i class="ti ti-photo" aria-hidden="true"></i></div>
@@ -166,6 +177,7 @@ body { padding: 0 0 60px; }
   </div>
 
   <div class="d3-more p15-up">
+    <span class="new-tag new-15"><i class="ti ti-sparkles" style="font-size: 13px;" aria-hidden="true"></i>本階段新增</span>
     <p class="d3-more-head">延伸閱讀 · 本趨勢最多 6 篇</p>
     <div class="d3-more-list">
       <div class="d3-more-card more-cta"><div class="d3-more-thumb"><i class="ti ti-article" aria-hidden="true"></i></div><div class="d3-more-info"><p class="d3-more-title">為什麼「睡前儀式感」比成分更重要？</p><p class="d3-more-meta">何雅萍 2026/06/30</p></div></div>
@@ -203,9 +215,8 @@ body { padding: 0 0 60px; }
   root.classList.add(modeMap[hash]);
 
   // proto-nav：phase 唯讀標籤 + 裝置切換（保留當前 hash）
-  const labelMap = { '#p1': 'Phase 1', '#p15': 'Phase 1.5', '#p2': 'Phase 2' };
   const pnPhase = document.getElementById('pn-phase');
-  if (pnPhase) pnPhase.textContent = labelMap[hash];
+  if (pnPhase) pnPhase.querySelectorAll('a').forEach(a => a.classList.toggle('active', a.getAttribute('href').endsWith(hash)));
   const pnDevice = document.getElementById('pn-device');
   if (pnDevice) pnDevice.setAttribute('href', pnDevice.getAttribute('data-target') + hash);
 

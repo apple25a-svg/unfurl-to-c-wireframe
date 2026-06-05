@@ -32,7 +32,10 @@ body { padding: 0 0 60px; }
 .proto-bar .pb-tag { font-size: 10px; letter-spacing: 2px; color: rgba(255,255,255,0.5); }
 .proto-bar a { color: rgba(255,255,255,0.85); text-decoration: none; padding: 4px 8px; border-radius: 6px; }
 .proto-bar a:hover { background: rgba(255,255,255,0.12); }
-.proto-bar .pb-phase { color: #FAC775; font-weight: 500; letter-spacing: 1px; }
+.proto-bar .pb-phase { display: inline-flex; gap: 2px; }
+.proto-bar .pb-phase a { color: rgba(255,255,255,0.55); padding: 3px 9px; border-radius: 6px; letter-spacing: 0.5px; }
+.proto-bar .pb-phase a:hover { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.85); }
+.proto-bar .pb-phase a.active { color: #FAC775; font-weight: 500; background: rgba(250,199,117,0.14); }
 .proto-bar .pb-spacer { flex: 1; }
 .proto-bar .pb-device { display: inline-flex; border: 0.5px solid rgba(255,255,255,0.25); border-radius: 999px; overflow: hidden; }
 .proto-bar .pb-device > * { padding: 4px 12px; }
@@ -81,13 +84,20 @@ body { padding: 0 0 60px; }
 .dp2-placeholder strong { display: block; font-size: 13px; color: var(--color-text-primary); margin-bottom: 4px; font-weight: 500; letter-spacing: 0.3px; }
 
 /* Phase 2：每個趨勢下 3 個入選商品（僅產品名＋說明） */
-.d2-trend-products { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 22px 0 4px; }
+.d2-trend-products { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 22px 0 20px; }
 .d2-trend-product { background: var(--color-background-secondary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 14px; }
 .d2-trend-product-img { aspect-ratio: 4/3; background: #D3D1C7; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: var(--color-background-primary); margin-bottom: 12px; }
 .d2-trend-product-img i { font-size: 26px; }
 .d2-trend-product-name { font-size: 14px; font-weight: 500; color: var(--color-text-primary); margin: 0 0 6px; }
 .d2-trend-product-desc { font-size: 12px; line-height: 1.65; color: var(--color-text-secondary); margin: 0; }
 .phase1-mode .d2-trend-products { display: none; }
+
+/* 本階段新增金標：只在該區塊首次出現的階段亮起 */
+.new-tag { display: none; align-items: center; gap: 4px; font-size: 11px; font-weight: 500; letter-spacing: 1px; color: #fff; background: #BA7517; padding: 3px 12px; border-radius: 999px; margin-bottom: 10px; }
+.phase2-mode .new-2 { display: inline-flex; }
+/* Phase 2 新增的產品 teaser 整塊套暖金（與盤點文同調） */
+.phase2-mode .d2-trend-products { background: #FAEEDA; border: 1px solid #E7C58A; border-left: 4px solid #BA7517; border-radius: var(--border-radius-md); padding: 16px; }
+.phase2-mode .d2-trend-product { background: var(--color-background-primary); }
 
 .d2-jury { padding: 56px 0 60px; border-top: 0.5px solid var(--color-border-tertiary); background: var(--color-background-primary); }
 .d2-jury-inner { max-width: 640px; margin: 0 auto 36px; padding: 0 28px; text-align: center; }
@@ -111,8 +121,8 @@ body { padding: 0 0 60px; }
 
 <div class="proto-bar" id="proto-nav">
   <span class="pb-tag">WIREFRAME</span>
-  <a href="index.html" title="回導覽">← 導覽</a>
-  <span class="pb-phase" id="pn-phase">Phase 1</span>
+  <a href="index.html" title="回目錄">← 目錄</a>
+  <span class="pb-phase" id="pn-phase"><a href="home-desktop.html#p1">Phase 1</a><a href="home-desktop.html#p15">Phase 1.5</a><a href="home-desktop.html#p2">Phase 2</a></span>
   <span class="pb-spacer"></span>
   <span class="pb-device">
     <span class="active">💻 桌機</span>
@@ -167,6 +177,7 @@ body { padding: 0 0 60px; }
         <h2 class="d2-zh-name">Unfiltered · 健康保養</h2>
         <p class="d2-en-sub">Feel-good Wellness</p>
         <p class="d2-body">美麗從「由外而內」轉向「由內而外」。膠原蛋白飲、玻尿酸飲品、美肌機能食品，成為新世代保養桌上的日常——口服保養與美妝的邊界正在消失。</p>
+        <span class="new-tag new-2"><i class="ti ti-sparkles" style="font-size: 13px;" aria-hidden="true"></i>本階段新增</span>
         <div class="d2-trend-products">
           <div class="d2-trend-product"><div class="d2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="d2-trend-product-name">膠原蛋白胜肽飲</p><p class="d2-trend-product-desc">小分子高吸收配方，由內補回流失的彈潤。</p></div>
           <div class="d2-trend-product"><div class="d2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="d2-trend-product-name">玻尿酸保濕飲</p><p class="d2-trend-product-desc">從體內鎖水，肌膚整天不緊繃。</p></div>
@@ -184,6 +195,7 @@ body { padding: 0 0 60px; }
         <h2 class="d2-zh-name">Noble · 永續信念</h2>
         <p class="d2-en-sub">Lifestyle Shift · Climate</p>
         <p class="d2-body">永續不再只是公關話術，而是消費者的主動選擇。她們選擇可補充包裝、關注成分來源的碳足跡——「正確消費」成為一種身份認同。</p>
+        <span class="new-tag new-2"><i class="ti ti-sparkles" style="font-size: 13px;" aria-hidden="true"></i>本階段新增</span>
         <div class="d2-trend-products">
           <div class="d2-trend-product"><div class="d2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="d2-trend-product-name">可補充包裝精華</p><p class="d2-trend-product-desc">一次購入瓶身，之後只換內芯。</p></div>
           <div class="d2-trend-product"><div class="d2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="d2-trend-product-name">零碳足跡保濕霜</p><p class="d2-trend-product-desc">從成分到運輸，全程碳中和。</p></div>
@@ -201,6 +213,7 @@ body { padding: 0 0 60px; }
         <h2 class="d2-zh-name">Fortify · 防禦修護</h2>
         <p class="d2-en-sub">Medical-home Loop</p>
         <p class="d2-body">診間療程與居家保養之間的循環正在形成——做完雷射回家用修復精華，術後護理成為日常保養的延伸。消費者開始自己設計「醫療＋保養」的混合療程。</p>
+        <span class="new-tag new-2"><i class="ti ti-sparkles" style="font-size: 13px;" aria-hidden="true"></i>本階段新增</span>
         <div class="d2-trend-products">
           <div class="d2-trend-product"><div class="d2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="d2-trend-product-name">術後修復精華</p><p class="d2-trend-product-desc">雷射、微針後的居家加強護理。</p></div>
           <div class="d2-trend-product"><div class="d2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="d2-trend-product-name">屏障強化乳液</p><p class="d2-trend-product-desc">重建受損肌膚的保護層。</p></div>
@@ -218,6 +231,7 @@ body { padding: 0 0 60px; }
         <h2 class="d2-zh-name">Unique · 頂級珍稀</h2>
         <p class="d2-en-sub">One Bite Luxury</p>
         <p class="d2-body">珍稀成分為頂級美妝的新語言——諾貝爾獎研究成果的成分、瀕危植物萃取、限量海洋原料，正在重新定義「值得」的標準。</p>
+        <span class="new-tag new-2"><i class="ti ti-sparkles" style="font-size: 13px;" aria-hidden="true"></i>本階段新增</span>
         <div class="d2-trend-products">
           <div class="d2-trend-product"><div class="d2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="d2-trend-product-name">諾貝爾成分抗老精華</p><p class="d2-trend-product-desc">得獎研究轉化的賦活配方。</p></div>
           <div class="d2-trend-product"><div class="d2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="d2-trend-product-name">瀕危植萃緊緻霜</p><p class="d2-trend-product-desc">限量稀有植物的奢華護理。</p></div>
@@ -235,6 +249,7 @@ body { padding: 0 0 60px; }
         <h2 class="d2-zh-name">Ritual · 療癒儀式</h2>
         <p class="d2-en-sub">Unwind to Win</p>
         <p class="d2-body">睡眠、放鬆、夜間修復成為新的美容核心議題。消費者把保養儀式視為一天中難得的「給自己的時間」——香氛、質地、使用步驟的儀式感成為選品標準。</p>
+        <span class="new-tag new-2"><i class="ti ti-sparkles" style="font-size: 13px;" aria-hidden="true"></i>本階段新增</span>
         <div class="d2-trend-products">
           <div class="d2-trend-product"><div class="d2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="d2-trend-product-name">夜間修護精華</p><p class="d2-trend-product-desc">睡眠時段啟動的密集修護。</p></div>
           <div class="d2-trend-product"><div class="d2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="d2-trend-product-name">枕邊助眠噴霧</p><p class="d2-trend-product-desc">香氣成為入睡的開關。</p></div>
@@ -252,6 +267,7 @@ body { padding: 0 0 60px; }
         <h2 class="d2-zh-name">Longevity · 醫美共生</h2>
         <p class="d2-en-sub">Next-gen Beauty Concierge</p>
         <p class="d2-body">醫美療程已經成為日常——不再是特殊場合前才做的事，而是和護膚保養一樣被納入固定行程。打肉毒、做光療、微針，成為新的美妝消費決策。</p>
+        <span class="new-tag new-2"><i class="ti ti-sparkles" style="font-size: 13px;" aria-hidden="true"></i>本階段新增</span>
         <div class="d2-trend-products">
           <div class="d2-trend-product"><div class="d2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="d2-trend-product-name">居家光療面膜</p><p class="d2-trend-product-desc">把診間的光療帶回家。</p></div>
           <div class="d2-trend-product"><div class="d2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="d2-trend-product-name">微針導入修護液</p><p class="d2-trend-product-desc">強化療程後的吸收與修復。</p></div>
@@ -298,23 +314,24 @@ body { padding: 0 0 60px; }
 (function() {
   const root = document.getElementById('d2-root');
 
-  // Phase 由網址 hash 決定（#p2 = Phase 2），nav 是唯一切換點
-  const isP2 = location.hash === '#p2';
+  // Phase 由網址 hash 決定（#p1 / #p15 / #p2，預設 #p1）；首頁無 1.5 差異，#p15 沿用 base
+  const hash = ['#p1', '#p15', '#p2'].includes(location.hash) ? location.hash : '#p1';
+  const isP2 = hash === '#p2';
   root.classList.remove('phase1-mode', 'phase2-mode');
   root.classList.add(isP2 ? 'phase2-mode' : 'phase1-mode');
 
-  // proto-nav：phase 唯讀標籤 + 裝置切換（保留當前 hash）
+  // proto-bar：phase 分段切換 active + 裝置切換（保留當前 hash）
   const pnPhase = document.getElementById('pn-phase');
-  if (pnPhase) pnPhase.textContent = isP2 ? 'Phase 2' : 'Phase 1';
+  if (pnPhase) pnPhase.querySelectorAll('a').forEach(a => a.classList.toggle('active', a.getAttribute('href').endsWith(hash)));
   const pnDevice = document.getElementById('pn-device');
-  if (pnDevice) pnDevice.setAttribute('href', pnDevice.getAttribute('data-target') + (isP2 ? '#p2' : '#p1'));
+  if (pnDevice) pnDevice.setAttribute('href', pnDevice.getAttribute('data-target') + hash);
 
   // phase 由 hash 決定，hashchange 時重新套用
   window.addEventListener('hashchange', () => location.reload());
 
-  // 首頁趨勢 CTA 一律進趨勢列表，差在階段：P1 → #p1、P2 → #p2
+  // 首頁趨勢 CTA 一律進趨勢列表，保留當前階段
   document.querySelectorAll('.trend-cta').forEach(a => {
-    a.setAttribute('href', isP2 ? 'ritual-list-desktop.html#p2' : 'ritual-list-desktop.html#p1');
+    a.setAttribute('href', 'ritual-list-desktop.html' + hash);
   });
 
   const toast = document.getElementById('d2-toast');
