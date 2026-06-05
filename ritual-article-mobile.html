@@ -25,12 +25,17 @@
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; font-family: var(--font-sans); color: var(--color-text-primary); background: var(--color-background-tertiary); }
-body { padding: 24px 0 60px; }
+body { padding: 0 0 60px; }
 
-.proto-nav { position: fixed; top: 12px; right: 12px; z-index: 100; display: flex; gap: 6px; align-items: center; background: rgba(255,255,255,0.95); border: 0.5px solid var(--color-border-tertiary); border-radius: 999px; padding: 6px 10px; font-size: 11px; backdrop-filter: blur(8px); }
-.proto-nav > a { padding: 4px 8px; border-radius: 999px; color: var(--color-text-secondary); text-decoration: none; }
-.proto-nav > a:hover { background: var(--color-background-secondary); }
-.proto-nav .pn-phase { padding: 4px 8px; color: var(--color-text-tertiary); letter-spacing: 1px; }
+.proto-bar { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; gap: 14px; padding: 9px 22px; margin-bottom: 28px; background: var(--color-text-primary); color: rgba(255,255,255,0.9); font-size: 12px; }
+.proto-bar .pb-tag { font-size: 10px; letter-spacing: 2px; color: rgba(255,255,255,0.5); }
+.proto-bar a { color: rgba(255,255,255,0.85); text-decoration: none; padding: 4px 8px; border-radius: 6px; }
+.proto-bar a:hover { background: rgba(255,255,255,0.12); }
+.proto-bar .pb-phase { color: #FAC775; font-weight: 500; letter-spacing: 1px; }
+.proto-bar .pb-spacer { flex: 1; }
+.proto-bar .pb-device { display: inline-flex; border: 0.5px solid rgba(255,255,255,0.25); border-radius: 999px; overflow: hidden; }
+.proto-bar .pb-device > * { padding: 4px 12px; }
+.proto-bar .pb-device .active { background: #fff; color: var(--color-text-primary); }
 
 .r3-frame { max-width: 380px; margin: 0 auto; background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); overflow: hidden; }
 .r3-header { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; border-bottom: 0.5px solid var(--color-border-tertiary); background: var(--color-background-primary); }
@@ -146,10 +151,15 @@ body { padding: 24px 0 60px; }
 </head>
 <body>
 
-<div class="proto-nav" id="proto-nav">
+<div class="proto-bar" id="proto-nav">
+  <span class="pb-tag">WIREFRAME</span>
   <a href="index.html" title="回導覽">← 導覽</a>
-  <span class="pn-phase">Phase 2</span>
-  <a class="pn-device" href="ritual-article-desktop.html">💻 桌機</a>
+  <span class="pb-phase">Phase 2</span>
+  <span class="pb-spacer"></span>
+  <span class="pb-device">
+    <a class="pn-device" href="ritual-article-desktop.html#p2">💻 桌機</a>
+    <span class="active">📱 手機</span>
+  </span>
 </div>
 
 <div class="r3-frame" id="r3-root">
