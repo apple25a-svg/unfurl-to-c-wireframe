@@ -77,7 +77,7 @@ body { padding: 0 0 60px; }
 .r3-more { padding: 20px 24px 8px; margin-bottom: 24px; }
 .r3-more-head { font-size: 11px; color: var(--color-text-secondary); letter-spacing: 2px; margin: 0 0 12px; text-transform: uppercase; }
 .r3-more-list { display: flex; flex-direction: column; gap: 10px; }
-.r3-more-card { display: flex; gap: 12px; align-items: center; background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 10px; cursor: pointer; }
+.r3-more-card { display: flex; gap: 12px; align-items: center; background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 10px; cursor: pointer; text-decoration: none; color: inherit; }
 .r3-more-card:hover { border-color: var(--color-border-secondary); }
 .r3-more-thumb { width: 64px; height: 48px; flex: 0 0 64px; background: #D3D1C7; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: var(--color-background-primary); }
 .r3-more-thumb i { font-size: 18px; }
@@ -120,7 +120,7 @@ body { padding: 0 0 60px; }
 <div class="r3-frame phase1-mode" id="r3-root">
 
   <div class="r3-header">
-    <div style="font-size: 13px; font-weight: 500; letter-spacing: 0.5px;">女人我最大</div>
+    <img src="logo.png" alt="女人我最大 Queen" style="height: 22px; display: block;">
     <nav class="r3-nav">
       <a data-trend="unfiltered">U</a><a data-trend="noble">N</a><a data-trend="fortify">F</a><a data-trend="unique">U</a><a class="active" data-trend="ritual">R</a><a data-trend="longevity">L</a>
     </nav>
@@ -164,9 +164,9 @@ body { padding: 0 0 60px; }
   <div class="r3-more p15-up">
     <p class="r3-more-head">延伸閱讀 · 本趨勢最多 6 篇</p>
     <div class="r3-more-list">
-      <div class="r3-more-card more-cta"><div class="r3-more-thumb"><i class="ti ti-article" aria-hidden="true"></i></div><div class="r3-more-info"><p class="r3-more-title">為什麼「睡前儀式感」比成分更重要？</p><p class="r3-more-meta">何雅萍 2026/06/30</p></div></div>
-      <div class="r3-more-card more-cta"><div class="r3-more-thumb"><i class="ti ti-article" aria-hidden="true"></i></div><div class="r3-more-info"><p class="r3-more-title">柳燕的夜間保養順序：六個步驟的意義</p><p class="r3-more-meta">何雅萍 2026/06/30</p></div></div>
-      <div class="r3-more-card more-cta"><div class="r3-more-thumb"><i class="ti ti-article" aria-hidden="true"></i></div><div class="r3-more-info"><p class="r3-more-title">香氛如何影響睡眠？神經科學的解釋</p><p class="r3-more-meta">何雅萍 2026/06/30</p></div></div>
+      <a class="r3-more-card more-cta" data-a="1"><div class="r3-more-thumb"><i class="ti ti-article" aria-hidden="true"></i></div><div class="r3-more-info"><p class="r3-more-title">為什麼「睡前儀式感」比成分更重要？</p><p class="r3-more-meta">何雅萍 2026/06/30</p></div></a>
+      <a class="r3-more-card more-cta" data-a="2"><div class="r3-more-thumb"><i class="ti ti-article" aria-hidden="true"></i></div><div class="r3-more-info"><p class="r3-more-title">柳燕的夜間保養順序：六個步驟的意義</p><p class="r3-more-meta">何雅萍 2026/06/30</p></div></a>
+      <a class="r3-more-card more-cta" data-a="3"><div class="r3-more-thumb"><i class="ti ti-article" aria-hidden="true"></i></div><div class="r3-more-info"><p class="r3-more-title">香氛如何影響睡眠？神經科學的解釋</p><p class="r3-more-meta">何雅萍 2026/06/30</p></div></a>
     </div>
   </div>
 
@@ -224,9 +224,9 @@ body { padding: 0 0 60px; }
     });
   });
 
-  // 其他文章（wireframe 佔位）
+  // 延伸閱讀卡：連到文章頁，帶 ?a + 當前 phase
   document.querySelectorAll('.more-cta').forEach(card => {
-    card.addEventListener('click', () => showToast('文章頁 wireframe 製作中（每趨勢最多 6 篇）'));
+    card.setAttribute('href', 'ritual-read-mobile.html?a=' + card.getAttribute('data-a') + hash);
   });
 
   document.getElementById('r3-next').addEventListener('click', () => showToast('Longevity 趨勢頁 wireframe 製作中'));
