@@ -74,7 +74,7 @@ body { padding: 0 0 60px; }
 .r3l-featured-cta-line { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; font-size: 14px; font-weight: 500; color: #fff; background: #BA7517; padding: 12px 20px; border-radius: 999px; box-shadow: 0 4px 12px rgba(186, 117, 23, 0.3); }
 
 /* 本趨勢其他文章（預留位） */
-.r3-more { padding: 20px 24px 8px; }
+.r3-more { padding: 20px 24px 8px; margin-bottom: 24px; }
 .r3-more-head { font-size: 11px; color: var(--color-text-secondary); letter-spacing: 2px; margin: 0 0 12px; text-transform: uppercase; }
 .r3-more-list { display: flex; flex-direction: column; gap: 10px; }
 .r3-more-card { display: flex; gap: 12px; align-items: center; background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 10px; cursor: pointer; }
@@ -97,12 +97,8 @@ body { padding: 0 0 60px; }
 .phase1-mode .p2-only, .phase15-mode .p2-only { display: none; }
 .phase1-mode .p15-up { display: none; }
 
-/* 本階段新增金標：只在該區塊首次出現的階段亮起 */
-.new-tag { display: none; align-items: center; gap: 4px; font-size: 11px; font-weight: 500; letter-spacing: 1px; color: #fff; background: #BA7517; padding: 3px 12px; border-radius: 999px; margin-bottom: 10px; }
-.phase15-mode .new-15 { display: inline-flex; }
-.phase2-mode .new-2 { display: inline-flex; }
 /* 新增區塊整塊套暖金（與盤點文同調），只在該區塊首次出現的階段亮 */
-.phase15-mode .r3-more { background: #FAEEDA; border: 1px solid #E7C58A; border-left: 5px solid #BA7517; border-radius: var(--border-radius-md); margin: 0 16px; }
+.phase15-mode .r3-more { background: #FAEEDA; border: 1px solid #E7C58A; border-left: 5px solid #BA7517; border-radius: var(--border-radius-md); margin: 0 16px 28px; }
 
 .r3-toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); display: none; padding: 12px 20px; background: var(--color-text-primary); color: var(--color-background-primary); border-radius: var(--border-radius-md); font-size: 13px; max-width: 360px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 200; }
 .r3-toast.show { display: block; }
@@ -145,11 +141,15 @@ body { padding: 0 0 60px; }
 
   <div class="r3l-intro">
     <p class="lead">睡眠、放鬆、夜間修復，成為 2026 年最重要的美容核心議題。</p>
-    <p>過去的保養是一場與時間的競賽——抗皺、抗老、抗下垂。但 2026 年的消費者開始換一個問句：保養可不可以不是抵抗，而是回應？「療癒儀式」這股趨勢，談的就是把保養變成一段只屬於自己的時間。</p>
+    <p>過去的保養是一場與時間的競賽，抗皺、抗老、抗下垂。但 2026 年的消費者開始換一個問句：保養可不可以不是抵抗，而是回應？「療癒儀式」這股趨勢，談的就是把保養變成一段只屬於自己的時間。</p>
+    <p>這股轉變的背後，是一整個世代對「忙」的反撲。當工作與生活的界線愈來愈模糊，能好好留給自己的那十分鐘，反而成了最被珍惜的奢侈。保養不再只是為了變美，而是一個讓人慢下來、把注意力收回自己身上的過程。</p>
+    <p>於是產品的價值，開始不只看成分表。香氣、質地、開啟包裝的方式、塗抹時的觸感，每一個細節都在參與這段體驗。消費者願意為「使用的當下」買單，因為那才是療癒真正發生的地方。</p>
+    <p>從助眠香氛、夜間修護精華到舒緩按摩油，「療癒儀式」正在重新定義「有效」這件事：它不一定要立刻看見成果，但一定要讓人在那個當下，感覺被好好對待。</p>
+    <p>品牌也讀懂了這個訊號。過去主打「快速見效」的廣告語，正逐漸被「好好睡一覺」「給肌膚一段休息」這類語氣取代；夜間修護、助眠香氛、頭皮與身體的舒緩品類，成為這一兩年成長最快的版塊。當情緒價值被認真看待，保養的貨架也跟著重新排列。</p>
+    <p>說到底，「療癒儀式」談的從來不只是產品，而是一種重新分配注意力的方式。在這份榜單裡，我們想找的不是最貴或最新的那一支，而是真正能陪一個人把一天好好收尾的選擇。接下來的盤點與文章，就從這個角度出發。</p>
   </div>
 
   <div class="r3l-featured-wrap p2-only">
-    <span class="new-tag new-2"><i class="ti ti-sparkles" style="font-size: 13px;" aria-hidden="true"></i>本階段新增</span>
     <p class="r3l-featured-eyebrow">年度重點 · 編輯與達人精選</p>
     <a class="r3l-featured featured-cta" href="ritual-article-mobile.html">
       <div class="r3l-featured-media"><i class="ti ti-photo" aria-hidden="true"></i></div>
@@ -162,7 +162,6 @@ body { padding: 0 0 60px; }
   </div>
 
   <div class="r3-more p15-up">
-    <span class="new-tag new-15"><i class="ti ti-sparkles" style="font-size: 13px;" aria-hidden="true"></i>本階段新增</span>
     <p class="r3-more-head">延伸閱讀 · 本趨勢最多 6 篇</p>
     <div class="r3-more-list">
       <div class="r3-more-card more-cta"><div class="r3-more-thumb"><i class="ti ti-article" aria-hidden="true"></i></div><div class="r3-more-info"><p class="r3-more-title">為什麼「睡前儀式感」比成分更重要？</p><p class="r3-more-meta">何雅萍 2026/06/30</p></div></div>
