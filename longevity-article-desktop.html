@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>女人我最大賞 2026 · Ritual 療癒儀式 · Desktop</title>
+<title>女人我最大賞 2026 · 醫美共生 · Desktop</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
@@ -49,7 +49,7 @@ body { padding: 0 0 60px; }
 .d3-article-feature i { font-size: 32px; }
 .d3-article-feature span { font-size: 12px; }
 
-/* 文章頭部：小類別標記（小 R 開頭） */
+/* 文章頭部：小類別標記 */
 .d3-article-head { max-width: 600px; margin: 0 auto; padding: 56px 36px 0; }
 .d3-back { display: inline-flex; align-items: center; gap: 4px; font-size: 13px; color: var(--color-text-secondary); text-decoration: none; margin-bottom: 22px; }
 .d3-back:hover { color: var(--color-text-primary); }
@@ -72,7 +72,7 @@ body { padding: 0 0 60px; }
 .d3-article-img i { font-size: 28px; }
 .d3-article-img span { font-size: 12px; }
 
-/* 分享列（文章結尾 · Phase 1–2 都顯示） */
+/* 分享列（文章結尾） */
 .d3-share { max-width: 600px; margin: 0 auto; padding: 40px 0 8px; border-top: 0.5px solid var(--color-border-tertiary); text-align: center; }
 .d3-share-label { font-size: 13px; color: var(--color-text-secondary); letter-spacing: 1px; margin: 0 0 18px; }
 .d3-share-btns { display: flex; justify-content: center; gap: 14px; }
@@ -80,7 +80,7 @@ body { padding: 0 0 60px; }
 .d3-share-btn:hover { background: var(--color-text-primary); color: var(--color-background-primary); border-color: var(--color-text-primary); }
 .d3-share-btn svg { width: 20px; height: 20px; display: block; }
 
-/* 盤點型內文穿插產品卡（Phase 2 才出現 · 左圖右字 · 可應援） */
+/* 盤點型內文穿插產品卡（左圖右字 · 可應援） */
 .d3-inline-product { display: flex; gap: 36px; align-items: center; max-width: 880px; margin: 52px auto; padding: 24px; background: #FAEEDA; border-left: 4px solid #BA7517; }
 .d3-ip-media { flex: 0 0 320px; aspect-ratio: 4/3; background: #D3D1C7; border-radius: var(--border-radius-md); display: flex; align-items: center; justify-content: center; color: var(--color-background-primary); }
 .d3-ip-media i { font-size: 36px; }
@@ -97,11 +97,6 @@ body { padding: 0 0 60px; }
 .d3-ip-more { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #BA7517; text-decoration: none; cursor: pointer; }
 .d3-ip-more:hover { text-decoration: underline; }
 
-.d3-section-divider { padding: 24px 36px; background: var(--color-background-secondary); display: flex; justify-content: space-between; align-items: flex-end; max-width: 1080px; margin: 0 auto; }
-.d3-section-label { font-size: 11px; color: var(--color-text-secondary); margin: 0 0 4px; letter-spacing: 2px; text-transform: uppercase; }
-.d3-section-title { font-size: 20px; font-weight: 500; margin: 0; color: var(--color-text-primary); }
-.d3-section-meta { font-size: 12px; color: var(--color-text-tertiary); margin: 0; }
-
 /* 延伸閱讀（本趨勢其他文章 · 含署名） */
 .d3-more { max-width: 1008px; margin: 0 auto; padding: 32px 36px 24px; }
 .d3-more-head { font-size: 11px; color: var(--color-text-secondary); letter-spacing: 2px; margin: 0 0 16px; text-transform: uppercase; }
@@ -113,34 +108,6 @@ body { padding: 0 0 60px; }
 .d3-more-info { flex: 1; min-width: 0; }
 .d3-more-title { font-size: 14px; font-weight: 500; margin: 0 0 3px; line-height: 1.4; color: var(--color-text-primary); }
 .d3-more-meta { font-size: 11px; color: var(--color-text-tertiary); margin: 0; }
-
-.d3-p2-placeholder { margin: 40px auto; max-width: 1008px; padding: 48px 32px; background: var(--color-background-secondary); border: 0.5px dashed var(--color-border-secondary); border-radius: var(--border-radius-md); text-align: center; }
-.d3-p2-placeholder-tag { display: inline-block; padding: 3px 12px; background: #D3D1C7; color: #444441; font-size: 11px; font-weight: 500; border-radius: 4px; letter-spacing: 1px; margin-bottom: 14px; }
-.d3-p2-placeholder-title { font-size: 24px; font-weight: 500; margin: 0 0 8px; color: var(--color-text-primary); }
-.d3-p2-placeholder-sub { font-size: 14px; color: var(--color-text-secondary); margin: 0; }
-
-.d3-p2-strong { border-left: 4px solid #BA7517; background: #FAEEDA; border-radius: 0; }
-.d3-p2-banner { padding: 18px 60px; background: #FAC775; color: #633806; }
-.d3-p2-banner-tag { font-size: 12px; font-weight: 500; letter-spacing: 2px; margin: 0 0 4px; }
-.d3-p2-banner-content { font-size: 16px; font-weight: 500; margin: 0; }
-.d3-p2-content { padding: 40px 60px; max-width: 1080px; margin: 0 auto; }
-.d3-products-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px; }
-
-/* 產品：10 個全露、2 欄 */
-.d3-product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.d3-product-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); overflow: hidden; }
-.d3-product-img { aspect-ratio: 1/1; background: #D3D1C7; display: flex; align-items: center; justify-content: center; }
-.d3-product-img i { font-size: 32px; color: var(--color-background-primary); }
-.d3-product-body { padding: 16px; }
-.d3-product-brand { font-size: 11px; color: var(--color-text-tertiary); margin: 0 0 2px; letter-spacing: 0.5px; }
-.d3-product-name { font-size: 15px; font-weight: 500; margin: 0 0 10px; color: var(--color-text-primary); line-height: 1.4; }
-.d3-product-quote { padding: 10px 12px; background: var(--color-background-secondary); border-radius: var(--border-radius-md); margin-bottom: 12px; }
-.d3-product-quote-text { font-family: var(--font-serif); font-style: italic; font-size: 12px; line-height: 1.5; margin: 0 0 4px; color: var(--color-text-primary); }
-.d3-product-quote-author { font-size: 11px; color: var(--color-text-tertiary); margin: 0; }
-.d3-product-foot { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
-.d3-learn-more { display: inline-flex; align-items: center; gap: 4px; padding: 6px 12px; border: 0.5px solid var(--color-text-primary); border-radius: var(--border-radius-md); font-size: 12px; color: var(--color-text-primary); background: transparent; cursor: pointer; font-family: inherit; }
-.d3-learn-more:hover { background: var(--color-text-primary); color: var(--color-background-primary); }
-
 
 .d3-next-trend { padding: 80px 36px; background: #444441; color: var(--color-background-primary); text-align: center; cursor: pointer; }
 .d3-next-trend:hover { background: #5F5E5A; }
@@ -162,7 +129,7 @@ body { padding: 0 0 60px; }
   <span class="pb-spacer"></span>
   <span class="pb-device">
     <span class="active">💻 桌機</span>
-    <a class="pn-device" href="ritual-article-mobile.html#p2">📱 手機</a>
+    <a class="pn-device" href="longevity-article-mobile.html#p2">📱 手機</a>
   </span>
 </div>
 
@@ -174,14 +141,14 @@ body { padding: 0 0 60px; }
       <span style="font-size: 11px; color: var(--color-text-tertiary); font-family: var(--font-serif); font-style: italic;">Annual Beauty Report 2026</span>
     </div>
     <nav class="d3-nav">
-      <a data-trend="unfiltered">U</a><a data-trend="noble">N</a><a data-trend="fortify">F</a><a data-trend="unique">U</a><a class="active" data-trend="ritual">R</a><a data-trend="longevity">L</a>
+      <a data-trend="unfiltered">U</a><a data-trend="noble">N</a><a data-trend="fortify">F</a><a data-trend="unique">U</a><a data-trend="ritual">R</a><a class="active" data-trend="longevity">L</a>
     </nav>
   </div>
 
   <div class="d3-article-head">
-    <a class="d3-back" href="ritual-list-desktop.html#p2"><i class="ti ti-arrow-left" style="font-size: 14px;" aria-hidden="true"></i>R 療癒儀式</a>
-    <div><span class="d3-cat-tag">R · 療癒儀式</span></div>
-    <h1 class="d3-article-title">2026 療癒儀式：年度 10 大品項</h1>
+    <a class="d3-back" href="home-desktop.html#p2"><i class="ti ti-arrow-left" style="font-size: 14px;" aria-hidden="true"></i>六大趨勢</a>
+    <div><span class="d3-cat-tag">L · 醫美共生</span></div>
+    <h1 class="d3-article-title">2026 醫美共生：年度 10 大品項</h1>
     <p class="d3-article-byline">何雅萍 · 2026/06/30</p>
   </div>
 
@@ -191,19 +158,20 @@ body { padding: 0 0 60px; }
   </div>
 
   <div class="d3-article-wrap">
+    <!-- PLACEHOLDER body copy, 文字定案待 PO -->
     <div class="d3-article">
-      <p class="lead">睡眠、放鬆、夜間修復，成為 2026 年最重要的美容核心議題。</p>
-      <p>過去十年，保養幾乎都在談「對抗」：抗皺、抗老、抗下垂，把臉當成一場必須贏的戰役。但走到 2026 年，越來越多人開始換一個問句：保養可不可以不是抵抗，而是回應？回應身體的累、回應一天的緊繃，也回應那個很久沒被好好對待的自己。</p>
-      <p>「療癒儀式」就是這個問句的答案。它把保養從鏡子前的例行公事，變成睡前一段只屬於自己的時間。以下這 10 件，是編輯與達人在這股趨勢裡實際用過、也願意一再回購的品項，依照一段完整睡前儀式的順序排列：從洗去一天，到讓自己慢慢睡著。</p>
+      <p class="lead">醫美，正在從「偷偷做一次」，變成一種長期經營的自我投資。</p>
+      <p>過去談醫美，總帶著一點不能說的祕密感：做完不能曬、不能說，最好沒人發現。但走到 2026 年，這件事正在被重新定義。越來越多人把醫美當成保養的一環，和居家護理一起，組成一套長期經營的計畫。</p>
+      <p>「醫美共生」談的，就是這種關係：診所負責還原與重建，居家負責守成與延續，兩者缺一不可。以下這 10 件，是醫美術後與日常修護裡，編輯與達人實際在用、也最常被諮詢的居家品項，依照「療程後到日常」的順序排列。</p>
 
-      <h2 class="d3-article-h2">夜間修護：讓肌膚自己修復</h2>
-      <p>夜晚，才是肌膚真正開始工作的時間。當白天的防禦任務結束，修護成分接手，把一整天累積的疲憊，悄悄轉譯成隔天醒來的飽滿。這個階段不需要太複雜，選對幾件、然後安心交給時間就好。</p>
+      <h2 class="d3-article-h2">術後修護：把療程後 72 小時顧好</h2>
+      <p>療程結束的頭三天，幾乎決定了最後的成果。這時的肌膚像剛翻新的牆面，怕熱、怕刺激，也最需要被溫柔地照顧。比起急著看效果，先把鎮定與保濕做足，後面的路才會走得順。</p>
       <div class="d3-inline-product">
         <div class="d3-ip-media"><i class="ti ti-photo" aria-hidden="true"></i></div>
         <div class="d3-ip-body">
           <p class="d3-ip-brand">BRAND A</p>
-          <p class="d3-ip-name">夜間修護精華 30ml</p>
-          <p class="d3-ip-desc">高濃度修護成分，質地清爽好吸收，睡前一滴推勻全臉，讓肌膚在夜裡完成自我修復。</p>
+          <p class="d3-ip-name">術後舒緩修護面膜（5 入）</p>
+          <p class="d3-ip-desc">醫療等級不織布，主打高純度神經醯胺與積雪草，療程當天即可敷，替泛紅與緊繃的肌膚快速降溫補水。</p>
           <div class="d3-ip-react">
             <button class="d3-react-btn" type="button" data-count="642" title="讚">👍 <span class="d3-react-num">642</span></button>
             <button class="d3-react-btn" type="button" data-count="1247" title="愛心">❤️ <span class="d3-react-num">1,247</span></button>
@@ -213,13 +181,13 @@ body { padding: 0 0 60px; }
         </div>
       </div>
 
-      <p>嗅覺是最快抵達情緒的感官。一滴帶著木質與花香的護膚油，在掌心搓開的瞬間，身體就先收到了「可以放鬆了」的訊號。</p>
+      <p>剛做完雷射或微針的肌膚，最怕的就是悶熱與乾燥。隨身一瓶鎮定噴霧，泛紅或緊繃時輕輕補上，是術後最沒有負擔的安心感。</p>
       <div class="d3-inline-product">
         <div class="d3-ip-media"><i class="ti ti-photo" aria-hidden="true"></i></div>
         <div class="d3-ip-body">
           <p class="d3-ip-brand">BRAND B</p>
-          <p class="d3-ip-name">舒緩香氛護膚油 50ml</p>
-          <p class="d3-ip-desc">融合植萃精油與木質香調，掌心溫熱後輕拍全臉，鎖水同時舒緩一日的緊繃。</p>
+          <p class="d3-ip-name">高純水鎮定噴霧 120ml</p>
+          <p class="d3-ip-desc">無酒精、無香料配方，雷射或微針後隨時輕噴，舒緩灼熱與緊繃，平日外出補水也好用。</p>
           <div class="d3-ip-react">
             <button class="d3-react-btn" type="button" data-count="503" title="讚">👍 <span class="d3-react-num">503</span></button>
             <button class="d3-react-btn" type="button" data-count="982" title="愛心">❤️ <span class="d3-react-num">982</span></button>
@@ -229,13 +197,13 @@ body { padding: 0 0 60px; }
         </div>
       </div>
 
-      <p>不必沖洗、敷著入睡，睡眠面膜把保養的最後一步，變成毫不費力的儀式。一位達人形容得很準：「敷上之後，今天就正式結束了。」</p>
+      <p>真正的修復，發生在睡著的時候。把凍膜厚敷一層當作睡眠面膜，等於替剛做完療程的肌膚，安排一整夜安靜的加班。</p>
       <div class="d3-inline-product">
         <div class="d3-ip-media"><i class="ti ti-photo" aria-hidden="true"></i></div>
         <div class="d3-ip-body">
           <p class="d3-ip-brand">BRAND C</p>
-          <p class="d3-ip-name">水潤睡眠面膜 80g</p>
-          <p class="d3-ip-desc">富含玻尿酸與保濕因子，免沖洗的凝凍質地，厚敷一層入睡，隔天醒來飽水透亮。</p>
+          <p class="d3-ip-name">夜間修護凍膜 75ml</p>
+          <p class="d3-ip-desc">厚敷一層當睡眠面膜，集中修護受損屏障，幫助術後肌在夜裡安靜地把自己補回來。</p>
           <div class="d3-ip-react">
             <button class="d3-react-btn" type="button" data-count="388" title="讚">👍 <span class="d3-react-num">388</span></button>
             <button class="d3-react-btn" type="button" data-count="756" title="愛心">❤️ <span class="d3-react-num">756</span></button>
@@ -245,14 +213,14 @@ body { padding: 0 0 60px; }
         </div>
       </div>
 
-      <h2 class="d3-article-h2">清潔與助眠：把一天好好洗掉</h2>
-      <p>真正的放鬆，往往從「洗去」開始。當臉上的粉塵與一整天的緊繃一起被綿密泡沫帶走，身體才會收到「可以下班了」的訊號。接著，讓喜歡的香氣補上，把臥室和外面的世界溫柔地隔開。</p>
+      <h2 class="d3-article-h2">居家精華：把診所成分搬回家</h2>
+      <p>真正讓成果延續的，是日常那幾條精華。這幾年居家保養的成分濃度越追越高，許多過去只在診間聽過的關鍵字，現在都能在梳妝台上找到溫和的版本。</p>
       <div class="d3-inline-product">
         <div class="d3-ip-media"><i class="ti ti-photo" aria-hidden="true"></i></div>
         <div class="d3-ip-body">
           <p class="d3-ip-brand">BRAND D</p>
-          <p class="d3-ip-name">寧靜系列洗顏霜 120g</p>
-          <p class="d3-ip-desc">胺基酸溫和配方，搓揉出綿密泡沫，洗去髒污卻不緊繃，留下乾淨柔嫩的肌膚。</p>
+          <p class="d3-ip-name">膠原緊緻精華 30ml</p>
+          <p class="d3-ip-desc">複合胜肽搭配維他命 B5，幫助膠原增生與緊緻，質地清爽，早晚一次推勻全臉與頸部。</p>
           <div class="d3-ip-react">
             <button class="d3-react-btn" type="button" data-count="274" title="讚">👍 <span class="d3-react-num">274</span></button>
             <button class="d3-react-btn" type="button" data-count="644" title="愛心">❤️ <span class="d3-react-num">644</span></button>
@@ -262,13 +230,13 @@ body { padding: 0 0 60px; }
         </div>
       </div>
 
-      <p>睡前在枕上輕噴兩下，薰衣草與佛手柑在呼吸之間擴散。香氣成為入睡的開關，把臥室和外面的世界，溫柔地隔開。</p>
+      <p>A 醇是抗老的長青選手，過去卻常因刺激而讓人卻步。新一代的包覆技術，讓它變得溫和許多，從低濃度開始，慢慢養出耐受。</p>
       <div class="d3-inline-product">
         <div class="d3-ip-media"><i class="ti ti-photo" aria-hidden="true"></i></div>
         <div class="d3-ip-body">
           <p class="d3-ip-brand">BRAND E</p>
-          <p class="d3-ip-name">枕邊助眠噴霧 100ml</p>
-          <p class="d3-ip-desc">薰衣草與佛手柑複方香氛，睡前噴於枕邊與寢具，以氣味為睡眠按下開關。</p>
+          <p class="d3-ip-name">溫和 A 醇晚霜 50ml</p>
+          <p class="d3-ip-desc">包覆型 A 醇降低刺激，從低濃度建立耐受，夜間使用幫助代謝、撫平細紋。</p>
           <div class="d3-ip-react">
             <button class="d3-react-btn" type="button" data-count="421" title="讚">👍 <span class="d3-react-num">421</span></button>
             <button class="d3-react-btn" type="button" data-count="833" title="愛心">❤️ <span class="d3-react-num">833</span></button>
@@ -279,18 +247,18 @@ body { padding: 0 0 60px; }
       </div>
 
       <div class="d3-quote-inline">
-        <p>現代女性需要的不是抗老產品，是抗焦慮的儀式。當這一刻屬於自己，肌膚自然也願意回應。</p>
-        <p class="d3-quote-author">美容專家 柳燕</p>
+        <p>醫美不是把臉交出去，而是把保養變成一件更有方法的事。診所負責還原，真正的養成，發生在每天的居家裡。</p>
+        <p class="d3-quote-author">醫美專科醫師</p>
       </div>
 
-      <h2 class="d3-article-h2">身體舒緩：從臉延伸到全身</h2>
-      <p>儀式不該只停在臉上。把浴室變成只屬於自己的十分鐘，沐浴油在水面化開成柔白，水溫包覆全身，連肩頸的緊繃都跟著鬆開。再往上一點，頭皮、眼睛這些撐了一整天的地方，也值得被認真對待。</p>
+      <h2 class="d3-article-h2">日常守成：防曬、保濕、緊緻</h2>
+      <p>再好的療程，都擋不住一個敵人：紫外線。守成期的重點其實很單純，把防曬做滿、把保濕做夠，再用一點居家儀器幫忙維持緊緻，讓成果待得更久一些。</p>
       <div class="d3-inline-product">
         <div class="d3-ip-media"><i class="ti ti-photo" aria-hidden="true"></i></div>
         <div class="d3-ip-body">
           <p class="d3-ip-brand">BRAND F</p>
-          <p class="d3-ip-name">舒壓沐浴油 200ml</p>
-          <p class="d3-ip-desc">入水即化成乳白柔膚油，沐浴後肌膚滑順不黏膩，伴著香氣放鬆緊繃的肩頸。</p>
+          <p class="d3-ip-name">醫美修護防曬乳 SPF50+ 50ml</p>
+          <p class="d3-ip-desc">物理化學混合配方並添加修護成分，清爽不泛白，術後與日常都能用，是守住成果的第一道防線。</p>
           <div class="d3-ip-react">
             <button class="d3-react-btn" type="button" data-count="196" title="讚">👍 <span class="d3-react-num">196</span></button>
             <button class="d3-react-btn" type="button" data-count="512" title="愛心">❤️ <span class="d3-react-num">512</span></button>
@@ -300,13 +268,13 @@ body { padding: 0 0 60px; }
         </div>
       </div>
 
-      <p>緊繃常常從頭皮開始。指腹沿著髮際緩慢按壓，精油裡的薄荷與迷迭香，把一整天累積的壓力一寸寸推開。</p>
+      <p>屏障穩了，肌膚才有底氣面對下一次療程。乾燥或術後緊繃的時候，一層厚潤的修護霜，常常隔天就讓人明顯有感。</p>
       <div class="d3-inline-product">
         <div class="d3-ip-media"><i class="ti ti-photo" aria-hidden="true"></i></div>
         <div class="d3-ip-body">
           <p class="d3-ip-brand">BRAND G</p>
-          <p class="d3-ip-name">頭皮舒緩按摩精油 60ml</p>
-          <p class="d3-ip-desc">薄荷與迷迭香植萃，沿髮際以指腹按壓，清涼感喚醒頭皮，逐寸推開緊繃。</p>
+          <p class="d3-ip-name">屏障修護保濕霜 50ml</p>
+          <p class="d3-ip-desc">神經醯胺與膽固醇黃金比例，強化受損屏障，乾燥或術後緊繃時厚敷一層，隔天明顯回穩。</p>
           <div class="d3-ip-react">
             <button class="d3-react-btn" type="button" data-count="312" title="讚">👍 <span class="d3-react-num">312</span></button>
             <button class="d3-react-btn" type="button" data-count="689" title="愛心">❤️ <span class="d3-react-num">689</span></button>
@@ -316,13 +284,13 @@ body { padding: 0 0 60px; }
         </div>
       </div>
 
-      <p>盯了一天的螢幕，眼睛比任何部位都更需要被照顧。蒸氣眼罩的溫度，是給雙眼的一段強制休息。</p>
+      <p>把診所裡的緊緻感，延續到每天的五分鐘。微電流加上溫熱，沿著臉部線條慢慢推開，是維持輪廓最不費力的小習慣。</p>
       <div class="d3-inline-product">
         <div class="d3-ip-media"><i class="ti ti-photo" aria-hidden="true"></i></div>
         <div class="d3-ip-body">
           <p class="d3-ip-brand">BRAND H</p>
-          <p class="d3-ip-name">溫感蒸氣眼罩（5 入）</p>
-          <p class="d3-ip-desc">拆封即自動發熱，約 40°C 溫感持續 20 分鐘，敷上雙眼，給疲勞視線一段休息。</p>
+          <p class="d3-ip-name">居家緊緻按摩儀</p>
+          <p class="d3-ip-desc">結合微電流與溫熱，沿臉部線條每天五分鐘，幫助放鬆肌肉、維持輪廓的緊緻感。</p>
           <div class="d3-ip-react">
             <button class="d3-react-btn" type="button" data-count="458" title="讚">👍 <span class="d3-react-num">458</span></button>
             <button class="d3-react-btn" type="button" data-count="905" title="愛心">❤️ <span class="d3-react-num">905</span></button>
@@ -332,14 +300,14 @@ body { padding: 0 0 60px; }
         </div>
       </div>
 
-      <h2 class="d3-article-h2">由內調理：收束這場儀式</h2>
-      <p>最深層的放鬆，其實是由內而外的。睡前的機能飲，把放鬆的訊號直接送進身體，讓「準備睡了」成為一種習慣；最後再用一層厚潤的身體乳收尾，像替自己蓋上一條被善待的觸感。</p>
+      <h2 class="d3-article-h2">由內保養：慢慢養回底氣</h2>
+      <p>長期主義的最後一塊，是把養分從體內補回來。外用守成、內服打底，兩邊一起，才撐得起「共生」這兩個字。</p>
       <div class="d3-inline-product">
         <div class="d3-ip-media"><i class="ti ti-photo" aria-hidden="true"></i></div>
         <div class="d3-ip-body">
           <p class="d3-ip-brand">BRAND I</p>
-          <p class="d3-ip-name">夜寧機能飲（7 入）</p>
-          <p class="d3-ip-desc">添加 GABA 與洋甘菊萃取，睡前一瓶順口好喝，由內幫身體調整入睡的節奏。</p>
+          <p class="d3-ip-name">高吸收膠原蛋白飲（14 入）</p>
+          <p class="d3-ip-desc">小分子魚膠原搭配維他命 C，睡前一瓶，由內補回隨年紀流失的彈潤。</p>
           <div class="d3-ip-react">
             <button class="d3-react-btn" type="button" data-count="233" title="讚">👍 <span class="d3-react-num">233</span></button>
             <button class="d3-react-btn" type="button" data-count="547" title="愛心">❤️ <span class="d3-react-num">547</span></button>
@@ -349,13 +317,13 @@ body { padding: 0 0 60px; }
         </div>
       </div>
 
-      <p>沐浴後趁肌膚還帶著微溫，把身體乳厚厚推開，香氣一路留到入睡前。當最後一個步驟也完成，這一天才算真正、好好地結束。</p>
+      <p>抗老是一場跟時間的長跑，靠的是日積月累。睡前一顆複方膠囊，把保養的努力，從表面一路延伸到看不見的體內。</p>
       <div class="d3-inline-product">
         <div class="d3-ip-media"><i class="ti ti-photo" aria-hidden="true"></i></div>
         <div class="d3-ip-body">
           <p class="d3-ip-brand">BRAND J</p>
-          <p class="d3-ip-name">居家 SPA 身體乳 250ml</p>
-          <p class="d3-ip-desc">乳木果油濃潤配方，沐浴後全身塗抹，鎖水一整夜，留下柔嫩與淡雅的餘香。</p>
+          <p class="d3-ip-name">抗老複方膠囊（30 日）</p>
+          <p class="d3-ip-desc">含白藜蘆醇與多種抗氧化成分，幫身體對抗自由基，把保養從表面延伸到體內。</p>
           <div class="d3-ip-react">
             <button class="d3-react-btn" type="button" data-count="367" title="讚">👍 <span class="d3-react-num">367</span></button>
             <button class="d3-react-btn" type="button" data-count="721" title="愛心">❤️ <span class="d3-react-num">721</span></button>
@@ -365,7 +333,7 @@ body { padding: 0 0 60px; }
         </div>
       </div>
 
-      <p>當「給自己時間」變成一種奢侈，能幫忙把這段時間還給自己的產品，就成了這個時代最被需要的答案。這 10 件不分名次，它們的共同點只有一個：用起來的時候，你會真心覺得，自己值得被這樣對待。</p>
+      <p>醫美與保養，不再是二選一。當診所的科技和日常的累積開始互相加分，「變美」就變成一件可以長長久久、慢慢經營的事。這 10 件不分名次，它們的共同點是：讓你在療程之外，也能好好把自己接住。</p>
     </div>
     <div class="d3-share">
       <p class="d3-share-label">喜歡這篇趨勢觀察？分享給朋友</p>
@@ -382,18 +350,18 @@ body { padding: 0 0 60px; }
   <div class="d3-more">
     <p class="d3-more-head">延伸閱讀 · 本趨勢最多 6 篇</p>
     <div class="d3-more-list">
-      <a class="d3-more-card more-cta" data-a="1"><div class="d3-more-thumb"><i class="ti ti-article" aria-hidden="true"></i></div><div class="d3-more-info"><p class="d3-more-title">為什麼「睡前儀式感」比成分更重要？</p><p class="d3-more-meta">何雅萍 2026/06/30</p></div></a>
-      <a class="d3-more-card more-cta" data-a="2"><div class="d3-more-thumb"><i class="ti ti-article" aria-hidden="true"></i></div><div class="d3-more-info"><p class="d3-more-title">柳燕的夜間保養順序：六個步驟的意義</p><p class="d3-more-meta">何雅萍 2026/06/30</p></div></a>
-      <a class="d3-more-card more-cta" data-a="3"><div class="d3-more-thumb"><i class="ti ti-article" aria-hidden="true"></i></div><div class="d3-more-info"><p class="d3-more-title">香氛如何影響睡眠？神經科學的解釋</p><p class="d3-more-meta">何雅萍 2026/06/30</p></div></a>
+      <a class="d3-more-card more-cta"><div class="d3-more-thumb"><i class="ti ti-article" aria-hidden="true"></i></div><div class="d3-more-info"><p class="d3-more-title">第一次做醫美，先搞懂這 5 件事</p><p class="d3-more-meta">何雅萍 2026/06/30</p></div></a>
+      <a class="d3-more-card more-cta"><div class="d3-more-thumb"><i class="ti ti-article" aria-hidden="true"></i></div><div class="d3-more-info"><p class="d3-more-title">術後修護到底在修什麼？醫師這樣說</p><p class="d3-more-meta">何雅萍 2026/06/30</p></div></a>
+      <a class="d3-more-card more-cta"><div class="d3-more-thumb"><i class="ti ti-article" aria-hidden="true"></i></div><div class="d3-more-info"><p class="d3-more-title">居家保養，能不能取代醫美療程？</p><p class="d3-more-meta">何雅萍 2026/06/30</p></div></a>
     </div>
   </div>
 
   <div class="d3-next-trend" id="d3-next">
     <p class="d3-next-label">下一個趨勢</p>
-    <p class="d3-next-letter">L</p>
-    <p class="d3-next-name">醫美共生</p>
-    <p class="d3-next-sub">Longevity</p>
-    <span class="d3-next-arrow">閱讀 L 趨勢<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></span>
+    <p class="d3-next-letter">U</p>
+    <p class="d3-next-name">健康保養</p>
+    <p class="d3-next-sub">Unfiltered</p>
+    <span class="d3-next-arrow">閱讀 U 趨勢<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></span>
   </div>
 
   <div style="padding: 28px 36px; text-align: center; border-top: 0.5px solid var(--color-border-tertiary);">
@@ -423,14 +391,15 @@ body { padding: 0 0 60px; }
     link.addEventListener('click', e => {
       e.preventDefault();
       const trend = link.getAttribute('data-trend');
-      if (trend === 'ritual') return;
+      if (trend === 'longevity') return;
+      if (trend === 'ritual') { location.href = 'ritual-article-desktop.html#p2'; return; }
       showToast('該趨勢頁 wireframe 製作中（動線會跳到 /' + trend + '）');
     });
   });
 
-  // 延伸閱讀卡：連到文章頁（盤點文恆 Phase 2）
+  // 延伸閱讀（L 趨勢文章頁尚未製作）
   document.querySelectorAll('.more-cta').forEach(card => {
-    card.setAttribute('href', 'ritual-read-desktop.html?a=' + card.getAttribute('data-a') + '#p2');
+    card.addEventListener('click', e => { e.preventDefault(); showToast('L 文章頁 wireframe 製作中（每趨勢最多 6 篇）'); });
   });
 
   // 應援：愛心／讚／星星眼各自獨立計數，可點擊 +1、再點取消
@@ -448,7 +417,7 @@ body { padding: 0 0 60px; }
   document.querySelectorAll('.learn-cta').forEach(btn => {
     btn.addEventListener('click', () => showToast('進入品牌指定 URL（官網 / Momo / 蝦皮，由品牌方在 B2B 報名時自填）'));
   });
-  document.getElementById('d3-next').addEventListener('click', () => { location.href = 'longevity-article-desktop.html#p2'; });
+  document.getElementById('d3-next').addEventListener('click', () => showToast('Unfiltered 趨勢頁 wireframe 製作中'));
 
   // 分享：FB / LINE / Threads / X 開分享視窗；複製連結寫入剪貼簿
   document.querySelectorAll('.d3-share-btn').forEach(btn => {
