@@ -48,14 +48,10 @@ body { padding: 0 0 60px; }
 .d2-nav { display: flex; gap: 2px; font-family: var(--font-serif); font-size: 15px; }
 .d2-nav a { padding: 4px 10px; color: var(--color-text-primary); text-decoration: none; font-style: italic; cursor: pointer; border-radius: 4px; }
 .d2-nav a:hover { background: #F1EFE8; }
-.d2-header-actions { display: flex; align-items: center; gap: 18px; }
-.d2-trend-mini { display: inline-flex; align-items: center; gap: 5px; background: none; border: none; font-family: inherit; font-size: 13px; color: var(--color-text-secondary); cursor: pointer; padding: 4px 6px; }
-.d2-trend-mini:hover { color: var(--color-text-primary); }
-.d2-trend-mini i { font-size: 16px; }
-.d2-quiz-link { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 500; color: var(--color-text-primary); cursor: pointer; text-decoration: none; }
-.d2-quiz-link i.ti-flower { color: #BA7517; font-size: 16px; }
-.d2-quiz-link i.ti-arrow-right { font-size: 14px; }
-.d2-quiz-link:hover { color: #BA7517; }
+.hdr-quiz { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: var(--color-text-primary); cursor: pointer; text-decoration: none; white-space: nowrap; }
+.hdr-quiz i.ti-flower { color: #BA7517; font-size: 15px; }
+.hdr-quiz i.ti-arrow-right { font-size: 13px; }
+.hdr-quiz:hover { color: #BA7517; }
 
 .d2-hero { padding: 64px 28px; background: #F1EFE8; text-align: center; }
 .d2-hero-inner { max-width: 560px; margin: 0 auto; }
@@ -142,10 +138,7 @@ body { padding: 0 0 60px; }
       <img src="logo.png" alt="女人我最大 Queen" style="height: 30px; display: block;">
       <span style="font-size: 11px; color: var(--color-text-tertiary); font-family: var(--font-serif); font-style: italic;">Annual Beauty Report 2026</span>
     </div>
-    <div class="d2-header-actions">
-      <button class="d2-trend-mini" id="d2-trend-mini" type="button"><i class="ti ti-menu-2" aria-hidden="true"></i>趨勢</button>
-      <a class="d2-quiz-link" id="d2-quiz-header"><i class="ti ti-flower" aria-hidden="true"></i>測測我是什麼花？<i class="ti ti-arrow-right" aria-hidden="true"></i></a>
-    </div>
+    <a class="hdr-quiz" id="hdr-quiz"><i class="ti ti-flower" aria-hidden="true"></i>測測我是什麼花？<i class="ti ti-arrow-right" aria-hidden="true"></i></a>
   </div>
 
   <div class="d2-hero">
@@ -358,8 +351,7 @@ body { padding: 0 0 60px; }
 
   document.getElementById('d2-quiz-top').addEventListener('click', () => showToast('心測頁尚未製作 · 動線會跳到 /quiz'));
   document.getElementById('d2-quiz-bottom').addEventListener('click', () => showToast('心測頁尚未製作 · 動線會跳到 /quiz'));
-  document.getElementById('d2-quiz-header').addEventListener('click', () => showToast('心測頁尚未製作 · 動線會跳到 /quiz'));
-  document.getElementById('d2-trend-mini').addEventListener('click', () => { document.getElementById('d-sec-u1').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+  document.getElementById('hdr-quiz').addEventListener('click', () => showToast('心測頁尚未製作 · 動線會跳到 /quiz'));
 })();
 </script>
 </body>

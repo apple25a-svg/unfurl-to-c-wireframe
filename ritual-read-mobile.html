@@ -44,6 +44,10 @@ body { padding: 0 0 60px; }
 .r3-nav { display: flex; gap: 1px; font-family: var(--font-serif); font-size: 14px; }
 .r3-nav a { padding: 4px 7px; color: var(--color-text-primary); text-decoration: none; font-style: italic; cursor: pointer; border-radius: 4px; }
 .r3-nav a:hover { background: #F1EFE8; }
+.hdr-quiz { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: var(--color-text-primary); cursor: pointer; text-decoration: none; white-space: nowrap; }
+.hdr-quiz i.ti-flower { color: #BA7517; font-size: 15px; }
+.hdr-quiz i.ti-arrow-right { font-size: 13px; }
+.hdr-quiz:hover { color: #BA7517; }
 .r3-nav a.active { background: var(--color-text-primary); color: var(--color-background-primary); font-weight: 500; }
 
 /* 文章主圖（KV，置於文章頭部與長文之間 · 手機滿版） */
@@ -119,9 +123,7 @@ body { padding: 0 0 60px; }
 
   <div class="r3-header">
     <img src="logo.png" alt="女人我最大 Queen" style="height: 22px; display: block;">
-    <nav class="r3-nav">
-      <a data-trend="unfiltered">U</a><a data-trend="noble">N</a><a data-trend="fortify">F</a><a data-trend="unique">U</a><a class="active" data-trend="ritual">R</a><a data-trend="longevity">L</a>
-    </nav>
+    <a class="hdr-quiz" id="hdr-quiz"><i class="ti ti-flower" aria-hidden="true"></i>æ¸¬æ¸¬ææ¯ä»éº¼è±ï¼<i class="ti ti-arrow-right" aria-hidden="true"></i></a>
   </div>
 
   <div class="r3-article-head">
@@ -233,6 +235,8 @@ body { padding: 0 0 60px; }
     if (toastTimer) clearTimeout(toastTimer);
     toastTimer = setTimeout(() => toast.classList.remove('show'), 2400);
   }
+  var hdrQuiz = document.querySelector('.hdr-quiz');
+  if (hdrQuiz) hdrQuiz.addEventListener('click', () => showToast('å¿æ¸¬é å°æªè£½ä½ Â· åç·æè·³å° /quiz'));
 
   document.querySelectorAll('.r3-nav a').forEach(link => {
     link.addEventListener('click', e => {

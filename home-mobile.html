@@ -47,10 +47,10 @@ body { padding: 0 0 60px; }
 .m2-nav { display: flex; gap: 1px; font-family: var(--font-serif); font-size: 14px; }
 .m2-nav a { padding: 4px 7px; color: var(--color-text-primary); text-decoration: none; font-style: italic; cursor: pointer; border-radius: 4px; }
 .m2-nav a:hover { background: #F1EFE8; }
-.m2-header-actions { display: flex; align-items: center; gap: 12px; }
-.m2-trend-mini { display: inline-flex; align-items: center; background: none; border: none; color: var(--color-text-secondary); cursor: pointer; padding: 2px; font-size: 18px; }
-.m2-quiz-link { display: inline-flex; align-items: center; gap: 5px; font-size: 13px; font-weight: 500; color: var(--color-text-primary); cursor: pointer; text-decoration: none; }
-.m2-quiz-link i.ti-flower { color: #BA7517; font-size: 15px; }
+.hdr-quiz { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: var(--color-text-primary); cursor: pointer; text-decoration: none; white-space: nowrap; }
+.hdr-quiz i.ti-flower { color: #BA7517; font-size: 15px; }
+.hdr-quiz i.ti-arrow-right { font-size: 13px; }
+.hdr-quiz:hover { color: #BA7517; }
 .m2-section { padding: 28px 20px; border-bottom: 0.5px solid var(--color-border-tertiary); }
 .m2-letter-row { display: flex; align-items: baseline; gap: 14px; margin-bottom: 8px; }
 .m2-letter { font-family: var(--font-serif); font-style: italic; font-size: 56px; line-height: 1; color: var(--color-text-primary); font-weight: 500; }
@@ -127,10 +127,7 @@ body { padding: 0 0 60px; }
 
   <div class="m2-header">
     <img src="logo.png" alt="女人我最大 Queen" style="height: 22px; display: block;">
-    <div class="m2-header-actions">
-      <button class="m2-trend-mini" id="m2-trend-mini" type="button" aria-label="趨勢"><i class="ti ti-menu-2" aria-hidden="true"></i></button>
-      <a class="m2-quiz-link" id="m2-quiz-header"><i class="ti ti-flower" aria-hidden="true"></i>測測我是什麼花？</a>
-    </div>
+    <a class="hdr-quiz" id="hdr-quiz"><i class="ti ti-flower" aria-hidden="true"></i>測測我是什麼花？<i class="ti ti-arrow-right" aria-hidden="true"></i></a>
   </div>
 
   <div style="padding: 32px 20px; background: #F1EFE8; text-align: center;">
@@ -305,8 +302,7 @@ body { padding: 0 0 60px; }
 
   document.getElementById('m2-quiz-top').addEventListener('click', () => showToast('心測頁尚未製作 · 動線會跳到 /quiz'));
   document.getElementById('m2-quiz-bottom').addEventListener('click', () => showToast('心測頁尚未製作 · 動線會跳到 /quiz'));
-  document.getElementById('m2-quiz-header').addEventListener('click', () => showToast('心測頁尚未製作 · 動線會跳到 /quiz'));
-  document.getElementById('m2-trend-mini').addEventListener('click', () => { document.getElementById('sec-u1').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+  document.getElementById('hdr-quiz').addEventListener('click', () => showToast('心測頁尚未製作 · 動線會跳到 /quiz'));
 })();
 </script>
 </body>
