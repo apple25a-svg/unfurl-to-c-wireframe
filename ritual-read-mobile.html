@@ -243,7 +243,7 @@ body { padding: 0 0 60px; }
     });
   });
 
-  document.getElementById('r3-next').addEventListener('click', () => showToast('Longevity 趨勢頁 wireframe 製作中'));
+  document.getElementById('r3-next').addEventListener('click', () => { location.href = 'longevity-list-mobile.html' + hash; });
 
   // 分享：FB / LINE / Threads / X 開分享視窗；複製連結寫入剪貼簿
   document.querySelectorAll('.r3-share-btn').forEach(btn => {
