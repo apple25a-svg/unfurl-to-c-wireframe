@@ -1,0 +1,150 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// 3 組候選配色（mockup 用，尚未寫進 token；挑定後我再寫進 tailwind.config）
+const palettes = [
+  {
+    id: 'editorial',
+    name: '暖編輯金',
+    desc: '沉穩、雜誌感、高級（現況精修）',
+    c: { bg: '#FAF7F1', surface: '#F2EBDF', ink: '#2B2926', ink2: '#6B655B', primary: '#B07C2E', primaryHover: '#97681F', accent: '#B07C2E', line: '#E6DECF', imgA: '#EFE7D7', imgB: '#E0D2B6', skyTop: '#EFEAE0', skyBot: '#FAF7F1' },
+  },
+  {
+    id: 'garden',
+    name: '綻放花園',
+    desc: '柔粉花卉＋綠葉、女性、綻放（UNFURL 主題）',
+    c: { bg: '#FBF6F3', surface: '#F8ECE6', ink: '#3A2A2E', ink2: '#8A6E6E', primary: '#C2746B', primaryHover: '#A65A52', accent: '#7E9070', line: '#EBDCD6', imgA: '#F3DED6', imgB: '#E4C0B6', skyTop: '#F0E3DF', skyBot: '#FBF6F3' },
+  },
+  {
+    id: 'peach',
+    name: '蜜桃奶霜',
+    desc: '暖桃珊瑚、鮮活親和、現代美妝',
+    c: { bg: '#FDF7F2', surface: '#F9EAE0', ink: '#322A26', ink2: '#7A6A60', primary: '#D67A56', primaryHover: '#C0653F', accent: '#C9A96E', line: '#F0E1D6', imgA: '#F7E3D5', imgB: '#EAC8AF', skyTop: '#F6E6DA', skyBot: '#FDF7F2' },
+  },
+  {
+    id: 'neutral',
+    name: '純淨編輯',
+    desc: '中性黑白骨架＋暖金點綴、影像帶色（Wealthsimple 風）',
+    c: { bg: '#FFFFFF', surface: '#F5F5F3', ink: '#1A1A1A', ink2: '#6E6E6B', primary: '#1A1A1A', primaryHover: '#000000', accent: '#B07C2E', line: '#E7E7E3', imgA: '#ECE7DF', imgB: '#D8D1C4', skyTop: '#F2F1EE', skyBot: '#FFFFFF' },
+  },
+];
+
+const swatchKeys = [
+  ['bg', '底'],
+  ['surface', '卡面'],
+  ['ink', '主字'],
+  ['primary', '主CTA'],
+  ['accent', '點綴'],
+];
+---
+
+<BaseLayout title="配色方向比較 · UNFURL to C">
+  <main class="wrap">
+    <header class="intro">
+      <p class="eyebrow">PALETTE MOCKUP</p>
+      <h1>配色方向比較</h1>
+      <p class="lead">3 組候選配色，套在真實片段上（hero 色帶／趨勢卡／雙入口 CTA／文字層次）。並排比較，挑定後我再寫進 token。</p>
+    </header>
+
+    {palettes.map((p) => (
+      <section
+        class="pal"
+        style={`--bg:${p.c.bg};--surface:${p.c.surface};--ink:${p.c.ink};--ink2:${p.c.ink2};--primary:${p.c.primary};--primary-hover:${p.c.primaryHover};--accent:${p.c.accent};--line:${p.c.line};--imgA:${p.c.imgA};--imgB:${p.c.imgB};--sky-top:${p.c.skyTop};--sky-bot:${p.c.skyBot};`}
+      >
+        <div class="pal-head">
+          <div>
+            <h2>{p.name}</h2>
+            <p class="pal-desc">{p.desc}</p>
+          </div>
+          <div class="swatches">
+            {swatchKeys.map(([k, label]) => (
+              <div class="swatch">
+                <span class="chip" style={`background:${p.c[k]}`}></span>
+                <span class="chip-label">{label}<br /><code>{p.c[k]}</code></span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="demo">
+          <!-- hero 色帶 -->
+          <div class="hero">
+            <div class="hero-sky">
+              <p class="hero-slogan">美，由我綻放</p>
+              <p class="hero-word">UNFURL</p>
+              <p class="hero-cue">滑動探索 ↓</p>
+            </div>
+            <div class="hero-ground"></div>
+          </div>
+
+          <!-- 趨勢卡 + 雙入口 -->
+          <div class="card">
+            <p class="card-eyebrow">趨勢選品</p>
+            <div class="products">
+              <div class="product"><div class="thumb"></div><p class="p-name">夜間修護精華</p><p class="p-desc">睡眠時段啟動的密集修護。</p></div>
+              <div class="product"><div class="thumb"></div><p class="p-name">枕邊助眠噴霧</p><p class="p-desc">香氣成為入睡的開關。</p></div>
+            </div>
+            <div class="cta-row">
+              <a class="cta-primary" href="#">看完整盤點<i class="ti ti-arrow-right"></i></a>
+              <a class="cta-line" href="#">閱讀完整趨勢<i class="ti ti-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <!-- 文字層次 -->
+          <div class="type">
+            <p class="t-meta">關於評選 · ANNUAL BEAUTY REPORT 2026</p>
+            <p class="t-title">Ritual · 療癒儀式</p>
+            <p class="t-body">睡眠、放鬆、夜間修復成為新的美容核心議題。消費者把保養儀式視為一天中難得的給自己的時間。</p>
+            <p class="t-link" style="color:var(--accent)">點綴色示範 · 連結文字</p>
+          </div>
+        </div>
+      </section>
+    ))}
+  </main>
+</BaseLayout>
+
+<style>
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 48px 24px 80px; }
+  .intro { margin-bottom: 36px; }
+  .eyebrow { font-size: 12px; letter-spacing: 2px; color: #888780; margin: 0 0 8px; }
+  .intro h1 { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 40px; margin: 0 0 10px; color: #2C2C2A; }
+  .lead { font-size: 16px; line-height: 1.8; color: #5F5E5A; max-width: 620px; margin: 0; }
+
+  .pal { background: var(--bg); border: 0.5px solid var(--line); border-radius: 16px; padding: 24px; margin-bottom: 28px; }
+  .pal-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; flex-wrap: wrap; margin-bottom: 20px; }
+  .pal-head h2 { font-size: 24px; color: var(--ink); margin: 0 0 4px; font-weight: 500; }
+  .pal-desc { font-size: 13px; color: var(--ink2); margin: 0; }
+  .swatches { display: flex; gap: 14px; }
+  .swatch { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .chip { width: 34px; height: 34px; border-radius: 8px; border: 0.5px solid rgba(0,0,0,0.12); display: block; }
+  .chip-label { font-size: 9px; color: var(--ink2); text-align: center; line-height: 1.3; }
+  .chip-label code { font-size: 9px; }
+
+  .demo { display: grid; grid-template-columns: 1.1fr 1fr; gap: 18px; }
+  @media (max-width: 760px) { .demo { grid-template-columns: 1fr; } }
+
+  .hero { grid-column: 1 / -1; border-radius: 12px; overflow: hidden; border: 0.5px solid var(--line); }
+  .hero-sky { background: linear-gradient(to bottom, var(--sky-top), var(--sky-bot)); padding: 36px 28px 8px; text-align: center; }
+  .hero-slogan { font-family: 'Noto Serif TC', serif; font-size: 22px; color: var(--ink); margin: 0 0 10px; letter-spacing: 2px; }
+  .hero-word { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 48px; letter-spacing: 6px; color: var(--ink); margin: 0; }
+  .hero-cue { font-size: 12px; color: var(--ink2); margin: 14px 0 0; font-style: italic; }
+  .hero-ground { height: 70px; background: linear-gradient(to top, var(--imgB), var(--imgA)); }
+
+  .card { background: var(--surface); border: 0.5px solid var(--line); border-radius: 12px; padding: 18px; }
+  .card-eyebrow { font-size: 12px; letter-spacing: 1px; color: var(--ink2); margin: 0 0 12px; }
+  .products { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+  .product { background: var(--bg); border: 0.5px solid var(--line); border-radius: 10px; padding: 10px; }
+  .thumb { aspect-ratio: 4/3; border-radius: 6px; background: linear-gradient(135deg, var(--imgA), var(--imgB)); margin-bottom: 8px; }
+  .p-name { font-size: 14px; font-weight: 500; color: var(--ink); margin: 0 0 4px; }
+  .p-desc { font-size: 12px; line-height: 1.6; color: var(--ink2); margin: 0; }
+  .cta-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .cta-primary { display: inline-flex; align-items: center; gap: 6px; padding: 10px 18px; border-radius: 8px; background: var(--primary); color: #fff; font-size: 13px; font-weight: 500; text-decoration: none; border: 0.5px solid var(--primary); }
+  .cta-primary:hover { background: var(--primary-hover); border-color: var(--primary-hover); }
+  .cta-line { display: inline-flex; align-items: center; gap: 6px; padding: 10px 18px; border-radius: 8px; background: transparent; color: var(--ink); font-size: 13px; text-decoration: none; border: 0.5px solid var(--ink); }
+
+  .type { padding: 4px 2px; }
+  .t-meta { font-size: 12px; letter-spacing: 1px; color: var(--ink2); margin: 0 0 8px; }
+  .t-title { font-size: 24px; color: var(--ink); margin: 0 0 10px; font-weight: 500; }
+  .t-body { font-size: 16px; line-height: 1.85; color: var(--ink); margin: 0 0 10px; }
+  .t-link { font-size: 14px; margin: 0; font-weight: 500; }
+</style>
