@@ -63,30 +63,25 @@ body { padding: 0 0 60px; }
 .m2-cta-line { display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px; border: 0.5px solid var(--color-text-primary); border-radius: var(--border-radius-md); font-size: 13px; color: var(--color-text-primary); background: transparent; cursor: pointer; font-family: inherit; margin-top: 4px; text-decoration: none; }
 .m2-cta-line:hover { background: var(--color-text-primary); color: var(--color-background-primary); }
 
-.p2-strong { margin: 16px 0; border-left: 4px solid #BA7517; background: #FAEEDA; border-radius: 0; }
-.p2-banner { padding: 12px 16px; background: #FAC775; color: #633806; }
-.p2-banner-tag { font-size: 10px; font-weight: 500; letter-spacing: 1.8px; margin: 0 0 3px; }
-.p2-banner-content { font-size: 13px; font-weight: 500; margin: 0; }
-.p2-strong-content { padding: 14px 16px; }
-.p2-strong-content > p { font-size: 11px; color: var(--color-text-secondary); margin: 0 0 8px; letter-spacing: 0.3px; }
-.p2-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
-.p2-card { aspect-ratio: 3/4; background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 9px; color: var(--color-text-tertiary); }
+/* Phase 2：每個趨勢的入選商品 teaser（see-all 標頭 + 水平捲動可點卡片進盤點文） */
+.m2-trend-shop-head { margin: 20px 0 12px; }
+.m2-trend-shop-label { font-size: 12px; letter-spacing: 1px; color: var(--color-text-secondary); }
 
-.p2-placeholder { margin: 16px 0; padding: 14px 16px; background: var(--color-background-secondary); border: 0.5px dashed var(--color-border-secondary); border-radius: var(--border-radius-md); text-align: center; font-size: 12px; color: var(--color-text-secondary); }
-.p2-placeholder strong { display: block; font-size: 13px; color: var(--color-text-primary); margin-bottom: 4px; font-weight: 500; letter-spacing: 0.3px; }
-
-/* Phase 2：每個趨勢下 3 個入選商品（僅產品名＋說明） */
-.m2-trend-products { display: flex; flex-direction: column; gap: 8px; margin: 16px 0 16px; }
-.m2-trend-product { background: var(--color-background-secondary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 12px; }
-.m2-trend-product-img { aspect-ratio: 16/9; background: #D3D1C7; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: var(--color-background-primary); margin-bottom: 10px; }
-.m2-trend-product-img i { font-size: 22px; }
+.m2-trend-products { display: flex; gap: 10px; overflow-x: auto; -webkit-overflow-scrolling: touch; scroll-snap-type: x mandatory; margin: 0 0 18px; padding: 2px 0 6px; }
+.m2-trend-products::-webkit-scrollbar { display: none; }
+.m2-trend-products { scrollbar-width: none; }
+.m2-trend-product { flex: 0 0 150px; scroll-snap-align: start; background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 10px; text-decoration: none; color: inherit; }
+.m2-trend-product-img { aspect-ratio: 4/3; background: linear-gradient(135deg, #EFEAE2 0%, #E3DCD0 100%); border-radius: var(--border-radius-md); display: flex; align-items: center; justify-content: center; color: #B8AE9E; margin-bottom: 10px; }
+.m2-trend-product-img i { font-size: 20px; }
 .m2-trend-product-name { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin: 0 0 4px; }
-.m2-trend-product-desc { font-size: 12px; line-height: 1.6; color: var(--color-text-secondary); margin: 0; }
-.phase1-mode .m2-trend-products { display: none; }
+.m2-trend-product-desc { font-size: 11px; line-height: 1.55; color: var(--color-text-secondary); margin: 0; }
+.phase1-mode .m2-trend-products, .phase1-mode .m2-trend-shop-head { display: none; }
 
-/* Phase 2 新增的產品 teaser 整塊套暖金（與盤點文同調） */
-.phase2-mode .m2-trend-products { background: #FAEEDA; border: 1px solid #E7C58A; border-left: 4px solid #BA7517; border-radius: var(--border-radius-md); padding: 14px; }
-.phase2-mode .m2-trend-product { background: var(--color-background-primary); }
+/* Phase 2：底部雙入口（看完整盤點＝主、閱讀完整趨勢＝次） */
+.m2-trend-cta-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.m2-trend-cta-row .m2-cta-line { margin-top: 0; }
+.m2-cta-shop { display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px; background: #BA7517; color: #fff; border: 0.5px solid #BA7517; border-radius: var(--border-radius-md); font-size: 13px; font-weight: 500; text-decoration: none; }
+.m2-cta-shop:hover { background: #A3650F; border-color: #A3650F; }
 
 .m2-unfurl-link { font-family: var(--font-serif); font-style: italic; font-size: 38px; letter-spacing: 5px; color: var(--color-text-primary); cursor: pointer; padding: 4px 8px; border-bottom: 0.5px dashed var(--color-text-secondary); display: inline-block; }
 .m2-unfurl-link:hover { background: rgba(0,0,0,0.03); }
@@ -159,67 +154,103 @@ body { padding: 0 0 60px; }
   <div class="m2-section" id="sec-u1">
     <div class="m2-letter-row"><div class="m2-letter">U</div><div class="m2-name-block"><p class="m2-zh-name">Unfiltered · 健康保養</p><p class="m2-en-sub">Feel-good Wellness</p></div></div>
     <p class="m2-body">美麗從「由外而內」轉向「由內而外」。膠原蛋白飲、玻尿酸飲品、美肌機能食品，成為新世代保養桌上的日常——口服保養與美妝的邊界正在消失。</p>
-    <div class="m2-trend-products">
-      <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">膠原蛋白胜肽飲</p><p class="m2-trend-product-desc">小分子高吸收配方，由內補回流失的彈潤。</p></div>
-      <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">玻尿酸保濕飲</p><p class="m2-trend-product-desc">從體內鎖水，肌膚整天不緊繃。</p></div>
-      <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">美肌機能軟糖</p><p class="m2-trend-product-desc">把保養變成每天一顆的小習慣。</p></div>
+    <div class="m2-trend-shop-head">
+      <span class="m2-trend-shop-label">趨勢選品</span>
     </div>
-    <a class="m2-cta-line trend-cta" data-trend="unfiltered" href="ritual-article-mobile.html">閱讀完整趨勢<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></a>
+    <div class="m2-trend-products">
+      <a class="m2-trend-product" href="ritual-article-mobile.html"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">膠原蛋白胜肽飲</p><p class="m2-trend-product-desc">小分子高吸收配方，由內補回流失的彈潤。</p></a>
+      <a class="m2-trend-product" href="ritual-article-mobile.html"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">玻尿酸保濕飲</p><p class="m2-trend-product-desc">從體內鎖水，肌膚整天不緊繃。</p></a>
+      <a class="m2-trend-product" href="ritual-article-mobile.html"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">美肌機能軟糖</p><p class="m2-trend-product-desc">把保養變成每天一顆的小習慣。</p></a>
+    </div>
+    <div class="m2-trend-cta-row">
+      <a class="m2-cta-shop" href="ritual-article-mobile.html">看完整盤點<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></a>
+      <a class="m2-cta-line trend-cta" data-trend="unfiltered" href="ritual-article-mobile.html">閱讀完整趨勢<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></a>
+    </div>
   </div>
 
   <div class="m2-section" id="sec-n">
     <div class="m2-letter-row"><div class="m2-letter">N</div><div class="m2-name-block"><p class="m2-zh-name">Noble · 永續信念</p><p class="m2-en-sub">Lifestyle Shift · Climate</p></div></div>
     <p class="m2-body">永續不再只是公關話術，而是消費者的主動選擇。她們選擇可補充包裝、關注成分來源的碳足跡——「正確消費」成為一種身份認同。</p>
-    <div class="m2-trend-products">
-      <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">可補充包裝精華</p><p class="m2-trend-product-desc">一次購入瓶身，之後只換內芯。</p></div>
-      <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">零碳足跡保濕霜</p><p class="m2-trend-product-desc">從成分到運輸，全程碳中和。</p></div>
-      <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">海洋友善防曬</p><p class="m2-trend-product-desc">不含珊瑚礁殺手成分的物理配方。</p></div>
+    <div class="m2-trend-shop-head">
+      <span class="m2-trend-shop-label">趨勢選品</span>
     </div>
-    <a class="m2-cta-line trend-cta" data-trend="noble" href="ritual-article-mobile.html">閱讀完整趨勢<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></a>
+    <div class="m2-trend-products">
+      <a class="m2-trend-product" href="ritual-article-mobile.html"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">可補充包裝精華</p><p class="m2-trend-product-desc">一次購入瓶身，之後只換內芯。</p></a>
+      <a class="m2-trend-product" href="ritual-article-mobile.html"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">零碳足跡保濕霜</p><p class="m2-trend-product-desc">從成分到運輸，全程碳中和。</p></a>
+      <a class="m2-trend-product" href="ritual-article-mobile.html"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">海洋友善防曬</p><p class="m2-trend-product-desc">不含珊瑚礁殺手成分的物理配方。</p></a>
+    </div>
+    <div class="m2-trend-cta-row">
+      <a class="m2-cta-shop" href="ritual-article-mobile.html">看完整盤點<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></a>
+      <a class="m2-cta-line trend-cta" data-trend="noble" href="ritual-article-mobile.html">閱讀完整趨勢<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></a>
+    </div>
   </div>
 
   <div class="m2-section" id="sec-f">
     <div class="m2-letter-row"><div class="m2-letter">F</div><div class="m2-name-block"><p class="m2-zh-name">Fortify · 防禦修護</p><p class="m2-en-sub">Medical-home Loop</p></div></div>
     <p class="m2-body">診間療程與居家保養之間的循環正在形成——做完雷射回家用修復精華，術後護理成為日常保養的延伸。消費者開始自己設計「醫療＋保養」的混合療程。</p>
-    <div class="m2-trend-products">
-      <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">術後修復精華</p><p class="m2-trend-product-desc">雷射、微針後的居家加強護理。</p></div>
-      <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">屏障強化乳液</p><p class="m2-trend-product-desc">重建受損肌膚的保護層。</p></div>
-      <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">醫美級舒緩面膜</p><p class="m2-trend-product-desc">鎮定泛紅、加速修復。</p></div>
+    <div class="m2-trend-shop-head">
+      <span class="m2-trend-shop-label">趨勢選品</span>
     </div>
-    <a class="m2-cta-line trend-cta" data-trend="fortify" href="ritual-article-mobile.html">閱讀完整趨勢<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></a>
+    <div class="m2-trend-products">
+      <a class="m2-trend-product" href="ritual-article-mobile.html"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">術後修復精華</p><p class="m2-trend-product-desc">雷射、微針後的居家加強護理。</p></a>
+      <a class="m2-trend-product" href="ritual-article-mobile.html"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">屏障強化乳液</p><p class="m2-trend-product-desc">重建受損肌膚的保護層。</p></a>
+      <a class="m2-trend-product" href="ritual-article-mobile.html"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">醫美級舒緩面膜</p><p class="m2-trend-product-desc">鎮定泛紅、加速修復。</p></a>
+    </div>
+    <div class="m2-trend-cta-row">
+      <a class="m2-cta-shop" href="ritual-article-mobile.html">看完整盤點<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></a>
+      <a class="m2-cta-line trend-cta" data-trend="fortify" href="ritual-article-mobile.html">閱讀完整趨勢<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></a>
+    </div>
   </div>
 
   <div class="m2-section" id="sec-u2">
     <div class="m2-letter-row"><div class="m2-letter">U</div><div class="m2-name-block"><p class="m2-zh-name">Unique · 頂級珍稀</p><p class="m2-en-sub">One Bite Luxury</p></div></div>
     <p class="m2-body">珍稀成分為頂級美妝的新語言——諾貝爾獎研究成果的成分、瀕危植物萃取、限量海洋原料，正在重新定義「值得」的標準。</p>
-    <div class="m2-trend-products">
-      <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">諾貝爾成分抗老精華</p><p class="m2-trend-product-desc">得獎研究轉化的賦活配方。</p></div>
-      <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">瀕危植萃緊緻霜</p><p class="m2-trend-product-desc">限量稀有植物的奢華護理。</p></div>
-      <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">深海原料修護油</p><p class="m2-trend-product-desc">微量限量的頂級海洋萃取。</p></div>
+    <div class="m2-trend-shop-head">
+      <span class="m2-trend-shop-label">趨勢選品</span>
     </div>
-    <a class="m2-cta-line trend-cta" data-trend="unique" href="ritual-article-mobile.html">閱讀完整趨勢<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></a>
+    <div class="m2-trend-products">
+      <a class="m2-trend-product" href="ritual-article-mobile.html"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">諾貝爾成分抗老精華</p><p class="m2-trend-product-desc">得獎研究轉化的賦活配方。</p></a>
+      <a class="m2-trend-product" href="ritual-article-mobile.html"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">瀕危植萃緊緻霜</p><p class="m2-trend-product-desc">限量稀有植物的奢華護理。</p></a>
+      <a class="m2-trend-product" href="ritual-article-mobile.html"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">深海原料修護油</p><p class="m2-trend-product-desc">微量限量的頂級海洋萃取。</p></a>
+    </div>
+    <div class="m2-trend-cta-row">
+      <a class="m2-cta-shop" href="ritual-article-mobile.html">看完整盤點<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></a>
+      <a class="m2-cta-line trend-cta" data-trend="unique" href="ritual-article-mobile.html">閱讀完整趨勢<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></a>
+    </div>
   </div>
 
   <div class="m2-section" id="sec-r">
     <div class="m2-letter-row"><div class="m2-letter">R</div><div class="m2-name-block"><p class="m2-zh-name">Ritual · 療癒儀式</p><p class="m2-en-sub">Unwind to Win</p></div></div>
     <p class="m2-body">睡眠、放鬆、夜間修復成為新的美容核心議題。消費者把保養儀式視為一天中難得的「給自己的時間」——香氛、質地、使用步驟的儀式感成為選品標準。</p>
-    <div class="m2-trend-products">
-      <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">夜間修護精華</p><p class="m2-trend-product-desc">睡眠時段啟動的密集修護。</p></div>
-      <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">枕邊助眠噴霧</p><p class="m2-trend-product-desc">香氣成為入睡的開關。</p></div>
-      <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">居家 SPA 身體乳</p><p class="m2-trend-product-desc">替自己蓋上被善待的觸感。</p></div>
+    <div class="m2-trend-shop-head">
+      <span class="m2-trend-shop-label">趨勢選品</span>
     </div>
-    <a class="m2-cta-line trend-cta" data-trend="ritual" href="ritual-list-mobile.html">閱讀完整趨勢<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></a>
+    <div class="m2-trend-products">
+      <a class="m2-trend-product" href="ritual-article-mobile.html"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">夜間修護精華</p><p class="m2-trend-product-desc">睡眠時段啟動的密集修護。</p></a>
+      <a class="m2-trend-product" href="ritual-article-mobile.html"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">枕邊助眠噴霧</p><p class="m2-trend-product-desc">香氣成為入睡的開關。</p></a>
+      <a class="m2-trend-product" href="ritual-article-mobile.html"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">居家 SPA 身體乳</p><p class="m2-trend-product-desc">替自己蓋上被善待的觸感。</p></a>
+    </div>
+    <div class="m2-trend-cta-row">
+      <a class="m2-cta-shop" href="ritual-article-mobile.html">看完整盤點<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></a>
+      <a class="m2-cta-line trend-cta" data-trend="ritual" href="ritual-list-mobile.html">閱讀完整趨勢<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></a>
+    </div>
   </div>
 
   <div class="m2-section" id="sec-l">
     <div class="m2-letter-row"><div class="m2-letter">L</div><div class="m2-name-block"><p class="m2-zh-name">Longevity · 醫美共生</p><p class="m2-en-sub">Next-gen Beauty Concierge</p></div></div>
     <p class="m2-body">醫美療程已經成為日常——不再是特殊場合前才做的事，而是和護膚保養一樣被納入固定行程。打肉毒、做光療、微針，成為新的美妝消費決策。</p>
-    <div class="m2-trend-products">
-      <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">居家光療面膜</p><p class="m2-trend-product-desc">把診間的光療帶回家。</p></div>
-      <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">微針導入修護液</p><p class="m2-trend-product-desc">強化療程後的吸收與修復。</p></div>
-      <div class="m2-trend-product"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">長效抗老安瓶</p><p class="m2-trend-product-desc">對接醫美療程的日常保養。</p></div>
+    <div class="m2-trend-shop-head">
+      <span class="m2-trend-shop-label">趨勢選品</span>
     </div>
-    <a class="m2-cta-line trend-cta" data-trend="longevity" href="ritual-article-mobile.html">閱讀完整趨勢<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></a>
+    <div class="m2-trend-products">
+      <a class="m2-trend-product" href="longevity-article-mobile.html"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">居家光療面膜</p><p class="m2-trend-product-desc">把診間的光療帶回家。</p></a>
+      <a class="m2-trend-product" href="longevity-article-mobile.html"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">微針導入修護液</p><p class="m2-trend-product-desc">強化療程後的吸收與修復。</p></a>
+      <a class="m2-trend-product" href="longevity-article-mobile.html"><div class="m2-trend-product-img"><i class="ti ti-photo" aria-hidden="true"></i></div><p class="m2-trend-product-name">長效抗老安瓶</p><p class="m2-trend-product-desc">對接醫美療程的日常保養。</p></a>
+    </div>
+    <div class="m2-trend-cta-row">
+      <a class="m2-cta-shop" href="longevity-article-mobile.html">看完整盤點<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></a>
+      <a class="m2-cta-line trend-cta" data-trend="longevity" href="ritual-list-mobile.html">閱讀完整趨勢<i class="ti ti-arrow-right" style="font-size: 14px;" aria-hidden="true"></i></a>
+    </div>
   </div>
 
   <div style="padding: 32px 20px; text-align: center; background: #F1EFE8;">
