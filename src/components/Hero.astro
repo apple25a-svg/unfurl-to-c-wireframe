@@ -1,23 +1,16 @@
 ---
-// Hero：三層結構預留（sky 漸層 / ground 漸層 / KV 待放）。
-// KV 80% 完成後，把 ground 換成真實圖、bubbles 字母趨勢泡之後再加。
+// Hero：KV 花園背景（圖內已含白霧天空淡出→花卉草地）。
+// 桌機用 kv-desktop.jpg；手機 4:5 版之後再加 media query 切換。
 ---
 
-<section class="relative flex min-h-screen flex-col">
-  <!-- sky + 內容 -->
-  <div
-    class="flex flex-1 flex-col items-center justify-center px-6 pt-20 text-center"
-    style="background:linear-gradient(to bottom,#F0E3DF,#FBF6F3)"
-  >
-    <p class="font-serif text-base italic text-ink-secondary">Annual Beauty Report 2026</p>
-    <h1 class="mt-6 font-serif text-2xl tracking-[3px] text-heading md:text-[28px]">美，由我綻放</h1>
-    <p class="mt-3 font-serif text-[44px] italic leading-none tracking-[8px] text-heading md:text-display-1">
-      UNFURL
-    </p>
-    <p class="mt-4 text-xs italic text-ink-tertiary">主視覺 KV 待放（伊甸花園）</p>
-    <p class="mt-10 text-xs italic text-ink-tertiary">滑動探索 ↓</p>
-  </div>
-
-  <!-- ground：花園花卉帶（暫用漸層；之後換真實 PNG + 上緣 mask 淡出）-->
-  <div class="h-44" style="background:linear-gradient(to top,#E4C0B6,#FBF6F3)"></div>
+<section
+  class="relative flex min-h-screen flex-col items-center justify-center px-6 pb-[18vh] pt-20 text-center"
+  style="background-color:#F7F6F3; background-image:url('/kv-desktop.jpg'); background-repeat:no-repeat; background-position:bottom center; background-size:cover;"
+>
+  <p class="font-serif text-base italic text-ink-secondary">Annual Beauty Report 2026</p>
+  <h1 class="mt-6 font-serif text-2xl tracking-[3px] text-heading md:text-[28px]">美，由我綻放</h1>
+  <p class="mt-3 font-serif text-[44px] italic leading-none tracking-[8px] text-heading md:text-display-1">
+    UNFURL
+  </p>
+  <p class="mt-10 text-xs italic text-ink-tertiary">滑動探索 ↓</p>
 </section>
