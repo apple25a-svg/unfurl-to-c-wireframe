@@ -1,0 +1,35 @@
+---
+const jury = [
+  { cat: '編輯部', role: '女人我最大 · 總編輯' },
+  { cat: '編輯部', role: '女人我最大 · 美妝主編' },
+  { cat: '美妝達人', role: '知名彩妝師' },
+  { cat: '美妝達人', role: '保養領域 KOL' },
+  { cat: '專業醫師', role: '皮膚科醫師' },
+  { cat: '專業醫師', role: '醫學美容醫師' },
+];
+---
+
+<section class="border-t-[0.5px] border-line bg-bg-card">
+  <div class="mx-auto max-w-readable px-6 pb-9 pt-14 text-center md:pt-16">
+    <p class="text-xs tracking-[2px] text-ink-tertiary">關於評選</p>
+    <h2 class="mt-3 text-xl font-medium text-heading">評選方式說明</h2>
+    <p class="mt-4 text-left text-base leading-relaxed text-ink">
+      不同於過往的票選排名，今年的入選由專業評審團主導。團隊由女人我最大編輯部、美妝達人與專業醫師組成，分別從內容洞察、實際試用與專業角度三方檢視。評審依 UNFURL 六大趨勢觀察整年市場動向，於每個趨勢中選出最具代表性的品項。最終名單不分名次，而是六大趨勢下、值得被看見的年度代表。
+    </p>
+  </div>
+
+  <div class="mx-auto flex max-w-frame snap-x gap-6 overflow-x-auto px-6 pb-12 md:justify-center">
+    {
+      jury.map((j) => (
+        <div class="w-[140px] flex-none snap-start text-center">
+          <div class="mx-auto mb-3.5 flex h-28 w-28 items-center justify-center rounded-full border-[0.5px] border-line bg-bg">
+            <i class="ti ti-user text-3xl text-ink-tertiary" aria-hidden="true" />
+          </div>
+          <p class="text-xs text-ink-secondary">{j.cat}</p>
+          <p class="mt-1.5 text-base font-medium text-ink">姓名待補</p>
+          <p class="mt-1 text-xs leading-snug text-ink-secondary">{j.role}</p>
+        </div>
+      ))
+    }
+  </div>
+</section>

@@ -14,11 +14,14 @@ export default {
       'display-2': ['96px', { lineHeight: '1' }], // 大字母（96＝4×24）
     },
     extend: {
+      // 配色：綻放花園（工作中方向，微調＝改這裡即可）
       colors: {
-        bg: { DEFAULT: '#FFFFFF', secondary: '#F5F4EE', tertiary: '#FAFAF7' },
-        ink: { DEFAULT: '#2C2C2A', secondary: '#5F5E5A', tertiary: '#888780' },
-        gold: { DEFAULT: '#BA7517', deep: '#A3650F', soft: '#FAEEDA' },
-        line: 'rgba(44, 44, 42, 0.15)',
+        bg: { DEFAULT: '#FBF6F3', surface: '#F8ECE6', card: '#FFFFFF' },
+        ink: { DEFAULT: '#3A2A2E', secondary: '#8A6E6E', tertiary: '#A89598' },
+        heading: '#3E312C',
+        primary: { DEFAULT: '#C2746B', deep: '#A65A52' },
+        accent: '#7E9070',
+        line: '#EBDCD6',
       },
       fontFamily: {
         sans: ['"Noto Sans TC"', '-apple-system', 'BlinkMacSystemFont', '"PingFang TC"', '"Microsoft JhengHei"', '"Helvetica Neue"', 'Arial', 'sans-serif'],

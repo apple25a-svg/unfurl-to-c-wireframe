@@ -1,64 +1,23 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
-
-const products = [
-  { name: '夜間修護精華', desc: '睡眠時段啟動的密集修護。' },
-  { name: '枕邊助眠噴霧', desc: '香氣成為入睡的開關。' },
-  { name: '居家 SPA 身體乳', desc: '替自己蓋上被善待的觸感。' },
-];
+import Hero from '../components/Hero.astro';
+import Intro from '../components/Intro.astro';
+import TrendSection from '../components/TrendSection.astro';
+import JurySection from '../components/JurySection.astro';
+import QuizBand from '../components/QuizBand.astro';
+import Footer from '../components/Footer.astro';
+import { trends } from '../data/trends.js';
 ---
 
-<BaseLayout title="女人我最大賞 2026 · 首頁 (WIP)">
+<BaseLayout title="女人我最大賞 2026 · UNFURL">
   <Header />
+  <Hero />
+  <Intro />
 
-  <!-- Hero：浮動 header 浮在這層上 -->
-  <section class="relative flex min-h-screen flex-col">
-    <div
-      class="flex flex-1 flex-col items-center justify-center px-6 text-center"
-      style="background:linear-gradient(to bottom,#F0E3DF,#FBF6F3)"
-    >
-      <p class="font-serif text-xl italic text-ink-secondary">Annual Beauty Report 2026</p>
-      <h1 class="mt-6 font-serif text-2xl tracking-[3px] text-ink">美，由我綻放</h1>
-      <p class="mt-2 font-serif text-display-1 italic tracking-[8px] text-ink">UNFURL</p>
-      <p class="mt-8 text-xs italic text-ink-tertiary">滑動探索 ↓</p>
-    </div>
-    <div class="h-40" style="background:linear-gradient(to top,#E4C0B6,#FBF6F3)"></div>
-  </section>
+  {trends.map((t) => <TrendSection {...t} />)}
 
-  <!-- 捲動內容：往下捲，看 header 變半透明白底＋模糊 -->
-  <section class="mx-auto max-w-frame px-8 py-24">
-    <p class="text-xs tracking-[2px] text-ink-tertiary">往下捲 ↑ header 會從透明變成半透明白底＋模糊</p>
-    <h2 class="mt-4 font-serif text-2xl text-ink">Ritual · 療癒儀式</h2>
-    <p class="mt-4 max-w-readable text-base text-ink-secondary">
-      睡眠、放鬆、夜間修復成為新的美容核心議題。消費者把保養儀式視為一天中難得的給自己的時間。
-    </p>
-
-    <div class="mt-10 grid grid-cols-2 gap-4 md:grid-cols-3">
-      {
-        products.map((p) => (
-          <div class="rounded-lg border-[0.5px] border-line bg-bg p-3">
-            <div class="aspect-[4/3] rounded-md" style="background:linear-gradient(135deg,#F3DED6,#E4C0B6)" />
-            <p class="mt-3 text-base font-medium text-ink">{p.name}</p>
-            <p class="mt-1 text-xs leading-relaxed text-ink-secondary">{p.desc}</p>
-          </div>
-        ))
-      }
-    </div>
-
-    <div class="mt-8 flex flex-wrap items-center gap-3.5">
-      <a href="#" class="inline-flex items-center gap-1.5 rounded-md bg-[#C2746B] px-5 py-2.5 text-xs font-medium text-white hover:bg-[#A65A52]">
-        看完整盤點<i class="ti ti-arrow-right" aria-hidden="true"></i>
-      </a>
-      <a href="#" class="inline-flex items-center gap-1.5 rounded-md border-[0.5px] border-ink px-5 py-2.5 text-xs text-ink hover:bg-ink hover:text-white">
-        閱讀完整趨勢<i class="ti ti-arrow-right" aria-hidden="true"></i>
-      </a>
-    </div>
-  </section>
-
-  <section class="mx-auto max-w-frame px-8 pb-32">
-    <p class="max-w-readable text-base leading-relaxed text-ink-secondary">
-      這是浮動 header ＋ hero 的暫時 demo 頁，配色之後依你挑定的 token 套上。logo 先用現有的，等你新 logo 好了替換。
-    </p>
-  </section>
+  <QuizBand />
+  <JurySection />
+  <Footer />
 </BaseLayout>

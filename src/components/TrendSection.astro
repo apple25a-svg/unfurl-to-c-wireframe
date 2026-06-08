@@ -1,0 +1,61 @@
+---
+import ProductCard from './ProductCard.astro';
+
+interface Product {
+  name: string;
+  desc: string;
+}
+interface Props {
+  id: string;
+  letter: string;
+  zh: string;
+  en: string;
+  body: string;
+  products: Product[];
+  articleHref?: string;
+  listHref?: string;
+}
+const { id, letter, zh, en, body, products, articleHref = '#', listHref = '#' } = Astro.props;
+---
+
+<section id={`trend-${id}`} class="border-b-[0.5px] border-line">
+  <div class="mx-auto max-w-frame px-6 py-14 md:px-9 md:py-16">
+    <div class="md:grid md:grid-cols-[140px_1fr] md:gap-8">
+      <!-- 字母 -->
+      <div class="mb-3 font-serif text-[64px] italic leading-none text-heading md:mb-0 md:text-display-2">
+        {letter}
+      </div>
+
+      <!-- 內容 -->
+      <div>
+        <h2 class="text-xl font-medium text-heading">{zh}</h2>
+        <p class="mt-1 font-serif text-base italic text-ink-secondary">{en}</p>
+        <p class="mt-4 max-w-readable text-base leading-relaxed text-ink">{body}</p>
+
+        <!-- 趨勢選品 -->
+        <p class="mb-3 mt-7 text-xs tracking-wide text-ink-secondary">趨勢選品</p>
+        <div class="grid grid-cols-2 gap-4 md:grid-cols-3">
+          {products.map((p) => <ProductCard name={p.name} desc={p.desc} href={articleHref} />)}
+        </div>
+
+        <!-- 雙入口 -->
+        <div class="mt-6 flex flex-wrap items-center gap-3.5">
+          <a
+            href={articleHref}
+            class="inline-flex items-center gap-1.5 rounded-md bg-primary px-5 py-2.5 text-xs font-medium text-white transition-colors hover:bg-primary-deep"
+            data-track="cta_shop"
+          >
+            看完整盤點<i class="ti ti-arrow-right" aria-hidden="true"></i>
+          </a>
+          <a
+            href={listHref}
+            class="inline-flex items-center gap-1.5 rounded-md border-[0.5px] border-ink px-5 py-2.5 text-xs text-ink transition-colors hover:bg-ink hover:text-white"
+            data-track="cta_trend"
+          >
+            閱讀完整趨勢<i class="ti ti-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

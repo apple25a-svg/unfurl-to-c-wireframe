@@ -1,0 +1,20 @@
+---
+interface Props {
+  name: string;
+  desc: string;
+  href?: string;
+}
+const { name, desc, href = '#' } = Astro.props;
+---
+
+<a
+  href={href}
+  class="block rounded-lg border-[0.5px] border-line bg-bg-card p-3 no-underline transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(58,42,46,0.10)]"
+  data-track="product_card"
+>
+  <div class="mb-3 flex aspect-[4/3] items-center justify-center rounded-md text-ink-tertiary" style="background:linear-gradient(135deg,#F3DED6,#E4C0B6)">
+    <i class="ti ti-photo text-2xl" aria-hidden="true"></i>
+  </div>
+  <p class="mb-1.5 text-base font-medium text-ink">{name}</p>
+  <p class="text-xs leading-relaxed text-ink-secondary">{desc}</p>
+</a>
