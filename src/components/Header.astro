@@ -3,21 +3,11 @@
 ---
 
 <header id="site-header" class="fixed inset-x-0 top-0 z-50 transition-all duration-300">
-  <div class="mx-auto grid h-16 max-w-frame grid-cols-[1fr_auto_1fr] items-center px-6 md:px-8">
-    <a href="/" class="flex items-center gap-2 justify-self-start" data-track="nav_logo">
+  <div class="mx-auto flex h-16 max-w-frame items-center px-6 md:px-8">
+    <!-- logo：頂部隱藏（hero 中央已有品牌），捲動後淡入 -->
+    <a href="/" class="hdr-logo flex items-center gap-2" data-track="nav_logo">
       <img src="/logo.png" alt="女人我最大 Queen" class="h-7 w-auto" />
     </a>
-
-    <!-- 心測入口：置中、文字＋箭頭（去 pill） -->
-    <a
-      href="#"
-      class="inline-flex items-center gap-1.5 justify-self-center text-xs font-medium tracking-wide text-ink transition-colors hover:text-primary"
-      data-track="nav_quiz"
-    >
-      <i class="ti ti-flower text-primary" aria-hidden="true"></i>測測我是什麼花<i class="ti ti-arrow-right" aria-hidden="true"></i>
-    </a>
-
-    <span aria-hidden="true"></span>
   </div>
 </header>
 
@@ -40,5 +30,15 @@
     backdrop-filter: saturate(180%) blur(12px);
     -webkit-backdrop-filter: saturate(180%) blur(12px);
     border-bottom: 0.5px solid rgba(44, 44, 42, 0.1);
+  }
+  /* logo 頂部隱藏、捲動後淡入 */
+  .hdr-logo {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  #site-header.is-scrolled .hdr-logo {
+    opacity: 1;
+    pointer-events: auto;
   }
 </style>

@@ -7,8 +7,8 @@ interface Product {
 }
 interface Props {
   id: string;
-  letter: string;
-  zh: string;
+  key: string;
+  zhName: string;
   en: string;
   body: string;
   products: Product[];
@@ -16,28 +16,29 @@ interface Props {
   articleHref?: string;
   listHref?: string;
 }
-const { id, letter, zh, en, body, products, image, articleHref = '#', listHref = '#' } = Astro.props;
+const { id, key, zhName, en, body, products, image, articleHref = '#', listHref = '#' } = Astro.props;
 ---
 
 <section id={`trend-${id}`} class="border-b-[0.5px] border-line">
   <div class="mx-auto max-w-frame px-6 py-14 md:px-9 md:py-16">
     <div class="md:grid md:grid-cols-[140px_1fr] md:gap-8">
-      <!-- 花 + 字母（花↔名字綁定；圖未產時自動隱藏，留字母仍可識別） -->
-      <div class="mb-3 flex items-center gap-4 md:mb-0 md:flex-col md:items-start md:gap-3">
+      <!-- 花（趨勢識別；圖未產時自動隱藏） -->
+      <div class="mb-4 md:mb-0">
         {image && (
           <img
             src={image}
-            alt={zh}
-            class="h-auto w-[72px] shrink-0 md:w-[128px]"
+            alt={zhName}
+            class="h-auto w-[92px] md:w-[132px]"
             onerror="this.style.display='none'"
           />
         )}
-        <span class="font-serif text-[64px] italic leading-none text-heading md:text-display-2">{letter}</span>
       </div>
 
       <!-- 內容 -->
       <div>
-        <h2 class="text-xl font-medium text-heading">{zh}</h2>
+        <h2 class="text-xl text-heading">
+          <span class="font-serif">{key}</span> <span class="font-sans font-medium">· {zhName}</span>
+        </h2>
         <p class="mt-1 font-serif text-base italic text-ink-secondary">{en}</p>
         <p class="mt-4 max-w-readable text-base leading-relaxed text-ink">{body}</p>
 
@@ -51,14 +52,14 @@ const { id, letter, zh, en, body, products, image, articleHref = '#', listHref =
         <div class="mt-6 flex flex-wrap items-center gap-3.5">
           <a
             href={articleHref}
-            class="inline-flex items-center gap-1.5 rounded-md bg-primary px-5 py-2.5 text-xs font-medium text-white transition-colors hover:bg-primary-deep"
+            class="inline-flex items-center gap-1.5 rounded-full bg-primary px-5 py-2.5 text-xs font-medium text-white transition-colors hover:bg-primary-deep"
             data-track="cta_shop"
           >
             看完整盤點<i class="ti ti-arrow-right" aria-hidden="true"></i>
           </a>
           <a
             href={listHref}
-            class="inline-flex items-center gap-1.5 rounded-md border-[0.5px] border-ink px-5 py-2.5 text-xs text-ink transition-colors hover:bg-ink hover:text-white"
+            class="inline-flex items-center gap-1.5 rounded-full border-[0.5px] border-ink px-5 py-2.5 text-xs text-ink transition-colors hover:bg-ink hover:text-white"
             data-track="cta_trend"
           >
             閱讀完整趨勢<i class="ti ti-arrow-right" aria-hidden="true"></i>
