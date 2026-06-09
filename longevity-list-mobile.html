@@ -215,7 +215,7 @@ body { padding: 0 0 60px; }
     toastTimer = setTimeout(() => toast.classList.remove('show'), 2400);
   }
   var hdrQuiz = document.querySelector('.hdr-quiz');
-  if (hdrQuiz) hdrQuiz.addEventListener('click', () => showToast('心測頁尚未製作 · 動線會跳到 /quiz'));
+  if (hdrQuiz) hdrQuiz.addEventListener('click', () => location.href='quiz.html');
 
   document.querySelectorAll('.r3-nav a').forEach(link => {
     link.addEventListener('click', e => {

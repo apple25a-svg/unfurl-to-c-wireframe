@@ -331,9 +331,9 @@ body { padding: 0 0 60px; }
   const unfurlExpanded = document.getElementById('m2-unfurl-expanded');
   unfurlTrigger.addEventListener('click', () => { unfurlExpanded.classList.toggle('open'); });
 
-  document.getElementById('m2-quiz-top').addEventListener('click', () => showToast('心測頁尚未製作 · 動線會跳到 /quiz'));
-  document.getElementById('m2-quiz-bottom').addEventListener('click', () => showToast('心測頁尚未製作 · 動線會跳到 /quiz'));
-  document.getElementById('hdr-quiz').addEventListener('click', () => showToast('心測頁尚未製作 · 動線會跳到 /quiz'));
+  document.getElementById('m2-quiz-top').addEventListener('click', () => location.href='quiz.html');
+  document.getElementById('m2-quiz-bottom').addEventListener('click', () => location.href='quiz.html');
+  document.getElementById('hdr-quiz').addEventListener('click', () => location.href='quiz.html');
 })();
 </script>
 </body>
