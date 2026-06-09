@@ -13,4 +13,33 @@
     UNFURL
   </p>
   <p class="mt-10 text-xs italic text-ink-tertiary">滑動探索 ↓</p>
+
+  <!--
+    泡泡花園：一顆泡泡 = 一個趨勢，點擊導向該趨勢。
+    目前先連到首頁該趨勢區塊錨點（#trend-xxx），之後有獨立趨勢頁再換成頁面 URL。
+    要移動位置只改 left / top；要改大小只改 width。要加新泡泡就複製一個 <a>。
+  -->
+  <div class="pointer-events-none absolute inset-0 z-10">
+    <a
+      href="#trend-fortify"
+      class="bubble pointer-events-auto absolute"
+      style="right:6%; top:11%; width:clamp(150px,20vw,240px);"
+      data-track="bubble_fortify"
+      aria-label="Fortify 防禦修護 趨勢"
+    >
+      <img src="/bubbles/bubble-fortify.png" alt="Fortify 防禦修護" class="h-auto w-full" />
+    </a>
+  </div>
 </section>
+
+<style>
+  /* 泡泡：滑過時輕輕浮起放大，給「可點」的暗示 */
+  .bubble {
+    transition: transform 0.45s ease, filter 0.45s ease;
+    will-change: transform;
+  }
+  .bubble:hover {
+    transform: translateY(-6px) scale(1.04);
+    filter: drop-shadow(0 12px 24px rgba(150, 120, 190, 0.25));
+  }
+</style>
