@@ -3,6 +3,7 @@
 export const trends = [
   {
     id: 'unfiltered',
+    image: '/bubbles/bubble-unfiltered.png',
     letter: 'U',
     zh: 'Unfiltered · 健康保養',
     en: 'Feel-good Wellness',
@@ -18,6 +19,7 @@ export const trends = [
   },
   {
     id: 'noble',
+    image: '/bubbles/bubble-noble.png',
     letter: 'N',
     zh: 'Noble · 永續信念',
     en: 'Lifestyle Shift · Climate',
@@ -33,6 +35,7 @@ export const trends = [
   },
   {
     id: 'fortify',
+    image: '/bubbles/bubble-fortify.png',
     letter: 'F',
     zh: 'Fortify · 防禦修護',
     en: 'Medical-home Loop',
@@ -48,6 +51,7 @@ export const trends = [
   },
   {
     id: 'unique',
+    image: '/bubbles/bubble-unique.png',
     letter: 'U',
     zh: 'Unique · 頂級珍稀',
     en: 'One Bite Luxury',
@@ -63,6 +67,7 @@ export const trends = [
   },
   {
     id: 'ritual',
+    image: '/bubbles/bubble-ritual.png',
     letter: 'R',
     zh: 'Ritual · 療癒儀式',
     en: 'Unwind to Win',
@@ -78,6 +83,7 @@ export const trends = [
   },
   {
     id: 'longevity',
+    image: '/bubbles/bubble-longevity.png',
     letter: 'L',
     zh: 'Longevity · 醫美共生',
     en: 'Next-gen Beauty Concierge',

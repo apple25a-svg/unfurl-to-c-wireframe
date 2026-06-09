@@ -12,18 +12,27 @@ interface Props {
   en: string;
   body: string;
   products: Product[];
+  image?: string;
   articleHref?: string;
   listHref?: string;
 }
-const { id, letter, zh, en, body, products, articleHref = '#', listHref = '#' } = Astro.props;
+const { id, letter, zh, en, body, products, image, articleHref = '#', listHref = '#' } = Astro.props;
 ---
 
 <section id={`trend-${id}`} class="border-b-[0.5px] border-line">
   <div class="mx-auto max-w-frame px-6 py-14 md:px-9 md:py-16">
     <div class="md:grid md:grid-cols-[140px_1fr] md:gap-8">
-      <!-- 字母 -->
-      <div class="mb-3 font-serif text-[64px] italic leading-none text-heading md:mb-0 md:text-display-2">
-        {letter}
+      <!-- 花 + 字母（花↔名字綁定；圖未產時自動隱藏，留字母仍可識別） -->
+      <div class="mb-3 flex items-center gap-4 md:mb-0 md:flex-col md:items-start md:gap-3">
+        {image && (
+          <img
+            src={image}
+            alt={zh}
+            class="h-auto w-[72px] shrink-0 md:w-[128px]"
+            onerror="this.style.display='none'"
+          />
+        )}
+        <span class="font-serif text-[64px] italic leading-none text-heading md:text-display-2">{letter}</span>
       </div>
 
       <!-- 內容 -->
