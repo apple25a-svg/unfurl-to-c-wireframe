@@ -2,7 +2,6 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
-import Intro from '../components/Intro.astro';
 import TrendSection from '../components/TrendSection.astro';
 import JurySection from '../components/JurySection.astro';
 import QuizBand from '../components/QuizBand.astro';
@@ -13,15 +12,20 @@ import { trends } from '../data/trends.js';
 <BaseLayout title="女人我最大賞 2026 · UNFURL">
   <Header />
   <Hero />
-  <Intro />
 
-  <!-- 六大趨勢章節開場：eyebrow → H2 → 框景引語，上下大留白，當「翻開章節」的扉頁 -->
-  <section id="trends" class="scroll-mt-20 px-6 pb-12 pt-24 text-center md:pb-16 md:pt-32">
-    <p class="text-xs tracking-[6px] text-ink-tertiary">U · N · F · U · R · L</p>
-    <h2 class="mt-4 font-serif text-3xl text-heading md:text-[52px]">六大趨勢</h2>
-    <p class="mx-auto mt-6 max-w-readable font-serif text-lg leading-relaxed text-ink-secondary md:text-xl">
-      今年的美，正沿著六個方向綻放。
-    </p>
+  <!-- 章節開場（auwa 式疊放）：eyebrow → 導言段（左、右留白）→ 六大趨勢標題＋框景，全左對齊 -->
+  <section id="trends" class="scroll-mt-20 px-6 pb-12 pt-24 md:px-9 md:pb-16 md:pt-32">
+    <div class="mx-auto max-w-frame">
+      <p class="text-xs tracking-[6px] text-ink-tertiary">U · N · F · U · R · L</p>
+      <p class="mt-6 max-w-[640px] text-base leading-relaxed text-ink md:text-lg">
+        今年，我們以 UNFURL 作為年度關鍵字。編輯部、達人與醫師不再只是評審與試用者，而是市場的觀察者與詮釋者；產品也從被評選的對象，變成趨勢的佐證。每一件入選，都標記著市場正在發生的轉變。
+      </p>
+
+      <h2 class="mt-16 font-serif text-3xl text-heading md:mt-20 md:text-[52px]">六大趨勢</h2>
+      <p class="mt-4 max-w-[640px] font-serif text-lg leading-relaxed text-ink-secondary md:text-xl">
+        今年的美，正沿著六個方向綻放。
+      </p>
+    </div>
   </section>
 
   {trends.map((t) => <TrendSection {...t} />)}
