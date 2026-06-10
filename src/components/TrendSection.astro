@@ -53,7 +53,7 @@ const { id, key, zhName, vibes = [], body, products, image, articleHref = '#', l
         <p class="mt-4 max-w-readable text-base leading-relaxed text-ink">{body}</p>
 
         <!-- 讀連結緊跟段落（仿 butterfly「View full profile」） -->
-        <a href={listHref} class="btn-secondary mt-3" data-track="cta_trend">閱讀趨勢</a>
+        <a href={listHref} class="btn-primary mt-5" data-track="cta_trend">閱讀完整趨勢</a>
 
         <!-- 趨勢選品（含完整盤點按鈕）；無產品 phase 時整塊不渲染 -->
         {products.length > 0 && (
@@ -61,7 +61,7 @@ const { id, key, zhName, vibes = [], body, products, image, articleHref = '#', l
             <div class="grid grid-cols-2 gap-x-4 gap-y-7 md:grid-cols-3">
               {products.map((p) => <ProductCard name={p.name} desc={p.desc} tag={key} href={articleHref} />)}
             </div>
-            <a href={articleHref} class="btn-primary mt-8" data-track="cta_shop">完整盤點</a>
+            <a href={articleHref} class="btn-secondary mt-6" data-track="cta_shop">看選品</a>
           </div>
         )}
       </div>
