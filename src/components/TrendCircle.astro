@@ -43,8 +43,8 @@ const nodes = trends.map((t, i) => {
         class="absolute flex flex-col items-center whitespace-nowrap leading-tight"
         style={`left:${n.lx}%; top:${n.ly}%; transform:translate(-50%,-50%);`}
       >
-        <span class="font-serif text-xs italic text-ink-tertiary">{n.key}</span>
-        <span class="text-xs text-ink-secondary">{n.zhName}</span>
+        <span class="font-serif text-base italic text-ink md:text-lg">{n.key}</span>
+        <span class="mt-0.5 text-xs text-ink-secondary">{n.zhName}</span>
       </div>
     ))
   }
