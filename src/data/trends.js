@@ -9,6 +9,7 @@ export const trends = [
     key: 'Unfiltered',
     zhName: '健康保養',
     vibes: ['由內而外', '口服保養', '機能食品'],
+    cutout: '/bubbles/bubble-unfiltered_cutout.png',
     body:
       '美麗正從由外而內，轉向由內而外。膠原蛋白飲、玻尿酸飲品與機能食品，逐漸成為日常保養的一部分，口服與外用的界線也正在消失。',
     products: [
@@ -26,6 +27,7 @@ export const trends = [
     key: 'Noble',
     zhName: '永續信念',
     vibes: ['可補充', '透明溯源', '正確消費'],
+    cutout: '/bubbles/bubble-noble_cutout.png',
     body:
       '永續不只是理念，而是一種被選擇的生活方式。可補充包裝與透明機制，逐漸成為品牌核心，也讓正確消費轉化為一種身份表達。',
     products: [

@@ -17,7 +17,7 @@ export default {
       // 配色：綻放花園（工作中方向，微調＝改這裡即可）
       colors: {
         bg: { DEFAULT: '#FBF6F3', surface: '#F8ECE6', card: '#FFFFFF' },
-        ink: { DEFAULT: '#3A2A2E', secondary: '#8A6E6E', tertiary: '#A89598' },
+        ink: { DEFAULT: '#3A2A2E', body: '#624C4E', secondary: '#8A6E6E', tertiary: '#A89598' },
         heading: '#3E312C',
         primary: { DEFAULT: '#C2746B', deep: '#A65A52' },
         accent: '#7E9070',
