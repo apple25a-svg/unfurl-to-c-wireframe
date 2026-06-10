@@ -2,15 +2,15 @@
 // Hero：KV 花園背景。中央品牌 stack（logo＋標語＋UNFURL＋心測 pill）浮在花圃之上。
 import { trends } from '../data/trends.js';
 
-// 花圃槽位：靠外圈，中央留乾淨給品牌 stack。right/left + top + width 待 Chofi 微調。
-// 圖未產的趨勢會自動隱藏（img onerror）。
+// 花冠：六朵全部集中在上方，橫過頂部排成一道弧帶（上方密、中下留白）。
+// 高度與尺寸交錯做有機節奏，避免一字排開。中央與下方留給品牌 stack＋pill。
 const positions = {
-  unfiltered: 'left:5%; top:18%; width:clamp(110px,14vw,180px);',
-  noble: 'right:6%; top:15%; width:clamp(110px,14vw,180px);',
-  fortify: 'left:8%; top:46%; width:clamp(110px,14vw,180px);',
-  unique: 'right:7%; top:44%; width:clamp(110px,14vw,180px);',
-  ritual: 'left:14%; top:74%; width:clamp(110px,14vw,180px);',
-  longevity: 'right:15%; top:72%; width:clamp(110px,14vw,180px);',
+  unfiltered: 'left:7%;  top:18%; width:clamp(115px,14vw,175px);',
+  noble:      'left:23%; top:7%;  width:clamp(82px,10vw,126px);',
+  fortify:    'left:37%; top:16%; width:clamp(92px,11vw,138px);',
+  unique:     'right:34%; top:8%;  width:clamp(86px,10vw,130px);',
+  longevity:  'right:19%; top:19%; width:clamp(100px,12vw,150px);',
+  ritual:     'right:6%;  top:9%;  width:clamp(115px,14vw,175px);',
 };
 
 // 手機代表花（1-2 朵，避免擁擠又不空）
