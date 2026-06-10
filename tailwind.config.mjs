@@ -25,7 +25,7 @@ export default {
       },
       fontFamily: {
         sans: ['"Noto Sans TC"', '-apple-system', 'BlinkMacSystemFont', '"PingFang TC"', '"Microsoft JhengHei"', '"Helvetica Neue"', 'Arial', 'sans-serif'],
-        serif: ['"Cormorant Garamond"', '"Times New Roman"', 'serif'],
+        serif: ['"Cormorant Garamond"', '"Noto Serif TC"', '"Times New Roman"', 'serif'],
       },
       borderRadius: { md: '8px', lg: '12px' },
       maxWidth: { frame: '1200px', readable: '520px' },

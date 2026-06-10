@@ -1,13 +1,65 @@
 ---
-// 浮動 header：透明浮在 hero 上，捲動後變半透明白底＋模糊（Wealthsimple 風）
+// 浮動 header：透明浮在 hero 上，捲動後變半透明白底＋模糊（Wealthsimple 風）。
+// 借 butterfly 站結構：logo 左、導覽右。文字連結（六大趨勢／關於女大賞）＋主 CTA pill（你是哪一朵）。
+const nav = [
+  { label: '六大趨勢', href: '#trends' },
+  { label: '關於女大賞', href: '#about' },
+];
 ---
 
 <header id="site-header" class="fixed inset-x-0 top-0 z-50 transition-all duration-300">
-  <div class="mx-auto flex h-16 max-w-frame items-center px-6 md:px-8">
-    <!-- logo：頂部隱藏（hero 中央已有品牌），捲動後淡入 -->
-    <a href="/" class="hdr-logo flex items-center gap-2" data-track="nav_logo">
+  <div class="mx-auto flex h-16 max-w-frame items-center justify-between px-6 md:px-8">
+    <!-- logo -->
+    <a href="/" class="flex items-center gap-2" data-track="nav_logo">
       <img src="/logo.png" alt="女人我最大 Queen" class="h-7 w-auto" />
     </a>
+
+    <!-- 桌機導覽 -->
+    <nav class="hidden items-center gap-7 md:flex">
+      {
+        nav.map((n) => (
+          <a
+            href={n.href}
+            class="text-sm text-ink transition-colors hover:text-primary"
+            data-track={`nav_${n.href.slice(1)}`}
+          >
+            {n.label}
+          </a>
+        ))
+      }
+      <a
+        href="#quiz"
+        class="inline-flex items-center gap-1.5 rounded-full bg-primary px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-primary-deep"
+        data-track="nav_quiz"
+      >
+        <i class="ti ti-flower" aria-hidden="true"></i>你是哪一朵
+      </a>
+    </nav>
+
+    <!-- 手機選單按鈕 -->
+    <button id="nav-toggle" class="md:hidden" aria-label="開啟選單" aria-expanded="false">
+      <i class="ti ti-menu-2 text-2xl text-ink" aria-hidden="true"></i>
+    </button>
+  </div>
+
+  <!-- 手機下拉選單 -->
+  <div id="nav-menu" class="hidden border-t-[0.5px] border-line bg-white/95 px-6 py-5 backdrop-blur md:hidden">
+    <nav class="flex flex-col gap-4">
+      {
+        nav.map((n) => (
+          <a href={n.href} class="text-base text-ink" data-track={`nav_${n.href.slice(1)}`}>
+            {n.label}
+          </a>
+        ))
+      }
+      <a
+        href="#quiz"
+        class="inline-flex w-fit items-center gap-1.5 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-white"
+        data-track="nav_quiz"
+      >
+        <i class="ti ti-flower" aria-hidden="true"></i>你是哪一朵
+      </a>
+    </nav>
   </div>
 </header>
 
@@ -19,6 +71,17 @@
   };
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
+
+  // 手機選單開合
+  const toggle = document.getElementById('nav-toggle');
+  const menu = document.getElementById('nav-menu');
+  toggle?.addEventListener('click', () => {
+    const open = menu?.classList.toggle('hidden') === false;
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+  menu?.querySelectorAll('a').forEach((a) =>
+    a.addEventListener('click', () => menu.classList.add('hidden'))
+  );
 </script>
 
 <style>
@@ -30,15 +93,5 @@
     backdrop-filter: saturate(180%) blur(12px);
     -webkit-backdrop-filter: saturate(180%) blur(12px);
     border-bottom: 0.5px solid rgba(44, 44, 42, 0.1);
-  }
-  /* logo 頂部隱藏、捲動後淡入 */
-  .hdr-logo {
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-  }
-  #site-header.is-scrolled .hdr-logo {
-    opacity: 1;
-    pointer-events: auto;
   }
 </style>
