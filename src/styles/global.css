@@ -10,21 +10,19 @@
 
 @layer components {
   /* 按鈕系統（auwa 式細緻：薄、寬字距、無厚陰影）。集中於此，全站共用 */
-  /* Primary：Aesop 式 minimal 長方框鈕——透明底、薄框、直角、寬字距＋箭頭，hover 才填色 */
+  /* Primary：實心深 ink 長方鈕（Aesop classic）、白字、無箭頭。最強主動作 */
   .btn-primary {
+    @apply inline-flex items-center justify-center rounded-none bg-ink px-8 py-3.5 text-center text-base leading-none tracking-[2px] text-white transition-opacity duration-200 hover:opacity-85;
+  }
+  /* Secondary：細框長方鈕（透明底、ink 字）＋箭頭，hover 填色。次要動作 */
+  .btn-secondary {
     @apply inline-flex items-center justify-center gap-2.5 rounded-none border-[0.5px] border-ink/50 bg-transparent px-8 py-3.5 text-center text-base leading-none tracking-[2px] text-ink transition-colors duration-200 hover:border-ink hover:bg-ink hover:text-white;
   }
-  /* Secondary：與 primary 同字級（16px）同色（ink），純文字＋箭頭的次要處理（無框） */
-  .btn-secondary {
-    @apply inline-flex items-center gap-2 text-base leading-none tracking-[2px] text-ink transition-opacity duration-200 hover:opacity-60;
-  }
-  /* 箭頭（Aesop 風）：primary／secondary 皆有，hover 時往右輕推 */
-  .btn-primary::after,
+  /* 箭頭只在 secondary（Aesop 風），hover 往右輕推 */
   .btn-secondary::after {
     content: '→';
     transition: transform 0.25s ease;
   }
-  .btn-primary:hover::after,
   .btn-secondary:hover::after {
     transform: translateX(3px);
   }

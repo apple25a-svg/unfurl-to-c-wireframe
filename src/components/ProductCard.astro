@@ -9,21 +9,21 @@ interface Props {
 const { name, desc, image } = Astro.props;
 ---
 
-<div data-track="product_card">
-  <!-- 白底圖框：去背產品照置中（object-contain）。缺圖 → 顯示佔位 icon -->
-  <div class="relative flex aspect-[4/5] items-center justify-center overflow-hidden rounded-sm bg-white">
+<div class="w-[140px] md:w-[200px]" data-track="product_card">
+  <!-- 白底圖框：1:1 方塊填滿卡（卡寬＝圖寬，彼此 16px）。去背產品照 object-contain，缺圖顯示佔位 icon -->
+  <div class="relative flex aspect-square w-full items-center justify-center overflow-hidden rounded-sm bg-white">
     <i class="ti ti-photo text-2xl text-ink-tertiary" aria-hidden="true"></i>
     {image && (
       <img
         src={image}
         alt={name}
-        class="absolute inset-0 h-full w-full object-contain p-4"
+        class="absolute inset-0 h-full w-full object-contain p-3"
         loading="lazy"
         onerror="this.style.display='none'"
       />
     )}
   </div>
 
-  <p class="mt-4 font-serif text-lg leading-snug text-heading">{name}</p>
+  <p class="mt-4 text-lg font-semibold leading-snug text-heading">{name}</p>
   <p class="mt-1.5 text-xs leading-relaxed text-ink-secondary">{desc}</p>
 </div>
