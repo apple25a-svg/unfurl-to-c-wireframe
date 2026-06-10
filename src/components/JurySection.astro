@@ -1,32 +1,45 @@
 ---
-const jury = [
-  { cat: '編輯部', role: '女人我最大 · 總編輯' },
-  { cat: '編輯部', role: '女人我最大 · 美妝主編' },
-  { cat: '美妝達人', role: '知名彩妝師' },
-  { cat: '美妝達人', role: '保養領域 KOL' },
-  { cat: '專業醫師', role: '皮膚科醫師' },
-  { cat: '專業醫師', role: '醫學美容醫師' },
+// 評選方式：上＝標題＋說明（左）＋三角 infographic（右）；下＝評審人物卡，依三類分欄。
+// 姓名/頭像待 PO 補；現用佔位。
+import JuryCircle from './JuryCircle.astro';
+
+const groups = [
+  { cat: '編輯部', members: [{ role: '總編輯' }, { role: '美妝主編' }] },
+  { cat: '美妝達人', members: [{ role: '知名彩妝師' }, { role: '保養領域 KOL' }] },
+  { cat: '專業醫師', members: [{ role: '皮膚科醫師' }, { role: '醫學美容醫師' }] },
 ];
 ---
 
 <section id="about" class="scroll-mt-20 border-t-[0.5px] border-line bg-bg-card">
-  <div class="mx-auto max-w-frame px-6 pb-14 pt-16 md:px-9 md:pt-20">
-    <!-- 左對齊編輯式說明：無標題、無 eyebrow、不置中 -->
-    <p class="max-w-[640px] text-base leading-relaxed text-ink md:text-lg">
-      不同於過往的票選排名，今年的入選由專業評審團主導。團隊由女人我最大編輯部、美妝達人與專業醫師組成，分別從內容洞察、實際試用與專業角度三方檢視。評審依 <span class="font-serif italic">UNFURL</span> 六大趨勢觀察整年市場動向，於每個趨勢中選出最具代表性的品項。最終名單不分名次，而是六大趨勢下、值得被看見的年度代表。
-    </p>
+  <div class="mx-auto max-w-frame px-6 py-16 md:px-9 md:py-20">
+    <!-- 上：標題說明（左）＋三角 infographic（右） -->
+    <div class="grid items-center gap-12 md:grid-cols-2 md:gap-16">
+      <div>
+        <h2 class="font-serif text-3xl text-heading md:text-[40px]">評選方式</h2>
+        <p class="mt-5 max-w-[560px] text-base leading-relaxed text-ink md:text-lg">
+          不同於過往的票選排名，今年的入選由專業評審團主導。團隊由女人我最大編輯部、美妝達人與專業醫師組成，分別從內容洞察、實際試用與專業角度三方檢視。評審依 <span class="font-serif italic">UNFURL</span> 六大趨勢觀察整年市場動向，於每個趨勢中選出最具代表性的品項。最終名單不分名次，而是六大趨勢下、值得被看見的年度代表。
+        </p>
+      </div>
+      <JuryCircle />
+    </div>
 
-    <!-- 評審群：左對齊橫排，不置中 -->
-    <div class="mt-12 flex snap-x gap-6 overflow-x-auto pb-2">
+    <!-- 下：評審人物卡，依三類分欄 -->
+    <div class="mt-16 grid gap-10 md:mt-20 md:grid-cols-3 md:gap-8">
       {
-        jury.map((j) => (
-          <div class="w-[124px] flex-none snap-start">
-            <div class="mb-3.5 flex h-24 w-24 items-center justify-center rounded-full border-[0.5px] border-line bg-bg">
-              <i class="ti ti-user text-3xl text-ink-tertiary" aria-hidden="true" />
+        groups.map((g) => (
+          <div>
+            <p class="border-b border-line pb-3 text-xs tracking-[2px] text-ink-tertiary">{g.cat}</p>
+            <div class="mt-6 flex gap-6">
+              {g.members.map((m) => (
+                <div class="flex-1">
+                  <div class="mb-3 flex h-24 w-24 items-center justify-center rounded-full border-[0.5px] border-line bg-bg">
+                    <i class="ti ti-user text-3xl text-ink-tertiary" aria-hidden="true" />
+                  </div>
+                  <p class="text-base font-medium text-ink">姓名待補</p>
+                  <p class="mt-1 text-xs leading-snug text-ink-secondary">{m.role}</p>
+                </div>
+              ))}
             </div>
-            <p class="text-xs text-ink-secondary">{j.cat}</p>
-            <p class="mt-1.5 text-base font-medium text-ink">姓名待補</p>
-            <p class="mt-1 text-xs leading-snug text-ink-secondary">{j.role}</p>
           </div>
         ))
       }

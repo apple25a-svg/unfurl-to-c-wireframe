@@ -12,23 +12,23 @@ interface Props {
   vibes?: string[];
   body: string;
   products: Product[];
-  image?: string;
+  cutout?: string;
   articleHref?: string;
   listHref?: string;
 }
-const { id, key, zhName, vibes = [], body, products, image, articleHref = '#', listHref = '#' } = Astro.props;
+const { id, key, zhName, vibes = [], body, products, cutout, articleHref = '#', listHref = '#' } = Astro.props;
 ---
 
 <section id={`trend-${id}`} class="border-b-[0.5px] border-line">
   <div class="mx-auto max-w-frame px-6 py-14 md:px-9 md:py-16">
-    <div class="md:grid md:grid-cols-[200px_1fr] md:gap-10">
-      <!-- 花（趨勢身分＝主錨，明顯大於單張產品卡；圖未產時自動隱藏） -->
-      <div class="mb-4 md:mb-0">
-        {image && (
+    <div class="md:grid md:grid-cols-[400px_1fr] md:gap-10">
+      <!-- 趨勢花（去背花圖，非泡泡；圖未產自動隱藏） -->
+      <div class="mb-5 md:mb-0">
+        {cutout && (
           <img
-            src={image}
+            src={cutout}
             alt={zhName}
-            class="h-auto w-[120px] md:w-[176px]"
+            class="h-auto w-[220px] md:w-[360px]"
             onerror="this.style.display='none'"
           />
         )}
@@ -36,12 +36,10 @@ const { id, key, zhName, vibes = [], body, products, image, articleHref = '#', l
 
       <!-- 內容 -->
       <div>
-        <!-- H3 項目標題（低於六大趨勢 H2；英文斜體前綴） -->
         <h3 class="font-serif text-xl text-heading md:text-2xl">
           <span class="italic">{key}</span> <span class="font-medium">· {zhName}</span>
         </h3>
 
-        <!-- 趨勢關鍵字（vibe 標籤；參考 britainsfavouritebutterfly TOP VIBES） -->
         {vibes.length > 0 && (
           <div class="mt-3 flex flex-wrap gap-2">
             {vibes.map((v) => (
@@ -52,16 +50,14 @@ const { id, key, zhName, vibes = [], body, products, image, articleHref = '#', l
 
         <p class="mt-4 max-w-[640px] text-lg leading-relaxed text-ink">{body}</p>
 
-        <!-- 趨勢選品（有產品才出現） -->
         {products.length > 0 && (
           <div class="mt-7 flex flex-wrap gap-4">
             {products.map((p) => <ProductCard name={p.name} desc={p.desc} image={p.img} />)}
           </div>
         )}
 
-        <!-- CTA 列：primary 閱讀趨勢（左）＋ secondary 看選品（有產品才有，右），水平排列 -->
         <div class="mt-8 flex flex-wrap items-center gap-6">
-          <a href={listHref} class="btn-primary" data-track="cta_trend">閱讀趨勢</a>
+          <a href={listHref} class="btn-primary" data-track="cta_trend">了解趨勢</a>
           {products.length > 0 && (
             <a href={articleHref} class="btn-secondary" data-track="cta_shop">看選品</a>
           )}
