@@ -1,4 +1,4 @@
-// 六大趨勢（UNFURL）內容，從 wireframe 搬入。
+// 六大趨勢（UNFURL）內容。body 採用報名網站官方說明（woman.tvbs.com.tw/beautyawards/registration）。
 // articleHref / listHref 先用 placeholder（list／article 頁之後再 port）。
 export const trends = [
   {
@@ -7,9 +7,8 @@ export const trends = [
     letter: 'U',
     key: 'Unfiltered',
     zhName: '健康保養',
-    en: 'Feel-good Wellness',
     body:
-      '美麗從「由外而內」轉向「由內而外」。膠原蛋白飲、玻尿酸飲品、美肌機能食品，成為新世代保養桌上的日常——口服保養與美妝的邊界正在消失。',
+      '美麗正從由外而內，轉向由內而外。膠原蛋白飲、玻尿酸飲品與機能食品，逐漸成為日常保養的一部分，口服與外用的界線也正在消失。',
     products: [
       { name: '膠原蛋白胜肽飲', desc: '小分子高吸收配方，由內補回流失的彈潤。' },
       { name: '玻尿酸保濕飲', desc: '從體內鎖水，肌膚整天不緊繃。' },
@@ -24,9 +23,8 @@ export const trends = [
     letter: 'N',
     key: 'Noble',
     zhName: '永續信念',
-    en: 'Lifestyle Shift · Climate',
     body:
-      '永續不再只是公關話術，而是消費者的主動選擇。她們選擇可補充包裝、關注成分來源的碳足跡——「正確消費」成為一種身份認同。',
+      '永續不只是理念，而是一種被選擇的生活方式。可補充包裝與透明機制，逐漸成為品牌核心，也讓正確消費轉化為一種身份表達。',
     products: [
       { name: '可補充包裝精華', desc: '一次購入瓶身，之後只換內芯。' },
       { name: '零碳足跡保濕霜', desc: '從成分到運輸，全程碳中和。' },
@@ -41,9 +39,8 @@ export const trends = [
     letter: 'F',
     key: 'Fortify',
     zhName: '防禦修護',
-    en: 'Medical-home Loop',
     body:
-      '診間療程與居家保養之間的循環正在形成——做完雷射回家用修復精華，術後護理成為日常保養的延伸。消費者開始自己設計「醫療＋保養」的混合療程。',
+      '診間療程與居家保養之間，正逐步形成穩定循環。術後保養不僅著重於防禦與修護，更強調延續醫美療程效果，成為當前保養趨勢主流。',
     products: [
       { name: '術後修復精華', desc: '雷射、微針後的居家加強護理。' },
       { name: '屏障強化乳液', desc: '重建受損肌膚的保護層。' },
@@ -58,9 +55,8 @@ export const trends = [
     letter: 'U',
     key: 'Unique',
     zhName: '頂級珍稀',
-    en: 'One Bite Luxury',
     body:
-      '珍稀成分為頂級美妝的新語言——諾貝爾獎研究成果的成分、瀕危植物萃取、限量海洋原料，正在重新定義「值得」的標準。',
+      '從科研成分到稀有植物與海洋原料，珍稀與有感並存，讓「有感的奢華」成為願意投入的價值，也定義了新的奢華態度。',
     products: [
       { name: '諾貝爾成分抗老精華', desc: '得獎研究轉化的賦活配方。' },
       { name: '瀕危植萃緊緻霜', desc: '限量稀有植物的奢華護理。' },
@@ -75,9 +71,8 @@ export const trends = [
     letter: 'R',
     key: 'Ritual',
     zhName: '療癒儀式',
-    en: 'Unwind to Win',
     body:
-      '睡眠、放鬆、夜間修復成為新的美容核心議題。消費者把保養儀式視為一天中難得的「給自己的時間」——香氛、質地、使用步驟的儀式感成為選品標準。',
+      '睡眠、放鬆與夜間修復，成為新的美容核心。保養不只是步驟，而是一段留給自己的時間，香氣與質地共同堆疊出日常儀式感。',
     products: [
       { name: '夜間修護精華', desc: '睡眠時段啟動的密集修護。' },
       { name: '枕邊助眠噴霧', desc: '香氣成為入睡的開關。' },
@@ -92,9 +87,8 @@ export const trends = [
     letter: 'L',
     key: 'Longevity',
     zhName: '醫美共生',
-    en: 'Next-gen Beauty Concierge',
     body:
-      '醫美療程已經成為日常——不再是特殊場合前才做的事，而是和護膚保養一樣被納入固定行程。打肉毒、做光療、微針，成為新的美妝消費決策。',
+      '醫美逐漸日常化，與護膚保養並行存在。療程選擇與診所判斷，也成為新的美麗決策方式，映照出更真實的當代美感。',
     products: [
       { name: '居家光療面膜', desc: '把診間的光療帶回家。' },
       { name: '微針導入修護液', desc: '強化療程後的吸收與修復。' },
