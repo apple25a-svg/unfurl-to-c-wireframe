@@ -15,10 +15,13 @@ import { trends } from '../data/trends.js';
   <Hero />
   <Intro />
 
-  <!-- 六大趨勢區塊標題：把鬆散的趨勢清單收進一個有大標的章節 -->
-  <section id="trends" class="scroll-mt-20 px-6 pb-2 pt-16 text-center md:pt-20">
-    <p class="font-serif text-sm tracking-[6px] text-ink-secondary md:text-base">U · N · F · U · R · L</p>
-    <h2 class="mt-3 font-serif text-3xl tracking-[2px] text-heading md:text-[40px]">六大趨勢</h2>
+  <!-- 六大趨勢章節開場：eyebrow → H2 → 框景引語，上下大留白，當「翻開章節」的扉頁 -->
+  <section id="trends" class="scroll-mt-20 px-6 pb-12 pt-24 text-center md:pb-16 md:pt-32">
+    <p class="text-xs tracking-[6px] text-ink-tertiary">U · N · F · U · R · L</p>
+    <h2 class="mt-4 font-serif text-3xl text-heading md:text-[44px]">六大趨勢</h2>
+    <p class="mx-auto mt-6 max-w-readable font-serif text-lg leading-relaxed text-ink-secondary md:text-xl">
+      今年的美，正沿著六個方向綻放。
+    </p>
   </section>
 
   {trends.map((t) => <TrendSection {...t} />)}
