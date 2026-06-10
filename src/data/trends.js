@@ -7,6 +7,7 @@ export const trends = [
     letter: 'U',
     key: 'Unfiltered',
     zhName: '健康保養',
+    vibes: ['由內而外', '口服保養', '機能食品'],
     body:
       '美麗正從由外而內，轉向由內而外。膠原蛋白飲、玻尿酸飲品與機能食品，逐漸成為日常保養的一部分，口服與外用的界線也正在消失。',
     products: [
@@ -23,6 +24,7 @@ export const trends = [
     letter: 'N',
     key: 'Noble',
     zhName: '永續信念',
+    vibes: ['可補充', '透明溯源', '正確消費'],
     body:
       '永續不只是理念，而是一種被選擇的生活方式。可補充包裝與透明機制，逐漸成為品牌核心，也讓正確消費轉化為一種身份表達。',
     products: [
@@ -39,6 +41,7 @@ export const trends = [
     letter: 'F',
     key: 'Fortify',
     zhName: '防禦修護',
+    vibes: ['術後修護', '居家循環', '屏障強化'],
     body:
       '診間療程與居家保養之間，正逐步形成穩定循環。術後保養不僅著重於防禦與修護，更強調延續醫美療程效果，成為當前保養趨勢主流。',
     products: [
@@ -55,6 +58,7 @@ export const trends = [
     letter: 'U',
     key: 'Unique',
     zhName: '頂級珍稀',
+    vibes: ['珍稀成分', '有感奢華', '科研萃取'],
     body:
       '從科研成分到稀有植物與海洋原料，珍稀與有感並存，讓「有感的奢華」成為願意投入的價值，也定義了新的奢華態度。',
     products: [
@@ -71,6 +75,7 @@ export const trends = [
     letter: 'R',
     key: 'Ritual',
     zhName: '療癒儀式',
+    vibes: ['夜間修復', '助眠放鬆', '儀式感'],
     body:
       '睡眠、放鬆與夜間修復，成為新的美容核心。保養不只是步驟，而是一段留給自己的時間，香氣與質地共同堆疊出日常儀式感。',
     products: [
@@ -87,6 +92,7 @@ export const trends = [
     letter: 'L',
     key: 'Longevity',
     zhName: '醫美共生',
+    vibes: ['醫美日常', '療程護理', '日常抗老'],
     body:
       '醫美逐漸日常化，與護膚保養並行存在。療程選擇與診所判斷，也成為新的美麗決策方式，映照出更真實的當代美感。',
     products: [

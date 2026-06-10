@@ -9,13 +9,14 @@ interface Props {
   id: string;
   key: string;
   zhName: string;
+  vibes?: string[];
   body: string;
   products: Product[];
   image?: string;
   articleHref?: string;
   listHref?: string;
 }
-const { id, key, zhName, body, products, image, articleHref = '#', listHref = '#' } = Astro.props;
+const { id, key, zhName, vibes = [], body, products, image, articleHref = '#', listHref = '#' } = Astro.props;
 ---
 
 <section id={`trend-${id}`} class="border-b-[0.5px] border-line">
@@ -35,9 +36,19 @@ const { id, key, zhName, body, products, image, articleHref = '#', listHref = '#
 
       <!-- 內容 -->
       <div>
-        <h2 class="text-xl text-heading">
-          <span class="font-serif">{key}</span> <span class="font-sans font-medium">· {zhName}</span>
+        <h2 class="text-2xl text-heading md:text-3xl">
+          <span class="font-serif">{key}</span> <span class="font-sans font-semibold">· {zhName}</span>
         </h2>
+
+        <!-- 趨勢關鍵字（vibe 標籤；參考 britainsfavouritebutterfly TOP VIBES） -->
+        {vibes.length > 0 && (
+          <div class="mt-3 flex flex-wrap gap-2">
+            {vibes.map((v) => (
+              <span class="rounded-full border-[0.5px] border-ink/30 px-3 py-1 text-xs text-ink-secondary">{v}</span>
+            ))}
+          </div>
+        )}
+
         <p class="mt-4 max-w-readable text-base leading-relaxed text-ink">{body}</p>
 
         <!-- 趨勢選品 -->
@@ -46,8 +57,8 @@ const { id, key, zhName, body, products, image, articleHref = '#', listHref = '#
           {products.map((p) => <ProductCard name={p.name} desc={p.desc} href={articleHref} />)}
         </div>
 
-        <!-- 雙入口 -->
-        <div class="mt-6 flex flex-wrap items-center gap-3.5">
+        <!-- 雙入口：主按鈕＋底線文字連結（參考 butterfly「View full profile」瘦身） -->
+        <div class="mt-6 flex flex-wrap items-center gap-5">
           <a
             href={articleHref}
             class="inline-flex items-center gap-1.5 rounded-full bg-primary px-5 py-2.5 text-xs font-medium text-white transition-colors hover:bg-primary-deep"
@@ -57,7 +68,7 @@ const { id, key, zhName, body, products, image, articleHref = '#', listHref = '#
           </a>
           <a
             href={listHref}
-            class="inline-flex items-center gap-1.5 rounded-full border-[0.5px] border-ink px-5 py-2.5 text-xs text-ink transition-colors hover:bg-ink hover:text-white"
+            class="inline-flex items-center gap-1 border-b border-ink/40 pb-0.5 text-xs text-ink transition-colors hover:border-ink"
             data-track="cta_trend"
           >
             閱讀完整趨勢<i class="ti ti-arrow-right" aria-hidden="true"></i>
