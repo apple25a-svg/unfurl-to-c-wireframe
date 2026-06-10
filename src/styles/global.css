@@ -10,12 +10,22 @@
 
 @layer components {
   /* 按鈕系統（auwa 式細緻：薄、寬字距、無厚陰影）。集中於此，全站共用 */
-  /* Primary：auwa「OPEN BOOK」式長方框鈕——透明底、薄框、直角、純文字置中、寬字距，hover 才填色 */
+  /* Primary：Aesop 式 minimal 長方框鈕——透明底、薄框、直角、寬字距＋箭頭，hover 才填色 */
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-none border-[0.5px] border-ink/50 bg-transparent px-8 py-3.5 text-center text-base leading-none tracking-[2px] text-ink transition-colors duration-200 hover:border-ink hover:bg-ink hover:text-white;
+    @apply inline-flex items-center justify-center gap-2.5 rounded-none border-[0.5px] border-ink/50 bg-transparent px-8 py-3.5 text-center text-base leading-none tracking-[2px] text-ink transition-colors duration-200 hover:border-ink hover:bg-ink hover:text-white;
   }
-  /* Secondary：純文字、寬字距、淡（auwa「VIEW ALL」式）。次要動作（閱讀趨勢） */
+  /* Secondary：純文字、寬字距、淡＋箭頭。次要動作（看選品） */
   .btn-secondary {
-    @apply inline-flex items-center text-xs tracking-[2px] text-ink-secondary transition-colors duration-200 hover:text-ink;
+    @apply inline-flex items-center gap-2 text-xs tracking-[2px] text-ink-secondary transition-colors duration-200 hover:text-ink;
+  }
+  /* 箭頭（Aesop 風）：primary／secondary 皆有，hover 時往右輕推 */
+  .btn-primary::after,
+  .btn-secondary::after {
+    content: '→';
+    transition: transform 0.25s ease;
+  }
+  .btn-primary:hover::after,
+  .btn-secondary:hover::after {
+    transform: translateX(3px);
   }
 }
