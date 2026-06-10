@@ -1,11 +1,57 @@
 ---
+// Footer（參考 auwa）：深底、左標語、右社群、版權左下、IG icon 右下。
+// 底色用品牌暖深棕（ink），非 auwa 冷藍。標語為暫定文案，待 PO 定案。
 ---
 
-<footer class="border-t-[0.5px] border-line px-6 py-7 text-center">
-  <div class="flex justify-center gap-5 text-lg text-ink-secondary">
-    <i class="ti ti-brand-instagram" aria-hidden="true"></i>
-    <i class="ti ti-brand-facebook" aria-hidden="true"></i>
-    <i class="ti ti-brand-youtube" aria-hidden="true"></i>
+<footer class="bg-ink text-white">
+  <div class="mx-auto max-w-frame px-6 py-16 md:px-9 md:py-20">
+    <div class="flex flex-col gap-12 md:flex-row md:items-start md:justify-between">
+      <!-- 左：標語 -->
+      <div class="max-w-[520px]">
+        <p class="text-xs tracking-[3px] text-white/40">女人我最大賞 2026</p>
+        <p class="mt-5 font-serif text-2xl leading-relaxed md:text-3xl">
+          <span class="text-white">美，由我綻放。</span>
+          <span class="text-white/55">每年，我們以 UNFURL 六大趨勢，閱讀當代美的走向。</span>
+        </p>
+      </div>
+
+      <!-- 右：社群 -->
+      <nav class="flex flex-col gap-3 md:items-end">
+        <a
+          href="#"
+          class="text-base text-white/70 transition-colors hover:text-white"
+          data-track="social_ig"
+        >
+          Instagram
+        </a>
+        <a
+          href="#"
+          class="text-base text-white/70 transition-colors hover:text-white"
+          data-track="social_fb"
+        >
+          Facebook
+        </a>
+        <a
+          href="#"
+          class="text-base text-white/70 transition-colors hover:text-white"
+          data-track="social_yt"
+        >
+          YouTube
+        </a>
+      </nav>
+    </div>
+
+    <!-- 底列：版權左下、IG icon 右下 -->
+    <div class="mt-16 flex items-center justify-between md:mt-24">
+      <p class="text-xs text-white/40">© 2026 TVBS 聯利媒體股份有限公司 All Rights Reserved.</p>
+      <a
+        href="#"
+        class="text-white/40 transition-colors hover:text-white"
+        data-track="social_ig_icon"
+        aria-label="Instagram"
+      >
+        <i class="ti ti-brand-instagram text-lg" aria-hidden="true"></i>
+      </a>
+    </div>
   </div>
-  <p class="mt-4 text-xs text-ink-tertiary">© 2026 TVBS 聯利媒體股份有限公司 All Rights Reserved.</p>
 </footer>
