@@ -1,20 +1,27 @@
 ---
-// 選品卡（auwa「Our Journal」式）：產品圖在上 → 小字 eyebrow → 襯線標題 → 簡短說明。
-// 無邊框、無厚陰影。此階段沒有產品頁可連 → 非連結、無 hover 效果。
+// 選品卡（auwa「Our Journal」式）：白底產品圖 → 襯線標題 → 簡短說明。
+// 此階段無產品頁可連 → 非連結、無 hover。img 缺檔時自動 fallback 回佔位 icon。
 interface Props {
   name: string;
   desc: string;
+  image?: string;
 }
-const { name, desc } = Astro.props;
+const { name, desc, image } = Astro.props;
 ---
 
 <div data-track="product_card">
-  <!-- 產品圖（未產時漸層佔位） -->
-  <div
-    class="flex aspect-[4/5] items-center justify-center overflow-hidden rounded-sm text-ink-tertiary"
-    style="background:linear-gradient(135deg,#F3DED6,#E4C0B6)"
-  >
-    <i class="ti ti-photo text-2xl" aria-hidden="true"></i>
+  <!-- 白底圖框：去背產品照置中（object-contain）。缺圖 → 顯示佔位 icon -->
+  <div class="relative flex aspect-[4/5] items-center justify-center overflow-hidden rounded-sm bg-white">
+    <i class="ti ti-photo text-2xl text-ink-tertiary" aria-hidden="true"></i>
+    {image && (
+      <img
+        src={image}
+        alt={name}
+        class="absolute inset-0 h-full w-full object-contain p-4"
+        loading="lazy"
+        onerror="this.style.display='none'"
+      />
+    )}
   </div>
 
   <p class="mt-4 font-serif text-lg leading-snug text-heading">{name}</p>

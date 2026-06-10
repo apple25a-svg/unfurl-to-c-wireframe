@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
+import TrendCircle from '../components/TrendCircle.astro';
 import TrendSection from '../components/TrendSection.astro';
 import JurySection from '../components/JurySection.astro';
 import QuizBand from '../components/QuizBand.astro';
@@ -13,17 +14,19 @@ import { trends } from '../data/trends.js';
   <Header />
   <Hero />
 
-  <!-- 章節開場（auwa 式疊放）：六大趨勢＋框景 → eyebrow → UNFURL 導言段，全左對齊 -->
+  <!-- 章節開場：左文字、右圓圈 infographic（六大類繞 UNFURL） -->
   <section id="trends" class="scroll-mt-20 px-6 pb-12 pt-24 md:px-9 md:pb-16 md:pt-32">
-    <div class="mx-auto max-w-frame">
-      <h2 class="font-serif text-3xl text-heading md:text-[52px]">六大趨勢</h2>
-      <p class="mt-4 max-w-[640px] font-serif text-lg leading-relaxed text-ink-secondary md:text-xl">
-        今年的美，正沿著六個方向綻放。
-      </p>
-
-      <p class="mt-16 max-w-[640px] text-base leading-relaxed text-ink md:mt-20 md:text-lg">
-        今年，我們以 <span class="font-serif italic">UNFURL</span> 作為年度關鍵字。編輯部、達人與醫師不再只是評審與試用者，而是市場的觀察者與詮釋者；產品也從被評選的對象，變成趨勢的佐證。每一件入選，都標記著市場正在發生的轉變。
-      </p>
+    <div class="mx-auto grid max-w-frame items-center gap-12 md:grid-cols-2 md:gap-16">
+      <div>
+        <h2 class="font-serif text-3xl text-heading md:text-[52px]">六大趨勢</h2>
+        <p class="mt-4 max-w-[560px] font-serif text-lg leading-relaxed text-ink-secondary md:text-xl">
+          今年的美，正沿著六個方向綻放。
+        </p>
+        <p class="mt-10 max-w-[560px] text-base leading-relaxed text-ink md:mt-12 md:text-lg">
+          今年，我們以 <span class="font-serif italic">UNFURL</span> 作為年度關鍵字。編輯部、達人與醫師不再只是評審與試用者，而是市場的觀察者與詮釋者；產品也從被評選的對象，變成趨勢的佐證。每一件入選，都標記著市場正在發生的轉變。
+        </p>
+      </div>
+      <TrendCircle />
     </div>
   </section>
 

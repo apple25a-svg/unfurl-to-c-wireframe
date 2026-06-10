@@ -1,0 +1,51 @@
+---
+// 六大趨勢圓圈 infographic（Wilde House「Symbolism of Dreams」風）：
+// 細線圓 + 6 節點繞圈標趨勢中文名 + 中心襯線 UNFURL。
+import { trends } from '../data/trends.js';
+
+const cx = 50;
+const cy = 50;
+const R = 34; // 圓半徑（節點落在此圈上）
+const labelR = 44; // 標籤半徑（落在圈外一點）
+// 6 趨勢對應角度（度）：上左、上右、右、下右、下左、左
+const angles = [120, 60, 0, 300, 240, 180];
+
+const nodes = trends.map((t, i) => {
+  const rad = (angles[i] * Math.PI) / 180;
+  return {
+    key: t.key,
+    zhName: t.zhName,
+    dx: cx + R * Math.cos(rad),
+    dy: cy - R * Math.sin(rad),
+    lx: cx + labelR * Math.cos(rad),
+    ly: cy - labelR * Math.sin(rad),
+  };
+});
+---
+
+<div class="relative mx-auto aspect-square w-full max-w-[420px] overflow-visible">
+  <svg viewBox="0 0 100 100" class="absolute inset-0 h-full w-full overflow-visible" aria-hidden="true">
+    <circle cx="50" cy="50" r={R} fill="none" stroke="#d8c7bf" stroke-width="0.35" />
+    {nodes.map((n) => <circle cx={n.dx} cy={n.dy} r="1.1" fill="#3a2a2e" />)}
+  </svg>
+
+  <!-- 中心 UNFURL -->
+  <p
+    class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-serif text-[32px] italic tracking-[2px] text-heading md:text-[40px]"
+  >
+    UNFURL
+  </p>
+
+  <!-- 節點標籤（英文 key ＋ 中文名） -->
+  {
+    nodes.map((n) => (
+      <div
+        class="absolute flex flex-col items-center whitespace-nowrap leading-tight"
+        style={`left:${n.lx}%; top:${n.ly}%; transform:translate(-50%,-50%);`}
+      >
+        <span class="font-serif text-xs italic text-ink-tertiary">{n.key}</span>
+        <span class="text-xs text-ink-secondary">{n.zhName}</span>
+      </div>
+    ))
+  }
+</div>
