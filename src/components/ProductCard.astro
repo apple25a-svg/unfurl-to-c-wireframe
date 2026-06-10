@@ -1,20 +1,25 @@
 ---
+// 選品卡（auwa「Our Journal」式）：產品圖在上 → 小字 eyebrow → 襯線標題 → 簡短說明。
+// 無邊框、無厚陰影，靠字距與留白撐質感。
 interface Props {
   name: string;
   desc: string;
+  tag?: string;
   href?: string;
 }
-const { name, desc, href = '#' } = Astro.props;
+const { name, desc, tag, href = '#' } = Astro.props;
 ---
 
-<a
-  href={href}
-  class="block rounded-lg border-[0.5px] border-line bg-bg-card p-3 no-underline transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(58,42,46,0.10)]"
-  data-track="product_card"
->
-  <div class="mb-3 flex aspect-[4/3] items-center justify-center rounded-md text-ink-tertiary" style="background:linear-gradient(135deg,#F3DED6,#E4C0B6)">
+<a href={href} class="group block no-underline" data-track="product_card">
+  <!-- 產品圖（未產時漸層佔位） -->
+  <div
+    class="flex aspect-[3/4] items-center justify-center overflow-hidden rounded-sm text-ink-tertiary"
+    style="background:linear-gradient(135deg,#F3DED6,#E4C0B6)"
+  >
     <i class="ti ti-photo text-2xl" aria-hidden="true"></i>
   </div>
-  <p class="mb-1.5 text-base font-medium text-ink">{name}</p>
-  <p class="text-xs leading-relaxed text-ink-secondary">{desc}</p>
+
+  {tag && <p class="mt-4 text-[11px] uppercase tracking-[2.5px] text-ink-tertiary">{tag}</p>}
+  <p class="mt-2 font-serif text-lg leading-snug text-heading transition-colors group-hover:text-primary">{name}</p>
+  <p class="mt-1.5 text-xs leading-relaxed text-ink-secondary">{desc}</p>
 </a>

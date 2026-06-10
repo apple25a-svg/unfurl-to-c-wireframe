@@ -7,3 +7,15 @@
     -webkit-text-size-adjust: 100%;
   }
 }
+
+@layer components {
+  /* 按鈕系統（auwa 式細緻：薄、寬字距、無厚陰影）。集中於此，全站共用 */
+  /* Primary：細緻實心 pill，品牌赤陶色。全頁主要轉換動作（你是哪一朵、完整盤點） */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3 text-base font-medium leading-none tracking-[1.5px] text-white transition-colors duration-200 hover:bg-primary-deep;
+  }
+  /* Secondary：純文字＋箭頭、寬字距、淡（auwa「VIEW ALL」式）。次要動作（閱讀趨勢） */
+  .btn-secondary {
+    @apply inline-flex items-center gap-1.5 text-xs tracking-[2px] text-ink-secondary transition-colors duration-200 hover:text-ink;
+  }
+}
