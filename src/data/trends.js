@@ -45,6 +45,7 @@ export const trends = [
     key: 'Fortify',
     zhName: '防禦修護',
     vibes: ['術後修護', '居家循環', '屏障強化'],
+    cutout: '/bubbles/bubble-fortify_cutout.png',
     body:
       '診間療程與居家保養之間，正逐步形成穩定循環。術後保養不僅著重於防禦與修護，更強調延續醫美療程效果，成為當前保養趨勢主流。',
     products: [
