@@ -4,6 +4,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import RelatedReads from '../../components/RelatedReads.astro';
+import MoreTrends from '../../components/MoreTrends.astro';
 import { trends } from '../../data/trends.js';
 
 export function getStaticPaths() {
@@ -12,16 +14,12 @@ export function getStaticPaths() {
 
 const { trend } = Astro.props;
 
-// 延伸閱讀 sample（待 PO 補實際文章）
-const articleSamples = [
+// 延伸閱讀 sample（連到 read 一般編輯文，待 PO 補實際文章）
+const relatedItems = [
   '為什麼今年的保養，開始講求「由內而外」？',
   '編輯實測：這個趨勢值得入手的三個理由',
   '達人觀點：保養的下一步，正往哪裡走',
-  '一張表看懂本趨勢的關鍵成分',
-  '從產品到習慣，趨勢如何走進日常',
-  '專家解析：這股趨勢背後的觀察',
-];
-const articles = articleSamples.map((title) => ({ title, author: '編輯部', date: '2026/06/30' }));
+].map((title) => ({ title, meta: '編輯部 · 2026/06/30', href: `/trends/${trend.id}/read` }));
 ---
 
 <BaseLayout title={`${trend.zhName} ${trend.key} · 女人我最大賞 2026`}>
@@ -97,60 +95,11 @@ const articles = articleSamples.map((title) => ({ title, author: '編輯部', da
     </div>
   </section>
 
-  <!-- 延伸閱讀 -->
-  <section class="px-6 md:px-9">
-    <div class="mx-auto max-w-frame pb-16 md:pb-24">
-      <div class="flex items-baseline justify-between border-b border-line pb-3">
-        <h2 class="font-serif text-2xl leading-snug text-heading md:text-3xl">延伸閱讀</h2>
-        <p class="text-xs tracking-[2px] text-ink-tertiary">精選 3 篇</p>
-      </div>
-      <!-- Aesop 推薦閱讀風：上圖（3:2）下字，3 欄、寬 gap -->
-      <div class="mt-8 grid grid-cols-1 gap-x-8 gap-y-10 md:mt-10 md:grid-cols-3 md:gap-x-10">
-        {
-          articles.slice(0, 3).map((a) => (
-            <a href="#" class="group" data-track="cta_article">
-              <div class="flex aspect-[3/2] w-full items-center justify-center overflow-hidden bg-bg-product">
-                <i class="ti ti-photo text-3xl text-ink-tertiary" aria-hidden="true" />
-              </div>
-              <p class="mt-4 text-base font-medium leading-snug text-heading transition-colors group-hover:text-primary md:text-lg">
-                {a.title}
-              </p>
-              <p class="mt-2 text-xs text-ink-tertiary">{a.author} · {a.date}</p>
-            </a>
-          ))
-        }
-      </div>
-    </div>
-  </section>
+  <!-- 延伸閱讀（共用元件，連到 read 一般編輯文） -->
+  <RelatedReads items={relatedItems} />
 
-  <!-- 看更多趨勢（取代下一趨勢 banner）：其他五大趨勢中文大字＋英文，點擊直達該趨勢頁 -->
-  <section class="border-t border-line bg-bg-surface px-6 md:px-9">
-    <div class="mx-auto max-w-frame py-16 md:py-24">
-      <p class="text-xs tracking-[3px] text-ink-tertiary">UNFURL · 看更多趨勢</p>
-      <div class="mt-6 md:mt-8">
-        {
-          trends
-            .filter((t) => t.id !== trend.id)
-            .map((t) => (
-              <a
-                href={`/trends/${t.id}`}
-                class="group flex items-baseline gap-4 border-b border-line py-5 md:py-6"
-                data-track="cta_more_trend"
-              >
-                <h2 class="font-serif text-3xl leading-none text-heading transition-colors group-hover:text-primary md:text-[44px]">
-                  {t.zhName}
-                </h2>
-                <span class="font-serif text-lg italic text-ink-tertiary md:text-xl">{t.key}</span>
-                <i
-                  class="ti ti-arrow-right ml-auto self-center text-ink-tertiary transition-all group-hover:translate-x-1 group-hover:text-primary"
-                  aria-hidden="true"
-                />
-              </a>
-            ))
-        }
-      </div>
-    </div>
-  </section>
+  <!-- 看更多趨勢（共用元件） -->
+  <MoreTrends currentId={trend.id} />
 
   <Footer />
 </BaseLayout>
