@@ -1,55 +1,52 @@
 ---
-// Footer（參考 auwa）：深底、左標語、右社群、版權左下、IG icon 右下。
-// 底色用品牌暖深棕（ink），非 auwa 冷藍。標語為暫定文案，待 PO 定案。
+// Footer（參考 auwa）：品牌暖深棕底（ink），文字/logo 用暖白 #FBF6F3 與全站暖中性色系連貫（非冷白）。
+// 左＝logo＋標語＋地址；右＝社群 icon 列；底＝版權。標語為暫定文案，待 PO 定案。
+const socials = [
+  { label: 'Instagram', icon: 'ti-brand-instagram', track: 'social_ig' },
+  { label: 'Facebook', icon: 'ti-brand-facebook', track: 'social_fb' },
+  { label: 'YouTube', icon: 'ti-brand-youtube', track: 'social_yt' },
+  { label: 'LINE', icon: 'ti-brand-line', track: 'social_line' },
+  { label: 'Threads', icon: 'ti-brand-threads', track: 'social_threads' },
+];
 ---
 
-<footer class="bg-ink text-white">
+<footer class="bg-ink text-[#FBF6F3]">
   <div class="mx-auto max-w-frame px-6 py-16 md:px-9 md:py-20">
     <div class="flex flex-col gap-12 md:flex-row md:items-start md:justify-between">
-      <!-- 左：標語 -->
+      <!-- 左：品牌 -->
       <div class="max-w-[520px]">
-        <img src="/logo.png" alt="女人我最大賞" class="h-9 w-auto brightness-0 invert" />
-        <p class="mt-6 font-serif text-2xl leading-relaxed text-white md:text-3xl">美，由我綻放</p>
-        <p class="mt-4 text-lg text-white/55">女人我最大賞，閱讀當代美的走向。</p>
+        <!-- logo 翻成暖白（非冷白），與全站暖調一致 -->
+        <img
+          src="/logo.png"
+          alt="女人我最大賞"
+          class="h-9 w-auto"
+          style="filter: brightness(0) invert(1) sepia(0.12) brightness(0.98);"
+        />
+        <p class="mt-6 font-serif text-2xl leading-relaxed md:text-3xl">美，由我綻放</p>
+        <p class="mt-4 text-lg text-[#FBF6F3]/55">女人我最大賞，閱讀當代美的走向。</p>
+        <p class="mt-6 text-base text-[#FBF6F3]/55">台北市內湖區瑞光路 451 號</p>
       </div>
 
-      <!-- 右：社群 -->
-      <nav class="flex flex-col gap-3 md:items-end">
-        <a
-          href="#"
-          class="text-base text-white/70 transition-colors hover:text-white"
-          data-track="social_ig"
-        >
-          Instagram
-        </a>
-        <a
-          href="#"
-          class="text-base text-white/70 transition-colors hover:text-white"
-          data-track="social_fb"
-        >
-          Facebook
-        </a>
-        <a
-          href="#"
-          class="text-base text-white/70 transition-colors hover:text-white"
-          data-track="social_yt"
-        >
-          YouTube
-        </a>
+      <!-- 右：社群 icon 列 -->
+      <nav class="flex gap-5 md:justify-end" aria-label="社群連結">
+        {
+          socials.map((s) => (
+            <a
+              href="#"
+              class="text-[#FBF6F3]/70 transition-colors hover:text-[#FBF6F3]"
+              data-track={s.track}
+              aria-label={s.label}
+            >
+              <i class={`ti ${s.icon} text-xl`} aria-hidden="true" />
+            </a>
+          ))
+        }
       </nav>
     </div>
 
-    <!-- 底列：版權左下、IG icon 右下 -->
-    <div class="mt-16 flex items-center justify-between md:mt-24">
-      <p class="text-xs text-white/40">© 2026 TVBS 聯利媒體股份有限公司 All Rights Reserved.</p>
-      <a
-        href="#"
-        class="text-white/40 transition-colors hover:text-white"
-        data-track="social_ig_icon"
-        aria-label="Instagram"
-      >
-        <i class="ti ti-brand-instagram text-lg" aria-hidden="true"></i>
-      </a>
+    <!-- 底列：版權 -->
+    <div class="mt-16 md:mt-24">
+      <p class="text-xs text-[#FBF6F3]/40">© 2026 TVBS 聯利媒體股份有限公司 All Rights Reserved.</p>
     </div>
   </div>
 </footer>
