@@ -102,23 +102,20 @@ const articles = articleSamples.map((title) => ({ title, author: '編輯部', da
     <div class="mx-auto max-w-frame pb-16 md:pb-24">
       <div class="flex items-baseline justify-between border-b border-line pb-3">
         <h2 class="font-serif text-2xl leading-snug text-heading md:text-3xl">延伸閱讀</h2>
-        <p class="text-xs tracking-[2px] text-ink-tertiary">本趨勢最多 6 篇</p>
+        <p class="text-xs tracking-[2px] text-ink-tertiary">精選 3 篇</p>
       </div>
-      <div class="mt-6 grid gap-4 md:grid-cols-2 md:gap-x-8 md:gap-y-5">
+      <!-- Aesop 推薦閱讀風：上圖（3:2）下字，3 欄、寬 gap -->
+      <div class="mt-8 grid grid-cols-1 gap-x-8 gap-y-10 md:mt-10 md:grid-cols-3 md:gap-x-10">
         {
-          articles.map((a) => (
-            <a
-              href="#"
-              class="flex gap-4 rounded-md border-[0.5px] border-line bg-bg-card p-3 transition-colors hover:border-ink/30"
-              data-track="cta_article"
-            >
-              <div class="flex h-[60px] w-[88px] shrink-0 items-center justify-center rounded-sm bg-bg-product">
-                <i class="ti ti-photo text-lg text-ink-tertiary" aria-hidden="true" />
+          articles.slice(0, 3).map((a) => (
+            <a href="#" class="group" data-track="cta_article">
+              <div class="flex aspect-[3/2] w-full items-center justify-center overflow-hidden bg-bg-product">
+                <i class="ti ti-photo text-3xl text-ink-tertiary" aria-hidden="true" />
               </div>
-              <div class="min-w-0">
-                <p class="line-clamp-2 text-base font-medium leading-snug text-heading">{a.title}</p>
-                <p class="mt-1.5 text-xs text-ink-tertiary">{a.author} · {a.date}</p>
-              </div>
+              <p class="mt-4 text-base font-medium leading-snug text-heading transition-colors group-hover:text-primary md:text-lg">
+                {a.title}
+              </p>
+              <p class="mt-2 text-xs text-ink-tertiary">{a.author} · {a.date}</p>
             </a>
           ))
         }
