@@ -60,6 +60,7 @@ const showDots = count > threshold;
 
     const update = () => {
       const overflow = hasOverflow();
+      rail.classList.toggle('is-scrollable', overflow);
       ctrl?.classList.toggle('is-shown', overflow);
       if (!overflow) return;
       buildDots();
@@ -124,9 +125,12 @@ const showDots = count > threshold;
     transition: background-color 0.2s ease;
   }
   .rail-dot.is-active { background: #8A6E6E; /* ink-secondary */ }
-  /* 滑到頭/尾：對應側箭頭與遮罩淡出 */
   .rail-arrow,
   .rail-fade { transition: opacity 0.25s ease; }
+  /* 遮罩預設隱藏；只有真的可滑（內容溢出）時才顯示 */
+  .rail-fade { opacity: 0; }
+  .rail.is-scrollable .rail-fade { opacity: 1; }
+  /* 滑到頭/尾：對應側箭頭與遮罩淡出（放最後以蓋過 is-scrollable） */
   .rail.at-start [data-rail-prev],
   .rail.at-start .rail-fade-left,
   .rail.at-end [data-rail-next],
