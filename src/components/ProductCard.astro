@@ -10,8 +10,8 @@ const { name, desc, image } = Astro.props;
 ---
 
 <div class="w-[140px] md:w-[200px]" data-track="product_card">
-  <!-- 白底圖框：1:1 方塊填滿卡（卡寬＝圖寬，彼此 16px）。去背產品照 object-contain，缺圖顯示佔位 icon -->
-  <div class="relative flex aspect-square w-full items-center justify-center overflow-hidden rounded-sm bg-white">
+  <!-- 暖灰展示框：1:1 方塊填滿卡（卡寬＝圖寬，彼此 16px）。去背產品照 object-contain，缺圖顯示佔位 icon -->
+  <div class="relative flex aspect-square w-full items-center justify-center overflow-hidden rounded-sm bg-bg-product">
     <i class="ti ti-photo text-2xl text-ink-tertiary" aria-hidden="true"></i>
     {image && (
       <img
