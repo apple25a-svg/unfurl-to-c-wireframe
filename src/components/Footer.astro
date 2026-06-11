@@ -2,11 +2,11 @@
 // Footer（參考 auwa）：品牌暖深棕底（ink），文字/logo 用暖白 #FBF6F3 與全站暖中性色系連貫（非冷白）。
 // 左＝logo＋標語＋地址；右＝社群 icon 列；底＝版權。標語為暫定文案，待 PO 定案。
 const socials = [
-  { label: 'Instagram', icon: 'ti-brand-instagram', track: 'social_ig' },
-  { label: 'Facebook', icon: 'ti-brand-facebook', track: 'social_fb' },
-  { label: 'YouTube', icon: 'ti-brand-youtube', track: 'social_yt' },
-  { label: 'LINE', icon: 'ti-brand-line', track: 'social_line' },
-  { label: 'Threads', icon: 'ti-brand-threads', track: 'social_threads' },
+  { label: 'Instagram', track: 'social_ig' },
+  { label: 'Facebook', track: 'social_fb' },
+  { label: 'Threads', track: 'social_threads' },
+  { label: 'YouTube', track: 'social_yt' },
+  { label: 'LINE', track: 'social_line' },
 ];
 ---
 
@@ -22,31 +22,33 @@ const socials = [
           class="h-9 w-auto"
           style="filter: brightness(0) invert(1) sepia(0.12) brightness(0.98);"
         />
-        <p class="mt-6 font-serif text-2xl leading-relaxed md:text-3xl">美，由我綻放</p>
-        <p class="mt-4 text-lg text-[#FBF6F3]/55">女人我最大賞，閱讀當代美的走向。</p>
-        <p class="mt-6 text-base text-[#FBF6F3]/55">台北市內湖區瑞光路 451 號</p>
+        <p class="mt-6 font-serif text-2xl leading-snug tracking-[0.08em] md:text-3xl">美 由我綻放</p>
+        <p class="mt-4 text-lg leading-relaxed tracking-[0.04em] text-[#FBF6F3]/55">女人我最大賞，閱讀當代美的走向</p>
       </div>
 
-      <!-- 右：社群 icon 列 -->
-      <nav class="flex gap-5 md:justify-end" aria-label="社群連結">
+      <!-- 右：社群文字連結 -->
+      <nav class="flex flex-col gap-3 md:items-end" aria-label="社群連結">
         {
           socials.map((s) => (
             <a
               href="#"
-              class="text-[#FBF6F3]/70 transition-colors hover:text-[#FBF6F3]"
+              class="text-base text-[#FBF6F3]/70 transition-colors hover:text-[#FBF6F3]"
               data-track={s.track}
-              aria-label={s.label}
             >
-              <i class={`ti ${s.icon} text-xl`} aria-hidden="true" />
+              {s.label}
             </a>
           ))
         }
       </nav>
     </div>
 
-    <!-- 底列：版權 -->
+    <!-- 底列：版權＋公司地址同一行 -->
     <div class="mt-16 md:mt-24">
-      <p class="text-xs text-[#FBF6F3]/40">© 2026 TVBS 聯利媒體股份有限公司 All Rights Reserved.</p>
+      <p class="text-xs leading-relaxed text-[#FBF6F3]/40">
+        © 2026 TVBS 聯利媒體股份有限公司 All Rights Reserved.
+        <span class="mx-2 text-[#FBF6F3]/25">|</span>
+        台北市內湖區瑞光路 451 號
+      </p>
     </div>
   </div>
 </footer>
