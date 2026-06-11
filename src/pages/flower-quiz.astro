@@ -1,0 +1,250 @@
+---
+// 花精靈測驗（hi-fi）：home 開場 → quiz 答題（進度條/單複選/自動前進）→ result 花精靈＋保養趨勢。
+// 資料與計分邏輯沿用 心理測驗/flower_quiz_prototype.html，UI 換成暖調設計系統。預設用第二版題目（花園旅程）。
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="花精靈測驗 · 女人我最大賞 2026">
+  <a href="/" class="absolute left-6 top-6 z-30 md:left-9 md:top-7" data-track="quiz_logo">
+    <img src="/logo.png" alt="女人我最大 Queen" class="h-7 w-auto" />
+  </a>
+
+  <main class="flex min-h-screen flex-col items-center justify-center px-6 py-24">
+    <!-- 開場 -->
+    <section id="home" class="mx-auto max-w-readable text-center">
+      <p class="text-xs tracking-[4px] text-ink-tertiary">FLOWER QUIZ · 花精靈測驗</p>
+      <h1 class="mt-6 font-serif text-3xl leading-tight text-heading md:text-[52px]">你，是哪一朵花？</h1>
+      <p class="mx-auto mt-6 max-w-md text-base leading-relaxed text-ink-body">
+        六道題、約一分鐘，從一場花園旅程裡，找到最貼近你的那一種美，與屬於你的年度保養主張。
+      </p>
+      <button id="start" type="button" class="btn-primary mt-10" data-track="quiz_start">開始測驗</button>
+    </section>
+
+    <!-- 答題 -->
+    <section id="quiz" class="hide w-full max-w-readable">
+      <div class="h-px w-full bg-line">
+        <div id="bar" class="h-px bg-primary transition-all duration-300" style="width:0%"></div>
+      </div>
+      <div class="mt-6 flex items-center justify-between">
+        <button id="prev" type="button" class="text-xs text-ink-tertiary transition-colors hover:text-ink disabled:opacity-40" data-track="quiz_prev">← 上一題</button>
+        <p id="qnum" class="text-xs tracking-[2px] text-ink-tertiary">Question 1 / 6</p>
+      </div>
+      <h2 id="qtext" class="mt-6 font-serif text-2xl leading-snug text-heading md:text-[32px]"></h2>
+      <p id="qhint" class="hide mt-3 text-xs text-ink-secondary"></p>
+      <div id="opts" class="mt-8"></div>
+      <button id="next" type="button" class="btn-primary mt-8 w-full justify-center" data-track="quiz_next" style="display:none">下一題</button>
+    </section>
+
+    <!-- 結果 -->
+    <section id="result" class="hide mx-auto max-w-readable text-center">
+      <p id="rio" class="text-xs tracking-[3px] text-primary"></p>
+      <h2 id="rname" class="mt-4 font-serif text-3xl leading-tight text-heading md:text-[48px]"></h2>
+      <p id="rquote" class="mt-4 font-serif text-lg italic text-ink-secondary md:text-xl"></p>
+      <p id="rdesc" class="mx-auto mt-8 max-w-lg text-left text-base leading-loose text-ink-body"></p>
+
+      <div class="mx-auto mt-12 grid max-w-md grid-cols-2 gap-4 border-t border-line pt-8 text-left">
+        <div>
+          <p class="text-xs text-ink-tertiary">最懂你的花精靈</p>
+          <p id="m1" class="mt-1 font-serif text-lg text-heading"></p>
+        </div>
+        <div>
+          <p class="text-xs text-ink-tertiary">最互補的花精靈</p>
+          <p id="m2" class="mt-1 font-serif text-lg text-heading"></p>
+        </div>
+      </div>
+
+      <div class="mx-auto mt-10 max-w-md rounded-md bg-bg-surface p-6 text-left">
+        <p class="text-xs tracking-[2px] text-primary">你的年度保養主張</p>
+        <p id="caret" class="mt-2 font-serif text-xl text-heading"></p>
+        <p id="cared" class="mt-2 text-base leading-relaxed text-ink-body"></p>
+        <a id="ctaTrend" href="#" class="btn-secondary mt-5" data-track="quiz_result_trend">看趨勢</a>
+      </div>
+
+      <button id="replay" type="button" class="mt-10 text-xs text-ink-tertiary underline underline-offset-4 transition-colors hover:text-ink" data-track="quiz_replay">
+        重新測一次
+      </button>
+    </section>
+  </main>
+</BaseLayout>
+
+<script>
+  import { SPIRITS, CARE, MATCH, CEIL, PRIORITY, QUIZ_A, QUIZ_B, SYS_TREND } from '../data/quiz.js';
+
+  const $ = (id) => document.getElementById(id);
+  let ver = 'B', quiz = [], qi = 0, answers = [];
+
+  function show(id) {
+    ['home', 'quiz', 'result'].forEach((x) => $(x).classList.add('hide'));
+    $(id).classList.remove('hide');
+    window.scrollTo(0, 0);
+  }
+
+  function start(v) {
+    ver = v;
+    quiz = v === 'A' ? QUIZ_A : QUIZ_B;
+    qi = 0;
+    answers = quiz.map((it) => (it.multi ? [] : null));
+    show('quiz');
+    renderQ();
+  }
+
+  function renderQ() {
+    const item = quiz[qi];
+    const multi = !!item.multi;
+    $('qnum').textContent = 'Question ' + (qi + 1) + ' / ' + quiz.length;
+    $('qtext').textContent = item.q;
+    $('bar').style.width = (qi / quiz.length) * 100 + '%';
+    const hint = $('qhint');
+    if (multi) {
+      hint.classList.remove('hide');
+      hint.textContent = '可複選（選好後按下一題）';
+    } else {
+      hint.classList.add('hide');
+    }
+    const box = $('opts');
+    box.innerHTML = '';
+    item.opts.forEach((o, idx) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'opt' + (multi ? ' multi' : '');
+      const sel = multi ? answers[qi].includes(idx) : answers[qi] === idx;
+      if (sel) btn.classList.add('sel');
+      btn.innerHTML = '<span class="tick"></span><span>' + o[0] + '</span>';
+      btn.onclick = () => {
+        if (multi) {
+          const arr = answers[qi];
+          const p = arr.indexOf(idx);
+          if (p >= 0) arr.splice(p, 1);
+          else arr.push(idx);
+          renderQ();
+        } else {
+          answers[qi] = idx;
+          renderQ();
+          setTimeout(advance, 180);
+        }
+      };
+      box.appendChild(btn);
+    });
+    const nb = $('next');
+    nb.textContent = qi === quiz.length - 1 ? '看結果' : '下一題';
+    nb.style.display = multi ? 'inline-flex' : 'none';
+    nb.disabled = multi ? answers[qi].length === 0 : answers[qi] === null;
+    $('prev').disabled = qi === 0;
+  }
+
+  function advance() {
+    const item = quiz[qi];
+    if (!item || (!item.multi && answers[qi] === null)) return;
+    if (qi < quiz.length - 1) {
+      qi++;
+      renderQ();
+    } else computeResult();
+  }
+
+  function nextQ() {
+    const item = quiz[qi];
+    if (!item) return;
+    if (item.multi && answers[qi].length === 0) return;
+    if (!item.multi && answers[qi] === null) return;
+    if (qi < quiz.length - 1) {
+      qi++;
+      renderQ();
+    } else computeResult();
+  }
+
+  function prevQ() {
+    if (qi > 0) {
+      qi--;
+      renderQ();
+    }
+  }
+
+  function computeResult() {
+    const score = { 自然系: 0, 質感系: 0, 溫暖系: 0, 神秘系: 0, 療癒系: 0, 探索系: 0 };
+    const io = { 外: 0, 內: 0 };
+    quiz.forEach((item, i) => {
+      const ans = answers[i];
+      const picks = item.multi ? ans || [] : ans === null || ans === undefined ? [] : [ans];
+      picks.forEach((idx) => {
+        const o = item.opts[idx];
+        if (!o) return;
+        if (o[1]) score[o[1]]++;
+        if (!item.multi && (o[2] === '外' || o[2] === '內')) io[o[2]]++;
+      });
+    });
+    const systems = Object.keys(score);
+    systems.sort((a, b) => {
+      const pa = score[a] / CEIL[a], pb = score[b] / CEIL[b];
+      if (pb !== pa) return pb - pa;
+      if (score[b] !== score[a]) return score[b] - score[a];
+      return PRIORITY[a] - PRIORITY[b];
+    });
+    const mainSys = systems[0];
+    const dir = io.外 > io.內 ? '外' : '內';
+    renderResult(mainSys, dir);
+  }
+
+  function renderResult(sys, dir) {
+    const key = sys + '_' + dir;
+    const sp = SPIRITS[key];
+    $('rio').textContent = sp.io;
+    $('rname').textContent = sp.name;
+    $('rquote').textContent = '「' + sp.quote + '」';
+    $('rdesc').textContent = sp.desc;
+    const m = MATCH[key];
+    $('m1').textContent = SPIRITS[m.like].name;
+    $('m2').textContent = SPIRITS[m.comp].name;
+    const ca = CARE[sys];
+    $('caret').textContent = ca.t;
+    $('cared').textContent = ca.d;
+    const cta = $('ctaTrend');
+    cta.href = '/trends/' + SYS_TREND[sys];
+    cta.textContent = '看「' + ca.t.split(' ')[0] + '」趨勢';
+    $('bar').style.width = '100%';
+    show('result');
+  }
+
+  $('start').onclick = () => start('B');
+  $('next').onclick = nextQ;
+  $('prev').onclick = prevQ;
+  $('replay').onclick = () => start(ver);
+</script>
+
+<style is:global>
+  .hide { display: none !important; }
+  /* 選項卡（JS 動態建立，需 global） */
+  .opt {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+    text-align: left;
+    padding: 16px 18px;
+    border: 0.5px solid #ebdcd6;
+    border-radius: 8px;
+    background: #fff;
+    color: #3a2a2e;
+    font-size: 16px;
+    line-height: 1.55;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+  }
+  .opt + .opt { margin-top: 12px; }
+  .opt:hover { border-color: rgba(58, 42, 46, 0.3); }
+  .opt.sel { border-color: #3a2a2e; background: #f8ece6; }
+  .tick {
+    flex: 0 0 auto;
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    border-radius: 999px;
+    border: 1.5px solid #c9bbb4;
+    transition: all 0.2s ease;
+  }
+  .opt.multi .tick { border-radius: 5px; }
+  .opt.sel .tick {
+    border-color: #3a2a2e;
+    background: #3a2a2e;
+    box-shadow: inset 0 0 0 3px #f8ece6;
+  }
+</style>
