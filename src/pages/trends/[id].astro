@@ -1,0 +1,145 @@
+---
+// 趨勢入口頁（hi-fi）：大字母＋標題＋花 → 導言 → 年度重點 → 延伸閱讀 → 下一趨勢 → footer。
+// 一支 dynamic route 渲染六個趨勢。內容部分（標語/年度重點/文章）先用佔位，待 PO 補實。
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { trends } from '../../data/trends.js';
+
+export function getStaticPaths() {
+  return trends.map((t) => ({ params: { id: t.id }, props: { trend: t } }));
+}
+
+const { trend } = Astro.props;
+const idx = trends.findIndex((t) => t.id === trend.id);
+const next = trends[(idx + 1) % trends.length];
+
+// 延伸閱讀佔位（待 PO 補實際文章）
+const articles = Array.from({ length: 6 }, () => ({
+  title: '延伸閱讀標題待補，這裡放本趨勢相關文章',
+  author: '作者待補',
+  date: '2026/06/30',
+}));
+---
+
+<BaseLayout title={`${trend.zhName} ${trend.key} · 女人我最大賞 2026`}>
+  <Header pinned />
+
+  <!-- 趨勢入口：左大字母＋標題、右花 -->
+  <section class="bg-bg-surface pt-24 md:pt-28">
+    <div class="mx-auto max-w-frame px-6 py-12 md:px-9 md:py-16">
+      <div class="grid items-center gap-8 md:grid-cols-2 md:gap-12">
+        <div>
+          <p class="text-xs tracking-[3px] text-ink-tertiary">UNFURL · 六大趨勢</p>
+          <h1 class="mt-4 font-serif text-3xl leading-tight tracking-[2px] text-heading md:text-[52px]">
+            {trend.zhName}
+          </h1>
+          <p class="mt-2 font-serif text-xl italic text-ink-secondary md:text-2xl">{trend.key}</p>
+        </div>
+
+        {trend.cutout && (
+          <figure class="mx-auto w-[200px] md:mx-0 md:ml-auto md:w-[300px]">
+            <img src={trend.cutout} alt={trend.zhName} class="h-auto w-full" />
+            <figcaption class="mt-2 text-center font-serif text-2xl italic text-ink-tertiary">
+              {trend.letter}
+            </figcaption>
+          </figure>
+        )}
+      </div>
+
+      <p class="mx-auto mt-10 max-w-readable text-center font-serif text-xl italic leading-relaxed text-ink-secondary md:mt-12 md:text-2xl">
+        趨勢標語待補，一句點題的 editorial 標語。
+      </p>
+    </div>
+  </section>
+
+  <!-- 導言 -->
+  <section class="px-6 md:px-9">
+    <div class="mx-auto max-w-readable py-14 md:py-20">
+      <p class="text-lg leading-relaxed text-heading md:text-xl">{trend.body}</p>
+      <p class="mt-6 text-base leading-relaxed text-ink-body">
+        延伸內文待補。此處放本趨勢的完整脈絡說明，承接首頁導言、為下方的年度重點與延伸閱讀鋪陳。
+      </p>
+    </div>
+  </section>
+
+  <!-- 年度重點（編輯與達人精選） -->
+  <section class="px-6 md:px-9">
+    <div class="mx-auto max-w-frame pb-14 md:pb-20">
+      <p class="text-xs tracking-[2px] text-primary">年度重點 · 編輯與達人精選</p>
+      <a
+        href={trend.articleHref ?? '#'}
+        class="group mt-5 flex flex-col gap-6 rounded-md border-[0.5px] border-line bg-bg-card p-6 transition-colors hover:border-ink/30 md:flex-row md:items-center md:gap-10 md:p-8"
+        data-track="cta_featured"
+      >
+        <div class="flex aspect-[4/3] w-full shrink-0 items-center justify-center rounded-sm bg-bg-product md:w-[360px]">
+          <i class="ti ti-photo text-3xl text-ink-tertiary" aria-hidden="true"></i>
+        </div>
+        <div>
+          <div class="flex flex-wrap gap-2">
+            <span class="rounded-full bg-bg-surface px-3 py-1 text-xs font-medium text-primary">編輯精選</span>
+            <span class="rounded-full bg-primary px-3 py-1 text-xs font-medium text-white">含 10 大產品盤點</span>
+          </div>
+          <h2 class="mt-4 font-serif text-2xl leading-snug text-heading md:text-[28px]">
+            2026 {trend.zhName}：年度 10 大品項
+          </h2>
+          <p class="mt-3 max-w-[520px] text-base leading-relaxed text-ink-body">
+            年度重點說明待補。由編輯部與達人共同盤點本趨勢最具代表性的品項，附完整選品與理由。
+          </p>
+          <span class="mt-6 inline-flex items-center gap-1.5 text-base text-ink transition-colors group-hover:text-primary">
+            閱讀完整盤點
+            <i class="ti ti-arrow-right transition-transform group-hover:translate-x-0.5" aria-hidden="true"></i>
+          </span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- 延伸閱讀 -->
+  <section class="px-6 md:px-9">
+    <div class="mx-auto max-w-frame pb-16 md:pb-24">
+      <p class="border-b border-line pb-3 text-xs tracking-[2px] text-ink-tertiary">
+        延伸閱讀 · 本趨勢最多 6 篇
+      </p>
+      <div class="mt-6 grid gap-4 md:grid-cols-2 md:gap-x-8 md:gap-y-5">
+        {
+          articles.map(() => (
+            <a
+              href="#"
+              class="flex gap-4 rounded-md border-[0.5px] border-line bg-bg-card p-3 transition-colors hover:border-ink/30"
+              data-track="cta_article"
+            >
+              <div class="flex h-[60px] w-[88px] shrink-0 items-center justify-center rounded-sm bg-bg-product">
+                <i class="ti ti-photo text-lg text-ink-tertiary" aria-hidden="true" />
+              </div>
+              <div class="min-w-0">
+                <p class="line-clamp-2 text-base font-medium leading-snug text-heading">{articles[0].title}</p>
+                <p class="mt-1.5 text-xs text-ink-tertiary">作者待補 · 2026/06/30</p>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- 下一趨勢 CTA -->
+  <section class="bg-ink text-[#FBF6F3]">
+    <a
+      href={`/trends/${next.id}`}
+      class="group mx-auto flex max-w-frame flex-col items-center px-6 py-20 text-center md:py-28"
+      data-track="cta_next_trend"
+    >
+      <p class="text-xs tracking-[3px] text-[#FBF6F3]/55">下一個趨勢</p>
+      <p class="mt-3 font-serif text-[80px] italic leading-none text-[#FBF6F3] md:text-[120px]">{next.letter}</p>
+      <p class="mt-3 text-2xl tracking-[3px] text-[#FBF6F3]">{next.zhName}</p>
+      <p class="mt-1 font-serif text-base italic text-[#FBF6F3]/70">{next.key}</p>
+      <span class="mt-7 inline-flex items-center gap-1.5 rounded-none border-[0.5px] border-[#FBF6F3]/50 px-8 py-3.5 text-base text-[#FBF6F3] transition-colors group-hover:bg-[#FBF6F3] group-hover:text-ink">
+        閱讀 {next.letter} 趨勢
+        <i class="ti ti-arrow-right transition-transform group-hover:translate-x-0.5" aria-hidden="true"></i>
+      </span>
+    </a>
+  </section>
+
+  <Footer />
+</BaseLayout>

@@ -67,7 +67,7 @@ const { id, key, zhName, vibes = [], body, products, cutout, articleHref = '#', 
         )}
 
         <div class="mt-8 flex flex-wrap items-center gap-6">
-          <a href={listHref} class="btn-primary" data-track="cta_trend">了解趨勢</a>
+          <a href={`/trends/${id}`} class="btn-primary" data-track="cta_trend">了解趨勢</a>
           {products.length > 0 && (
             <a href={articleHref} class="btn-secondary" data-track="cta_shop">看選品</a>
           )}
