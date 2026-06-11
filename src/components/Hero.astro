@@ -28,6 +28,11 @@ const mobileBubbles = trends.filter((t) => mobileFeatured.includes(t.id) && t.im
 >
   <!-- 上方極淡暖色漸層：暖化空天，跟全站暖白連貫 -->
   <div class="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-bg/20 via-transparent to-transparent"></div>
+  <!-- 標語後方柔光暈：給天空深度、聚焦標語，與 QuizBand 柔光同調 -->
+  <div
+    class="pointer-events-none absolute inset-0 z-[1]"
+    style="background:radial-gradient(ellipse 50% 40% at 50% 42%, rgba(238,208,194,0.7), transparent 64%);"
+  ></div>
   <!-- 底部細緻落地：草地維持清晰，只在最底緣輕柔溶進頁面底色（不做中段糊帶） -->
   <div class="hero-fade pointer-events-none absolute inset-x-0 bottom-0 z-[1]"></div>
 
