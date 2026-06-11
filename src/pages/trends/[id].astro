@@ -14,12 +14,16 @@ const { trend } = Astro.props;
 const idx = trends.findIndex((t) => t.id === trend.id);
 const next = trends[(idx + 1) % trends.length];
 
-// 延伸閱讀佔位（待 PO 補實際文章）
-const articles = Array.from({ length: 6 }, () => ({
-  title: '延伸閱讀標題待補，這裡放本趨勢相關文章',
-  author: '作者待補',
-  date: '2026/06/30',
-}));
+// 延伸閱讀 sample（待 PO 補實際文章）
+const articleSamples = [
+  '為什麼今年的保養，開始講求「由內而外」？',
+  '編輯實測：這個趨勢值得入手的三個理由',
+  '達人觀點：保養的下一步，正往哪裡走',
+  '一張表看懂本趨勢的關鍵成分',
+  '從產品到習慣，趨勢如何走進日常',
+  '專家解析：這股趨勢背後的觀察',
+];
+const articles = articleSamples.map((title) => ({ title, author: '編輯部', date: '2026/06/30' }));
 ---
 
 <BaseLayout title={`${trend.zhName} ${trend.key} · 女人我最大賞 2026`}>
@@ -48,25 +52,25 @@ const articles = Array.from({ length: 6 }, () => ({
       </div>
 
       <p class="mx-auto mt-10 max-w-readable text-center font-serif text-xl italic leading-relaxed text-ink-secondary md:mt-12 md:text-2xl">
-        趨勢標語待補，一句點題的 editorial 標語。
+        {trend.tagline}
       </p>
     </div>
   </section>
 
-  <!-- 導言 -->
+  <!-- 導言（H2 小標 + 內文段落） -->
   <section class="px-6 md:px-9">
     <div class="mx-auto max-w-readable py-14 md:py-20">
-      <p class="text-lg leading-relaxed text-heading md:text-xl">{trend.body}</p>
-      <p class="mt-6 text-base leading-relaxed text-ink-body">
-        延伸內文待補。此處放本趨勢的完整脈絡說明，承接首頁導言、為下方的年度重點與延伸閱讀鋪陳。
-      </p>
+      <h2 class="font-serif text-2xl leading-snug text-heading md:text-[32px]">{trend.subhead}</h2>
+      <p class="mt-7 text-lg leading-relaxed text-heading md:text-xl">{trend.body}</p>
+      {trend.intro?.map((para) => <p class="mt-6 text-base leading-loose text-ink-body">{para}</p>)}
     </div>
   </section>
 
   <!-- 年度重點（編輯與達人精選） -->
   <section class="px-6 md:px-9">
     <div class="mx-auto max-w-frame pb-14 md:pb-20">
-      <p class="text-xs tracking-[2px] text-primary">年度重點 · 編輯與達人精選</p>
+      <h2 class="font-serif text-2xl leading-snug text-heading md:text-3xl">年度重點</h2>
+      <p class="mt-2 text-xs tracking-[2px] text-primary">編輯與達人精選</p>
       <a
         href={`/trends/${trend.id}/article`}
         class="group mt-5 flex flex-col gap-6 rounded-md border-[0.5px] border-line bg-bg-card p-6 transition-colors hover:border-ink/30 md:flex-row md:items-center md:gap-10 md:p-8"
@@ -80,11 +84,11 @@ const articles = Array.from({ length: 6 }, () => ({
             <span class="rounded-full bg-bg-surface px-3 py-1 text-xs font-medium text-primary">編輯精選</span>
             <span class="rounded-full bg-primary px-3 py-1 text-xs font-medium text-white">含 10 大產品盤點</span>
           </div>
-          <h2 class="mt-4 font-serif text-2xl leading-snug text-heading md:text-[28px]">
+          <h3 class="mt-4 font-serif text-2xl leading-snug text-heading md:text-[28px]">
             2026 {trend.zhName}：年度 10 大品項
-          </h2>
+          </h3>
           <p class="mt-3 max-w-[520px] text-base leading-relaxed text-ink-body">
-            年度重點說明待補。由編輯部與達人共同盤點本趨勢最具代表性的品項，附完整選品與理由。
+            {trend.featuredDesc}
           </p>
           <span class="mt-6 inline-flex items-center gap-1.5 text-base text-ink transition-colors group-hover:text-primary">
             閱讀完整盤點
@@ -98,12 +102,13 @@ const articles = Array.from({ length: 6 }, () => ({
   <!-- 延伸閱讀 -->
   <section class="px-6 md:px-9">
     <div class="mx-auto max-w-frame pb-16 md:pb-24">
-      <p class="border-b border-line pb-3 text-xs tracking-[2px] text-ink-tertiary">
-        延伸閱讀 · 本趨勢最多 6 篇
-      </p>
+      <div class="flex items-baseline justify-between border-b border-line pb-3">
+        <h2 class="font-serif text-2xl leading-snug text-heading md:text-3xl">延伸閱讀</h2>
+        <p class="text-xs tracking-[2px] text-ink-tertiary">本趨勢最多 6 篇</p>
+      </div>
       <div class="mt-6 grid gap-4 md:grid-cols-2 md:gap-x-8 md:gap-y-5">
         {
-          articles.map(() => (
+          articles.map((a) => (
             <a
               href="#"
               class="flex gap-4 rounded-md border-[0.5px] border-line bg-bg-card p-3 transition-colors hover:border-ink/30"
@@ -113,8 +118,8 @@ const articles = Array.from({ length: 6 }, () => ({
                 <i class="ti ti-photo text-lg text-ink-tertiary" aria-hidden="true" />
               </div>
               <div class="min-w-0">
-                <p class="line-clamp-2 text-base font-medium leading-snug text-heading">{articles[0].title}</p>
-                <p class="mt-1.5 text-xs text-ink-tertiary">作者待補 · 2026/06/30</p>
+                <p class="line-clamp-2 text-base font-medium leading-snug text-heading">{a.title}</p>
+                <p class="mt-1.5 text-xs text-ink-tertiary">{a.author} · {a.date}</p>
               </div>
             </a>
           ))
