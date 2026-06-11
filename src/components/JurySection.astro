@@ -1,12 +1,15 @@
 ---
-// 評選方式：上＝標題＋說明（左）＋三角 infographic（右）；下＝評審人物卡，依三類分欄。
+// 評選方式：上＝標題＋說明（左）＋三角 infographic（右）；下＝評審人物卡，全部併成一組。
 // 姓名/頭像待 PO 補；現用佔位。
 import JuryCircle from './JuryCircle.astro';
 
-const groups = [
-  { cat: '編輯部', members: [{ role: '總編輯' }, { role: '美妝主編' }] },
-  { cat: '美妝達人', members: [{ role: '知名彩妝師' }, { role: '保養領域 KOL' }] },
-  { cat: '專業醫師', members: [{ role: '皮膚科醫師' }, { role: '醫學美容醫師' }] },
+const members = [
+  { role: '總編輯' },
+  { role: '美妝主編' },
+  { role: '知名彩妝師' },
+  { role: '保養領域 KOL' },
+  { role: '皮膚科醫師' },
+  { role: '醫學美容醫師' },
 ];
 ---
 
@@ -26,23 +29,16 @@ const groups = [
       <JuryCircle />
     </div>
 
-    <!-- 下：評審人物卡，依三類分欄 -->
-    <div class="mt-16 grid gap-10 md:mt-20 md:grid-cols-3 md:gap-8">
+    <!-- 下：評審人物卡，全部併成一組，縮小＋置中一排 -->
+    <div class="mt-16 grid grid-cols-3 justify-center justify-items-center gap-x-6 gap-y-10 md:mt-20 md:grid-cols-[repeat(6,100px)] md:gap-x-8">
       {
-        groups.map((g) => (
-          <div>
-            <p class="border-b border-line pb-3 text-xs tracking-[2px] text-ink-tertiary">{g.cat}</p>
-            <div class="mt-6 flex gap-6">
-              {g.members.map((m) => (
-                <div class="flex-1">
-                  <div class="mb-3 flex h-24 w-24 items-center justify-center rounded-full border-[0.5px] border-line bg-bg">
-                    <i class="ti ti-user text-3xl text-ink-tertiary" aria-hidden="true" />
-                  </div>
-                  <p class="text-base font-medium text-ink">姓名待補</p>
-                  <p class="mt-1 text-xs leading-snug text-ink-secondary">{m.role}</p>
-                </div>
-              ))}
+        members.map((m) => (
+          <div class="text-center">
+            <div class="mx-auto mb-3 flex h-[100px] w-[100px] items-center justify-center rounded-full border-[0.5px] border-line bg-bg">
+              <i class="ti ti-user text-3xl text-ink-tertiary" aria-hidden="true" />
             </div>
+            <p class="text-base font-medium text-ink">姓名待補</p>
+            <p class="mt-1 text-xs leading-snug text-ink-secondary">{m.role}</p>
           </div>
         ))
       }
