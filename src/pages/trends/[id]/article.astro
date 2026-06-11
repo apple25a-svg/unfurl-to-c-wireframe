@@ -1,0 +1,169 @@
+---
+// 趨勢內文頁（年度 10 大品項盤點，hi-fi）：文章頭 → 主圖 → 內文穿插產品卡 → 分享 → 延伸閱讀 → 下一趨勢。
+// 內文文字先佔位待 PO；產品卡複用 trend.products。
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { trends } from '../../../data/trends.js';
+
+export function getStaticPaths() {
+  return trends.map((t) => ({ params: { id: t.id }, props: { trend: t } }));
+}
+
+const { trend } = Astro.props;
+const idx = trends.findIndex((t) => t.id === trend.id);
+const next = trends[(idx + 1) % trends.length];
+
+const sections = ['夜間修護：讓肌膚自己修復', '清潔與調理：把一天好好收束'];
+const reads = Array.from({ length: 3 }, () => ({ title: '延伸閱讀標題待補', meta: '作者待補 · 2026/06/30' }));
+const socials = ['ti-brand-facebook', 'ti-brand-line', 'ti-brand-threads', 'ti-brand-x', 'ti-link'];
+---
+
+<BaseLayout title={`2026 ${trend.zhName}：年度 10 大品項 · 女人我最大賞`}>
+  <Header pinned />
+
+  <article class="px-6 pt-24 md:px-9 md:pt-28">
+    <!-- 文章頭 -->
+    <div class="mx-auto max-w-readable py-10 md:py-14">
+      <a href={`/trends/${trend.id}`} class="text-xs text-ink-tertiary transition-colors hover:text-ink" data-track="back_list">
+        ← {trend.letter} {trend.zhName}
+      </a>
+      <span class="ml-3 rounded-full bg-bg-surface px-3 py-1 text-xs font-medium text-primary">
+        {trend.letter} · {trend.zhName}
+      </span>
+      <h1 class="mt-6 font-serif text-3xl leading-snug text-heading md:text-[40px]">
+        2026 {trend.zhName}：年度 10 大品項
+      </h1>
+      <p class="mt-4 text-xs text-ink-tertiary">何雅萍 · 2026/06/30</p>
+    </div>
+
+    <!-- 主圖 KV -->
+    <div class="mx-auto flex aspect-video max-w-frame items-center justify-center rounded-md bg-bg-product">
+      <i class="ti ti-photo text-4xl text-ink-tertiary" aria-hidden="true"></i>
+    </div>
+
+    <!-- 內文 -->
+    <div class="mx-auto max-w-readable py-12 md:py-16">
+      <p class="text-lg leading-relaxed text-heading md:text-xl">{trend.body}</p>
+      <p class="mt-6 text-base leading-loose text-ink-body">
+        內文段落待補。此處承接導言，鋪陳本趨勢的觀察脈絡，並引出下方依主題分節的年度品項盤點。
+      </p>
+
+      {
+        sections.map((title, si) => (
+          <>
+            <p class="mt-12 font-serif text-base italic text-primary">本節重點</p>
+            <h2 class="mt-2 font-serif text-2xl leading-snug text-heading">{title}</h2>
+            <p class="mt-4 text-base leading-loose text-ink-body">
+              小節內文待補，說明此分類下的選品邏輯與趨勢觀察。
+            </p>
+
+            {/* 穿插產品卡（複用 trend.products） */}
+            {trend.products.map((p, pi) => (
+              <div class="my-7 flex flex-col gap-5 rounded-md border-[0.5px] border-line bg-bg-surface p-5 md:flex-row md:gap-7 md:p-6">
+                <div class="flex aspect-[4/3] w-full shrink-0 items-center justify-center overflow-hidden rounded-sm bg-bg-product md:w-[260px]">
+                  {p.img ? (
+                    <img src={p.img} alt={p.name} class="h-full w-full object-contain p-3" loading="lazy" />
+                  ) : (
+                    <i class="ti ti-photo text-2xl text-ink-tertiary" aria-hidden="true" />
+                  )}
+                </div>
+                <div>
+                  <p class="text-xs font-medium tracking-[1px] text-ink-tertiary">品牌待補</p>
+                  <p class="mt-1 font-serif text-xl text-heading">{p.name}</p>
+                  <p class="mt-2 text-base leading-relaxed text-ink-body">{p.desc}</p>
+                  <div class="mt-4 flex gap-2">
+                    {['👍', '❤️', '🤩'].map((e) => (
+                      <button
+                        type="button"
+                        class="inline-flex items-center gap-1 rounded-full border-[0.5px] border-line px-3 py-1 text-xs text-ink-secondary transition-colors hover:border-ink/30"
+                        data-track="product_react"
+                      >
+                        <span>{e}</span>
+                        <span class="text-ink-tertiary">0</span>
+                      </button>
+                    ))}
+                  </div>
+                  <a href="#" class="mt-4 inline-flex items-center gap-1 text-base text-primary transition-colors hover:text-primary-deep" data-track="cta_buy">
+                    心動這裡買
+                    <i class="ti ti-arrow-right" aria-hidden="true" />
+                  </a>
+                </div>
+              </div>
+            ))}
+
+            {si === 0 && (
+              <blockquote class="my-10 border-l-2 border-primary/50 bg-bg-surface py-5 pl-6 pr-4">
+                <p class="font-serif text-lg italic leading-relaxed text-heading">
+                  引言待補，一句來自編輯或達人的觀點，定調這個趨勢。
+                </p>
+                <p class="mt-3 text-xs text-ink-tertiary">— 受訪者待補</p>
+              </blockquote>
+            )}
+          </>
+        ))
+      }
+
+      <p class="mt-12 text-base leading-loose text-ink-body">結語待補，收束這場盤點。</p>
+    </div>
+
+    <!-- 分享 -->
+    <div class="mx-auto max-w-readable border-t border-line py-10 text-center">
+      <p class="text-base text-ink-secondary">喜歡這篇趨勢觀察？分享給朋友</p>
+      <div class="mt-5 flex justify-center gap-3">
+        {
+          socials.map((icon) => (
+            <a
+              href="#"
+              class="flex h-11 w-11 items-center justify-center rounded-full border-[0.5px] border-line text-ink-secondary transition-colors hover:border-ink/30 hover:text-ink"
+              data-track="cta_share"
+              aria-label="分享"
+            >
+              <i class={`ti ${icon} text-lg`} aria-hidden="true" />
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </article>
+
+  <!-- 延伸閱讀 -->
+  <section class="px-6 md:px-9">
+    <div class="mx-auto max-w-frame py-12 md:py-16">
+      <p class="border-b border-line pb-3 text-xs tracking-[2px] text-ink-tertiary">
+        延伸閱讀 · 本趨勢最多 6 篇
+      </p>
+      <div class="mt-6 grid gap-4 md:grid-cols-3 md:gap-6">
+        {
+          reads.map((r) => (
+            <a href="#" class="flex gap-4 rounded-md border-[0.5px] border-line bg-bg-card p-3 transition-colors hover:border-ink/30 md:flex-col md:gap-3" data-track="cta_read">
+              <div class="flex h-[60px] w-[88px] shrink-0 items-center justify-center rounded-sm bg-bg-product md:h-auto md:aspect-video md:w-full">
+                <i class="ti ti-photo text-lg text-ink-tertiary" aria-hidden="true" />
+              </div>
+              <div class="min-w-0">
+                <p class="line-clamp-2 text-base font-medium leading-snug text-heading">{r.title}</p>
+                <p class="mt-1.5 text-xs text-ink-tertiary">{r.meta}</p>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- 下一趨勢 CTA -->
+  <section class="bg-ink text-[#FBF6F3]">
+    <a href={`/trends/${next.id}`} class="group mx-auto flex max-w-frame flex-col items-center px-6 py-20 text-center md:py-28" data-track="cta_next_trend">
+      <p class="text-xs tracking-[3px] text-[#FBF6F3]/55">下一個趨勢</p>
+      <p class="mt-3 font-serif text-[80px] italic leading-none text-[#FBF6F3] md:text-[120px]">{next.letter}</p>
+      <p class="mt-3 text-2xl tracking-[3px] text-[#FBF6F3]">{next.zhName}</p>
+      <p class="mt-1 font-serif text-base italic text-[#FBF6F3]/70">{next.key}</p>
+      <span class="mt-7 inline-flex items-center gap-1.5 border-[0.5px] border-[#FBF6F3]/50 px-8 py-3.5 text-base text-[#FBF6F3] transition-colors group-hover:bg-[#FBF6F3] group-hover:text-ink">
+        閱讀 {next.letter} 趨勢
+        <i class="ti ti-arrow-right transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+      </span>
+    </a>
+  </section>
+
+  <Footer />
+</BaseLayout>

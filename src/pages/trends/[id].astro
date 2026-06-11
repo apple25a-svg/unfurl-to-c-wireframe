@@ -68,7 +68,7 @@ const articles = Array.from({ length: 6 }, () => ({
     <div class="mx-auto max-w-frame pb-14 md:pb-20">
       <p class="text-xs tracking-[2px] text-primary">年度重點 · 編輯與達人精選</p>
       <a
-        href={trend.articleHref ?? '#'}
+        href={`/trends/${trend.id}/article`}
         class="group mt-5 flex flex-col gap-6 rounded-md border-[0.5px] border-line bg-bg-card p-6 transition-colors hover:border-ink/30 md:flex-row md:items-center md:gap-10 md:p-8"
         data-track="cta_featured"
       >
