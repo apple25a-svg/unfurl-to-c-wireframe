@@ -1,0 +1,137 @@
+---
+// 共用橫滑 rail：隱藏捲軸、可拖曳/箭頭、邊緣淡出。
+// 控制列（Aesop 式）＝底部「‹ 分段條 ›」，只在內容溢出時顯示；分段條只在 count > threshold 時畫。
+// 一支全域 script 處理頁面上所有 [data-rail]（Astro 會把 <script> hoist 並去重，多次使用只跑一次）。
+interface Props {
+  count: number;
+  threshold?: number; // 超過幾個才畫分段指示器（含 = 不畫），預設 3
+  gapClass?: string; // 卡片間距，預設 gap-8
+  fadeFrom?: string; // 邊緣淡出底色，需給 Tailwind 看得到的 literal，如 'from-bg' / 'from-bg-surface'
+}
+const { count, threshold = 3, gapClass = 'gap-8', fadeFrom = 'from-bg' } = Astro.props;
+const showDots = count > threshold;
+---
+
+<div class="rail relative" data-rail>
+  <!-- 兩側漸層淡出：暗示後面還有內容，滑到頭/尾對應側自動淡出 -->
+  <div class={`rail-fade rail-fade-left pointer-events-none absolute inset-y-0 left-0 z-10 w-8 bg-gradient-to-r ${fadeFrom} to-transparent`}></div>
+  <div class={`rail-fade rail-fade-right pointer-events-none absolute inset-y-0 right-0 z-10 w-8 bg-gradient-to-l ${fadeFrom} to-transparent`}></div>
+
+  <div data-rail-scroll class={`rail-scroll flex ${gapClass} overflow-x-auto scroll-smooth`}>
+    <slot />
+  </div>
+
+  <!-- 底部控制列：溢出時才顯示（JS 加 is-shown）。prev ‹ ｜ 分段條 ｜ next › -->
+  <div class="rail-ctrl mt-6 items-center justify-between gap-4" data-rail-ctrl>
+    <button type="button" data-rail-prev aria-label="上一批" class="rail-arrow flex items-center justify-center px-1 text-ink-tertiary transition hover:text-ink">
+      <i class="ti ti-chevron-left text-2xl" aria-hidden="true"></i>
+    </button>
+    {showDots ? <div class="rail-dots flex items-center gap-1.5" data-rail-dots></div> : <span></span>}
+    <button type="button" data-rail-next aria-label="下一批" class="rail-arrow flex items-center justify-center px-1 text-ink-tertiary transition hover:text-ink">
+      <i class="ti ti-chevron-right text-2xl" aria-hidden="true"></i>
+    </button>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('[data-rail]').forEach((rail) => {
+    const scroller = rail.querySelector('[data-rail-scroll]') as HTMLElement | null;
+    const prev = rail.querySelector('[data-rail-prev]') as HTMLElement | null;
+    const next = rail.querySelector('[data-rail-next]') as HTMLElement | null;
+    const ctrl = rail.querySelector('[data-rail-ctrl]') as HTMLElement | null;
+    const dots = rail.querySelector('[data-rail-dots]') as HTMLElement | null;
+    if (!scroller) return;
+
+    const hasOverflow = () => scroller.scrollWidth - scroller.clientWidth > 2;
+
+    // 分段條：頁數 = ceil(總寬 / 視窗寬)，依視窗變動重建
+    const buildDots = () => {
+      if (!dots) return;
+      const pages = Math.max(1, Math.round(scroller.scrollWidth / scroller.clientWidth));
+      if (dots.childElementCount !== pages) {
+        dots.innerHTML = '';
+        for (let i = 0; i < pages; i++) {
+          const d = document.createElement('span');
+          d.className = 'rail-dot';
+          dots.appendChild(d);
+        }
+      }
+    };
+
+    const update = () => {
+      const overflow = hasOverflow();
+      ctrl?.classList.toggle('is-shown', overflow);
+      if (!overflow) return;
+      buildDots();
+      const atStart = scroller.scrollLeft <= 1;
+      const atEnd = scroller.scrollLeft + scroller.clientWidth >= scroller.scrollWidth - 1;
+      rail.classList.toggle('at-start', atStart);
+      rail.classList.toggle('at-end', atEnd);
+      if (dots) {
+        const page = Math.round(scroller.scrollLeft / scroller.clientWidth);
+        Array.from(dots.children).forEach((d, i) => d.classList.toggle('is-active', i === page));
+      }
+    };
+
+    const step = () => Math.max(scroller.clientWidth * 0.8, 200);
+    prev?.addEventListener('click', () => scroller.scrollBy({ left: -step(), behavior: 'smooth' }));
+    next?.addEventListener('click', () => scroller.scrollBy({ left: step(), behavior: 'smooth' }));
+
+    // 滑鼠按住拖曳捲動（觸控交給原生）
+    let down = false, sx = 0, sl = 0, moved = false;
+    scroller.addEventListener('pointerdown', (e) => {
+      if (e.pointerType === 'touch') return;
+      down = true; moved = false; sx = e.clientX; sl = scroller.scrollLeft;
+      scroller.classList.add('is-grabbing');
+    });
+    scroller.addEventListener('pointermove', (e) => {
+      if (!down) return;
+      const dx = e.clientX - sx;
+      if (Math.abs(dx) > 3) moved = true;
+      scroller.scrollLeft = sl - dx;
+    });
+    const end = () => { down = false; scroller.classList.remove('is-grabbing'); };
+    scroller.addEventListener('pointerup', end);
+    scroller.addEventListener('pointerleave', end);
+    scroller.addEventListener('click', (e) => { if (moved) { e.preventDefault(); e.stopPropagation(); } }, true);
+
+    scroller.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  });
+</script>
+
+<style is:global>
+  .rail-scroll {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    cursor: grab;
+  }
+  .rail-scroll::-webkit-scrollbar { display: none; }
+  .rail-scroll.is-grabbing {
+    cursor: grabbing;
+    scroll-behavior: auto;
+  }
+  /* 控制列預設隱藏，溢出時 JS 加 is-shown 才顯示 */
+  .rail-ctrl { display: none; }
+  .rail-ctrl.is-shown { display: flex; }
+  /* 分段指示器：細條，active 轉深 */
+  .rail-dot {
+    height: 2px;
+    width: 28px;
+    border-radius: 2px;
+    background: #EBDCD6; /* line */
+    transition: background-color 0.2s ease;
+  }
+  .rail-dot.is-active { background: #8A6E6E; /* ink-secondary */ }
+  /* 滑到頭/尾：對應側箭頭與遮罩淡出 */
+  .rail-arrow,
+  .rail-fade { transition: opacity 0.25s ease; }
+  .rail.at-start [data-rail-prev],
+  .rail.at-start .rail-fade-left,
+  .rail.at-end [data-rail-next],
+  .rail.at-end .rail-fade-right {
+    opacity: 0;
+    pointer-events: none;
+  }
+</style>

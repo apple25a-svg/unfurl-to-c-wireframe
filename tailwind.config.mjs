@@ -2,6 +2,9 @@
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,ts,tsx,md,mdx,vue,svelte}'],
   theme: {
+    // 斷點：全站只用「md」當唯一的手機/平板 ↔ 桌機切換點，刻意把 md 重定義為 1024px。
+    // 即 <1024 走手機式（堆疊＋橫滑）、≥1024 走桌機多欄。注意：此處 md=1024，非 Tailwind 預設的 768。
+    screens: { sm: '640px', md: '1024px', lg: '1024px', xl: '1280px', '2xl': '1536px' },
     // 字級 scale：一律 4 的倍數、最小 12px、級數收斂（直接覆寫 fontSize＝全站只能用這幾級）
     fontSize: {
       xs: ['12px', { lineHeight: '1.5' }], // meta / eyebrow / 標籤

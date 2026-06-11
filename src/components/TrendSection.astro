@@ -1,5 +1,6 @@
 ---
 import ProductCard from './ProductCard.astro';
+import Rail from './Rail.astro';
 
 interface Product {
   name: string;
@@ -54,8 +55,14 @@ const { id, key, zhName, vibes = [], body, products, cutout, articleHref = '#', 
         <p class="mt-4 max-w-[640px] text-base leading-relaxed text-ink-body">{body}</p>
 
         {products.length > 0 && (
-          <div class="mt-7 flex flex-wrap gap-4">
-            {products.map((p) => <ProductCard name={p.name} desc={p.desc} image={p.img} />)}
+          <div class="mt-7">
+            <Rail count={products.length} gapClass="gap-4" fadeFrom="from-bg">
+              {products.map((p) => (
+                <div class="shrink-0">
+                  <ProductCard name={p.name} desc={p.desc} image={p.img} />
+                </div>
+              ))}
+            </Rail>
           </div>
         )}
 
