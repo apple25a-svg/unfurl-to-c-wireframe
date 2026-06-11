@@ -3,13 +3,20 @@
 // 姓名/頭像待 PO 補；現用佔位。
 import JuryCircle from './JuryCircle.astro';
 
+// 預設 12 位示意。未來放不下時改為左右滑動瀏覽（動態滑動待做）。
 const members = [
   { role: '總編輯' },
   { role: '美妝主編' },
+  { role: '時尚主編' },
   { role: '知名彩妝師' },
   { role: '保養領域 KOL' },
+  { role: '髮型設計師' },
   { role: '皮膚科醫師' },
   { role: '醫學美容醫師' },
+  { role: '營養師' },
+  { role: '香氛調香師' },
+  { role: '美容編輯' },
+  { role: '產品專家' },
 ];
 ---
 
@@ -29,19 +36,117 @@ const members = [
       <JuryCircle />
     </div>
 
-    <!-- 下：評審人物卡，全部併成一組，縮小＋置中一排 -->
-    <div class="mt-16 grid grid-cols-3 justify-center justify-items-center gap-x-6 gap-y-10 md:mt-20 md:grid-cols-[repeat(6,100px)] md:gap-x-8">
-      {
-        members.map((m) => (
-          <div class="text-center">
-            <div class="mx-auto mb-3 flex h-[100px] w-[100px] items-center justify-center rounded-full border-[0.5px] border-line bg-bg">
-              <i class="ti ti-user text-3xl text-ink-tertiary" aria-hidden="true" />
+    <!-- 下：評審人物卡，併成一組橫向單排；隱藏捲軸、可拖曳/箭頭左右滑動 -->
+    <div class="jury-rail relative mt-16 md:mt-20" data-jury>
+      <!-- 兩側漸層遮罩：暗示後面還有人 -->
+      <div class="jury-fade jury-fade-left pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-bg-card to-transparent"></div>
+      <div class="jury-fade jury-fade-right pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-bg-card to-transparent"></div>
+
+      <!-- 左右箭頭：桌機限定，滑到頭/尾自動淡出 -->
+      <button
+        type="button"
+        data-jury-prev
+        aria-label="上一批評審"
+        class="jury-arrow absolute left-0 top-[50px] z-20 hidden -translate-y-1/2 items-center justify-center px-1 text-ink-tertiary transition hover:text-ink md:flex"
+      >
+        <i class="ti ti-chevron-left text-2xl" aria-hidden="true"></i>
+      </button>
+      <button
+        type="button"
+        data-jury-next
+        aria-label="下一批評審"
+        class="jury-arrow absolute right-0 top-[50px] z-20 hidden -translate-y-1/2 items-center justify-center px-1 text-ink-tertiary transition hover:text-ink md:flex"
+      >
+        <i class="ti ti-chevron-right text-2xl" aria-hidden="true"></i>
+      </button>
+
+      <div data-jury-scroll class="jury-scroll no-scrollbar flex gap-8 overflow-x-auto scroll-smooth">
+        {
+          members.map((m) => (
+            <div class="w-[100px] shrink-0 text-center">
+              <div class="mx-auto mb-3 flex h-[100px] w-[100px] items-center justify-center rounded-full border-[0.5px] border-line bg-bg">
+                <i class="ti ti-user text-3xl text-ink-tertiary" aria-hidden="true" />
+              </div>
+              <p class="text-base font-medium text-ink">姓名待補</p>
+              <p class="mt-1 text-xs leading-snug text-ink-secondary">{m.role}</p>
             </div>
-            <p class="text-base font-medium text-ink">姓名待補</p>
-            <p class="mt-1 text-xs leading-snug text-ink-secondary">{m.role}</p>
-          </div>
-        ))
-      }
+          ))
+        }
+      </div>
     </div>
   </div>
 </section>
+
+<script>
+  const rail = document.querySelector<HTMLElement>('[data-jury]');
+  const scroller = rail?.querySelector<HTMLElement>('[data-jury-scroll]');
+  const prev = rail?.querySelector<HTMLElement>('[data-jury-prev]');
+  const next = rail?.querySelector<HTMLElement>('[data-jury-next]');
+
+  if (rail && scroller) {
+    // 依捲動位置更新箭頭與遮罩的「頭/尾」狀態
+    const updateEdges = () => {
+      const atStart = scroller.scrollLeft <= 1;
+      const atEnd = scroller.scrollLeft + scroller.clientWidth >= scroller.scrollWidth - 1;
+      rail.classList.toggle('at-start', atStart);
+      rail.classList.toggle('at-end', atEnd);
+    };
+
+    const step = () => Math.max(scroller.clientWidth * 0.8, 200);
+    prev?.addEventListener('click', () => scroller.scrollBy({ left: -step(), behavior: 'smooth' }));
+    next?.addEventListener('click', () => scroller.scrollBy({ left: step(), behavior: 'smooth' }));
+
+    // 滑鼠按住拖曳捲動
+    let down = false, startX = 0, startLeft = 0, moved = false;
+    scroller.addEventListener('pointerdown', (e) => {
+      if (e.pointerType === 'touch') return; // 觸控交給原生捲動
+      down = true; moved = false;
+      startX = e.clientX; startLeft = scroller.scrollLeft;
+      scroller.classList.add('is-grabbing');
+    });
+    scroller.addEventListener('pointermove', (e) => {
+      if (!down) return;
+      const dx = e.clientX - startX;
+      if (Math.abs(dx) > 3) moved = true;
+      scroller.scrollLeft = startLeft - dx;
+    });
+    const endDrag = () => { down = false; scroller.classList.remove('is-grabbing'); };
+    scroller.addEventListener('pointerup', endDrag);
+    scroller.addEventListener('pointerleave', endDrag);
+    // 拖曳後避免誤觸點擊
+    scroller.addEventListener('click', (e) => { if (moved) { e.preventDefault(); e.stopPropagation(); } }, true);
+
+    scroller.addEventListener('scroll', updateEdges, { passive: true });
+    window.addEventListener('resize', updateEdges);
+    updateEdges();
+  }
+</script>
+
+<style>
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .jury-scroll {
+    cursor: grab;
+  }
+  .jury-scroll.is-grabbing {
+    cursor: grabbing;
+    scroll-behavior: auto;
+  }
+  /* 滑到頭/尾：對應側的箭頭與遮罩淡出 */
+  .jury-rail.at-start .jury-arrow[data-jury-prev],
+  .jury-rail.at-start .jury-fade-left,
+  .jury-rail.at-end .jury-arrow[data-jury-next],
+  .jury-rail.at-end .jury-fade-right {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .jury-arrow,
+  .jury-fade {
+    transition: opacity 0.25s ease;
+  }
+</style>
