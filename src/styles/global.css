@@ -9,14 +9,27 @@
 }
 
 @layer components {
-  /* 按鈕系統（auwa 式細緻：薄、寬字距、無厚陰影）。集中於此，全站共用 */
+  /* 按鈕系統（Aesop 式細緻：regular 字重、直角、min-width 從容、無厚陰影）。集中於此，全站共用 */
+  /* 字級維持 16px 守 Tailwind scale；細緻感靠 regular 字重＋min-width 留白 */
   /* Primary：實心深 ink 長方鈕（Aesop classic）、白字、無箭頭。最強主動作 */
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-none bg-ink px-8 py-3.5 text-center text-base leading-none text-white transition-opacity duration-200 hover:opacity-85;
+    @apply inline-flex min-w-[200px] items-center justify-center rounded-none bg-ink px-8 py-3.5 text-center text-base font-normal leading-none text-white transition-opacity duration-200 hover:opacity-85;
   }
-  /* Secondary：細框長方鈕（透明底、ink 字）＋箭頭，hover 填色。次要動作 */
+  /* Secondary：細框長方鈕（透明底、ink 字）＋箭頭。hover 上極淺暖色 ink 洗、click 再深，永不反黑撞 primary。次要動作 */
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2.5 rounded-none border-[0.5px] border-ink/50 bg-transparent px-8 py-3.5 text-center text-base leading-none text-ink transition-colors duration-200 hover:border-ink hover:bg-ink hover:text-white;
+    @apply inline-flex min-w-[200px] items-center justify-center gap-2.5 rounded-none border-[0.5px] border-ink/50 bg-transparent px-8 py-3.5 text-center text-base font-normal leading-none text-ink transition-colors duration-200 hover:border-ink hover:bg-ink/[0.06] active:bg-ink/[0.1];
+  }
+  /* Tertiary：純文字連結（最輕，nav 用）。無底無框＋細灰箭頭，hover 轉主色、箭頭右推 */
+  .btn-tertiary {
+    @apply inline-flex items-center gap-1.5 text-base font-normal leading-none text-ink transition-colors duration-200 hover:text-primary;
+  }
+  .btn-tertiary::after {
+    content: '›';
+    @apply text-ink-tertiary transition-all duration-200;
+  }
+  .btn-tertiary:hover::after {
+    @apply text-primary;
+    transform: translateX(2px);
   }
   /* 箭頭只在 secondary（Aesop 風），hover 往右輕推 */
   .btn-secondary::after {

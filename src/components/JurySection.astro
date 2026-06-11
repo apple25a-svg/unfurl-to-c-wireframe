@@ -20,7 +20,7 @@ const members = [
 ];
 ---
 
-<section id="about" class="scroll-mt-20 bg-bg-card">
+<section id="about" class="scroll-mt-20 bg-bg-surface">
   <div class="mx-auto max-w-frame px-6 py-16 md:px-9 md:py-20">
     <!-- 上：auwa 式左欄（eyebrow → 大標 → 小灰說明）＋右三角 infographic -->
     <div class="grid items-center gap-12 md:grid-cols-2 md:gap-16">
@@ -39,8 +39,8 @@ const members = [
     <!-- 下：評審人物卡，併成一組橫向單排；隱藏捲軸、可拖曳/箭頭左右滑動 -->
     <div class="jury-rail relative mt-16 md:mt-20" data-jury>
       <!-- 兩側漸層遮罩：暗示後面還有人 -->
-      <div class="jury-fade jury-fade-left pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-bg-card to-transparent"></div>
-      <div class="jury-fade jury-fade-right pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-bg-card to-transparent"></div>
+      <div class="jury-fade jury-fade-left pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-bg-surface to-transparent"></div>
+      <div class="jury-fade jury-fade-right pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-bg-surface to-transparent"></div>
 
       <!-- 左右箭頭：桌機限定，滑到頭/尾自動淡出 -->
       <button
