@@ -2,15 +2,16 @@
 // Hero：KV 花園背景。中央品牌 stack（logo＋標語＋UNFURL＋心測 pill）浮在花圃之上。
 import { trends } from '../data/trends.js';
 
-// 花冠：六朵全部集中在上方，橫過頂部排成一道弧帶（上方密、中下留白）。
-// 高度與尺寸交錯做有機節奏，避免一字排開。中央與下方留給品牌 stack＋pill。
+// 花冠：環繞中央文字的漂浮花園，避開中央。大小＝深度感：
+// 前景大（左右下緣 flank 文字）、中景中、背景小（上方退後）。左→右大致 UNFURL 序。
 const positions = {
-  unfiltered: 'left:7%;  top:18%; width:clamp(115px,14vw,175px);',
-  noble:      'left:23%; top:7%;  width:clamp(82px,10vw,126px);',
-  fortify:    'left:37%; top:16%; width:clamp(92px,11vw,138px);',
-  unique:     'right:34%; top:8%;  width:clamp(86px,10vw,130px);',
-  longevity:  'right:19%; top:19%; width:clamp(100px,12vw,150px);',
-  ritual:     'right:6%;  top:9%;  width:clamp(115px,14vw,175px);',
+  // 中央直欄為無花禁區。兩朵大的側邊 flank（外推留 gutter）、其餘退到頂帶清開文字上方。
+  unfiltered: 'left:4%;  top:30%; width:clamp(160px,17vw,235px);', // 前景大，左 flank
+  noble:      'left:20%; top:6%;  width:clamp(100px,11vw,140px);', // 背景小，頂帶
+  fortify:    'left:33%; top:6%;  width:clamp(140px,15vw,190px);', // 中景，頂帶
+  unique:     'right:30%; top:7%; width:clamp(140px,15vw,190px);', // 中景，頂帶
+  ritual:     'right:15%; top:10%; width:clamp(100px,11vw,140px);', // 背景小，頂帶
+  longevity:  'right:3%;  top:28%; width:clamp(160px,17vw,235px);', // 前景大，右 flank
 };
 
 // 手機代表花（1-2 朵，避免擁擠又不空）
@@ -23,7 +24,7 @@ const mobileBubbles = trends.filter((t) => mobileFeatured.includes(t.id) && t.im
 ---
 
 <section
-  class="hero-bg relative flex min-h-screen flex-col items-center justify-center px-6 pb-24 pt-20 text-center"
+  class="hero-bg relative flex min-h-screen flex-col items-center justify-center px-6 pb-[24vh] pt-20 text-center"
 >
   <!-- 上方極淡暖色漸層：暖化空天，跟全站暖白連貫 -->
   <div class="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-bg/20 via-transparent to-transparent"></div>
@@ -37,7 +38,7 @@ const mobileBubbles = trends.filter((t) => mobileFeatured.includes(t.id) && t.im
   <div class="relative z-20 flex flex-col items-center">
     <h1 class="font-serif text-3xl leading-tight tracking-[4px] text-heading md:text-[64px]">美，由我綻放</h1>
     <p class="mt-10 max-w-lg text-sm leading-relaxed text-ink-body">女人我最大賞，是我們每年對美妝市場的一次完整閱讀。不排名，而是用趨勢說清楚今年的美，正在往哪裡走。</p>
-    <a href="#" class="btn-primary mt-8" data-track="hero_quiz">探索我的花精靈</a>
+    <a href="#" class="btn-primary mt-12" data-track="hero_quiz">探索我的花精靈</a>
   </div>
 
   <!-- 底部置中：SCROLL 極簡滾動提示（寬字距文字＋細直線，一小段往下流動） -->
@@ -46,8 +47,8 @@ const mobileBubbles = trends.filter((t) => mobileFeatured.includes(t.id) && t.im
     <span class="scroll-line" aria-hidden="true"></span>
   </div>
 
-  <!-- 花圃（桌機）：一朵花 = 一個趨勢，點擊捲到 #trend-xxx。圖未產者自動隱藏 -->
-  <div class="pointer-events-none absolute inset-0 z-10 hidden md:block">
+  <!-- 花圃（桌機）：鎖進置中 max-width 框，寬螢幕花群跟著中央內容、不飄到邊。一朵花 = 一個趨勢，點擊捲到 #trend-xxx -->
+  <div class="pointer-events-none absolute inset-0 z-10 mx-auto hidden max-w-[1500px] md:block">
     {
       trends.map(
         (t) =>
