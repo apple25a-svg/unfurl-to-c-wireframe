@@ -1,6 +1,6 @@
 ---
 // 花精靈測驗（hi-fi）：home 開場 → quiz 答題（進度條/單複選/自動前進）→ result 花精靈＋保養趨勢。
-// 資料與計分邏輯沿用 心理測驗/flower_quiz_prototype.html，UI 換成暖調設計系統。預設用第二版題目（花園旅程）。
+// 資料與計分邏輯沿用 心理測驗/flower_quiz_prototype.html，UI 換成暖調設計系統。預設用第一版題目（QUIZ_A 題組1）。
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
@@ -15,7 +15,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <p class="text-xs tracking-[4px] text-ink-tertiary">FLOWER QUIZ · 花精靈測驗</p>
       <h1 class="mt-6 font-serif text-3xl leading-tight text-heading md:text-[52px]">你，是哪一朵花？</h1>
       <p class="mx-auto mt-6 max-w-md text-base leading-relaxed text-ink-body">
-        六道題、約一分鐘，從一場花園旅程裡，找到最貼近你的那一種美，與屬於你的年度保養主張。
+        六道題、約一分鐘，透過一場關於花的小測驗，找到最貼近你的那一種美，與屬於你的年度保養主張。
       </p>
       <button id="start" type="button" class="btn-primary mt-10" data-track="quiz_start">開始測驗</button>
     </section>
@@ -71,7 +71,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   import { SPIRITS, CARE, MATCH, CEIL, PRIORITY, QUIZ_A, QUIZ_B, SYS_TREND } from '../data/quiz.js';
 
   const $ = (id) => document.getElementById(id);
-  let ver = 'B', quiz = [], qi = 0, answers = [];
+  let ver = 'A', quiz = [], qi = 0, answers = [];
 
   function show(id) {
     ['home', 'quiz', 'result'].forEach((x) => $(x).classList.add('hide'));
@@ -159,9 +159,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     }
   }
 
+  // CDP 數據收集（tracking-ready）：實際送出先 stub，待接 CDP。
+  function trackCDP(payload) {
+    // TODO: 串接 CDP，把 payload 送出（目前僅 stub，方便驗證有收到資料）
+    if (typeof window !== 'undefined' && window.__CDP_DEBUG) console.log('[CDP]', payload);
+  }
+
   function computeResult() {
     const score = { 自然系: 0, 質感系: 0, 溫暖系: 0, 神秘系: 0, 療癒系: 0, 探索系: 0 };
     const io = { 外: 0, 內: 0 };
+    const cdp = { prefer_food: [], purchase_function: [], purchase_value: [] };
     quiz.forEach((item, i) => {
       const ans = answers[i];
       const picks = item.multi ? ans || [] : ans === null || ans === undefined ? [] : [ans];
@@ -170,6 +177,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         if (!o) return;
         if (o[1]) score[o[1]]++;
         if (!item.multi && (o[2] === '外' || o[2] === '內')) io[o[2]]++;
+        // o[3] = 選項上的 CDP 標記（題組1）：{prefer_food:[...]} | {purchase_function} | {purchase_value}
+        const tags = o[3];
+        if (tags) {
+          for (const key in cdp) {
+            if (tags[key] != null) cdp[key].push(...[].concat(tags[key]));
+          }
+        }
       });
     });
     const systems = Object.keys(score);
@@ -181,6 +195,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     });
     const mainSys = systems[0];
     const dir = io.外 > io.內 ? '外' : '內';
+    trackCDP({ event: 'quiz_complete', version: ver, spirit: mainSys + '_' + dir, ...cdp });
     renderResult(mainSys, dir);
   }
 
@@ -204,7 +219,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     show('result');
   }
 
-  $('start').onclick = () => start('B');
+  $('start').onclick = () => start('A');
   $('next').onclick = nextQ;
   $('prev').onclick = prevQ;
   $('replay').onclick = () => start(ver);
