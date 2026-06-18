@@ -99,17 +99,95 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </button>
       </div>
     </section>
+
+    <!-- 登入（mock）：未登入時參加抽獎會先到這 -->
+    <section id="login" class="hide mx-auto max-w-readable text-center">
+      <p class="text-xs tracking-[4px] text-ink-tertiary">MEMBER LOGIN</p>
+      <h2 class="mt-6 font-serif text-3xl leading-tight text-heading md:text-[40px]">登入 TVBS 會員</h2>
+      <p class="mx-auto mt-6 max-w-md text-base leading-relaxed text-ink-body">
+        參加抽獎需先登入 TVBS 會員，登入後可帶入你的會員資料。
+      </p>
+      <button id="mockLogin" type="button" class="btn-primary mt-10" data-track="lottery_login">模擬登入（demo）</button>
+      <button id="loginSkip" type="button" class="mt-6 block w-full text-center text-xs text-ink-tertiary underline underline-offset-4 transition-colors hover:text-ink">先看測驗結果</button>
+    </section>
+
+    <!-- 抽獎資料表單 -->
+    <section id="lottery" class="hide mx-auto max-w-readable">
+      <h2 class="text-center font-serif text-3xl leading-tight text-heading md:text-[40px]">抽獎資料</h2>
+      <p class="mx-auto mt-4 max-w-md text-center text-sm leading-relaxed text-ink-body">
+        我們會以電子信件通知中獎者，請務必留下正確連絡資訊。
+      </p>
+      <p id="filledNote" class="hide mx-auto mt-5 max-w-md rounded-md bg-bg-surface p-3 text-center text-xs leading-relaxed text-primary">
+        你已填寫過抽獎資料，以下為唯讀。
+      </p>
+
+      <form id="lotteryForm" class="mx-auto mt-8 max-w-md space-y-5">
+        <input name="name" type="text" required placeholder="中文姓名 *" class="field" />
+        <input name="email" type="email" required placeholder="聯絡 Email *" class="field" />
+        <div>
+          <input name="phone" type="tel" required placeholder="聯絡電話 *" class="field" />
+          <p class="mt-1.5 text-xs text-ink-tertiary">請勿填入任何符號（如 - * #）</p>
+        </div>
+        <div>
+          <p class="mb-2 text-xs text-ink-tertiary">寄送地址 *</p>
+          <div class="grid grid-cols-2 gap-3">
+            <select name="city" required class="field">
+              <option value="" disabled selected>縣市</option>
+            </select>
+            <select name="area" required class="field">
+              <option value="" disabled selected>鄉鎮市區</option>
+            </select>
+          </div>
+          <input name="address" type="text" required placeholder="地址 *" class="field mt-3" />
+        </div>
+
+        <!-- 活動辦法（收合）＋ 同意勾選 -->
+        <div class="overflow-hidden rounded-md border border-line">
+          <button type="button" id="rulesToggle" class="flex w-full items-center justify-between px-4 py-3 text-left text-sm text-ink-body transition-colors hover:bg-bg-surface">
+            <span>活動辦法</span>
+            <span id="rulesCaret" class="text-ink-tertiary">＋</span>
+          </button>
+          <div id="rulesBody" class="hide max-h-60 space-y-3 overflow-y-auto border-t border-line px-4 py-4 text-xs leading-relaxed text-ink-tertiary"></div>
+        </div>
+        <label class="flex items-start gap-2 text-xs leading-relaxed text-ink-body">
+          <input id="agree" name="agree" type="checkbox" required class="mt-0.5 shrink-0" />
+          <span>我已閱讀並同意上述活動辦法與注意事項</span>
+        </label>
+
+        <button id="submitLottery" type="submit" class="btn-primary w-full justify-center" data-track="lottery_submit">確認送出</button>
+        <button type="button" id="lotterySkip" class="block w-full text-center text-xs text-ink-tertiary underline underline-offset-4 transition-colors hover:text-ink">先看測驗結果</button>
+      </form>
+    </section>
+
+    <!-- 是否參加抽獎 彈窗（Q6 後） -->
+    <div id="lotteryPrompt" class="hide fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-6">
+      <div class="w-full max-w-sm rounded-lg bg-white p-8 text-center shadow-xl">
+        <h3 class="font-serif text-2xl text-heading">要參加抽獎嗎？</h3>
+        <p class="mt-3 text-sm leading-relaxed text-ink-body">
+          填寫抽獎資料，就有機會抽中限定好禮。也可以先看你的花精靈結果。
+        </p>
+        <button id="toLottery" type="button" class="btn-primary mt-6 w-full justify-center" data-track="lottery_join">參加抽獎</button>
+        <button id="skipLottery" type="button" class="mt-4 text-xs text-ink-tertiary underline underline-offset-4 transition-colors hover:text-ink" data-track="lottery_skip">先看測驗結果</button>
+      </div>
+    </div>
   </main>
 </BaseLayout>
 
 <script>
   import { SPIRITS, CARE, MATCH, CEIL, PRIORITY, QUIZ_A, QUIZ_B, SYS_TREND } from '../data/quiz.js';
+  import { REGIONS, RULES } from '../data/lottery.js';
 
   const $ = (id) => document.getElementById(id);
   let ver = 'A', quiz = [], qi = 0, answers = [], currentSpirit = null;
+  let resultSys = null, resultDir = null; // Q6 算完先存著，等使用者決定要不要抽獎
+
+  // mock 登入/已填狀態（demo 用，之後接真實 TVBS 會員）：?login=1&filled=1
+  const _p = new URLSearchParams(location.search);
+  let mockLoggedIn = _p.get('login') === '1';
+  const mockFilled = _p.get('filled') === '1';
 
   function show(id) {
-    ['home', 'quiz', 'result'].forEach((x) => $(x).classList.add('hide'));
+    ['home', 'quiz', 'result', 'login', 'lottery'].forEach((x) => $(x).classList.add('hide'));
     $(id).classList.remove('hide');
     window.scrollTo(0, 0);
   }
@@ -230,8 +308,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     });
     const mainSys = systems[0];
     const dir = io.外 > io.內 ? '外' : '內';
+    resultSys = mainSys;
+    resultDir = dir;
     trackCDP({ event: 'quiz_complete', version: ver, spirit: mainSys + '_' + dir, ...cdp });
-    renderResult(mainSys, dir);
+    // Q6 後先問是否參加抽獎，再決定去抽獎流程或結果頁
+    $('lotteryPrompt').classList.remove('hide');
   }
 
   function renderResult(sys, dir) {
@@ -254,6 +335,93 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     $('bar').style.width = '100%';
     show('result');
   }
+
+  // 看測驗結果（從彈窗／登入／表單任一處離開都走這）
+  function goResult() {
+    $('lotteryPrompt').classList.add('hide');
+    renderResult(resultSys, resultDir);
+  }
+
+  // 參加抽獎：依 mock 狀態走 未登入→登入 / 已登入未填→表單 / 已登入已填→唯讀
+  function goLottery() {
+    $('lotteryPrompt').classList.add('hide');
+    if (!mockLoggedIn) { show('login'); return; }
+    buildLotteryForm();
+    setFormReadonly(mockFilled);
+    show('lottery');
+  }
+
+  let formBuilt = false;
+  function buildLotteryForm() {
+    if (formBuilt) return;
+    formBuilt = true;
+    // 縣市下拉
+    const city = $('lotteryForm').city, area = $('lotteryForm').area;
+    Object.keys(REGIONS).forEach((c) => {
+      const o = document.createElement('option');
+      o.value = c; o.textContent = c; city.appendChild(o);
+    });
+    // 縣市改變 → 連動鄉鎮市區
+    city.addEventListener('change', () => {
+      area.innerHTML = '<option value="" disabled selected>鄉鎮市區</option>';
+      (REGIONS[city.value] || []).forEach((a) => {
+        const o = document.createElement('option');
+        o.value = a; o.textContent = a; area.appendChild(o);
+      });
+    });
+    // 活動辦法內容
+    const box = $('rulesBody');
+    RULES.forEach((sec) => {
+      const h = document.createElement('p');
+      h.className = 'font-semibold text-ink-body';
+      h.textContent = sec.h;
+      box.appendChild(h);
+      (sec.paras || []).forEach((p) => {
+        const el = document.createElement('p');
+        el.textContent = p;
+        box.appendChild(el);
+      });
+      if (sec.list) {
+        const ol = document.createElement('ol');
+        ol.className = 'list-decimal space-y-1 pl-4';
+        sec.list.forEach((li) => {
+          const el = document.createElement('li');
+          el.textContent = li;
+          ol.appendChild(el);
+        });
+        box.appendChild(ol);
+      }
+    });
+  }
+
+  function setFormReadonly(ro) {
+    const f = $('lotteryForm');
+    ['name', 'email', 'phone', 'city', 'area', 'address', 'agree'].forEach((n) => { if (f[n]) f[n].disabled = ro; });
+    $('filledNote').classList.toggle('hide', !ro);
+    $('submitLottery').classList.toggle('hide', ro);
+    $('agree').closest('label').classList.toggle('hide', ro);
+    $('lotterySkip').textContent = ro ? '看測驗結果' : '先看測驗結果';
+  }
+
+  // 活動辦法收合
+  $('rulesToggle').onclick = () => {
+    const body = $('rulesBody');
+    const open = body.classList.toggle('hide');
+    $('rulesCaret').textContent = open ? '＋' : '－';
+  };
+
+  // 彈窗 / 登入 / 表單 的去向
+  $('toLottery').onclick = goLottery;
+  $('skipLottery').onclick = goResult;
+  $('mockLogin').onclick = () => { mockLoggedIn = true; goLottery(); };
+  $('loginSkip').onclick = goResult;
+  $('lotterySkip').onclick = goResult;
+  $('lotteryForm').onsubmit = (e) => {
+    e.preventDefault();
+    // 送出先 stub（之後接真實寫入＋ CDP）
+    trackCDP({ event: 'lottery_submit', spirit: resultSys + '_' + resultDir });
+    goResult();
+  };
 
   // 區塊一社群分享：優先用原生分享，否則複製連結（hi-fi placeholder 行為）
   $('share').onclick = async () => {
@@ -309,4 +477,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     background: #3a2a2e;
     box-shadow: inset 0 0 0 3px #f8ece6;
   }
+  /* 抽獎表單欄位 */
+  .field {
+    width: 100%;
+    padding: 14px 16px;
+    border: 0.5px solid #ebdcd6;
+    border-radius: 8px;
+    background: #fff;
+    color: #3a2a2e;
+    font-size: 15px;
+    line-height: 1.5;
+    transition: border-color 0.2s ease;
+  }
+  .field::placeholder { color: #a99a92; }
+  .field:focus { outline: none; border-color: #3a2a2e; }
+  .field:disabled { background: #f6f1ee; color: #8a7d6a; cursor: not-allowed; }
+  select.field { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a7d6a' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
 </style>
