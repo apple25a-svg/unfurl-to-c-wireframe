@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1420" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif">
+<rect width="1280" height="1420" fill="#f5f1ea"/>
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L8,3 L0,6 Z" fill="#8a7d6a"/></marker></defs>
+<text x="48" y="44" font-family="'Noto Serif TC','Songti TC','Times New Roman',serif" font-size="27" fill="#3a3226" font-weight="600">UNFURL 女大賞 · 心理測驗入口 User Flow</text>
+
+<!-- 流程箭頭 -->
+<path d="M 540,127 L 540,170" fill="none" stroke="#8a7d6a" stroke-width="1.7" marker-end="url(#arr)"/>
+<path d="M 540,232 L 540,272" fill="none" stroke="#8a7d6a" stroke-width="1.7" marker-end="url(#arr)"/>
+<path d="M 540,413 L 540,458" fill="none" stroke="#8a7d6a" stroke-width="1.7" marker-end="url(#arr)"/>
+<path d="M 415,510 L 250,510 L 250,1185 L 388,1185" fill="none" stroke="#8a7d6a" stroke-width="1.7" marker-end="url(#arr)"/>
+<rect x="334.4" y="498" width="35.2" height="22" rx="11" fill="#fff8ed" stroke="#c9a96e" stroke-width="1"/>
+<text x="352" y="510" font-size="12.5" fill="#3a3226" font-weight="600" text-anchor="middle" dominant-baseline="middle">No</text>
+<path d="M 665,510 L 803,510" fill="none" stroke="#8a7d6a" stroke-width="1.7" marker-end="url(#arr)"/>
+<rect x="713.1" y="498" width="43.8" height="22" rx="11" fill="#fff8ed" stroke="#c9a96e" stroke-width="1"/>
+<text x="735" y="510" font-size="12.5" fill="#3a3226" font-weight="600" text-anchor="middle" dominant-baseline="middle">Yes</text>
+<path d="M 442,388 L 130,388 L 130,1150 L 388,1150" fill="none" stroke="#8a7d6a" stroke-width="1.7" marker-end="url(#arr)"/>
+<rect x="196" y="366" width="180" height="22" rx="11" fill="#fffdf9" stroke="#dcd2c2" stroke-width="1"/>
+<text x="286" y="377" font-size="12.5" fill="#6b5d4a" font-weight="600" text-anchor="middle" dominant-baseline="middle">已登入，也已填寫抽獎資料</text>
+<path d="M 945,540 L 945,706" fill="none" stroke="#8a7d6a" stroke-width="1.7" marker-end="url(#arr)"/>
+<rect x="916.2" y="573" width="57.6" height="22" rx="11" fill="#fffdf9" stroke="#dcd2c2" stroke-width="1"/>
+<text x="945" y="585" font-size="12.5" fill="#6b5d4a" font-weight="600" text-anchor="middle" dominant-baseline="middle">已登入</text>
+<path d="M 1085,510 L 1118,510 L 1118,610" fill="none" stroke="#8a7d6a" stroke-width="1.7" marker-end="url(#arr)"/>
+<rect x="1083.2" y="548" width="57.6" height="22" rx="11" fill="#fffdf9" stroke="#dcd2c2" stroke-width="1"/>
+<text x="1112" y="560" font-size="12.5" fill="#6b5d4a" font-weight="600" text-anchor="middle" dominant-baseline="middle">未登入</text>
+<path d="M 1118,662 L 1118,690 L 1012,690 L 1012,706" fill="none" stroke="#8a7d6a" stroke-width="1.7" marker-end="url(#arr)"/>
+<path d="M 945,766 L 945,800 L 790,800 L 790,847" fill="none" stroke="#8a7d6a" stroke-width="1.7" marker-end="url(#arr)"/>
+<rect x="839.8" y="778" width="44.4" height="22" rx="11" fill="#fffdf9" stroke="#dcd2c2" stroke-width="1"/>
+<text x="862" y="790" font-size="12.5" fill="#6b5d4a" font-weight="600" text-anchor="middle" dominant-baseline="middle">已填</text>
+<path d="M 945,766 L 945,800 L 1098,800 L 1098,847" fill="none" stroke="#8a7d6a" stroke-width="1.7" marker-end="url(#arr)"/>
+<rect x="1001.8" y="778" width="44.4" height="22" rx="11" fill="#fffdf9" stroke="#dcd2c2" stroke-width="1"/>
+<text x="1024" y="790" font-size="12.5" fill="#6b5d4a" font-weight="600" text-anchor="middle" dominant-baseline="middle">未填</text>
+<path d="M 790,975 L 790,1155 L 692,1155" fill="none" stroke="#8a7d6a" stroke-width="1.7" marker-end="url(#arr)"/>
+<path d="M 1098,975 L 1098,1185 L 692,1185" fill="none" stroke="#8a7d6a" stroke-width="1.7" marker-end="url(#arr)"/>
+
+<!-- 測驗入口 -->
+<rect x="415" y="64" width="250" height="62" rx="10" fill="#fbf7f0" stroke="#c9a96e" stroke-width="1.8"/>
+<text x="540" y="95" font-family="'Noto Serif TC','Songti TC','Times New Roman',serif" font-size="17" fill="#3a3226" font-weight="600" text-anchor="middle" dominant-baseline="middle">測驗入口</text>
+
+<!-- 系統判斷：是否已登入 -->
+<polygon points="332,172 766,172 748,232 314,232" fill="#e9edf1" stroke="#93a0ad" stroke-width="1.7"/>
+<text x="540" y="192.5" font-size="13" fill="#3a4550" font-weight="600" text-anchor="middle" dominant-baseline="middle">系統判斷：是否已登入</text>
+<text x="540" y="211.5" font-size="13" fill="#3a4550" font-weight="600" text-anchor="middle" dominant-baseline="middle">（已登入則取出會員資料）</text>
+
+<!-- 測驗題 Q1 ~ Q6 -->
+<rect x="442" y="277" width="196" height="46" rx="23" fill="#fbf7f0" stroke="#c9a96e" stroke-width="1.7"/>
+<text x="540" y="300" font-size="14" fill="#3a3226" font-weight="600" text-anchor="middle" dominant-baseline="middle">Q1 ……</text>
+<circle cx="540" cy="330" r="2.4" fill="#6b5d4a"/>
+<circle cx="540" cy="343" r="2.4" fill="#6b5d4a"/>
+<circle cx="540" cy="356" r="2.4" fill="#6b5d4a"/>
+<rect x="442" y="365" width="196" height="46" rx="23" fill="#fbf7f0" stroke="#c9a96e" stroke-width="1.7"/>
+<text x="540" y="388" font-size="14" fill="#3a3226" font-weight="600" text-anchor="middle" dominant-baseline="middle">Q6 ……</text>
+<path d="M 648,288 q 12,0 12,14 v 24 q 0,14 12,14 q -12,0 -12,14 v 24 q 0,14 -12,14" fill="none" stroke="#6b5d4a" stroke-width="1.4"/>
+<text x="684" y="350" font-size="13" fill="#6b5d4a">如果登入，帶入會員資料</text>
+
+<!-- 使用者決策：是否參加抽獎 -->
+<polygon points="540,460 665,510 540,560 415,510" fill="#efe7d8" stroke="#b9a06f" stroke-width="1.7"/>
+<text x="540" y="500" font-size="14" fill="#3a3226" font-weight="600" text-anchor="middle" dominant-baseline="middle">是否參加抽獎？</text>
+<text x="540" y="522" font-size="11.5" fill="#6b5d4a" font-weight="400" text-anchor="middle" dominant-baseline="middle">btn：抽獎 ／ 看測驗結果</text>
+
+<!-- 系統判斷：登入結果 -->
+<polygon points="823,480 1085,480 1067,540 805,540" fill="#e9edf1" stroke="#93a0ad" stroke-width="1.7"/>
+<text x="945" y="510" font-size="14" fill="#3a4550" font-weight="600" text-anchor="middle" dominant-baseline="middle">系統判斷：登入結果</text>
+<rect x="1053" y="610" width="130" height="52" rx="10" fill="#fbf7f0" stroke="#c9a96e" stroke-width="1.7"/>
+<text x="1118" y="636" font-size="15" fill="#3a3226" font-weight="600" text-anchor="middle" dominant-baseline="middle">登入</text>
+
+<!-- 系統判斷：是否已填寫「抽獎」資料 -->
+<polygon points="771,706 1137,706 1119,766 753,766" fill="#e9edf1" stroke="#93a0ad" stroke-width="1.7"/>
+<text x="945" y="736" font-size="14" fill="#3a4550" font-weight="600" text-anchor="middle" dominant-baseline="middle">系統判斷：是否已填寫「抽獎」資料</text>
+
+<!-- 資料表格（已填） -->
+<rect x="665" y="847" width="250" height="128" rx="10" fill="#fbf7f0" stroke="#c9a96e" stroke-width="1.8"/>
+<text x="790" y="872" font-family="'Noto Serif TC','Songti TC','Times New Roman',serif" font-size="14.5" fill="#3a3226" font-weight="600" text-anchor="middle" dominant-baseline="middle">資料表格（已填）</text>
+<text x="790" y="897" font-size="11.5" fill="#6b5d4a" font-weight="400" text-anchor="middle" dominant-baseline="middle">表單 disabled · 抽獎規則</text>
+<rect x="715" y="919" width="150" height="26" rx="13" fill="#f0e6d2" stroke="#c9a96e" stroke-width="1.3"/>
+<text x="790" y="932" font-size="12" fill="#3a3226" font-weight="600" text-anchor="middle" dominant-baseline="middle">看測驗結果 btn</text>
+
+<!-- 資料表格（未填） -->
+<rect x="962" y="847" width="272" height="128" rx="10" fill="#fbf7f0" stroke="#c9a96e" stroke-width="1.8"/>
+<text x="1098" y="872" font-family="'Noto Serif TC','Songti TC','Times New Roman',serif" font-size="14.5" fill="#3a3226" font-weight="600" text-anchor="middle" dominant-baseline="middle">資料表格（未填）</text>
+<text x="1098" y="897" font-size="11.5" fill="#6b5d4a" font-weight="400" text-anchor="middle" dominant-baseline="middle">填資料表 · 抽獎規則</text>
+<rect x="995" y="919" width="96" height="26" rx="13" fill="#f0e6d2" stroke="#c9a96e" stroke-width="1.3"/>
+<text x="1043" y="932" font-size="12" fill="#3a3226" font-weight="600" text-anchor="middle" dominant-baseline="middle">送出 btn</text>
+<rect x="1099" y="919" width="118" height="26" rx="13" fill="#f0e6d2" stroke="#c9a96e" stroke-width="1.3"/>
+<text x="1158" y="932" font-size="12" fill="#3a3226" font-weight="600" text-anchor="middle" dominant-baseline="middle">看測驗結果 btn</text>
+
+<!-- 結果頁：分享 + play again 兩顆 btn -->
+<rect x="390" y="1116" width="300" height="104" rx="10" fill="#fbf7f0" stroke="#c9a96e" stroke-width="2"/>
+<text x="540" y="1138" font-family="'Noto Serif TC','Songti TC','Times New Roman',serif" font-size="17" fill="#3a3226" font-weight="600" text-anchor="middle" dominant-baseline="middle">結果頁</text>
+<text x="540" y="1162" font-size="11.5" fill="#6b5d4a" font-weight="400" text-anchor="middle" dominant-baseline="middle">測驗結果（12 種）</text>
+<rect x="405" y="1179" width="125" height="26" rx="13" fill="#f0e6d2" stroke="#c9a96e" stroke-width="1.3"/>
+<text x="467.5" y="1192" font-size="12" fill="#3a3226" font-weight="600" text-anchor="middle" dominant-baseline="middle">分享 btn</text>
+<rect x="550" y="1179" width="125" height="26" rx="13" fill="#f0e6d2" stroke="#c9a96e" stroke-width="1.3"/>
+<text x="612.5" y="1192" font-size="12" fill="#3a3226" font-weight="600" text-anchor="middle" dominant-baseline="middle">play again btn</text>
+
+<!-- 圖例 -->
+<rect x="50" y="1352.5" width="22" height="15" rx="3" fill="#fbf7f0" stroke="#c9a96e" stroke-width="1.5"/>
+<text x="90" y="1361" font-size="12.5" fill="#6b5d4a">畫面</text>
+<polygon points="148,1367 166,1367 160,1353 142,1353" fill="#e9edf1" stroke="#93a0ad" stroke-width="1.5"/>
+<text x="182" y="1361" font-size="12.5" fill="#6b5d4a">系統判斷</text>
+<polygon points="271,1352 283,1360 271,1368 259,1360" fill="#efe7d8" stroke="#b9a06f" stroke-width="1.5"/>
+<text x="300" y="1361" font-size="12.5" fill="#6b5d4a">使用者決策</text>
+<rect x="391" y="1352.5" width="22" height="15" rx="7" fill="#fbf7f0" stroke="#c9a96e" stroke-width="1.5"/>
+<text x="431" y="1361" font-size="12.5" fill="#6b5d4a">測驗題</text>
+</svg>
