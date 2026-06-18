@@ -8,6 +8,7 @@ import JurySection from '../components/JurySection.astro';
 import QuizBand from '../components/QuizBand.astro';
 import Footer from '../components/Footer.astro';
 import { trends } from '../data/trends.js';
+import { features } from '../config/features.js';
 ---
 
 <BaseLayout title="女人我最大賞 2026 · UNFURL">
@@ -34,7 +35,9 @@ import { trends } from '../data/trends.js';
     </div>
   </section>
 
-  {trends.map((t) => <TrendSection {...t} />)}
+  {trends.map((t) => (
+    <TrendSection {...t} products={features.showProducts ? t.products : []} />
+  ))}
 
   <JurySection />
   <QuizBand />
