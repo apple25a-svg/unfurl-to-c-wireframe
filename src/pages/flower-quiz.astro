@@ -35,34 +35,69 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <button id="next" type="button" class="btn-primary mt-8 w-full justify-center" data-track="quiz_next" style="display:none">下一題</button>
     </section>
 
-    <!-- 結果 -->
-    <section id="result" class="hide mx-auto max-w-readable text-center">
-      <p id="rio" class="text-xs tracking-[3px] text-primary"></p>
-      <h2 id="rname" class="mt-4 font-serif text-3xl leading-tight text-heading md:text-[48px]"></h2>
-      <p id="rquote" class="mt-4 font-serif text-lg italic text-ink-secondary md:text-xl"></p>
-      <p id="rdesc" class="mx-auto mt-8 max-w-lg text-left text-base leading-loose text-ink-body"></p>
-
-      <div class="mx-auto mt-12 grid max-w-md grid-cols-2 gap-4 border-t border-line pt-8 text-left">
-        <div>
-          <p class="text-xs text-ink-tertiary">最懂你的花精靈</p>
-          <p id="m1" class="mt-1 font-serif text-lg text-heading"></p>
+    <!-- 結果：六區塊（內外向視覺待補，先以文字 placeholder） -->
+    <section id="result" class="hide mx-auto max-w-readable">
+      <!-- 區塊一：花朵呈現 + 社群分享 -->
+      <div class="text-center">
+        <div id="flower" class="mx-auto flex aspect-square w-48 items-center justify-center rounded-full bg-bg-surface text-center text-xs leading-relaxed text-ink-tertiary md:w-56">
+          花朵動畫／圖片<br />（內外向視覺 placeholder）
         </div>
-        <div>
-          <p class="text-xs text-ink-tertiary">最互補的花精靈</p>
-          <p id="m2" class="mt-1 font-serif text-lg text-heading"></p>
+        <button id="share" type="button" class="btn-secondary mt-6" data-track="quiz_share">分享我的花精靈</button>
+      </div>
+
+      <!-- 區塊二：正式名稱（文字＋圖） -->
+      <div class="mt-12 text-center">
+        <p id="rio" class="text-xs tracking-[3px] text-primary"></p>
+        <h2 id="rname" class="mt-3 font-serif text-3xl leading-tight text-heading md:text-[48px]"></h2>
+      </div>
+
+      <!-- 區塊三：性格描述 -->
+      <div class="mt-10">
+        <p id="rquote" class="text-center font-serif text-lg italic text-ink-secondary md:text-xl"></p>
+        <p id="rdesc" class="mx-auto mt-6 max-w-lg text-left text-base leading-loose text-ink-body"></p>
+      </div>
+
+      <!-- 區塊四：與你最合拍的花精靈（最懂你／最互補） -->
+      <div class="mx-auto mt-14 max-w-md border-t border-line pt-10">
+        <p class="text-center text-xs tracking-[2px] text-ink-tertiary">與你最合拍的花精靈</p>
+        <div class="mt-6 grid grid-cols-2 gap-4 text-center">
+          <div class="rounded-md bg-bg-surface p-5">
+            <div class="mx-auto flex aspect-square w-20 items-center justify-center rounded-full bg-white text-[10px] text-ink-tertiary">圖</div>
+            <p class="mt-3 text-xs text-ink-tertiary">最懂你</p>
+            <p id="m1" class="mt-1 font-serif text-lg text-heading"></p>
+          </div>
+          <div class="rounded-md bg-bg-surface p-5">
+            <div class="mx-auto flex aspect-square w-20 items-center justify-center rounded-full bg-white text-[10px] text-ink-tertiary">圖</div>
+            <p class="mt-3 text-xs text-ink-tertiary">最互補</p>
+            <p id="m2" class="mt-1 font-serif text-lg text-heading"></p>
+          </div>
         </div>
       </div>
 
+      <!-- 區塊五：保養主張（對應趨勢 + 美麗提案 + 盤點文連結） -->
       <div class="mx-auto mt-10 max-w-md rounded-md bg-bg-surface p-6 text-left">
         <p class="text-xs tracking-[2px] text-primary">你的年度保養主張</p>
         <p id="caret" class="mt-2 font-serif text-xl text-heading"></p>
         <p id="cared" class="mt-2 text-base leading-relaxed text-ink-body"></p>
+        <p class="mt-4 border-t border-line pt-4 text-sm leading-relaxed text-ink-tertiary">女人我最大美麗提案 placeholder（待定稿）</p>
         <a id="ctaTrend" href="#" class="btn-secondary mt-5" data-track="quiz_result_trend">看趨勢</a>
       </div>
 
-      <button id="replay" type="button" class="mt-10 text-xs text-ink-tertiary underline underline-offset-4 transition-colors hover:text-ink" data-track="quiz_replay">
-        重新測一次
-      </button>
+      <!-- 區塊六：生活小提案 -->
+      <div class="mx-auto mt-10 max-w-md text-left">
+        <p class="text-xs tracking-[2px] text-primary">生活小提案</p>
+        <ul class="mt-3 space-y-2 text-sm leading-relaxed text-ink-tertiary">
+          <li>· 生活小提案 placeholder 1（待定稿）</li>
+          <li>· 生活小提案 placeholder 2（待定稿）</li>
+          <li>· 生活小提案 placeholder 3（待定稿）</li>
+        </ul>
+      </div>
+
+      <div class="mt-14 text-center">
+        <button id="replay" type="button" class="text-xs text-ink-tertiary underline underline-offset-4 transition-colors hover:text-ink" data-track="quiz_replay">
+          重新測一次
+        </button>
+      </div>
     </section>
   </main>
 </BaseLayout>
@@ -71,7 +106,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   import { SPIRITS, CARE, MATCH, CEIL, PRIORITY, QUIZ_A, QUIZ_B, SYS_TREND } from '../data/quiz.js';
 
   const $ = (id) => document.getElementById(id);
-  let ver = 'A', quiz = [], qi = 0, answers = [];
+  let ver = 'A', quiz = [], qi = 0, answers = [], currentSpirit = null;
 
   function show(id) {
     ['home', 'quiz', 'result'].forEach((x) => $(x).classList.add('hide'));
@@ -202,6 +237,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   function renderResult(sys, dir) {
     const key = sys + '_' + dir;
     const sp = SPIRITS[key];
+    currentSpirit = sp;
     $('rio').textContent = sp.io;
     $('rname').textContent = sp.name;
     $('rquote').textContent = '「' + sp.quote + '」';
@@ -218,6 +254,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     $('bar').style.width = '100%';
     show('result');
   }
+
+  // 區塊一社群分享：優先用原生分享，否則複製連結（hi-fi placeholder 行為）
+  $('share').onclick = async () => {
+    const url = location.href;
+    const text = currentSpirit ? '我是「' + currentSpirit.name + '」！測測你的內在花精靈' : '測測你的內在花精靈';
+    if (navigator.share) {
+      try { await navigator.share({ title: '女人我最大賞 2026 花精靈測驗', text, url }); } catch (e) {}
+    } else {
+      try { await navigator.clipboard.writeText(url); alert('連結已複製，快分享給朋友！'); } catch (e) {}
+    }
+  };
 
   $('start').onclick = () => start('A');
   $('next').onclick = nextQ;
