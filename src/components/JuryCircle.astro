@@ -1,0 +1,48 @@
+---
+// 評審 infographic：細線三角形＋英文襯線斜體＋中文小字＋中心字（精緻度沿用六大趨勢圓圈）。
+// 3 節點：編輯部 / 美妝達人 / 專業醫師（上、左下、右下）。中心字、英文皆暫定，待 PO。
+const cx = 50;
+const cy = 50;
+const R = 34;
+const labelR = 45;
+const nodes = [
+  { en: 'Editorial', zh: '編輯部', angle: 90 },
+  { en: 'Master', zh: '美妝達人', angle: 210 },
+  { en: 'Doctor', zh: '專業醫師', angle: 330 },
+].map((n) => {
+  const rad = (n.angle * Math.PI) / 180;
+  return {
+    ...n,
+    dx: cx + R * Math.cos(rad),
+    dy: cy - R * Math.sin(rad),
+    lx: cx + labelR * Math.cos(rad),
+    ly: cy - labelR * Math.sin(rad),
+  };
+});
+const tri = nodes.map((n) => `${n.dx},${n.dy}`).join(' ');
+---
+
+<div class="relative mx-auto aspect-square w-full max-w-[400px] overflow-visible">
+  <svg viewBox="0 0 100 100" class="absolute inset-0 h-full w-full overflow-visible" aria-hidden="true">
+    <polygon points={tri} fill="none" stroke="#d8c7bf" stroke-width="0.35" />
+    {nodes.map((n) => <circle cx={n.dx} cy={n.dy} r="1.1" fill="#3a2a2e" />)}
+  </svg>
+
+  <!-- 中心 -->
+  <p class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-serif text-[30px] tracking-[2px] text-heading md:text-[38px]">
+    嚴選
+  </p>
+
+  <!-- 節點標籤（英文襯線斜體＋中文小字） -->
+  {
+    nodes.map((n) => (
+      <div
+        class="absolute flex -translate-x-1/2 -translate-y-1/2 flex-col items-center whitespace-nowrap leading-tight"
+        style={`left:${n.lx}%; top:${n.ly}%;`}
+      >
+        <span class="font-serif text-base italic text-ink md:text-lg">{n.en}</span>
+        <span class="mt-0.5 text-xs text-ink-secondary">{n.zh}</span>
+      </div>
+    ))
+  }
+</div>

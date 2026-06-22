@@ -1,0 +1,54 @@
+---
+// Footer（參考 auwa）：品牌暖深棕底（ink），文字/logo 用暖白 #FBF6F3 與全站暖中性色系連貫（非冷白）。
+// 左＝logo＋標語＋地址；右＝社群 icon 列；底＝版權。標語為暫定文案，待 PO 定案。
+const socials = [
+  { label: 'Instagram', track: 'social_ig' },
+  { label: 'Facebook', track: 'social_fb' },
+  { label: 'Threads', track: 'social_threads' },
+  { label: 'YouTube', track: 'social_yt' },
+  { label: 'LINE', track: 'social_line' },
+];
+---
+
+<footer class="bg-ink text-[#FBF6F3]">
+  <div class="mx-auto max-w-frame px-6 py-16 md:px-9 md:py-20">
+    <div class="flex flex-col gap-12 md:flex-row md:items-start md:justify-between">
+      <!-- 左：品牌 -->
+      <div class="max-w-[520px]">
+        <!-- logo 翻成暖白（非冷白），與全站暖調一致 -->
+        <img
+          src="/logo.png"
+          alt="女人我最大賞"
+          class="h-9 w-auto"
+          style="filter: brightness(0) invert(1) sepia(0.12) brightness(0.98);"
+        />
+        <p class="mt-6 text-lg leading-relaxed tracking-[0.04em] text-[#FBF6F3]">女人我最大賞，閱讀當代美的走向</p>
+        <p class="mt-4 max-w-[460px] text-base leading-relaxed text-[#FBF6F3]/55">TVBS 女人我最大年度趨勢盤點，藉由專家和編輯評選出優質選品，成為消費者選購的重要指標。</p>
+      </div>
+
+      <!-- 右：社群文字連結 -->
+      <nav class="flex flex-col gap-3 md:items-end" aria-label="社群連結">
+        {
+          socials.map((s) => (
+            <a
+              href="#"
+              class="text-base text-[#FBF6F3]/70 transition-colors hover:text-[#FBF6F3]"
+              data-track={s.track}
+            >
+              {s.label}
+            </a>
+          ))
+        }
+      </nav>
+    </div>
+
+    <!-- 底列：版權＋公司地址同一行 -->
+    <div class="mt-16 md:mt-24">
+      <p class="text-xs leading-relaxed text-[#FBF6F3]/40">
+        © 2026 TVBS 聯利媒體股份有限公司 All Rights Reserved.
+        <span class="mx-2 text-[#FBF6F3]/25">|</span>
+        台北市內湖區瑞光路 451 號
+      </p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,29 @@
+---
+// 選品卡（auwa「Our Journal」式）：白底產品圖 → 襯線標題 → 簡短說明。
+// 此階段無產品頁可連 → 非連結、無 hover。img 缺檔時自動 fallback 回佔位 icon。
+interface Props {
+  name: string;
+  desc: string;
+  image?: string;
+}
+const { name, desc, image } = Astro.props;
+---
+
+<div class="w-[140px] md:w-[200px]" data-track="product_card">
+  <!-- 暖灰展示框：1:1 方塊填滿卡（卡寬＝圖寬，彼此 16px）。去背產品照 object-contain，缺圖顯示佔位 icon -->
+  <div class="relative flex aspect-square w-full items-center justify-center overflow-hidden rounded-sm bg-bg-product">
+    <i class="ti ti-photo text-2xl text-ink-tertiary" aria-hidden="true"></i>
+    {image && (
+      <img
+        src={image}
+        alt={name}
+        class="absolute inset-0 h-full w-full object-contain p-3"
+        loading="lazy"
+        onerror="this.style.display='none'"
+      />
+    )}
+  </div>
+
+  <p class="mt-4 text-base font-medium leading-snug text-heading">{name}</p>
+  <p class="mt-1.5 text-[14px] leading-relaxed text-ink-secondary">{desc}</p>
+</div>

@@ -1,0 +1,198 @@
+---
+// Hero：KV 花園背景。中央品牌 stack（logo＋標語＋UNFURL＋心測 pill）浮在花圃之上。
+import { trends } from '../data/trends.js';
+
+// 花冠：環繞中央文字的漂浮花園，避開中央。大小＝深度感：
+// 前景大（左右下緣 flank 文字）、中景中、背景小（上方退後）。左→右大致 UNFURL 序。
+const positions = {
+  // 中央直欄為無花禁區。兩朵大的側邊 flank（外推留 gutter）、其餘退到頂帶清開文字上方。
+  unfiltered: 'left:4%;  top:30%; width:clamp(160px,17vw,235px);', // 前景大，左 flank
+  noble:      'left:20%; top:6%;  width:clamp(100px,11vw,140px);', // 背景小，頂帶
+  fortify:    'left:33%; top:6%;  width:clamp(140px,15vw,190px);', // 中景，頂帶
+  unique:     'right:30%; top:7%; width:clamp(140px,15vw,190px);', // 中景，頂帶
+  ritual:     'right:15%; top:10%; width:clamp(100px,11vw,140px);', // 背景小，頂帶
+  longevity:  'right:3%;  top:28%; width:clamp(160px,17vw,235px);', // 前景大，右 flank
+};
+
+// 手機代表花（1-2 朵，避免擁擠又不空）
+const mobileFeatured = ['fortify', 'ritual'];
+const mobilePos = [
+  'right:5%; top:14%; width:38vw; max-width:165px;',
+  'left:5%; top:64%; width:34vw; max-width:150px;',
+];
+const mobileBubbles = trends.filter((t) => mobileFeatured.includes(t.id) && t.image);
+---
+
+<section
+  class="hero-bg relative flex min-h-screen flex-col items-center justify-center px-6 pb-[24vh] pt-20 text-center"
+>
+  <!-- 上方極淡暖色漸層：暖化空天，跟全站暖白連貫 -->
+  <div class="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-bg/20 via-transparent to-transparent"></div>
+  <!-- 標語後方柔光暈：給天空深度、聚焦標語，與 QuizBand 柔光同調 -->
+  <div
+    class="pointer-events-none absolute inset-0 z-[1]"
+    style="background:radial-gradient(ellipse 50% 40% at 50% 42%, rgba(238,208,194,0.7), transparent 64%);"
+  ></div>
+  <!-- 底部細緻落地：草地維持清晰，只在最底緣輕柔溶進頁面底色（不做中段糊帶） -->
+  <div class="hero-fade pointer-events-none absolute inset-x-0 bottom-0 z-[1]"></div>
+
+  <!-- 左上品牌標：第一屏顯示，捲動後交棒給 sticky header（兩者不同時出現，不重複） -->
+  <img src="/logo.png" alt="女人我最大 Queen" class="absolute left-6 top-6 z-30 w-20 md:left-9 md:top-7 md:w-24" />
+
+  <!-- 中央品牌 stack：美 由我綻放（主角）→ 導言 → CTA -->
+  <div class="relative z-20 flex flex-col items-center">
+    <h1 class="font-serif text-3xl leading-tight tracking-[4px] text-heading md:text-[64px]">美，由我綻放</h1>
+    <p class="mt-10 max-w-lg text-sm leading-relaxed text-ink-body">2026女人我最大賞，告別評審試用與制式票選規則，<br />編輯團隊、達人與醫師，用專業洞察帶你解讀六大美妝趨勢；<br />美，不必被框架限制，選擇最適合自己的方式自在綻放。</p>
+    <a href="/flower-quiz" class="btn-primary mt-12" data-track="hero_quiz">探索我的花精靈</a>
+  </div>
+
+  <!-- 底部置中：SCROLL 極簡滾動提示（寬字距文字＋細直線，一小段往下流動） -->
+  <div class="absolute inset-x-0 bottom-9 z-20 flex flex-col items-center gap-3">
+    <p class="scroll-label text-xs tracking-[5px] text-white">SCROLL</p>
+    <span class="scroll-line" aria-hidden="true"></span>
+  </div>
+
+  <!-- 花圃（桌機）：鎖進置中 max-width 框，寬螢幕花群跟著中央內容、不飄到邊。一朵花 = 一個趨勢，點擊捲到 #trend-xxx -->
+  <div class="pointer-events-none absolute inset-0 z-10 mx-auto hidden max-w-[1500px] md:block">
+    {
+      trends.map(
+        (t) =>
+          t.image && (
+            <a
+              href={`#trend-${t.id}`}
+              class="bubble pointer-events-auto absolute"
+              style={positions[t.id]}
+              data-track={`bubble_${t.id}`}
+              aria-label={`${t.key} ${t.zhName} 趨勢`}
+            >
+              <img
+                src={t.image}
+                alt={t.zhName}
+                class="h-auto w-full"
+                onerror="this.closest('a').style.display='none'"
+              />
+            </a>
+          )
+      )
+    }
+  </div>
+
+  <!-- 花圃（手機）：只放 1-2 朵代表花 -->
+  <div class="pointer-events-none absolute inset-0 z-10 md:hidden">
+    {
+      mobileBubbles.map((t, i) => (
+        <a
+          href={`#trend-${t.id}`}
+          class="bubble pointer-events-auto absolute"
+          style={mobilePos[i]}
+          data-track={`bubble_${t.id}`}
+          aria-label={`${t.key} ${t.zhName} 趨勢`}
+        >
+          <img
+            src={t.image}
+            alt={t.zhName}
+            class="h-auto w-full"
+            onerror="this.closest('a').style.display='none'"
+          />
+        </a>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  /* Hero 背景：滿版 cover，保留原本背景圖完整高度 */
+  .hero-bg {
+    background-color: #FBF6F3;
+    background-image: url('/kv-desktop.jpg');
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: cover;
+  }
+  /* 底部細緻落地：草地維持清晰，只在最底緣輕柔溶進（不做中段糊帶） */
+  .hero-fade {
+    height: 200px;
+    background: linear-gradient(
+      to bottom,
+      rgba(251, 246, 243, 0) 0%,
+      rgba(251, 246, 243, 0) 48%,
+      rgba(251, 246, 243, 0.5) 76%,
+      #fbf6f3 100%
+    );
+  }
+  /* 花朵常駐微浮動（不靠 hover，手機也看得出可互動）。浮動套在 img、hover lift 套在 a，互不衝突 */
+  .bubble img {
+    animation: bubble-float 6s ease-in-out infinite;
+    filter: drop-shadow(0 6px 16px rgba(120, 95, 88, 0.18));
+    will-change: transform;
+  }
+  .bubble:nth-of-type(2) img {
+    animation-delay: -2s;
+  }
+  .bubble:nth-of-type(3) img {
+    animation-delay: -3.5s;
+  }
+  .bubble:nth-of-type(4) img {
+    animation-delay: -1s;
+  }
+  .bubble:nth-of-type(5) img {
+    animation-delay: -4.5s;
+  }
+  .bubble:nth-of-type(6) img {
+    animation-delay: -2.8s;
+  }
+  @keyframes bubble-float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-7px);
+    }
+  }
+  /* 桌機 hover 再加強：整朵浮起放大 */
+  .bubble {
+    transition: transform 0.45s ease, filter 0.45s ease;
+  }
+  .bubble:hover {
+    transform: translateY(-6px) scale(1.04);
+    filter: drop-shadow(0 14px 26px rgba(120, 95, 88, 0.26));
+  }
+  /* SCROLL 細直線：一小段亮色往下流動，極簡滾動提示 */
+  /* 白字＋柔和深色陰影，確保在淺底也讀得到 */
+  .scroll-label {
+    text-shadow: 0 1px 12px rgba(60, 40, 40, 0.45);
+  }
+  .scroll-line {
+    position: relative;
+    display: block;
+    width: 1px;
+    height: 42px;
+    background: rgba(255, 255, 255, 0.55);
+    box-shadow: 0 0 10px rgba(60, 40, 40, 0.3);
+    overflow: hidden;
+  }
+  .scroll-line::after {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    width: 100%;
+    height: 45%;
+    background: #ffffff;
+    animation: scroll-travel 1.9s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+  @keyframes scroll-travel {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(222%);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .bubble img,
+    .scroll-line::after {
+      animation: none;
+    }
+  }
+</style>

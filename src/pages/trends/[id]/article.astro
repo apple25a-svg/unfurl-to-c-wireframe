@@ -1,0 +1,21 @@
+---
+// 趨勢盤點頁（年度 10 大品項）＝共用閱讀模組 ＋ showProducts。
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import ArticleReading from '../../../components/ArticleReading.astro';
+import { trends } from '../../../data/trends.js';
+import { features } from '../../../config/features.js';
+
+export function getStaticPaths() {
+  return trends.map((t) => ({ params: { id: t.id }, props: { trend: t } }));
+}
+const { trend } = Astro.props;
+const title = `2026 ${trend.zhName}：年度 10 大品項`;
+---
+
+<BaseLayout title={`${title} · 女人我最大賞`}>
+  <Header pinned />
+  <ArticleReading trend={trend} title={title} kind="年度盤點" showProducts={features.showProducts} />
+  <Footer />
+</BaseLayout>

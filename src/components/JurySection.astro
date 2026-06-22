@@ -1,0 +1,57 @@
+---
+// 評選方式：上＝標題＋說明（左）＋三角 infographic（右）；下＝評審人物卡，全部併成一組。
+// 姓名/頭像待 PO 補；現用佔位。
+import JuryCircle from './JuryCircle.astro';
+import Rail from './Rail.astro';
+
+// 預設 12 位示意。未來放不下時改為左右滑動瀏覽（動態滑動待做）。
+const members = [
+  { role: '總編輯' },
+  { role: '美妝主編' },
+  { role: '時尚主編' },
+  { role: '知名彩妝師' },
+  { role: '保養領域 KOL' },
+  { role: '髮型設計師' },
+  { role: '皮膚科醫師' },
+  { role: '醫學美容醫師' },
+  { role: '營養師' },
+  { role: '香氛調香師' },
+  { role: '美容編輯' },
+  { role: '產品專家' },
+];
+---
+
+<section id="about" class="scroll-mt-20 bg-bg-surface">
+  <div class="mx-auto max-w-frame px-6 py-16 md:px-9 md:py-20">
+    <!-- 上：auwa 式左欄（eyebrow → 大標 → 小灰說明）＋右三角 infographic -->
+    <div class="grid items-center gap-12 md:grid-cols-2 md:gap-16">
+      <div>
+        <p class="text-xs tracking-[3px] text-ink-tertiary">關於評選</p>
+        <h2 class="mt-5 font-serif text-3xl leading-tight text-heading md:text-[44px]">
+          不分名次，<br />留下值得被看見的。
+        </h2>
+        <p class="mt-8 max-w-[460px] text-base leading-relaxed text-ink-body md:text-lg">
+          今年的入選由專業評審團主導，由女人我最大編輯部、美妝達人與專業醫師三方檢視，依 <span class="font-serif italic">UNFURL</span> 六大趨勢，選出最具代表性的年度品項。
+        </p>
+      </div>
+      <JuryCircle />
+    </div>
+
+    <!-- 下：評審人物卡，併成一組橫向單排；共用 Rail（隱藏捲軸、可拖曳/箭頭、12 位畫分段指示器） -->
+    <div class="mt-16 md:mt-20">
+      <Rail count={members.length} gapClass="gap-8" fadeFrom="from-bg-surface">
+        {
+          members.map((m) => (
+            <div class="w-[100px] shrink-0 text-center">
+              <div class="mx-auto mb-3 flex h-[100px] w-[100px] items-center justify-center rounded-full border-[0.5px] border-line bg-bg">
+                <i class="ti ti-user text-3xl text-ink-tertiary" aria-hidden="true" />
+              </div>
+              <p class="text-base font-medium text-ink">姓名待補</p>
+              <p class="mt-1 text-xs leading-snug text-ink-secondary">{m.role}</p>
+            </div>
+          ))
+        }
+      </Rail>
+    </div>
+  </div>
+</section>

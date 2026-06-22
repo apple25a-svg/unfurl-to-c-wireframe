@@ -1,0 +1,20 @@
+---
+// 趨勢一般編輯文（read）＝共用閱讀模組，無產品。延伸閱讀的卡連到這裡。
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import ArticleReading from '../../../components/ArticleReading.astro';
+import { trends } from '../../../data/trends.js';
+
+export function getStaticPaths() {
+  return trends.map((t) => ({ params: { id: t.id }, props: { trend: t } }));
+}
+const { trend } = Astro.props;
+const title = `${trend.zhName}：今年最值得認識的保養轉變`;
+---
+
+<BaseLayout title={`${title} · 女人我最大賞`}>
+  <Header pinned />
+  <ArticleReading trend={trend} title={title} kind="編輯觀點" />
+  <Footer />
+</BaseLayout>

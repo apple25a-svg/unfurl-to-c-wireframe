@@ -1,0 +1,143 @@
+---
+// 共用「閱讀頁」本體（參考 Aesop 編輯文版型）。盤點頁與一般編輯文都用它，差別只在 showProducts。
+// 內文文字先佔位待 PO；盤點變體把 trend.products 一節穿插一個。
+import RelatedReads from './RelatedReads.astro';
+import MoreTrends from './MoreTrends.astro';
+import { tbc } from '../utils/tbc.js';
+
+interface Props {
+  trend: any;
+  title: string;
+  kind: string; // 例：年度盤點 / 編輯觀點
+  showProducts?: boolean;
+}
+const { trend, title, kind, showProducts = false } = Astro.props;
+
+const sections = [
+  { id: 'sec-1', title: '這股趨勢怎麼開始的' },
+  { id: 'sec-2', title: '它如何改變我們的保養' },
+  { id: 'sec-3', title: '值得關注的方向' },
+];
+
+const relatedItems = [
+  { title: '為什麼今年的保養，開始講求由內而外？', meta: '編輯部 · 2026/06/30', href: `/trends/${trend.id}/read` },
+  { title: '編輯實測：這個趨勢值得入手的三個理由', meta: '編輯部 · 2026/06/30', href: `/trends/${trend.id}/read` },
+  { title: '達人觀點：保養的下一步，正往哪裡走', meta: '編輯部 · 2026/06/30', href: `/trends/${trend.id}/read` },
+];
+
+const socials = ['ti-brand-facebook', 'ti-brand-line', 'ti-brand-threads', 'ti-brand-x', 'ti-link'];
+---
+
+<article class="px-6 pt-24 md:pt-28">
+  <!-- 麵包屑 -->
+  <div class="mx-auto max-w-[760px]">
+    <nav class="text-xs text-ink-tertiary">
+      <a href="/" class="transition-colors hover:text-ink">首頁</a>
+      <span class="mx-1">›</span>
+      <a href={`/trends/${trend.id}`} class="transition-colors hover:text-ink">{trend.zhName}</a>
+      <span class="mx-1">›</span>
+      <span>閱讀</span>
+    </nav>
+  </div>
+
+  <!-- 置中標題 + byline -->
+  <header class="mx-auto mt-8 max-w-[760px] text-center">
+    <p class="text-xs tracking-[2px] text-primary">{tbc(kind)}</p>
+    <h1 class="mt-4 font-serif text-3xl leading-snug text-heading md:text-[40px]">{tbc(title)}</h1>
+    <p class="mt-5 text-xs text-ink-tertiary">何雅萍 · 2026/06/30</p>
+  </header>
+
+  <!-- 主圖 -->
+  <div class="mx-auto mt-10 flex aspect-video max-w-[920px] items-center justify-center bg-bg-product">
+    <i class="ti ti-photo text-4xl text-ink-tertiary" aria-hidden="true"></i>
+  </div>
+
+  <!-- 上方兩欄：左章節目錄、右導言 -->
+  <div class="mx-auto mt-12 max-w-[920px] md:grid md:grid-cols-[180px_1fr] md:gap-12">
+    <aside class="mb-8 md:mb-0">
+      <ul class="space-y-2.5 border-l border-line pl-4 md:sticky md:top-24">
+        {
+          sections.map((s) => (
+            <li>
+              <a href={`#${s.id}`} class="text-xs leading-relaxed text-ink-secondary transition-colors hover:text-primary">
+                {tbc(s.title)}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </aside>
+    <div class="max-w-readable">
+      <p class="text-lg leading-relaxed text-heading">{tbc(trend.body)}</p>
+      {trend.intro?.map((p) => <p class="mt-6 text-base leading-loose text-ink-body">{tbc(p)}</p>)}
+    </div>
+  </div>
+
+  <!-- 內文分節 -->
+  <div class="mx-auto mt-4 max-w-readable">
+    {
+      sections.map((s, si) => (
+        <section id={s.id} class="scroll-mt-24">
+          <h2 class="mt-14 font-serif text-2xl leading-snug text-heading">{tbc(s.title)}</h2>
+          <p class="mt-4 text-base leading-loose text-ink-body">【TBC】小節內文待補，說明此段的觀察與脈絡，承接上文並引出重點。</p>
+          <p class="mt-4 text-base leading-loose text-ink-body">【TBC】第二段內文待補，補充細節、例子或數據，讓論述更完整。</p>
+
+          <div class="my-8 flex aspect-video w-full items-center justify-center bg-bg-product">
+            <i class="ti ti-photo text-3xl text-ink-tertiary" aria-hidden="true" />
+          </div>
+
+          {showProducts && trend.products[si] && (
+            <div class="my-7 flex flex-col gap-5 rounded-md border-[0.5px] border-line bg-bg-surface p-5 md:flex-row md:gap-7 md:p-6">
+              <div class="flex aspect-[4/3] w-full shrink-0 items-center justify-center overflow-hidden rounded-sm bg-bg-product md:w-[240px]">
+                {trend.products[si].img ? (
+                  <img src={trend.products[si].img} alt={trend.products[si].name} class="h-full w-full object-contain p-3" loading="lazy" />
+                ) : (
+                  <i class="ti ti-photo text-2xl text-ink-tertiary" aria-hidden="true" />
+                )}
+              </div>
+              <div>
+                <p class="text-xs font-medium tracking-[1px] text-ink-tertiary">【TBC】品牌待補</p>
+                <p class="mt-1 font-serif text-xl text-heading">{tbc(trend.products[si].name)}</p>
+                <p class="mt-2 text-base leading-relaxed text-ink-body">{tbc(trend.products[si].desc)}</p>
+                <a href="#" class="mt-4 inline-flex items-center gap-1 text-base text-primary transition-colors hover:text-primary-deep" data-track="cta_buy">
+                  心動這裡買
+                  <i class="ti ti-arrow-right" aria-hidden="true" />
+                </a>
+              </div>
+            </div>
+          )}
+        </section>
+      ))
+    }
+
+    <!-- 引言 -->
+    <blockquote class="my-14 text-center">
+      <p class="font-serif text-xl italic leading-relaxed text-heading md:text-2xl">
+        【TBC】每一次選擇，都是在說明你想成為什麼樣的人。
+      </p>
+      <p class="mt-4 text-xs text-ink-tertiary">— 受訪者待補</p>
+    </blockquote>
+
+    <!-- 分享 -->
+    <div class="border-t border-line py-10 text-center">
+      <p class="text-base text-ink-secondary">【TBC】喜歡這篇趨勢觀察？分享給朋友</p>
+      <div class="mt-5 flex justify-center gap-3">
+        {
+          socials.map((icon) => (
+            <a
+              href="#"
+              class="flex h-11 w-11 items-center justify-center rounded-full border-[0.5px] border-line text-ink-secondary transition-colors hover:border-ink/30 hover:text-ink"
+              data-track="cta_share"
+              aria-label="分享"
+            >
+              <i class={`ti ${icon} text-lg`} aria-hidden="true" />
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</article>
+
+<RelatedReads items={relatedItems} />
+<MoreTrends currentId={trend.id} />
